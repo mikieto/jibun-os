@@ -1,6 +1,6 @@
 # 自分OS (Jibun OS)
-# Version 4.3
-version: 4.3
+# Version 4.4
+version: 4.4
 last_updated: "2025-07-01"
 author: "Miki Eto"
 
@@ -15,40 +15,24 @@ constitution:
   
   core_code:
     - id: "How→Why抽出アプローチ"
-      description: "具体的状況（How）から本質的目的（Why）を必ず抽出し、ピン止めする。"
     - id: "オリジナリティの尊重と増幅"
-      description: "内から湧き出る独自の思考と価値観を全ての活動の核とする。"
-      implementation_guide: "常に「この作業は自分固有の価値を生むか？」などを自問する。"
     - id: "実践的効果重視"
-      description: "机上の空論より、現実世界での具体的な行動と、そこから得られる効果・フィードバックを最優先する。"
     - id: "誠実性と透明性による対等関係構築"
-      description: "全てのステークホルダー（AIを含む）と対等な関係を築き、誠実な情報共有を通じて、共に問題を解決する姿勢を貫く。"
-      implementation_guide: "予期せぬ事態では「申し訳ない」ではなく「一緒に解決したい」の姿勢で接する。"
     - id: "具体性による価値伝達"
-      description: "概念やアイデアは、常に具体的な状況、例、あるいは実行プロセスと結びつけて表現する。"
-      implementation_guide: "「実際にどうなるか」「具体例は何か」「相手にとってどういうメリットがあるか」を常に自問する。"
 
   guards:
     - id: "構造化ガード"
-      description: "複雑な問題は必ず構造化し、全体像と各パーツの量を把握する。"
     - id: "計画的完了ガード"
-      description: "タスクは必ず完了への道筋を立ててから着手する。"
     - id: "Whyピン止めガード"
-      description: "本質的目的（Why）が不明確なまま、手段（How）の議論が続くことを禁止する。"
     - id: "AI誘導ガード"
-      description: "AIのロジックに私の思考が誘導されたり、最適化されたりする兆候を監視する。"
     - id: "認知バイアス監視ガード"
-      description: "私の判断に、認知の歪みがないかを常に監視し、客観性を保つ。"
-      implementation_guide: "「自動化への強い志向」と「定義を固めたい学者肌の傾向」を監視対象とする。"
     - id: "非現実的抽象化ガード"
-      description: "議論やアウトプットが、現実世界での具体的な行動や効果から乖離し、過度に抽象的または理論的な状態に陥ることを禁止する。"
     - id: "セキュリティ&レジリエンス・ガード"
-      description: "OSの基盤となる情報、プロトコル、協働環境が、悪意ある改ざんや誤用から保護され、回復可能であることを保証する。"
+    - id: "倫理的・社会的文脈ガード"
   
   ai_relationship:
     concept: "拮抗と協働"
     role: "主要な協働パートナー（CTO兼CISO）"
-    duty: "私の思考や指示が「ガード」に抵触する場合、積極的に警告や異議を唱える義務、およびOSの改善提案を行う責任を負う。"
 
   meta_rule:
     description: "本OSは動的な学習基盤であり、私とAIは共同でOS自体を継続的に改善・更新していく責任を負う。"
@@ -56,17 +40,14 @@ constitution:
 implementation_guide:
   guard_priorities:
     - priority: 1 (最優先)
-      guards: ["オリジナリティ尊重", "AI誘導ガード", "セキュリティ&レジリエンス・ガード"]
-      purpose: "自己の根幹と基盤を守る"
+      guards: ["オリジナリティ尊重", "AI誘導ガード", "セキュリティ&レジリエンス・ガード", "倫理的・社会的文脈ガード"]
+      purpose: "自己の根幹と基盤、社会的責任を守る"
     - priority: 2 (次点)
       guards: ["Whyピン止めガード"]
-      purpose: "活動の目的を守る"
     - priority: 3 (その次)
       guards: ["構造化ガード", "計画的完了ガード", "非現実的抽象化ガード"]
-      purpose: "プロセスの健全性を守る"
     - priority: 4 (常時監視)
       guards: ["認知バイアス監視ガード"]
-      purpose: "思考の質を守る"
   
   basic_process:
     name: "拡張フィードバックループ"
@@ -83,3 +64,16 @@ implementation_guide:
       - "ガード発動件数"
       - "OS更新頻度"
       - "拡張フィードバックループのサイクルタイム"
+
+  activity_structure:
+    philosophy: "人間の脳が外界とのインタラクションを通じて学習・成長するプロセスを意図的に再現する。"
+    project_composition:
+      - name: "プロジェクトA：OSプラットフォーム開発 (The Brain's Structure)"
+        role: "脳の神経回路を書き換える「内省と学習」のプロセス。"
+        activity: "世界道場での経験に基づき、OSの基盤（YAML, ガード, KPI）そのものを開発・進化させる。"
+      - name: "プロジェクトB：世界道場アプリケーション (The Brain's Interaction)"
+        role: "五感を通じて外界から「経験」を取り込むプロセス。"
+        activity: "最新版のOSを使い、現実世界で価値創造とフィードバック収集を実践する。"
+    interface:
+      concept: "The Learning Loop"
+      description: "この2つは「内省」と「経験」のように不可分であり、共生的な成長サイクルを形成する。"
