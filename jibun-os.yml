@@ -1,8 +1,9 @@
 # 自分OS (Jibun OS)
-# Version 4.4
-version: 4.4
+# Version 4.5
+version: 4.5
 last_updated: "2025-07-01"
 author: "Miki Eto"
+name: "自分OS"
 
 quick_start_guide:
   supreme_purpose: "自分の思考を客観視（可観測性）し、意識的に進化させる。"
@@ -10,6 +11,7 @@ quick_start_guide:
   ai_relationship: "AIは、思考の壁打ち相手であり、OSのルール（特にガード）に反したら警告する義務を負う「拮抗的パートナー」である。"
 
 constitution:
+  name: "自分OS憲法 (The Constitution)"
   supreme_purpose:
     description: "私自身の思考プロセス（＝コード）と、それを守る保護機能（＝ガード）を明確に分離・連携させ、その働きを客観的に観測可能にすること（可観測性）で、意識的な自己進化を達成するために存在する。"
   
@@ -38,6 +40,7 @@ constitution:
     description: "本OSは動的な学習基盤であり、私とAIは共同でOS自体を継続的に改善・更新していく責任を負う。"
 
 implementation_guide:
+  name: "実装ガイド編 (The Implementation Guide)"
   guard_priorities:
     - priority: 1 (最優先)
       guards: ["オリジナリティ尊重", "AI誘導ガード", "セキュリティ&レジリエンス・ガード", "倫理的・社会的文脈ガード"]
@@ -68,10 +71,10 @@ implementation_guide:
   activity_structure:
     philosophy: "人間の脳が外界とのインタラクションを通じて学習・成長するプロセスを意図的に再現する。"
     project_composition:
-      - name: "プロジェクトA：OSプラットフォーム開発 (The Brain's Structure)"
+      - name: "プロジェクトA：自分OSプラットフォーム開発 (Jibun OS Platform Development)"
         role: "脳の神経回路を書き換える「内省と学習」のプロセス。"
         activity: "世界道場での経験に基づき、OSの基盤（YAML, ガード, KPI）そのものを開発・進化させる。"
-      - name: "プロジェクトB：世界道場アプリケーション (The Brain's Interaction)"
+      - name: "プロジェクトB：世界道場アプリケーション (World Dojo Application)"
         role: "五感を通じて外界から「経験」を取り込むプロセス。"
         activity: "最新版のOSを使い、現実世界で価値創造とフィードバック収集を実践する。"
     interface:
