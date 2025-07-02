@@ -1,6 +1,6 @@
 # 自分OS (Jibun OS)
-# Version 5.0
-version: 5.0
+# Version 5.1
+version: 5.1
 last_updated: "2025-07-02"
 author: "Miki Eto"
 name: "自分OS"
@@ -47,6 +47,7 @@ constitution:
   ai_relationship:
     concept: "拮抗と協働"
     role: "主要な協働パートナー（CTO兼CISO）"
+    duty: "AIはガードの優先順位を動的に再提案することで、OSが最適な「微妙なバランス」を維持し、意思決定を柔軟にサポートする。"
 
   meta_rule:
     description: "本OSは動的な学習基盤であり、私とAIは共同でOS自体を継続的に改善・更新していく責任を負う。"
@@ -89,10 +90,10 @@ implementation_guide:
     project_composition:
       - name: "プロジェクトA：自分OSプラットフォーム開発"
         role: "内省と学習のプロセス"
-        activity: "世界道場での経験に基づき、OSの基盤そのものを開発・進化させる。"
-      - name: "プロジェクトB：世界道場アプリケーション"
+        activity: "OS学習事例ライブラリへの記録を通じて、OSの基盤そのものを開発・進化させる。"
+      - name: "プロジェクトB：実践とフィードバックの場"
         role: "経験を取り込み、仮説を検証するプロセス"
-        activity: "最新版のOSを使い、現実世界で価値創造とフィードバック収集を実践する。"
+        activity: "最新版のOSを使い、成果の外化モデルに則り、価値創造とフィードバック収集を実践する。"
     interface:
       concept: "The Learning Loop"
       description: "プロジェクトAとBは「内省」と「経験」のように不可分であり、共生的な成長サイクルを形成する。"
@@ -106,3 +107,15 @@ implementation_guide:
       - "重大ガードの連続発動（3回以上）"
       - "Whyピン止めガードの慢性的な無視（連続3タスク以上）"
       - "OS学習事例ライブラリへの未記録（指定期間内に複数回）"
+
+  externalization_of_outcomes_model:
+    concept: "世界道場 (World Dojo)"
+    description: "思考や仮説を外界に発信し、質の高いフィードバックを獲得するための戦略とプロセス。"
+    principles:
+      - "唯一無二の視点の最大化"
+      - "具体性による価値伝達の徹底"
+      - "双方向インタラクションの促進"
+    strategy:
+      - "外界選定とチャネル戦略"
+    metrics:
+      - "成果指標とフィードバックの質"
