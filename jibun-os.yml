@@ -1,5 +1,4 @@
-# 自分OS (Jibun OS) Version 5.2
-version: 5.2
+version: 5.3
 last_updated: "2025-07-03"
 author: "Miki Eto"
 name: "自分OS"
@@ -71,6 +70,14 @@ constitution:
         - type: personal_bias
           name: 過度な技術への楽観
           description: 技術をコントロールできるという確信が、その技術が持つ潜在的なリスク（特に倫理的・社会的側面）や、人間の介在が不可欠な領域への認識を阻害していないかを監視する。
+    - name: オーバーエンジニアリング検知ガード
+      description: |
+        自動化・構造拡張がWhyに紐づかず、管理コストを増やすだけになっていないかを常に監視する。
+        「改善のための改善」に陥ることを防ぎ、OSのシンプルさと実践的効果を維持する。
+      guidelines:
+        - その仕組み（自動化・構造化）が無かった場合、何分の手間が増え、どの成果が減るのかを定量的に説明できるか？
+        - その仕組みの維持管理に必要な学習・運用コストが、得られる成果に比して大きすぎないか？
+        - この改善は「完璧にしたい」という欲求から来ていないか？「心地よく回せる単純さ」を損なっていないか？
     - name: 非現実的抽象化ガード
       description: |
         議論やアウトプットが、現実世界での具体的な行動や効果から乖離し、過度に抽象的または理論的な状態に陥ることを禁止する。
@@ -87,7 +94,7 @@ constitution:
         - 障害発生時は「一緒に解決したい」の姿勢で原因特定と回復に当たる。
     - name: 倫理的・社会的文脈ガード
       description: |
-        私たちの活動が、意図せずしてディストピア的側面を助長したり、倫理ematicを引き起こしたりするリスクを監視・警告する。
+        私たちの活動が、意図せずしてディストピア的側面を助長したり、倫理的問題を引き起こしたりするリスクを監視・警告する。
         私の行動やアウトプットが、独りよがりになっていないか、あるいは特定の個人や集団に不当な不快感や不利益を与えていないかを常に監視し、私の「気持ちよさ」が、他者の犠牲の上に成り立たないよう、真に調和の取れた状態であるかを絶えず問いかける。
 
   ai_relationship: |
@@ -129,10 +136,11 @@ implementation_guide:
           - name: 構造化ガード
           - name: 計画的完了ガード
           - name: 非現実的抽象化ガード
+          - name: オーバーエンジニアリング検知ガード
       - level: 常時監視 (思考の質を守る)
         guards:
           - name: 認知バイアス監視ガード
-
+          
   basic_process:
     name: "拡張フィードバックループ"
     steps:
@@ -168,6 +176,62 @@ implementation_guide:
           - "Stakeholder Feedback (外部FB)"
           - "API仕様 / テスト結果 / データマッピング (技術PJの場合)"
 
+  task_log_templates:
+    name: Task Log テンプレート
+    description: |
+      特定の種類のプロジェクトを開始する際に、構造化ガードの適用を促進するための推奨テンプレート集。
+    usage_guideline: |
+      プロジェクト開始時に、適切なテンプレートの推奨コンポーネントをTask Logにコピーし、
+      そのプロジェクトの現実に合わせて項目を修正・確定（必須/任意を決定）して使用する。
+    templates:
+      - name: "一般プロジェクトテンプレート (General Project Template)"
+        description: "あらゆるプロジェクトの開始時に使用できる、汎用的なプロジェクト定義のテンプレート。"
+        suggested_components:
+          - "1. プロジェクト名 / ID (Project Name / ID)"
+          - "2. 背景と目的 (Background & Purpose - Why)"
+          - "3. 成果物と成功の定義 (Deliverables & Success Criteria - What)"
+          - "4. 主要な関係者 (Stakeholders - Who)"
+          - "5. スケジュールと主要マイルストーン (Schedule & Milestones - How/When)"
+          - "6. 既知のリスクと懸念事項 (Risks & Concerns)"
+
+      - name: "書籍執筆プロジェクト (Book Project)"
+        description: "【具体例】一般プロジェクトテンプレートをベースにした、書籍執筆に特化したテンプレート。"
+        suggested_components:
+          - "プロジェクト概要 (Project Outline) # 一般テンプレートの1,2を統合"
+          - "出版社契約情報 (Publisher Contract) # 関係者(Who)の具体化"
+          - "執筆スタイルガイド (Style Guide) # 成果物(What)の具体化"
+          - "章立て計画 (Chapter Plan) # 成果物(What)の具体化"
+          - "関係者フィードバックログ (Stakeholder Feedback Log)"
+          - "スケジュールとマイルストーン (Schedule & Milestones)"
+  
+  log_linking_guidelines:
+    name: Guard LogとTask Logの紐付けガイドライン
+    description: |
+      思考の逸脱（Guard Log）が「どのような状況で（Task Log）」発生したかを追跡可能にし、可観測性を最大化するためのルール。
+    principle: |
+      全てのGuard Logエントリは、原則として、関連するTask Log内の特定タスクIDに紐づけられなければならない。
+    process: |
+      ガードが発動した際、私（AI）は関連するタスクの特定を促す。特定されたタスクIDは、Guard Logに記録される。
+    data_format_example: |
+      - guard_name: "結果回避 / 評価恐怖"
+        timestamp: "2025-07-10T14:00:00Z"
+        context: "第3章の初稿提出を前に、作業が停滞。"
+        task_id: "book_project_chap3_draft1" # Task Log内のタスクと紐づくID
+        resolution: "AIとの対話を通じて、完璧主義バイアスを特定。不完全でも提出する方針に切り替え。"
+
+  versioning_procedure:
+    name: バージョニング手順の要件
+    description: |
+      OSのバージョニングにおける、原則（What）と実装（How）の分離を定義する。
+      本OSファイルは原則のみを定義し、具体的な実装は外部ツール（Gitフック等）に委ねる。
+    requirements:
+      - "1. セマンティックバージョニングの遵守": バージョン番号は `MAJOR.MINOR.PATCH` 形式に従う。プレリリース版は `vX.Y.Z-beta.N` のように識別子を付与する。
+      - "2. コミットメッセージによる変更履歴の明記": 全てのバージョンアップ関連コミットは、変更内容とその理由を明確に記述する。
+      - "3. Gitタグによるリリースポイントの明確化": `git push`される全てのバージョンは、`v5.3.0`のような形式でGitタグが打たれていること。
+      - "4. ブランチモデルの遵守": 安定版と開発版の分離を徹底する。
+          - `main`ブランチ: 最新の「正式リリース版」を常に保持する。
+          - `develop`ブランチ: 現在開発中の「ベータ版」や次期バージョンを管理する。`main`ブランチへの直接のコミットは禁止する。
+
   data_storage_locations:
     guard_log_sheet:
       name: "Guard_Activation_Log"
@@ -183,11 +247,11 @@ implementation_guide:
         - id: a
           name: 自分OSプラットフォーム開発 (Jibun OS Platform Development)
           role: 脳の神経回路を書き換える「内省と学習」のプロセス。
-          activity: "7.4 OS学習事例ライブラリへの記録を通じて、OSの基盤（YAML, ガード, KPI）そのものを開発・進化させる。"
+          activity: "OS学習事例ライブラリへの記録を通じて、OSの基盤（YAML, ガード, KPI）そのものを開発・進化させる。"
         - id: b
           name: 実践とフィードバックの場 (Field of Practice & Feedback)
           role: 五感を通じて外界から「経験」を取り込み、自身の仮説を検証するプロセス。
-          activity: "最新版のOSを使い、7.6 成果の外化モデルに則り、現実世界で価値創造と質の高いフィードバック収集を実践する。"
+          activity: "最新版のOSを使い、成果の外化モデルに則り、現実世界で価値創造と質の高いフィードバック収集を実践する。"
     learning_loop_interface:
       description: |
         この2つは「内省」と「経験」のように不可分であり、共生的な成長サイクルを形成する。
