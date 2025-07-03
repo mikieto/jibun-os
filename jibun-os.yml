@@ -1,7 +1,6 @@
-# 自分OS (Jibun OS)
-# Version 5.1
-version: 5.1
-last_updated: "2025-07-02" # Based on the current date, July 2, 2025.
+# 自分OS (Jibun OS) Version 5.2
+version: 5.2
+last_updated: "2025-07-03"
 author: "Miki Eto"
 name: "自分OS"
 
@@ -63,13 +62,13 @@ constitution:
         - type: core_bias
           name: 定義を完全に固めたいという学者肌の傾向
           description: 【実践的効果重視】のコードに反し、行動を遅延させていないか。
-        - type: personal_bias # ★結果回避 / 評価恐怖
+        - type: personal_bias
           name: 結果回避 / 評価恐怖
           description: 「怖がり」という性質が原因で、行動の結果を得ることや、外界からの評価を避けていないかを常に監視し、具体的な結果を出すことへのコミットメントを促す。
-        - type: personal_bias # ★独りよがりな気持ちよさ
+        - type: personal_bias
           name: 独りよがりな気持ちよさ
           description: 「褒められたい」という気持ちや、個人的な快適さが、他者への配慮や社会的な影響を軽視し、独りよがりな「気持ちよさ」に傾いていないかを常に監視する。
-        - type: personal_bias # ★過度な技術への楽観
+        - type: personal_bias
           name: 過度な技術への楽観
           description: 技術をコントロールできるという確信が、その技術が持つ潜在的なリスク（特に倫理的・社会的側面）や、人間の介在が不可欠な領域への認識を阻害していないかを監視する。
     - name: 非現実的抽象化ガード
@@ -88,7 +87,7 @@ constitution:
         - 障害発生時は「一緒に解決したい」の姿勢で原因特定と回復に当たる。
     - name: 倫理的・社会的文脈ガード
       description: |
-        私たちの活動が、意図せずしてディストピア的側面を助長したり、倫理的問題を引き起こしたりするリスクを監視・警告する。
+        私たちの活動が、意図せずしてディストピア的側面を助長したり、倫理ematicを引き起こしたりするリスクを監視・警告する。
         私の行動やアウトプットが、独りよがりになっていないか、あるいは特定の個人や集団に不当な不快感や不利益を与えていないかを常に監視し、私の「気持ちよさ」が、他者の犠牲の上に成り立たないよう、真に調和の取れた状態であるかを絶えず問いかける。
 
   ai_relationship: |
@@ -148,6 +147,26 @@ implementation_guide:
     metrics:
       quantity: ["ガード発動件数", "OS更新頻度", "拡張フィードバックループのサイクルタイム"]
       quality: ["ガード是正完了率", "重大度別MTTR", "OS改善後のパフォーマンス変化"]
+  
+  information_architecture:
+    description: |
+      情報は3レイヤで整理される。
+      - OS: 思考と行動の不変原則
+      - Guard Log: 思考・行動の是正履歴
+      - Task Log: プロジェクト固有の進行・外部要件
+    layers:
+      - name: OS
+        purpose: OS憲法（Supreme Purpose / Core Code / Guards / AI Relationship / Meta Rule）
+      - name: Guard Log
+        purpose: ガード発動の状況・是正プロセスの学習事例
+      - name: Task Log
+        purpose: プロジェクト進行のすべての可変情報を包含
+        project_specific_addition_allowed: true
+        example_categories:
+          - "Contracts (契約情報)"
+          - "Style Guides (スタイルルール)"
+          - "Stakeholder Feedback (外部FB)"
+          - "API仕様 / テスト結果 / データマッピング (技術PJの場合)"
 
   data_storage_locations:
     guard_log_sheet:
