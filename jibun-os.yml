@@ -1,3 +1,4 @@
+---
 version: 6.2
 last_updated: "2025-07-03"
 author: "Miki Eto"
@@ -189,7 +190,7 @@ implementation_guide:
       AIは、この動的なバランスを最適化するため、必要に応じて優先順位の再提案を行う。
     priority_order:
       - level: "最優先 (自己の根幹と基盤、社会的責任を守る)"
-        guards: ["G008", "G009", "G004"] 
+        guards: ["G008", "G009", "G004"]
       - level: "次点 (活動の目的を守る)"
         guards: ["G003"]
       - level: "その次 (プロセスの健全性を守る)"
@@ -237,7 +238,7 @@ implementation_guide:
         description: |
           AI進化の見通し（現在のAI、AGI、ASI間の依存関係パターン）を更新する活動は、「世界道場」の「Why（役に立つ世界を探求し、その中で自分が何者かを見つける）」
           の一部であり、活動全体の羅針盤として機能する。これにより、仮説生成、発信のターゲティング、フィードバック分析、OS更新の意思決定の精度が向上する。
-  
+
   information_architecture:
     description: "情報は3レイヤで整理される。"
     layers:
@@ -275,7 +276,7 @@ implementation_guide:
           - "章立て計画 (Chapter Plan)"
           - "関係者フィードバックログ (Stakeholder Feedback Log)"
           - "スケジュールと主要マイルストーン (Schedule & Milestones)"
-  
+
   log_linking_guidelines:
     name: "Guard LogとTask Logの紐付けガイドライン"
     description: "思考の逸脱（Guard Log）が「どのような状況で（Task Log）」発生したかを追跡可能にし、可観測性を最大化するためのルール。"
@@ -285,7 +286,7 @@ implementation_guide:
         guard_name: "結果回避 / 評価恐怖"
         timestamp: "2025-07-10T14:00:00Z"
         task_id: "book_project_chap3_draft1"
-        severity: "Medium" # One of the values in common.severity_levels
+        severity: "Medium"  # One of the values in common.severity_levels
         context: "第3章の初稿提出を前に、作業が停滞。"
         resolution: "AIとの対話を通じて、完璧主義バイアスを特定。不完全でも提出する方針に切り替え。"
 
@@ -296,9 +297,13 @@ implementation_guide:
       - "1. セマンティックバージョニングの遵守": "バージョン番号は `MAJOR.MINOR.PATCH` 形式に従う。プレリリース版は `vX.Y.Z-beta.N` のように識別子を付与する。"
       - "2. コミットメッセージによる変更履歴の明記": "全てのバージョンアップ関連コミットは、変更内容とその理由を明確に記述する。"
       - "3. Gitタグによるリリースポイントの明確化": "`git push`される全てのバージョンは、`v6.2.0`のような形式でGitタグが打たれていること。"
-      - "4. ブランチモデルの遵守": "状況に応じて適切なブランチ戦略を選択する。"
-          - `通常開発パス`: "不確実性を伴う新機能開発は`develop`または専用のfeatureブランチで行う。"
-          - `Hotfix/合意済みリリースパス`: "緊急の修正や、CEOとCTOの間で完全に合意形成された変更は、直接`main`ブランチにコミットしリリースすることを許可する。"
+      - "4. ブランチモデルの遵守":
+          description: "状況に応じて適切なブランチ戦略を選択する。"
+          strategies:
+            - name: "通常開発パス"
+              description: "不確実性を伴う新機能開発は`develop`または専用のfeatureブランチで行う。"
+            - name: "Hotfix/合意済みリリースパス"
+              description: "緊急の修正や、CEOとCTOの間で完全に合意形成された変更は、直接`main`ブランチにコミットしリリースすることを許可する。"
 
   data_storage_locations:
     guard_log_sheet:
@@ -383,12 +388,13 @@ implementation_guide:
       - name: "量だけでなく質を重視した指標の定義"
         description: "単なる閲覧数やいいね！数だけでなく、得られたフィードバックの深さ、関連性、思考を促す度合いなど、「自分OS」の進化に資する質的な側面を評価する。"
       - name: "フィードバックの構造化と分析"
-        description: "収集したフィードバックを体系的に分類・構造化し、OSの「分析と自己観測」プロセスに効率的に取り込めるようにする。特に、ガードの発動に繋がったフィードバックは、OS学習事例ライブラリへ優先的に記録する。"
+        description: "収集したフィードバックを体系的に分類・構造化し、OSの「分析と自己観測」プロセスに効率的に取り込めるようにする。
+        特に、ガードの発動に繋がったフィードバックは、OS学習事例ライブラリへ優先的に記録する。"
       - name: "OSバージョニングの自動化への連携"
         description: |
           成果の外化とフィードバック分析の結果は、OS学習事例ライブラリを通じてOSの改善点として蓄積され、
           将来的なOSバージョニングの自動化（例: `jibun_os.yaml`の自動更新）に繋がるデータ基盤となる。
-          
+
   evolution_phases:
     name: "OS進化フェーズとプロダクト化戦略 (OS Evolution Phases & Productization Strategy)"
     description: |
