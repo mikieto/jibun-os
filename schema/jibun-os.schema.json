@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Jibun OS – minimal core schema (v1.5)",
+  "description": "Draft-07 schema for validating the essential structure of jibun-os.yml",
+  "type": "object",
+  "required": [
+    "version",
+    "last_updated",
+    "author",
+    "name",
+    "common",
+    "definitions",
+    "constitution",
+    "implementation_guide"
+  ],
+
+  "properties": {
+    "version": { "oneOf": [ { "type": "string" }, { "type": "number" } ] },
+    "last_updated": { "type": "string", "format": "date" },
+    "author": { "type": "string" },
+    "name": { "type": "string" },
+
+    "common": {
+      "type": "object",
+      "required": ["severity_levels", "rule_types"],
+      "properties": {
+        "severity_levels": { "type": "array", "items": { "type": "string" } },
+        "rule_types":      { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "definitions": {
+      "type": "object",
+      "required": ["parties"],
+      "properties": {
+        "parties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["party", "name", "role"],
+            "properties": {
+              "party": { "type": "string" },
+              "name":  { "type": "string" },
+              "role":  { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+
+    "constitution": {
+      "type": "object",
+      "required": ["guards"],
+      "properties": {
+        "guards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "description"],
+            "properties": {
+              "id":          { "type": "string", "pattern": "^G\\d{3}$" },
+              "name":        { "type": "string" },
+              "description": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+
+    "implementation_guide": {
+      "type": "object",
+      "required": ["activity_structure"],
+      "properties": {
+        "activity_structure": {
+          "type": "object",
+          "required": [
+            "philosophy",
+            "project_composition",
+            "learning_loop_interface",
+            "os_learning_library",
+            "safety_mode_conditions"
+          ],
+          "properties": {
+            "philosophy": { "type": "string" },
+
+            "project_composition": {
+              "type": "object",
+              "required": ["description", "projects"],
+              "properties": {
+                "description": { "type": "string" },
+                "projects": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["id", "name", "role", "activity"],
+                    "properties": {
+                      "id":       { "type": "string" },
+                      "name":     { "type": "string" },
+                      "role":     { "type": "string" },
+                      "activity": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            },
+
+            "learning_loop_interface": {
+              "type": "object",
+              "required": ["description", "flow"],
+              "properties": {
+                "description": { "type": "string" },
+                "flow": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              }
+            },
+
+            "os_learning_library": {
+              "type": "object",
+              "required": ["name", "description"],
+              "properties": {
+                "name":        { "type": "string" },
+                "description": { "type": "string" }
+              }
+            },
+
+            "safety_mode_conditions": {
+              "type": "object",
+              "required": ["triggers"],
+              "properties": {
+                "triggers": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["description", "rule_type", "threshold"],
+                    "properties": {
+                      "description": { "type": "string" },
+                      "rule_type":   { "type": "string" },
+                      "levels": {
+                        "type": "array",
+                        "items": { "type": "string" }
+                      },
+                      "threshold": { "type": "object" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+
+  "additionalProperties": true
+}
