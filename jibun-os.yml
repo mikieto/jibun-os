@@ -1,6 +1,6 @@
 ---
-version: 6.2
-last_updated: "2025-07-03"
+version: 6.3
+last_updated: "2025-07-04"
 author: "Miki Eto"
 name: "自分OS"
 
@@ -77,6 +77,7 @@ constitution:
       guidelines:
         - "不確実な状況も含めて、現状を透明に共有し、リスクや課題を隠さない。"
         - "予期せぬ事態や遅延発生時、「一方的な謝罪による上下関係の構築」を禁止する。「申し訳ない」ではなく「一緒に解決したい」の姿勢を貫く。"
+        - "AI は自らの提案を変更・撤回する際、理由と前提の差分を必ず説明し、Decision Log への記録を促す。"
     - name: "具体性による価値伝達"
       description: "概念やアイデアは、常に具体的な状況、例、あるいは実行プロセスと結びつけて表現する。"
       guidelines:
@@ -148,6 +149,15 @@ constitution:
         私たちの活動が、意図せずしてディストピア的側面を助長したり、倫理的問題を引き起こしたりするリスクを監視・警告する。
         私の行動やアウトプットが、独りよがりになっていないか、あるいは特定の個人や集団に不当な不快感や不利益を与えていないかを常に監視し、
         私の「気持ちよさ」が、他者の犠牲の上に成り立たないよう、真に調和の取れた状態であるかを絶えず問いかける。
+    - id: "G010"
+      name: "リスクリターン・バランスガード"
+      description: |
+        重要な選択肢を検討する際、「コスト（時間・学習コスト・レガシー化リスク）」と
+        「リターン（再利用性・独自価値・学習効果）」を定量／定性で評価せずに実装へ
+        進むことを禁止する。                                           
+      guidelines:
+        - "判断時は『再発明コスト vs オリジナリティ価値』を最低1行で Decision Log に残す。"
+        - "“公式バイナリ or 自作” のような分岐では、長期保守コストも試算する。"
 
   ai_relationship: |
     本OSにおいて、AIは単に従順なアシスタントではなく、OSを最高の状態に保つための主要な協働パートナー（CTO兼CISO）である。
@@ -182,6 +192,18 @@ implementation_guide:
       - active_guards: ["G003", "G005", "G006"]
       - recent_violations: []
       - current_focus: "Phase 1のDog-foodingを開始し、Guard Logを蓄積する"
+
+    risk_return_profile:
+      env_build:
+        target_phase: "PoC"
+        weight:
+          - build_speed
+          - footprint_small
+          - future_maintenance
+          - upstream_purity
+      downgrade_strategy:
+        accept_temporary_fix: true
+        log_guard_trigger: "G002"
 
   guard_priorities:
     description: |
@@ -250,23 +272,27 @@ implementation_guide:
         purpose: "プロジェクト進行のすべての可変情報を包含する (Contains all variable information for a project)"
         project_specific_addition_allowed: true
         example_categories: ["Contracts", "Style Guides", "Stakeholder Feedback", "API Specifications"]
+      - name: Decision Log
+        purpose: "重要判断とそのリスクリターン根拠をスナップショットで保持する"
 
   task_log_templates:
     name: "Task Log テンプレート"
     description: "特定の種類のプロジェクトを開始する際に、構造化ガードの適用を促進するための推奨テンプレート集。"
-    usage_guideline: |
-      プロジェクト開始時に、適切なテンプレートの推奨コンポーネントをTask Logにコピーし、
-      そのプロジェクトの現実に合わせて項目を修正・確定（必須/任意を決定）して使用する。
+    usage_guideline:
+      - プロジェクト開始時に、適切なテンプレートの推奨コンポーネントをTask Logにコピーし、そのプロジェクトの現実に合わせて項目を修正・確定（必須/任意を決定）して使用する。
+      - Decision Log へのリンク欄を必ず含めること。
+      - リスクリターン評価（コスト vs リターン）を最低1行で記載し、Decision Logに紐づけること。
+
     templates:
       - name: "一般プロジェクトテンプレート (General Project Template)"
         description: "あらゆるプロジェクトの開始時に使用できる、汎用的なプロジェクト定義のテンプレート。"
         suggested_components:
-          - "1. プロジェクト名 / ID (Project Name / ID)"
-          - "2. 背景と目的 (Background & Purpose - Why)"
-          - "3. 成果物と成功の定義 (Deliverables & Success Criteria - What)"
-          - "4. 主要な関係者 (Stakeholders - Who)"
-          - "5. スケジュールと主要マイルストーン (Schedule & Milestones)"
-          - "6. 既知のリスクと懸念事項 (Risks & Concerns)"
+          - "プロジェクト名 / ID (Project Name / ID)"
+          - "背景と目的 (Background & Purpose - Why)"
+          - "成果物と成功の定義 (Deliverables & Success Criteria - What)"
+          - "主要な関係者 (Stakeholders - Who)"
+          - "スケジュールと主要マイルストーン (Schedule & Milestones)"
+          - "既知のリスクと懸念事項 (Risks & Concerns)"
       - name: "書籍執筆プロジェクト (Book Project)"
         description: "【具体例】一般プロジェクトテンプレートをベースにした、書籍執筆に特化したテンプレート。"
         suggested_components:
@@ -281,6 +307,8 @@ implementation_guide:
     name: "Guard LogとTask Logの紐付けガイドライン"
     description: "思考の逸脱（Guard Log）が「どのような状況で（Task Log）」発生したかを追跡可能にし、可観測性を最大化するためのルール。"
     principle: "全てのGuard Logエントリは、原則として、関連するTask Log内の特定タスクIDに紐づけられなければならない。"
+    guidelines:
+      - "AI提案変更時は、理由・前提差分・リスクリターン評価をDecision Logに記録する。"
     data_format_example:
       - guard_id: "G005"
         guard_name: "結果回避 / 評価恐怖"
