@@ -1,0 +1,17 @@
+// .devcontainer/devcontainer.json
+{
+  "name": "Jibun-OS Dev Container",
+  "build": { "dockerfile": "Dockerfile", "context": ".." },
+  "workspaceFolder": "/workspaces/jibun-os",
+  "remoteUser": "vscode",
+
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.profiles.linux": {
+      "bash": {
+        "path": "/bin/bash",
+        "args": ["--login"]
+      }
+    }
+  }
+}
