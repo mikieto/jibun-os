@@ -1,0 +1,3 @@
+# requirements.txt
+yamllint
+check-jsonschema[yaml]
