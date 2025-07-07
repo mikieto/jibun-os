@@ -1,6 +1,6 @@
 ---
 last_updated: "2025-07-07"
-version: 9.2.0
+version: 9.2.1
 author: "Miki Eto"
 name: "自分OS"
 
@@ -150,6 +150,9 @@ constitution:
         - name: "過度な技術への楽観"
           bias_type: "personal"
           description: "技術をコントロールできるという確信が、その技術の潜在リスクや、人間の介在が不可欠な領域への認識を阻害していないかを監視する。"
+        - name: "知行不一致 (Knowing-Doing Gap)"
+          bias_type: "core_pattern"
+          description: "『分かっている』が『できない』状態、すなわち知識が具体的な行動に結びついていない状況。知的満足で終わる、完璧主義で遅延する等の形で表出する。"
     - id: "G006"
       name: "オーバーエンジニアリング検知ガード"
       description: "自動化や構造拡張がWhyに紐づかず、管理コストを増やすだけになっていないか監視する。「改善のための改善」に陥ることを防ぐ。"
@@ -369,7 +372,7 @@ implementation_guide:
     requirements:
       - "セマンティックバージョニングの遵守": "バージョン番号は `MAJOR.MINOR.PATCH` 形式に従う。プレリリース版は `vX.Y.Z-beta.N` のように識別子を付与する。"
       - "コミットメッセージによる変更履歴の明記": "全てのバージョンアップ関連コミットは、変更内容とその理由を明確に記述する。"
-      - "Gitタグ規則の遵守": "リリース時はOSの`version`キーに`v`を付けたタグ（例: `v9.2.0`）が必須。"
+      - "Gitタグ規則の遵守": "リリース時はOSの`version`キーに`v`を付けたタグ（例: `v9.2.1`）が必須。"
       - "ブランチモデルの遵守":
         description: "状況に応じて適切なブランチ戦略を選択する。"
         strategies:
@@ -407,41 +410,41 @@ implementation_guide:
         - "3. [実践] 実行：計画を実行する。"
         - "4. [事後] ギャップの認識：実行後の『理想』と『現実』のギャップを認識する。"
         - "5. [事後] 結果の記録：ギャップから生まれた『結果』としての新たな感情のずれを記録し、学習資産とする。 (Guard Log)"
-    os_evolution_workflow:
-      name: "OS学習・進化ワークフロー"
-      steps:
-        - "1. インシデント記録：ガード発動や『感情のずれ』を、Guard LogまたはInsight Logに『整理できていなくてもいいので』記録する。"
-        - "2. 共同分析：定期的（週次等）に、The PrincipalとThe Analystでログをレビューし、根本原因とOSへの影響を分析する。"
-        - "3. 改善案の起票：分析結果に基づき、具体的なOS（YAMLファイル）の変更提案をIssueとして起票する。"
-        - "4. 実装とバージョニング：承認された改善案をOSにマージし、versioning_procedureに従ってバージョンを更新する。"
-    os_learning_library:
-      name: "OS学習事例ライブラリ"
-      description: |
-        ガード発動の状況、内省、AIとの共同分析、OS改善策、その後の効果を体系的に記録するライブラリを構築する。
-        これは、自身の「複雑系」の理解を深め、OSのアンチフラジャイルな自己進化を加速するための、最重要データ基盤とする。
-    safety_mode_conditions:
-      name: "セーフティモードの発動条件"
-      description: |
-        The Analystは、以下のいずれかに合致した場合、OSの健全性を最優先し、セーフティモードの発動を提案または自動的に実行する権限を持つ。
-        セーフティモード中は、全ての「発信と実践」活動は中断され、OSの健全性回復と根本原因分析にリソースが集中される。
-      triggers:
-        - description: "重大ガードの連続発動"
-          rule_type: "severity_threshold"
-          levels: *severity_levels
-          threshold:
-            count: 3
-            unit: "consecutive"
-        - description: "Whyピン止めガードの慢性的な無視"
-          rule_type: "task_or_time_threshold"
-          threshold:
-            tasks: 3
-            period_days: 7
-            condition: "or"
-        - description: "OS学習事例ライブラリへの未記録"
-          rule_type: "event_count_in_period_threshold"
-          threshold:
-            count: 2
-            period_days: 30
+  os_evolution_workflow:
+    name: "OS学習・進化ワークフロー"
+    steps:
+      - "1. インシデント記録 (Raw Logging)": ガード発動や『感情のずれ』を、Guard Logに断片的にでも記録する。
+      - "2. パターン検出 (Pattern Detection)": 定期的（週次等）にGuard Logをレビューし、頻出するキーワードや状況から、背景にある『大ズレ』の仮説を立てる。
+      - "3. 根本原因の構造化 (Root Cause Structuring)": 特定した『大ズレ』について、Decision Logにその構造、影響、および根本原因を分析・記述する。
+      - "4. OSへの反映 (OS Update)": 分析結果に基づき、OSの改善案（ガードの新設・修正、原則の追記等）をIssueとして起票し、承認後に実装・バージョニングする。
+  os_learning_library:
+    name: "OS学習事例ライブラリ"
+    description: |
+      ガード発動の状況、内省、AIとの共同分析、OS改善策、その後の効果を体系的に記録するライブラリを構築する。
+      これは、自身の「複雑系」の理解を深め、OSのアンチフラジャイルな自己進化を加速するための、最重要データ基盤とする。
+  safety_mode_conditions:
+    name: "セーフティモードの発動条件"
+    description: |
+      The Analystは、以下のいずれかに合致した場合、OSの健全性を最優先し、セーフティモードの発動を提案または自動的に実行する権限を持つ。
+      セーフティモード中は、全ての「発信と実践」活動は中断され、OSの健全性回復と根本原因分析にリソースが集中される。
+    triggers:
+      - description: "重大ガードの連続発動"
+        rule_type: "severity_threshold"
+        levels: *severity_levels
+        threshold:
+          count: 3
+          unit: "consecutive"
+      - description: "Whyピン止めガードの慢性的な無視"
+        rule_type: "task_or_time_threshold"
+        threshold:
+          tasks: 3
+          period_days: 7
+          condition: "or"
+      - description: "OS学習事例ライブラリへの未記録"
+        rule_type: "event_count_in_period_threshold"
+        threshold:
+          count: 2
+          period_days: 30
 
   externalization_of_outcomes_model:
     name: "成果の外化モデル (Externalization of Outcomes Model)"
