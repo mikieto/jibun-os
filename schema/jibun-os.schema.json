@@ -15,15 +15,9 @@
   ],
   "properties": {
     "version": {
-      "oneOf": [
-        {
-          "type": "string",
-          "pattern": "^\\d+\\.\\d+\\.\\d+$"
-        },
-        {
-          "type": "number"
-        }
-      ]
+      "description": "The OS version. Must follow Semantic Versioning (e.g., X.Y.Z-beta.N).",
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.-]+)?$"
     },
     "last_updated": {
       "type": "string",
