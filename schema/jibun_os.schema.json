@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Jibun OS - schema (v1.6)",
-  "description": "Draft-07 schema for validating the structure of jibun-os.yml (v8.x)",
+  "description": "Draft-07 schema for validating the structure of jibun_os.yml (v8.x)",
   "type": "object",
   "required": [
     "version",
@@ -15,15 +15,9 @@
   ],
   "properties": {
     "version": {
-      "oneOf": [
-        {
-          "type": "string",
-          "pattern": "^\\d+\\.\\d+\\.\\d+$"
-        },
-        {
-          "type": "number"
-        }
-      ]
+      "description": "The OS version. Must follow Semantic Versioning (e.g., X.Y.Z-beta.N).",
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.-]+)?$"
     },
     "last_updated": {
       "type": "string",
