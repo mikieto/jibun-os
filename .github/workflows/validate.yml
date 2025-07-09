@@ -31,4 +31,4 @@ jobs:
         run: yamllint .
 
       - name: Run yamale (Schema Validation)
-        run: check-jsonschema --schemafile schema/jibun-os.schema.json jibun-os.yml
+        run: check-jsonschema --schemafile schema/jibun_os.schema.json jibun_os.yml
