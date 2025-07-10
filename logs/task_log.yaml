@@ -78,6 +78,12 @@
   description: ルート core_principles.yaml の退役を確認
   status: done
   related_decision: root_core_retire
+- id: yamlfix_migration_task
+  stage: 1
+  purpose: quality
+  description: "yamlfix で全 YAML を整形し CI RED を解消"
+  status: done
+  related_decision: yaml_formatter_switch
 
 # ======== Stage-2 : 自動品質保証 ==============================
 - id: precommit_hook_setup
