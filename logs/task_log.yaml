@@ -126,11 +126,10 @@
   description: AIへのベースコンテキスト（コア+プラットフォーム）をsystem_map.yamlから動的に生成するscripts/get_base_os_context.pyを修正
   status: done
   related_decision: ai_context_dynamic_load_go
-
 - id: move_lean_data_book_to_repo
   stage: 1
   purpose: quality
-  description: "personal/projects/lean_data_engineering_book.yamlを本執筆リポジトリへ移動し、関連するsystem_map.yamlを更新する"
+  description: personal/projects/lean_data_engineering_book.yamlを本執筆リポジトリへ移動し、関連するsystem_map.yamlを更新する
   status: done
   related_decision: lean_data_book_repo_move_go
 

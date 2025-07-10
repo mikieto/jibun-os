@@ -1,48 +1,33 @@
 import yaml
 import os
+import sys
+import subprocess # subprocess モジュールをインポート
+
 
 # リポジトリのルートディレクトリを基準パスとして取得
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
-def get_file_content(file_path):
+def get_parsed_yaml_content(file_path):
     """
-    指定されたファイルのコンテンツを読み込み、
-    結合時にルートレベルに合うよう先頭のYAMLドキュメントマーカーと空行を処理し、
-    不要なインデントを削除する。
+    指定されたYAMLファイルを読み込み、パースしたYAMLオブジェクトを返す。
+    エラー時にはNoneを返す。
     """
     full_path = os.path.join(REPO_ROOT, file_path)
     if not os.path.exists(full_path):
         print(f"警告: ファイルが見つかりません - {full_path}")
-        return f"ファイルが見つかりません: {file_path}"
+        return None
     try:
         with open(full_path, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
-
-        processed_lines = []
-        # 各ファイルの先頭にあるYAMLドキュメントマーカー (---) や不要な空行をスキップ
-        # また、読み込んだ内容がルートレベルから始まるように、最初の非空白行のインデントを基準に調整
-        first_content_line_indent = -1
-        for line in lines:
-            stripped_line = line.strip()
-            if stripped_line == '---' or stripped_line == '': # YAMLドキュメントマーカーと空行をスキップ
-                continue
-            
-            # 最初の内容行のインデントを基準に設定
-            if first_content_line_indent == -1:
-                first_content_line_indent = len(line) - len(line.lstrip())
-
-            # 基準インデントを削除
-            if line.startswith(' ' * first_content_line_indent):
-                processed_lines.append(line[first_content_line_indent:])
-            else:
-                # 基準インデントよりも少ないインデントの行（通常は発生しないはずだが念のため）
-                processed_lines.append(line.lstrip())
-
-        return "".join(processed_lines) # 結合して返す
-
+            # YAMLファイルを複数ドキュメントとしてロード
+            # yaml.safe_load_all はジェネレータを返す
+            parsed_docs = list(yaml.safe_load_all(f))
+            return parsed_docs[0] if parsed_docs else None # 最初のドキュメントを返す
+    except yaml.YAMLError as e:
+        print(f"エラー: ファイル '{full_path}' のYAMLパースエラー: {e}")
+        return None
     except Exception as e:
         print(f"エラー: ファイル '{full_path}' の読み込み中に問題が発生しました: {e}")
-        return f"ファイル読み込みエラー: {file_path}"
+        return None
 
 def get_files_by_context_level(system_map_path, desired_context_level):
     """
@@ -82,37 +67,72 @@ def generate_base_os_context(output_file_path, system_map_path='common/system_ma
     コア＆プラットフォームコンテキストを結合し、指定されたファイルに出力する。
     system_map.yamlからファイルを動的に取得する。
     """
-    base_context_files = get_files_by_context_level(system_map_path, "base_os_context")
+    base_context_file_paths = get_files_by_context_level(system_map_path, "base_os_context")
 
-    if not base_context_files:
+    if not base_context_file_paths:
         print("警告: 'base_os_context' に含まれるファイルが見つかりませんでした。system_map.yamlを確認してください。")
         return
 
-    combined_content = []
-    combined_content.append("# Jibun OS Base Context (Core & Platform)\n")
-    combined_content.append("---")
-    combined_content.append("## Purpose: Core OS Identity and Platform State")
-    combined_content.append("This consolidated context provides the fundamental principles of Jibun OS,")
-    combined_content.append("its structural blueprint, operational framework, and its current platform status.")
-    combined_content.append("It is always loaded to give the AI a complete understanding of the OS it operates within.")
-    combined_content.append("---")
+    # 複数のYAMLドキュメントとして結合するためのリスト
+    combined_documents = []
 
-    for relative_path in base_context_files:
-        content = get_file_content(relative_path)
-        combined_content.append(f"\n# --- Content from {relative_path} ---\n")
-        combined_content.append(content)
-        combined_content.append("\n---") # 各ファイルの区切り
+    # 1. 冒頭の概要ドキュメント
+    overview_doc = {
+        "jibun_os_base_context_overview": {
+            "purpose": "Core OS Identity and Platform State",
+            "overview": "This consolidated context provides the fundamental principles of Jibun OS, its structural blueprint, operational framework, and its current platform status. It is always loaded to give the AI a complete understanding of the OS it operates within."
+        }
+    }
+    combined_documents.append(overview_doc)
+
+    # 2. 各ファイルのコンテンツを個別のドキュメントとして追加
+    for relative_path in base_context_file_paths:
+        parsed_content = get_parsed_yaml_content(relative_path)
+        if parsed_content is not None:
+            # 各ファイルのコンテンツを独立したYAMLドキュメントとしてリストに追加
+            # AIが「これはファイルの内容である」と認識しやすいように、メタ情報を追加
+            file_doc = {
+                f"file_content_from_{relative_path.replace('/', '_').replace('.', '_')}": {
+                    "path": relative_path,
+                    "content": parsed_content # YAMLオブジェクトとしてそのまま挿入
+                }
+            }
+            combined_documents.append(file_doc)
+        else:
+            print(f"警告: '{relative_path}' のコンテンツをパースできませんでした。スキップします。")
 
     try:
         with open(output_file_path, 'w', encoding='utf-8') as outfile:
-            outfile.write("\n".join(combined_content) + "\n") # ← ここに「 + "\n" 」を追加
+            # 各YAMLオブジェクトを separate ドキュメントとしてダンプ
+            # explicit_start=True で各ドキュメントの前に --- を明示的に追加
+            # width=120 は行長警告へのヒント。indent=2で yamllint のデフォルトに合わせる
+            # default_style='|' を追加して複数行文字列をリテラルスタイルで出力
+            yaml.dump_all(combined_documents, outfile, default_flow_style=False, allow_unicode=True, sort_keys=False, explicit_start=True, width=120, indent=2, default_style='|') # ← ここに「 , default_style='|' 」を追加
         print(f"AIベースコンテキストが '{output_file_path}' に生成されました。")
+        
+        # --- ここから yamlfix の組み込み ---
+        # yamlfix を実行して、生成されたファイルを整形
+        try:
+            # subprocess.run の第一引数はリストでコマンドと引数を渡す
+            subprocess.run(['yamlfix', output_file_path], check=True, capture_output=True)
+            print(f"'{output_file_path}' を yamlfix で自動整形しました。")
+        except subprocess.CalledProcessError as e:
+            print(f"警告: '{output_file_path}' の yamlfix による整形に失敗しました (エラーコード: {e.returncode}):", file=sys.stderr)
+            print(f"STDOUT: {e.stdout.decode()}", file=sys.stderr)
+            print(f"STDERR: {e.stderr.decode()}", file=sys.stderr)
+            print("手動で 'yamlfix tmp/ai_base_context.yaml' を実行する必要があるかもしれません。", file=sys.stderr)
+        except FileNotFoundError:
+            print(f"警告: 'yamlfix' コマンドが見つかりません。pip install yamlfix を実行してください。", file=sys.stderr)
+        except Exception as e:
+            print(f"警告: yamlfix 実行中に予期せぬエラーが発生しました: {e}", file=sys.stderr)
+        # --- yamlfix の組み込みここまで ---
+
     except Exception as e:
         print(f"エラー: コンテキストのファイルへの書き込み中に問題が発生しました: {e}")
 
 if __name__ == "__main__":
     output_dir = os.path.join(REPO_ROOT, 'tmp')
-    os.makedirs(output_dir, exist_ok=True) # tmp ディレクトリが存在しない場合に作成
+    os.makedirs(output_dir, exist_ok=True)
 
     output_filename = 'ai_base_context.yaml'
     output_full_path = os.path.join(output_dir, output_filename)
