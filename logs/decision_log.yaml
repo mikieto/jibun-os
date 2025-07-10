@@ -95,6 +95,7 @@
     ランタイムと CI 依存を分離し、本番イメージの
     セキュリティとビルド速度を最適化するため。
   follow_up: [deps_split_task]
+
 - date: '2025-07-11'
   tag: root_core_retire
   project_id: os_platform_v1
