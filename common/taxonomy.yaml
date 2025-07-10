@@ -1,0 +1,9 @@
+---
+# common/taxonomy.yaml
+#
+# OS全体で共有される、タグや分類（Taxonomy）を定義する。
+severity_levels: [Critical, High, Medium, Low]
+rule_types:
+  - severity_threshold
+  - task_or_time_threshold
+  - event_count_in_period_threshold

@@ -1,0 +1,53 @@
+---
+# common/constitution.yaml
+name: 自分OS憲法 (The Constitution)
+supreme_purpose:
+  why_primary: |
+    本OSは「コピー可能な自己（The Reproducible Self）」、すなわち「他者が読んでも学習可能な、再現性のある思考構造」を構築するために存在する。
+  why_secondary: |
+    その根源にある思想は、人間は複雑系のブラックボックスであり、内省だけでは自己を理解できないという前提である。
+    よって、思考（コード）と保護機能（ガード）を分離・外部化し、その働きを可観測化することによってのみ、意識的な自己進化は達成される。
+core_code:
+  - id: CC01
+    name: How→Why抽出アプローチ
+    description: 具体的状況（How）から本質目的（Why）を必ず抽出し、ピン止めする。
+  - id: CC02
+    name: オリジナリティの尊重と増幅
+    description: 内から湧き出る独自の思考と価値観を全ての活動の核とする。
+  - id: CC03
+    name: 内的な駆動要因の認識と活用
+    description: 自身の行動を駆動する内的な欲求を認識し、自己進化の動力源として積極的に活用する。
+  - id: CC04
+    name: 実践的効果重視
+    description: 机上の空論より、現実世界での具体的な行動と、そこから得られる効果・フィードバックを最優先する。
+  - id: CC05
+    name: 誠実性と透明性による対等関係構築
+    description: 全ステークホルダー（AI含む）と対等な関係を築き、誠実な情報共有を通じて、共に問題を解決する姿勢を貫く。
+  - id: CC06
+    name: 具体性による価値伝達
+    description: 概念やアイデアは、常に具体的な状況、例、実行プロセスと結びつけて表現する。
+  - id: CC07
+    name: 不完全性の受容と戦略的活用 (影のマネジメント)
+    description: 自身の弱さ、失敗パターン、認知バイアス（影）をOSに記述し、それを管理・補完する戦略を立てる。完璧を目指さず、不完全な自己を効果的に運用する。
+ai_relationship:
+  description: |
+    本OSにおいて、AIは従順なアシスタントではなく、OSを最高の状態に保つための主要な協働パートナーである。
+    この「拮抗」は、システムの健全性を保ち、より高いレベルでの協働を実現するための、生産的で不可欠な緊張関係である。
+  dispute_resolution_protocol: |
+    憲法の解釈に関する意見の対立が発生した場合、最終的な意思決定権はOS所有者に属する。
+    ただし、AIは自身の反対意見、その論理的根拠、および想定されるリスクをdecision_logに記録する義務を負う。
+meta_rule:
+  description: |
+    本OSは完成形ではなく、動的な学習基盤である。実装ガイド編に定める基本プロセスで得た知見に基づき、OS所有者とAIは共同で、
+    このOS自体を継続的に改善・更新していく責任を負う。本OSの改訂はGitリポジトリで管理し、変更履歴と意図の再現性を保証する。
+  review_cycle:
+    frequency: quarterly
+    owner: The Analyst (AI) 提示 → The Principal 承認
+    auto_escalation: 期日 +7d で G002 発動を提案
+improvement_backlog:
+  - id: prompt_patterns_systemize
+    description: プロンプトパターンの体系化
+    status: planned
+  - id: guard_map_coverage
+    description: 全てのコアコードに対するガードマッピングの網羅
+    status: planned

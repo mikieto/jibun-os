@@ -1,0 +1,7 @@
+---
+# common/mappings.yaml
+guard_map:
+  CC01: [G003]  # How→Why抽出アプローチ → Whyピン止めガード
+  CC02: [G006]  # オリジナリティの尊重と増幅 → Value-Engineering Guard
+  CC05: [G008]  # 誠実性と透明性 → セキュリティ&レジリエンス・ガード
+  CC07: [G005]  # 不完全性の受容と戦略的活用 → 認知バイアス監視ガード

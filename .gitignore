@@ -1,0 +1,6 @@
+
+# Python cache
+__pycache__/
+
+# Generated files for AI context and temporary outputs
+tmp/

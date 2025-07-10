@@ -1,0 +1,9 @@
+---
+name: Miki Eto
+timezone: Asia/Tokyo
+preferred_lang: ja
+work_hours: 09:00-18:00
+tools_stack: [VSCode, Git, Obsidian]
+ai_prefs:
+  response_style: concise-then-details
+  max_tokens: 800

@@ -1,9 +1,7 @@
 ---
 schema:
-  "jibun-os.yml": "schema/jibun-os.schema.json"
-
+  jibun-os.yml: schema/jibun-os.schema.json
 extends: default
-
 rules:
   line-length:
     max: 120
