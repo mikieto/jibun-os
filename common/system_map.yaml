@@ -73,11 +73,6 @@ system_architecture:
           description: Jibun OSプラットフォーム自体の開発プロジェクト定義、バージョン、ステージ、開発バックログを管理。
           context_level: base_os_context
           dependencies: []
-        - path: personal/projects/lean_data_engineering_book.yaml
-          role: user_project_instance
-          description: 書籍『リーン・アプローチに基づく完全ガイド』執筆プロジェクトの具体的な定義。
-          context_level: project_context
-          dependencies: [common/projects/project_template.yaml]
         - path: personal/projects/book_writing.yaml
           role: user_project_instance
           description: 書籍『リーン・アプローチに基づく完全ガイド』執筆プロジェクトの具体的な定義。

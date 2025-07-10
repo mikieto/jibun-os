@@ -127,6 +127,13 @@
   status: done
   related_decision: ai_context_dynamic_load_go
 
+- id: move_lean_data_book_to_repo
+  stage: 1
+  purpose: quality
+  description: "personal/projects/lean_data_engineering_book.yamlを本執筆リポジトリへ移動し、関連するsystem_map.yamlを更新する"
+  status: done
+  related_decision: lean_data_book_repo_move_go
+
 # ======== Stage-2 : 自動品質保証 ==============================
 - id: precommit_hook_setup
   stage: 2

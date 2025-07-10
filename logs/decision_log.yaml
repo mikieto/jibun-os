@@ -195,3 +195,16 @@
   follow_up:
     - update_system_map_with_context_level
     - update_base_os_context_script
+
+- date: "2025-07-10"
+  tag: "lean_data_book_repo_move_go"
+  project_id: "os_platform_v1"
+  options: ["lean_data_engineering_book.yamlをjibun-os内に維持", "lean_data_engineering_book.yamlを本執筆リポジトリへ移動"]
+  chosen_option: "lean_data_engineering_book.yamlを本執筆リポジトリへ移動"
+  reason: |
+    書籍執筆プロジェクトのルールと計画の「唯一の信頼できる情報源」を、
+    そのプロジェクトのGitリポジトリ自体に配置することで、プロジェクトの自己完結性を高める。
+    これにより、jibun-osリポジトリの「共通フレームワークとOS個人実装」という役割がより明確になり、
+    OSが個別プロジェクトを「管理」する形から「統合・連携」する形へと進化する。
+  follow_up:
+    - move_lean_data_book_to_repo
