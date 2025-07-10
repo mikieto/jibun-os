@@ -1,18 +1,30 @@
 ---
+<<<<<<< HEAD
 # personal/projects/os_platform.yaml
+=======
+project_id: os_platform_v1
+branch: feat/triple-layer
+current_version: v10.0.0-alpha.0
+current_stage: 1
+purpose_short: 自分OSプラットフォーム基盤を実装し価値転換速度を最大化する
+>>>>>>> ee8464fd1aa1a286bf7829d50d796fe1e0fec618
 backlog:
   - id: passive_logging_plugin  # P2
     description: VSCode/Obsidian で Guard Log 自動収集
     priority: P2
+<<<<<<< HEAD
   - id: ci_jobs_enhancement  # P2 (今回追加)
     description: CIジョブをlint/schema/testに分割。JSON SchemaでYAML構造検証も追加
     priority: P2
+=======
+>>>>>>> ee8464fd1aa1a286bf7829d50d796fe1e0fec618
   - id: moment_replay_poc  # P3
     description: 行動ログを LLM でタイムライン再構成
     priority: P3
   - id: marketplace_template_v0  # P3
     description: Guard/KPI テンプレ販売 PoC
     priority: P3
+<<<<<<< HEAD
   - id: pair_os_review_protocol  # P3
     description: Discord 週次ペアレビュー手順
     priority: P3
@@ -43,3 +55,17 @@ backlog:
   - id: socrates_alert
     description: ソクラテス・アラート：安易な結論や知ったかぶりを防ぐ内省補助機能
     priority: P4
+=======
+  - id: pair_os_review_protocol
+    description: Discord 週次ペアレビュー手順
+    priority: P3
+  - id: lora_local_model
+    description: LoRA 微調整モデルを端末常駐化
+    priority: P4
+  - id: team_os_template
+    description: Team-OS テンプレ (RACI + 監査証跡)
+    priority: P4
+  - id: zk_log_encrypt_poc
+    description: Guard Log を ZK 暗号で保護する PoC
+    priority: P4
+>>>>>>> ee8464fd1aa1a286bf7829d50d796fe1e0fec618
