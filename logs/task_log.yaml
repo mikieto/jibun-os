@@ -1,162 +1,140 @@
 ---
 # ======== Stage-1 : 基盤整備 =================================
-
 - id: layer_split_migration
   stage: 1
   purpose: obs
-  description: "三層フォルダへ移動 & imports 追記"
+  description: 三層フォルダへ移動 & imports 追記
   status: todo
   related_decision: layer_split_go
-
 - id: layer_ci_lint_rule
   stage: 1
   purpose: obs
-  description: "common/personal 重複禁止 lint を追加"
+  description: common/personal 重複禁止 lint を追加
   status: todo
   related_decision: layer_split_go
-
 - id: profile_yaml_add
   stage: 1
   purpose: obs
-  description: "personal/profile.yaml を作成し固定属性を集約"
+  description: personal/profile.yaml を作成し固定属性を集約
   status: todo
   related_decision: profile_yaml_go
-
 - id: core_common_extract
   stage: 1
   purpose: obs
-  description: "jibun_os.yaml から普遍憲法を抽出→common/core_principles.yaml"
+  description: jibun_os.yaml から普遍憲法を抽出→common/core_principles.yaml
   status: todo
   related_decision: common_split_approved
-
 - id: template_seed
   stage: 1
   purpose: obs
-  description: "common/projects/project_template.yaml を生成"
+  description: common/projects/project_template.yaml を生成
   status: todo
   related_decision: common_split_approved
-
 - id: book_project_seed
   stage: 1
   purpose: value
-  description: "personal/projects/book_writing.yaml をテンプレから生成"
+  description: personal/projects/book_writing.yaml をテンプレから生成
   status: todo
   related_decision: common_split_approved
-
 - id: domain_folder_setup
   stage: 1
   purpose: obs
-  description: "common & personal に domains/ を作成しテンプレ配置"
+  description: common & personal に domains/ を作成しテンプレ配置
   status: todo
   related_decision: domain_folder_go
-
 - id: taxonomy_file_add
   stage: 1
   purpose: obs
-  description: "common/taxonomy.yaml を作成しタグを列挙"
+  description: common/taxonomy.yaml を作成しタグを列挙
   status: todo
   related_decision: taxonomy_tags_go
-
 - id: ci_decision_link_check
   stage: 1
   purpose: obs
-  description: "CIで Decision↔Task ID を必須チェック"
+  description: CIで Decision↔Task ID を必須チェック
   status: todo
   related_decision: feedback_review_20250710
-
 - id: kpi_sheet_add_profit_col
   stage: 1
   purpose: value
-  description: "KPIシートに『収益／社会貢献』列を追加"
+  description: KPIシートに『収益／社会貢献』列を追加
   status: todo
   related_decision: plan_alignment_check
-
 - id: ci_add_g009_lint
   stage: 1
   purpose: security
-  description: "ci/security_lint.yml に G009 静的解析ジョブを追加"
+  description: ci/security_lint.yml に G009 静的解析ジョブを追加
   status: todo
   related_decision: plan_alignment_check
-
 - id: ci_add_g009_lint
   stage: 1
   purpose: security
-  description: "ci/security_lint.yml に G009 静的解析ジョブを追加"
+  description: ci/security_lint.yml に G009 静的解析ジョブを追加
   status: done
   related_decision: plan_alignment_check
-
 - id: core_root_remove
   stage: 1
   purpose: obs
-  description: "ルート core_principles.yaml の退役を確認"
+  description: ルート core_principles.yaml の退役を確認
   status: done
   related_decision: root_core_retire
 
 # ======== Stage-2 : 自動品質保証 ==============================
-
 - id: precommit_hook_setup
   stage: 2
   purpose: security
-  description: "pre-commit で yamllint / schema / secret-scan を強制"
+  description: pre-commit で yamllint / schema / secret-scan を強制
   status: todo
   related_decision: workflow_simplification_20250710
 
 # ======== Stage-3 : 可視化 & インサイト =======================
-
 - id: token_meter_script
   stage: 3
   purpose: obs
-  description: "prompt_tokens を計測し Guard Log に自動書込む"
+  description: prompt_tokens を計測し Guard Log に自動書込む
   status: todo
   related_decision: workflow_simplification_20250710
-
 - id: horizon_scan_poc
   stage: 3
   purpose: speed
-  description: "週次で外部情報取得→Impact Issue 自動生成 PoC"
+  description: 週次で外部情報取得→Impact Issue 自動生成 PoC
   status: todo
   related_decision: feedback_review_20250710
 
 # ======== Stage-4 : 外化ブースト ==============================
-
 - id: demo_token_compare
   stage: 4
   purpose: value
-  description: "ワンクリック体験デモ (Streamlit) を公開"
+  description: ワンクリック体験デモ (Streamlit) を公開
   status: todo
-
 - id: devcontainer_template
   stage: 4
   purpose: value
-  description: "公式 Dev Container & docker-compose を提供"
+  description: 公式 Dev Container & docker-compose を提供
   status: todo
-
 - id: benchmark_blog_post
   stage: 4
   purpose: value
-  description: "KPI 改善を記事化し外部発信"
+  description: KPI 改善を記事化し外部発信
   status: todo
-
 - id: byo_storage_docs
   stage: 4
   purpose: security
-  description: "BYO-Storage & ローカル LLM 手順を文書化"
+  description: BYO-Storage & ローカル LLM 手順を文書化
   status: todo
 
 # ======== Stage-5 : 週次ループ定着 ============================
-
 - id: weekly_efl_review
   stage: 5
   purpose: speed
-  description: "Golden Flow 5-Step を Issue テンプレで回す"
+  description: Golden Flow 5-Step を Issue テンプレで回す
   status: todo
   related_decision: workflow_simplification_20250710
 
 # ======== 完了済み ============================================
-
 - id: core_add_traceability
   stage: 1
   purpose: obs
-  description: "core_principles.yaml に Traceability 原則を追加"
+  description: core_principles.yaml に Traceability 原則を追加
   status: done
   related_decision: feedback_review_20250710

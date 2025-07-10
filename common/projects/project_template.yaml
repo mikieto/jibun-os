@@ -1,9 +1,9 @@
 ---
-template_name: "general_project"
+template_name: general_project
 fields:
-  project_id        : "<project_id>"
-  purpose_short     : "<one-line purpose>"
-  stakeholders      : []
-  milestones        : []
-  risks             : []
-  default_tags      : ["obs","speed","value","security"]
+  project_id: <project_id>
+  purpose_short: <one-line purpose>
+  stakeholders: []
+  milestones: []
+  risks: []
+  default_tags: [obs, speed, value, security]

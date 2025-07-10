@@ -1,7 +1,6 @@
 ---
-domain_id     : "<domain_id>"
-purpose_short : "<continuous responsibility area>"
+domain_id: <domain_id>
+purpose_short: <continuous responsibility area>
 kpis: []
 habits: []
-default_tags  : ["obs","value","security"]
-
+default_tags: [obs, value, security]

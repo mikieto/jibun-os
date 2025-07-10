@@ -1,10 +1,10 @@
 ---
 # 1. 最上位 Why
-- date: "2025-07-10"
-  tag: "os_evolution_master_why"
-  project_id: "os_platform_v1"
-  options: ["挑戦を進める", "現状維持"]
-  chosen_option: "挑戦を進める"
+- date: '2025-07-10'
+  tag: os_evolution_master_why
+  project_id: os_platform_v1
+  options: [挑戦を進める, 現状維持]
+  chosen_option: 挑戦を進める
   reason: |
     私の思考と行動を最小摩擦で可観測データに変換し、
     AI と外部フィードバックを高速循環させながら
@@ -13,97 +13,94 @@
   follow_up: []
 
 # 2. 計画整合チェック
-- date: "2025-07-10"
-  tag: "plan_alignment_check"
-  project_id: "os_platform_v1"
-  options: ["計画維持", "大幅修正"]
-  chosen_option: "計画維持"
+- date: '2025-07-10'
+  tag: plan_alignment_check
+  project_id: os_platform_v1
+  options: [計画維持, 大幅修正]
+  chosen_option: 計画維持
   follow_up:
     - kpi_sheet_add_profit_col
     - ci_add_g009_lint
 
 # 3. PoC-1 完了宣言
-- date: "2025-07-10"
-  tag: "milestone_poc1_complete"
-  project_id: "os_platform_v1"
-  options: ["完了を宣言する", "作業を継続する"]
-  chosen_option: "完了を宣言する"
+- date: '2025-07-10'
+  tag: milestone_poc1_complete
+  project_id: os_platform_v1
+  options: [完了を宣言する, 作業を継続する]
+  chosen_option: 完了を宣言する
 
 # 4. 三層＋フォルダ分割 GO
-- date: "2025-07-11"
-  tag: "layer_split_go"
-  project_id: "os_platform_v1"
-  options: ["実施", "延期"]
-  chosen_option: "実施"
+- date: '2025-07-11'
+  tag: layer_split_go
+  project_id: os_platform_v1
+  options: [実施, 延期]
+  chosen_option: 実施
   follow_up:
     - layer_split_migration
     - layer_ci_lint_rule
 
 # 5. profile.yaml 作成 GO
-- date: "2025-07-11"
-  tag: "profile_yaml_go"
-  project_id: "os_platform_v1"
-  options: ["作成する", "見送る"]
-  chosen_option: "作成する"
+- date: '2025-07-11'
+  tag: profile_yaml_go
+  project_id: os_platform_v1
+  options: [作成する, 見送る]
+  chosen_option: 作成する
   follow_up:
     - profile_yaml_add
 
 # 6. 共通憲法抽出 GO
-- date: "2025-07-11"
-  tag: "common_split_approved"
-  project_id: "os_platform_v1"
-  options: ["split_common", "keep_mono"]
-  chosen_option: "split_common"
+- date: '2025-07-11'
+  tag: common_split_approved
+  project_id: os_platform_v1
+  options: [split_common, keep_mono]
+  chosen_option: split_common
   follow_up:
     - core_common_extract
     - template_seed
     - book_project_seed
 
 # 7. domains フォルダ GO
-- date: "2025-07-11"
-  tag: "domain_folder_go"
-  project_id: "os_platform_v1"
-  options: ["追加する", "見送る"]
-  chosen_option: "追加する"
+- date: '2025-07-11'
+  tag: domain_folder_go
+  project_id: os_platform_v1
+  options: [追加する, 見送る]
+  chosen_option: 追加する
   follow_up:
     - domain_folder_setup
 
 # 8. taxonomy ファイル GO
-- date: "2025-07-11"
-  tag: "taxonomy_tags_go"
-  project_id: "os_platform_v1"
-  options: ["作成する", "見送る"]
-  chosen_option: "作成する"
+- date: '2025-07-11'
+  tag: taxonomy_tags_go
+  project_id: os_platform_v1
+  options: [作成する, 見送る]
+  chosen_option: 作成する
   follow_up:
     - taxonomy_file_add
 
 # 9. オーバーエンジニアリング抑止方針
-- date: "2025-07-11"
-  tag: "anti_overengineering_check"
-  project_id: "os_platform_v1"
-  options: ["最小実装で進む", "追加施策も同時実装"]
-  chosen_option: "最小実装で進む"
+- date: '2025-07-11'
+  tag: anti_overengineering_check
+  project_id: os_platform_v1
+  options: [最小実装で進む, 追加施策も同時実装]
+  chosen_option: 最小実装で進む
   follow_up: []
 
-# 10. 依存分割 GO 
-- date: "2025-07-11"
-  tag: "deps_split_go"
-  project_id: "os_platform_v1"
-  options: ["split", "single_file"]
-  chosen_option: "split"
+# 10. 依存分割 GO
+- date: '2025-07-11'
+  tag: deps_split_go
+  project_id: os_platform_v1
+  options: [split, single_file]
+  chosen_option: split
   reason: |
     ランタイムと CI 依存を分離し、本番イメージの
     セキュリティとビルド速度を最適化するため。
-  follow_up:
-    - deps_split_task
-
-- date: "2025-07-11"
-  tag: "root_core_retire"
-  project_id: "os_platform_v1"
-  options: ["delete", "pointer", "archive"]
-  chosen_option: "delete"
+  follow_up: [deps_split_task]
+- date: '2025-07-11'
+  tag: root_core_retire
+  project_id: os_platform_v1
+  options: [delete, pointer, archive]
+  chosen_option: delete
   reason: >
     三層分割後は役割が重複。
     CI 競合とメンテ負荷を避けるため削除する。
-  follow_up:
-    - core_root_remove
+  follow_up: [core_root_remove]

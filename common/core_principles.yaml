@@ -1,20 +1,17 @@
 ---
-version: "10.0.0"
-last_updated: "2025-07-11"
-
+version: 10.0.0
+last_updated: '2025-07-11'
 constitution:
   supreme_purpose: >
     本OSは「コピー可能な自己」を構築し、
     AI と協働しながら主体的・倫理的に進化するための
     不変の原則を提供する。
-
 core_code:
-  - name: "How→Why 抽出アプローチ"
-  - name: "実践的効果重視"
-  - name: "誠実性と透明性"
-
+  - name: How→Why 抽出アプローチ
+  - name: 実践的効果重視
+  - name: 誠実性と透明性
 guards:
-  - id: "G001"    # 構造化ガード
-  - id: "G002"    # 計画的完了ガード
-  - id: "G006"    # Value-Engineering Guard
-  - id: "G008"    # セキュリティ & レジリエンス
+  - id: G001  # 構造化ガード
+  - id: G002  # 計画的完了ガード
+  - id: G006  # Value-Engineering Guard
+  - id: G008  # セキュリティ & レジリエンス
