@@ -1,122 +1,119 @@
+---
 # common/system_map.yaml
 #
 # Jibun OSの全体的なファイル構造と、各ファイルの役割、および主要な依存関係を定義する。
 # AIがOSの内部構造を理解し、自己監査や自動化を支援するための機械可読なマップ。
-
 system_architecture:
-  version: "3.0.0" # system_mapのバージョン
+  version: 3.0.0  # system_mapのバージョン
   layers:
-    - name: "common"
-      description: "誰でも再利用可能な、OSの核となる普遍的なフレームワークや定義。"
+    - name: common
+      description: 誰でも再利用可能な、OSの核となる普遍的なフレームワークや定義。
       files:
-        - path: "common/constitution.yaml"
-          role: "universal_constitution"
-          description: "OSの最高規範。普遍的な目的、原則、AI関係、メタルールを定義。"
+        - path: common/constitution.yaml
+          role: universal_constitution
+          description: OSの最高規範。普遍的な目的、原則、AI関係、メタルールを定義。
           dependencies: []
-        - path: "common/guards.yaml"
-          role: "guard_definitions"
-          description: "OSの保護機能。思考と行動の逸脱を防ぐガードを定義。"
+        - path: common/guards.yaml
+          role: guard_definitions
+          description: OSの保護機能。思考と行動の逸脱を防ぐガードを定義。
           dependencies: []
-        - path: "common/mappings.yaml"
-          role: "component_mappings"
-          description: "OS内の異なるコンポーネント間の関連性（例: コアコードとガードの紐付け）を定義。"
-          dependencies: ["common/constitution.yaml", "common/guards.yaml"]
-        - path: "common/implementation_framework.yaml"
-          role: "implementation_framework"
-          description: "OS運用、自己進化サイクル駆動のための標準プロセスとツールの枠組みを定義。"
+        - path: common/mappings.yaml
+          role: component_mappings
+          description: 'OS内の異なるコンポーネント間の関連性（例: コアコードとガードの紐付け）を定義。'
+          dependencies: [common/constitution.yaml, common/guards.yaml]
+        - path: common/implementation_framework.yaml
+          role: implementation_framework
+          description: OS運用、自己進化サイクル駆動のための標準プロセスとツールの枠組みを定義。
           dependencies: []
-        - path: "common/taxonomy.yaml"
-          role: "system_taxonomy"
-          description: "OS全体で共有されるタグや分類（severity_levels, rule_typesなど）を定義。"
+        - path: common/taxonomy.yaml
+          role: system_taxonomy
+          description: OS全体で共有されるタグや分類（severity_levels, rule_typesなど）を定義。
           dependencies: []
-        - path: "common/prompt_patterns.yaml"
-          role: "prompt_pattern_definitions"
-          description: "(計画中) 標準化されたプロンプトの型を定義。"
-          status: "planned"
-          dependencies: ["common/constitution.yaml"]
-        - path: "common/projects/project_template.yaml"
-          role: "project_template"
-          description: "新規プロジェクト作成時の共通テンプレート。"
+        - path: common/prompt_patterns.yaml
+          role: prompt_pattern_definitions
+          description: (計画中) 標準化されたプロンプトの型を定義。
+          status: planned
+          dependencies: [common/constitution.yaml]
+        - path: common/projects/project_template.yaml
+          role: project_template
+          description: 新規プロジェクト作成時の共通テンプレート。
           dependencies: []
-        - path: "common/domains/domain_template.yaml"
-          role: "domain_template"
-          description: "新規ドメイン作成時の共通テンプレート。"
+        - path: common/domains/domain_template.yaml
+          role: domain_template
+          description: 新規ドメイン作成時の共通テンプレート。
           dependencies: []
-
-    - name: "personal"
-      description: "OS所有者固有の価値観、設定、および具体的な実装。"
+    - name: personal
+      description: OS所有者固有の価値観、設定、および具体的な実装。
       files:
-        - path: "personal/core_principles.yaml"
-          role: "personal_implementation_root"
-          description: "個人のOSインスタンスの最上位ファイル。共通フレームワークをインポートし、個人の価値観や具体的な設定を記述。"
+        - path: personal/core_principles.yaml
+          role: personal_implementation_root
+          description: 個人のOSインスタンスの最上位ファイル。共通フレームワークをインポートし、個人の価値観や具体的な設定を記述。
           dependencies:
-            - "../common/constitution.yaml"
-            - "../common/guards.yaml"
-            - "../common/mappings.yaml"
-            - "../common/implementation_framework.yaml"
-            - "../common/taxonomy.yaml"
-        - path: "personal/profile.yaml"
-          role: "personal_profile"
-          description: "OS所有者の固定的なプロフィール（名前、タイムゾーンなど）を定義。"
+            - ../common/constitution.yaml
+            - ../common/guards.yaml
+            - ../common/mappings.yaml
+            - ../common/implementation_framework.yaml
+            - ../common/taxonomy.yaml
+        - path: personal/profile.yaml
+          role: personal_profile
+          description: OS所有者の固定的なプロフィール（名前、タイムゾーンなど）を定義。
           dependencies: []
-        - path: "personal/projects/os_platform.yaml"
-          role: "os_development_project"
-          description: "Jibun OSプラットフォーム自体の開発プロジェクト定義、バージョン、ステージ、開発バックログを管理。"
+        - path: personal/projects/os_platform.yaml
+          role: os_development_project
+          description: Jibun OSプラットフォーム自体の開発プロジェクト定義、バージョン、ステージ、開発バックログを管理。
           dependencies: []
-        - path: "personal/projects/lean_data_engineering_book.yaml" # 追加
-          role: "user_project_instance"
-          description: "書籍『リーン・アプローチに基づく完全ガイド』執筆プロジェクトの具体的な定義。"
-          dependencies: ["common/projects/project_template.yaml"]
-        - path: "personal/projects/book_writing.yaml" # 古いエントリがあれば削除
-          role: "user_project_instance"
-          description: "書籍『リーン・アプローチに基づく完全ガイド』執筆プロジェクトの具体的な定義。"
-          status: "deleted_replaced_by_lean_data_engineering_book" # 明示的な削除ステータス
-          dependencies: ["common/projects/project_template.yaml"]
-        - path: "personal/domains/learning.yaml"
-          role: "user_domain_instance"
-          description: "OS所有者の学習領域に関する定義。"
-          dependencies: ["common/domains/domain_template.yaml"]
-
-    - name: "logs"
-      description: "OSの運用中に動的に生成される、行動や決定に関するログデータ。"
+        - path: personal/projects/lean_data_engineering_book.yaml  # 追加
+          role: user_project_instance
+          description: 書籍『リーン・アプローチに基づく完全ガイド』執筆プロジェクトの具体的な定義。
+          dependencies: [common/projects/project_template.yaml]
+        - path: personal/projects/book_writing.yaml  # 古いエントリがあれば削除
+          role: user_project_instance
+          description: 書籍『リーン・アプローチに基づく完全ガイド』執筆プロジェクトの具体的な定義。
+          status: deleted_replaced_by_lean_data_engineering_book  # 明示的な削除ステータス
+          dependencies: [common/projects/project_template.yaml]
+        - path: personal/domains/learning.yaml
+          role: user_domain_instance
+          description: OS所有者の学習領域に関する定義。
+          dependencies: [common/domains/domain_template.yaml]
+    - name: logs
+      description: OSの運用中に動的に生成される、行動や決定に関するログデータ。
       files:
-        - path: "logs/task_log.yaml"
-          role: "task_log"
-          description: "タスクの進捗（ID、ステージ、目的、ステータス、関連決定）を記録。"
-          dependencies: ["logs/decision_log.yaml"]
-        - path: "logs/decision_log.yaml"
-          role: "decision_log"
-          description: "重要な意思決定の「なぜ」（理由）、選択肢、最終決定、関連タスクを記録。Decision-Action Traceabilityを保証。"
+        - path: logs/task_log.yaml
+          role: task_log
+          description: タスクの進捗（ID、ステージ、目的、ステータス、関連決定）を記録。
+          dependencies: [logs/decision_log.yaml]
+        - path: logs/decision_log.yaml
+          role: decision_log
+          description: 重要な意思決定の「なぜ」（理由）、選択肢、最終決定、関連タスクを記録。Decision-Action Traceabilityを保証。
           dependencies: []
-        - path: "logs/guard_log.yaml"
-          role: "guard_invocation_log"
-          description: "ガード発動時の記録や、AIとの対話履歴などを動的に記録。"
-          dependencies: ["common/guards.yaml"]
-
+        - path: logs/guard_log.yaml
+          role: guard_invocation_log
+          description: ガード発動時の記録や、AIとの対話履歴などを動的に記録。
+          dependencies: [common/guards.yaml]
   other_root_files:
-    - path: ".github/workflows/validate.yaml"
-      role: "ci_workflow"
-      description: "CI/CDワークフロー定義。OSの構造、スキーマ、lintなどを検証。"
+    - path: .github/workflows/validate.yaml
+      role: ci_workflow
+      description: CI/CDワークフロー定義。OSの構造、スキーマ、lintなどを検証。
       dependencies: []
-    - path: "docs/architecture_overview.md"
-      role: "system_documentation"
-      description: "OSの全体的なアーキテクチャ概要。人間が読むための設計ドキュメント。"
-      dependencies: ["common/system_map.yaml"]
-    - path: "jibun_os.yml" # 削除対象としてマーク
-      role: "legacy_root_config"
-      description: "以前のOSのモノリシックなルート設定ファイル。新しいモジュール構造へ移行済み。"
-      status: "to_be_deleted"
+    - path: docs/architecture_overview.md
+      role: system_documentation
+      description: OSの全体的なアーキテクチャ概要。人間が読むための設計ドキュメント。
+      dependencies: [common/system_map.yaml]
+    - path: jibun_os.yml  # 削除対象としてマーク
+      role: legacy_root_config
+      description: 以前のOSのモノリシックなルート設定ファイル。新しいモジュール構造へ移行済み。
+      status: to_be_deleted
       dependencies: []
-    - path: "decision-log.md" # 削除対象としてマーク
-      role: "legacy_book_project_constitution"
-      description: "書籍執筆プロジェクトの以前の憲法（Markdown形式）。新しいpersonal/projects/lean_data_engineering_book.yamlへ移行済み。"
-      status: "to_be_deleted"
+    - path: decision-log.md  # 削除対象としてマーク
+      role: legacy_book_project_constitution
+      description: 書籍執筆プロジェクトの以前の憲法（Markdown形式）。新しいpersonal/projects/lean_data_engineering_book.yamlへ移行済み。
+      status: to_be_deleted
       dependencies: []
-    - path: "README.md"
-      role: "project_readme"
-      description: "プロジェクトの概要と導入手順。"
+    - path: README.md
+      role: project_readme
+      description: プロジェクトの概要と導入手順。
       dependencies: []
-    - path: "requirements.txt"
-      role: "python_dependencies"
-      description: "Pythonプロジェクトの依存ライブラリリスト。"
+    - path: requirements.txt
+      role: python_dependencies
+      description: Pythonプロジェクトの依存ライブラリリスト。
       dependencies: []
