@@ -1,4 +1,5 @@
 ---
+# personal/projects/os_platform.yaml
 project_id: os_platform_v1
 branch: feat/triple-layer
 current_version: v10.0.0-alpha.0
@@ -8,21 +9,42 @@ backlog:
   - id: passive_logging_plugin  # P2
     description: VSCode/Obsidian で Guard Log 自動収集
     priority: P2
+  - id: ci_jobs_enhancement  # P2 (今回追加)
+    description: CIジョブをlint/schema/testに分割。JSON SchemaでYAML構造検証も追加
+    priority: P2
   - id: moment_replay_poc  # P3
     description: 行動ログを LLM でタイムライン再構成
     priority: P3
   - id: marketplace_template_v0  # P3
     description: Guard/KPI テンプレ販売 PoC
     priority: P3
-  - id: pair_os_review_protocol
+  - id: pair_os_review_protocol  # P3
     description: Discord 週次ペアレビュー手順
     priority: P3
-  - id: lora_local_model
+  - id: dx_scaffolding_script  # P3
+    description: 新規利用者のための自動セットアップスクリプト（質問形式でpersonal配下を自動生成）
+    priority: P3
+  - id: guard_id_namespace  # P3 (今回追加)
+    description: common(Gxxx)とpersonal(Pxxx)でID名前空間を分け、CIで重複をチェック
+    priority: P3
+  - id: docs_folder_setup  # P3 (今回追加)
+    description: docs/フォルダを作成し、READMEからの導線を整理して初見者の体験を向上
+    priority: P3
+  - id: lora_local_model  # P4
     description: LoRA 微調整モデルを端末常駐化
     priority: P4
-  - id: team_os_template
+  - id: team_os_template  # P4
     description: Team-OS テンプレ (RACI + 監査証跡)
     priority: P4
-  - id: zk_log_encrypt_poc
+  - id: zk_log_encrypt_poc  # P4
     description: Guard Log を ZK 暗号で保護する PoC
+    priority: P4
+  - id: log_rotation_policy  # P4 (今回追加)
+    description: 肥大化に備え、四半期ごとのログローテーション方針を策定・実装
+    priority: P4
+  - id: time_axis_balancer
+    description: 時間軸バランサー：ポートフォリオ内のプロジェクトへのリソース配分最適化機能
+    priority: P4
+  - id: socrates_alert
+    description: ソクラテス・アラート：安易な結論や知ったかぶりを防ぐ内省補助機能
     priority: P4
