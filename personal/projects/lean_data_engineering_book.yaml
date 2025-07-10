@@ -1,0 +1,368 @@
+---
+# personal/projects/lean_data_engineering_book.yaml
+#
+# 書籍『リーン・アプローチに基づく完全ガイド』執筆プロジェクト固有のルールと計画を定義する。
+# このファイルは、書籍執筆プロジェクトにおける「法律」としての役割を担う。
+imports:
+  - ../common/projects/project_template.yaml  # 普遍的なプロジェクト管理原則をインポート
+project_id: lean_data_engineering_book_project
+name: '書籍執筆プロジェクト: リーン・アプローチに基づく完全ガイド'
+description: |
+  読者（データエンジニア、アーキテクト、リーダー）がAI時代のデータ課題を解決し、
+  自己を進化させるためのロードマップを提供する。
+# 1. 本書の基本原則と目的 (Core Principles & Purpose of the Book)
+book_principles:
+  document_hierarchy:
+    # 階層0：憲法：自分OS (common/constitution.yaml で定義済み)
+    # 階層1：法律：personal/projects/lean_data_engineering_book.yaml (このファイル自身)
+    tier1_purpose: |
+      本書執筆プロジェクト固有の法律。このドキュメント自体が、
+      全ての決定事項の単一の信頼できる情報源（Single Source of Truth）である。
+    tier2_rules_location:
+      description: |
+        特定のタスクを実行するための具体的な手順書（執筆SOP）であり、
+        その内容は「4. 執筆ガイドライン (Writing Guidelines)」に集約される。
+  core_concepts:  # 三本柱
+    - name: 俊敏な基盤 (Agile Foundations)
+      description: 変化に即応するデータ基盤。
+      technical_approaches:
+        - 車輪の再発明の回避 (Avoid Reinventing the Wheel)
+        - サーバレス・ファースト (Serverless-First)
+        - IaC (Infrastructure as Code) の徹底
+        - モジュール性と再利用性の促進
+    - name: 協働的進化 (Collaborative Evolution)
+      description: |
+        データエンジニアがビジネス部門や異なるチーム、そしてAIとの連携を通じて、
+        組織全体が継続的に学習し進化していくという、より広範な意味合いを持つ上位の戦略的目標。
+        AIとの協働は、この広範な「協働的進化」を実現するための重要な手段の一つである。
+    - name: 信頼のガバナンス (Trusted Governance)
+      description: AIの判断を支えるガバナンスと品質。
+# 2. ガバナンスと役割 (Governance & Roles)
+governance:
+  ai_role_specific:
+    description: 本書執筆プロジェクトにおけるAIの具体的な貢献視点。
+    contributions:
+      - name: 技術的な正確性、深さ、実用性、最新性
+        details: |
+          特にクラウドネイティブアーキテクチャ、データパイプライン、データガバナンス、MLOps、
+          各種クラウドサービス（AWS、GCP）に関する専門知識と業界のベストプラクティスを反映する。
+      - name: 自然でプロフェッショナルな英語表現
+      - name: 技術的な整合性と専門用語の適切さ
+      - name: 読者体験を考慮した構成と情報のフロー
+      - name: 国際的な読者への対応能力
+# 3. プロジェクト計画とスケジュール (Project Plan & Schedule)
+plan_and_schedule:
+  mvp_scope:
+    - Reading Guide
+    - 'Chapter 2: Understanding Data Mesh, Lakehouse, and Medallion'
+    - 'Chapter 8: DevOps for Data Engineering'
+    - MVP用 終章
+  official_schedule:  # 公式実行スケジュールとページ数目標
+    total_page_target: 200–310  # Reading Guideには直接記載しない
+    chapters:  # decision-log.md のテーブルから抽出
+      - title: Reading Guide
+        chapter_no: 0
+        initial_page_count: N/A
+        revised_page_count: 5
+        delivery_date: 11-Jul
+      - title: Evolution of Data Architecture
+        chapter_no: 1
+        initial_page_count: 15–25
+        revised_page_count: 15–25
+        delivery_date: 8-Aug
+      - title: Understanding Data Mesh, Lakehouse, and Medallion
+        chapter_no: 2
+        initial_page_count: 20–30
+        revised_page_count: 20–30
+        delivery_date: 1-Aug
+      - title: Data Integration Strategy, Business Impact, and ROI
+        chapter_no: 3
+        initial_page_count: 20–30
+        revised_page_count: 20–30
+        delivery_date: 15-Aug
+      - title: Medallion Architecture & Multi-Cloud Environment Design
+        chapter_no: 4
+        initial_page_count: 20–35
+        revised_page_count: 20–35
+        delivery_date: 22-Aug
+      - title: Building Scalable Data Pipelines with Kafka, dbt, and Terraform
+        chapter_no: 5
+        initial_page_count: 30–40
+        revised_page_count: 30–40
+        delivery_date: 29-Aug
+      - title: Data Governance and Compliance with Audit Logs and Data Vault
+        chapter_no: 6
+        initial_page_count: 20–30
+        revised_page_count: 20–30
+        delivery_date: 5-Sep
+      - title: MLOps & AI Model Deployment and Monitoring
+        chapter_no: 7
+        initial_page_count: 20–35
+        revised_page_count: 20–35
+        delivery_date: 12-Sep
+      - title: DevOps for Data Engineering with CI/CD and Global Collaboration
+        chapter_no: 8
+        initial_page_count: 20–30
+        revised_page_count: 20–30
+        delivery_date: 1-Aug
+      - title: Cloud Migration and Coexistence Strategies
+        chapter_no: 9
+        initial_page_count: 20–30
+        revised_page_count: 20–30
+        delivery_date: 19-Sep
+      - title: Scaling Data Platforms with Optimization and Future Trends
+        chapter_no: 10
+        initial_page_count: 20–35
+        revised_page_count: 20–35
+        delivery_date: 26-Sep
+  phase_transition_status:
+    description: 本ドキュメントの合意をもって、『AI協働サイクル』の「発想拡大」フェーズは正式に完了し、「結果改善」フェーズへと移行する。
+    reading_guide_approval: |
+      Reading Guide のバージョン3.0を最終版として承認した。
+      これにより、トーン調整、文の分割、用語の一貫性向上、Mermaid図のキャプション補強、
+      および締めの一文の具体化といった、先のレビューで指摘された改善点が全て反映された。
+      この成果物は、今後の章執筆における模範となる。
+# 4. 執筆ガイドライン (Writing Guidelines)
+writing_guidelines:
+  principles:  # decision-log.md の 4.1.1, 4.1.2, 4.1.3 から抽出
+    - id: WP01
+      name: 構造とエンゲージメント (Structure & Engagement)
+      items:
+        - '強力な導入: 読者が「なぜこれを読むべきか」を理解できる、魅力的でポジティブな導入を記述。オープニングフックは40〜45語に制限する。'
+        - '論理的なフロー: 文とパラグラフをスムーズに連結する。'
+        - '並列構造の徹底: 箇条書きや見出しの文法構造を統一する。箇条書きの際、動詞ではなく柱の名称のみを太字にする。'
+        - '次への動機付け: 各章の末尾に、次章への期待感を高める一文を追加する。'
+    - id: WP02
+      name: 文体とトーン (Style & Tone)
+      items:
+        - '具体的価値の提示: 抽象表現を避け、「再現可能なパターン」など具体的な便益を提示する。比喩表現は初回使用時のみ残し、コンセプト明確後はより平易な表現に短縮する。過剰な形容詞（例：「powerful」「very」）は避ける。'
+        - '能動態の使用: 読者を主語とした能動態を基本とする。可能な限り受動態を能動態に変換する。'
+        - '平易な表現: 一文は短く（目安25語以内）、簡潔に。25語を超える文は避けるか、適切に分割する。'
+        - Oxford comma（Oxfordコンマ）のスタイルを常に一貫させる。
+        - 用語「AI Collaboration Architect (ACA)」は、初出時に「Throughout this guide we’ll use
+          the term AI Collaboration Architect (ACA) to…」のように明確に造語であることを提示し、その後は略語（ACA）を使用する。
+    - id: WP03
+      name: 読者への配慮 (Reader Consideration)
+      items:
+        - '新用語の定義: 新しい造語は、初出時に造語であることを明確にする。'
+        - '視覚的補助: 複雑な概念はmermaidによる図を挿入する。'
+  formatting_and_style:  # decision-log.md の 4.2 から抽出
+    heading_style:
+      - description: トップレベルの見出しは#、セクションの見出しは##を使用する。
+        level: '#'
+        purpose: Top-level heading
+      - description: セクションヘディングでは、原則としてコロン（:）の使用を避ける。
+        exceptions: '章タイトル、および編集者レビューで承認された特定のマーケティング的見出し（例: The Big Picture: From
+          Challenge to Value）でのみコロンの使用を許可する。'
+    figure_and_table_references:
+      - description: 本文から図表を参照する際は、@fig-labelまたは@tbl-labelの形式を使用する。
+      - description: 'Quartoのクロスリファレンス機能を有効にするため、ラベルID（例: {#fig-label}, {#tbl-label}）を、必ずキャプションに含める。'
+      - description: 全ての図表には、内容を説明するキャプションを必ず付ける。
+      - description: Quartoの自動番号付け機能を全面的に採用し、ルールとして番号形式を固定しない。
+    mermaid_description:
+      - description: QuartoでMermaidを正しくレンダリングするには、コードブロックの開始を ```{mermaid}``` と記述する必要がある。
+      - description: 'QuartoでMermaid図のラベルとキャプションを定義する際は、%%|で始まるコメント形式の構文（例: %%| label:
+          fig-id）を使用する。'
+      - description: レイアウトの安定性を確保するため、Mermaidのコードは「①ノードとサブグラフの定義ブロック」と「②ノード間の接続（矢印）定義ブロック」に明確に分離して記述する。
+  writing_style_decision:  # decision-log.md の 4.3 から抽出
+    date: '2025-07-08'
+    status: 確定
+    decision: ナレーター主導の文体
+    details: |
+      編集者レビューに基づき、Reading Guideを含む序文のスタイルを「対話主導」から「ナレーター主導」へと変更する。
+      主たる語り手は客観的なナレーターとし、AIが一人称（"I"など）で補足的な意見を述べる場合は、
+      > AI Note: のような囲み枠（Blockquote）を使用し、本文と明確に区別する。
+      これに伴い、以前の「導入限定スタイル（メタ・ナラティブ）」の決定は本決定によって上書きされる。
+# 5. コンテンツ戦略 (Content Strategy)
+content_strategy:
+  book_and_github_roles:  # decision-log.md の 5.1 から抽出
+    book_role:
+      description: 「思考法」「戦略」といった普遍的な価値を伝える「戦略ガイドブック」。AIへの「プロンプト例」を掲載する。
+    github_role:
+      description: |
+        具体的なコード、詳細な手順、環境設定など、変化が速く、常に最新であるべき情報を集約する「生きた実装マニュアル」。
+        AIが生成するであろう「コードサンプル」を掲載する。ハンズオンはGitHub Codespacesでの実行を前提とする。
+      url: https://github.com/mikieto/lean-data-engineering
+      update_policy: |
+        `main` ブランチは最新のLTS (Long Term Support) を追跡し、
+        四半期ごとのリリースは書籍の正誤表に従うことを検討する。
+    github_repository_url_clarification: |
+      書籍本文に、関連するGitHubリポジトリのURL（https://github.com/mikieto/lean-data-engineering）を早期に明記する。
+  cross_chapter_hands_on_design_principles:  # decision-log.md の 5.3 から抽出
+    date: '2025-07-07'
+    description: |
+      本書のハンズオンは、AI協働サイクルにおける「意図伝達」の深化として、以下の原則に基づき設計される。
+      これにより、読者は自身の「自己進化」と「役に立つ世界」の探求を、実践的なAI協働を通じて実現する。
+    principles:
+      - name: 「How」の統合と「Why」の抽出
+        details: |
+          各ハンズオンの課題設定において、IT部門の技術的な「How」（技術的制約、既存インフラ、セキュリティ要件など）と
+          ユーザー部門やビジネスドメインの業務的な「How」（データ利用目的、レポート要件、ビジネスロジックなど）という
+          異なる視点を明確に提示する。読者はAIとの協働を通じて、これらの多角的な「How」の背景にある本質的なビジネスの「Why」を導き出すプロセスを体験する。
+      - name: 段階的な複雑性の増加
+        details: |
+          章の進行に伴い、「How」の複雑性（関わる部門の数、データの多様性、技術スタックの広がり）と、
+          そこから導き出す「Why」の抽象度やビジネスインパクトを段階的に増加させる。
+      - name: 実践的思考の育成
+        details: |
+          読者が技術的な「How」だけでなく、多様なステークホルダーのニーズを統合し、
+          共通の「Why」を明確にするという、データエンジニアリングにおけるより上位のスキルを養うことを目的とする。
+  chapter_content_plan:  # 各章の提供価値と構成 (decision-log.md の 5.2 から抽出)
+    - chapter_no: 0
+      title: Reading Guide (Front Matter)
+      perspective: 本書がAI時代の羅針盤であることを示し、3つの柱とAI協働サイクルを導入する。
+      structure:
+        - Overall Book Themes and Audience
+        - How to Navigate and Use This Book
+    - chapter_no: 1
+      title: 'Chapter 1: Evolution of Data Architecture'
+      perspective: アーキテクチャ進化の理解が「俊敏な基盤」構築にどう繋がるかを歴史的文脈から示す。
+      structure:
+        - The Genesis of Data Warehousing
+        - The Rise of Data Lakes
+        - 'Lakehouse: The Unification of Analytics'
+        - Industry Adaptations and Lessons Learned
+    - chapter_no: 2
+      title: 'Chapter 2: Understanding Data Mesh, Lakehouse, and Medallion'
+      perspective: モダンアーキテクチャを理解し、ビジネスとAIの協働をリードする設計能力を養う。
+      hands_on: Delta LakeとAWS Glue/Athenaで高信頼なレイクハウスを構築する。
+      structure:
+        - Data Mesh Fundamentals
+        - Lakehouse Architecture and Delta Lake
+        - Medallion Architecture
+        - Data Vault for Auditable Schema Design and Lineage
+        - Decision Matrix for Architectural Pattern Selection
+    - chapter_no: 3
+      title: 'Chapter 3: Data Integration Strategy, Business Impact, and ROI'
+      perspective: データ統合がROIに直結し、迅速な試行錯誤を可能にすることを理解する。
+      hands_on: AWS Step Functionsでデータ統合プロセスをサーバーレスでオーケストレーションする。
+      structure:
+        - Identifying and Tracking ROI for Data Initiatives
+        - Overcoming Common Integration Obstacles
+        - Business Outcomes
+        - Real-World Case Studies
+    - chapter_no: 4
+      title: 'Chapter 4: Medallion Architecture & Multi-Cloud Environment Design'
+      perspective: マルチクラウドで「俊敏な基盤」を構築しつつ「信頼の盾」を維持するスキルを習得する。
+      hands_on: AWSとGCPにまたがるMedallionのBronzeレイヤーを構築する。
+      structure:
+        - Deep Dive into Medallion Architecture Layers
+        - Multi-Cloud Deployment Strategies
+        - IAM and Logging Strategies in Multi-Cloud
+        - Delta Lake and Other Lakehouse Table Formats for Multi-Cloud
+        - Preview of AI Pipeline Integration
+    - chapter_no: 5
+      title: 'Chapter 5: Building Scalable Data Pipelines'
+      perspective: スケーラブルなパイプライン構築スキルを習得し、「俊敏な基盤」を具現化する。
+      hands_on: KafkaのストリーミングデータをサーバーレスパイプラインでDelta Lakeに格納する。
+      structure:
+        - Streaming vs. Batch Ingestion Strategies
+        - Data Transformation and Testing with dbt
+        - Infrastructure as Code (IaC) with Terraform
+        - Pipeline Performance and Cost Optimization
+        - Delta Lake Integration for Versioning and Time Travel
+    - chapter_no: 6
+      title: 'Chapter 6: Data Governance and Compliance'
+      perspective: 「信頼の盾」としてのデータガバナンスとコンプライアンスを構築する役割を担う。
+      hands_on: AWS CloudTrailとDelta Lakeログで監査証跡を収集・分析する。
+      structure:
+        - Data Vault Fundamentals for Historical Lineage
+        - Audit Logging and Secure Log Storage in Multi-Cloud
+        - IAM Best Practices for Data Governance
+        - Delta Lake Transaction Logs for Compliance and Auditing
+        - Navigating Regulatory Mandates
+    - chapter_no: 7
+      title: 'Chapter 7: MLOps & AI Model Deployment and Monitoring'
+      perspective: 「協働的進化」の核心として、AIモデルのライフサイクル全体をオーケストレーションする。
+      hands_on: AWS SageMakerとDelta Lakeを連携させ、MLOpsパイプラインを構築する。
+      structure:
+        - Data Engineer's Role in MLOps Workflow
+        - Effective Collaboration with Data Scientists
+        - Leveraging MLOps Tools
+        - Integrating Medallion Data Layers into ML Pipelines
+        - Model Drift Detection and Rollback Strategies
+    - chapter_no: 8
+      title: 'Chapter 8: DevOps for Data Engineering'
+      perspective: DevOpsを実践し、「俊敏な基盤」の継続的改善と「協働的進化」を加速させる。
+      hands_on: AWS CDKとGitHub ActionsでサーバーレスデータパイプラインのCI/CDを構築する。
+      structure:
+        - DevOps Culture and Mindset for Data Teams
+        - CI/CD Pipelines and Automated Testing
+        - Remote and Offshore Collaboration Strategies
+        - Large-Scale Industry Examples
+    - chapter_no: 9
+      title: 'Chapter 9: Cloud Migration and Coexistence Strategies'
+      perspective: クラウド移行を安全に実行し、「俊敏な基盤」を確立しつつ「信頼の盾」を維持する。
+      hands_on: AWS DMSとLambdaで既存DBからDelta Lakeへのデータ移行を自動化する。
+      structure:
+        - Phased and Parallel Migration Approaches
+        - Minimizing Downtime and Ensuring Business Continuity
+        - 'Risk Mitigation: Fallback and Testing Protocols'
+        - Regulatory Compliance Considerations During Migration
+    - chapter_no: 10
+      title: 'Chapter 10: Scaling Data Platforms with Optimization and Future Trends'
+      perspective: プラットフォーム最適化と将来トレンドへの対応により、「俊敏な基盤」の持続可能性を保証する。
+      hands_on: AWS GlueとDelta Lakeの最適化機能でパフォーマンスとコストを最適化する。
+      structure:
+        - Performance Tuning Techniques
+        - Cloud Cost Optimization Strategies
+        - Observability Practices
+        - Delta Lake Performance and Compaction Strategies
+        - Emerging Data Trends and Future Outlook
+# 6. 成果物と技術仕様 (Deliverables & Technical Specifications)
+deliverables_and_specs:
+  repository_structure:  # decision-log.md の 6.1 から抽出
+    private_repo:
+      url: https://github.com/mikieto/lean-data-engineering-book
+      purpose: 原稿(Markdown)、本decision-log.md、ビルドスクリプト、提出物(submissions/)等を管理。
+      tree:
+        - name: lean-data-engineering-book/
+          children:
+            - name: .devcontainer/
+              children: [devcontainer.json, Dockerfile]
+            - name: submissions/
+            - name: output/
+              note: .gitignore に含める (一時生成ファイル)
+            - name: from-publisher/
+              note: .gitignore に含める (出版社からのファイル)
+            - name: requirements.txt
+            - name: decision-log.md  # このファイルは移行後に削除予定
+            - name: build_docx.sh
+            - name: <chapter_files>.md
+    public_repo:
+      url: https://github.com/mikieto/lean-data-engineering
+      purpose: 書籍読者向けのハンズオンコードを管理する。
+      update_policy: |
+        `main` ブランチは最新のLTS (Long Term Support) を追跡し、
+        四半期ごとのリリースは書籍の正誤表に従うことを検討する。
+      tree:
+        - name: lean-data-engineering/
+          children:
+            - name: chapter02/
+              children: [README.md]
+              note: ハンズオンの課題設定と、意図伝達・発想拡大・結果改善のスタータープロンプトを記載。特に意図伝達プロンプトには「ITのHow」と「ユーザー部門/ドメインのHow」を明記する。
+            - name: chapter03/
+            # ... 続く章フォルダ
+  deliverables_format:  # decision-log.md の 6.2 から抽出
+    writing_language: 英語
+    submission_format: Wordドキュメントのみ
+    figure_and_table_creation:
+      draft_stage: Mermaidを使用。
+      conversion_tool: '`@mermaid-js/mermaid-cli` を用いて静的画像（SVG推奨）に変換し、PandocでWordに埋め込む。'
+  submission_plan: 全章のドラフト完成後、出版社にWordドキュメント形式で提出する計画。この提出は、プロジェクト全体の進捗における重要なマイルストーンとなる。
+  index_creation:  # decision-log.md の 6.4 から抽出
+    status: 作成する
+    workflow: |
+      校正済みの最終Wordドキュメントを正とし、AI協働ワークフロー
+      （キーワード抽出→VBAマクロ自動マーキング→Wordで生成）を採用する。
+      このプロセスには約1週間を要すると見積もられている。
+    special_considerations: '本書で定義する造語や重要な略語（例: ACA）は必ず索引に含める。'
+  reader_information_enhancement:  # decision-log.md の 6.6 から抽出
+    - name: Reading Mapの追加情報
+      details: 各章の役割ベースのリーディングマップに、「Estimated time to skim / deep-dive」（例：「20-min
+        skim, 2-h workshop」）の目安を追加する。
+    - name: 全体像を示す図の挿入
+      details: 3つの戦略とAI協働サイクルを要約する1ページの概略図を挿入する。
+    - name: ハンズオン環境の前提
+      details: ハンズオンはGitHub Codespacesでの実行を前提とし、読者のローカル環境構築の負担を軽減する。これにより、Reading
+        Guideでの別途Prerequisitesの記載は不要となる。

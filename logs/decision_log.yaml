@@ -146,3 +146,16 @@
     これにより、AIによる自動検証、ガイダンス、冗長性排除、一貫性確保が可能となり、
     将来的な改造・機能追加時の間違いや余分な作業を削減するため。
   follow_up: [system_map_creation]
+
+  # logs/decision_log.yaml へ追記
+- date: '2025-07-10'  # 今日の日付 (JST)
+  tag: book_project_refactor_go
+  project_id: os_platform_v1  # OSプラットフォーム開発の一環
+  options: [decision-log.mdを現状維持, decision-log.mdを共通/個人に分離]
+  chosen_option: decision-log.mdを共通/個人に分離
+  reason: |
+    書籍プロジェクトのdecision-log.mdを普遍的なプロジェクト管理原則と
+    書籍執筆プロジェクト固有の要素に分離することで、
+    OSの「コピー可能な自己」の最高目的をプロジェクト管理にも適用し、
+    再利用性、一貫性、AI協働の効率性を向上させるため。
+  follow_up: [book_project_refactor_split]

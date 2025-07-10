@@ -34,7 +34,7 @@
   stage: 1
   purpose: value
   description: personal/projects/book_writing.yaml をテンプレから生成
-  status: todo
+  status: done
   related_decision: common_split_approved
 - id: domain_folder_setup
   stage: 1
@@ -96,6 +96,12 @@
   description: OSのファイル構造と役割を定義するcommon/system_map.yamlを作成（機械可読性向上）
   status: done
   related_decision: system_map_creation_go
+- id: book_project_refactor_split
+  stage: 1  # 基盤整備の一環
+  purpose: quality  # 品質向上と再利用性のため
+  description: 書籍プロジェクトのdecision-log.mdを共通/個人要素に分離・統合し、personal/projects/book_writing.yamlを生成（または更新）するリファクタリング
+  status: done  # これから着手するため
+  related_decision: book_project_refactor_go
 
 # ======== Stage-2 : 自動品質保証 ==============================
 - id: precommit_hook_setup
