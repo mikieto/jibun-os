@@ -1,0 +1,37 @@
+---
+# common/implementation_framework.yaml
+#
+# OSを実際に運用し、自己進化のサイクルを駆動させるための、
+# 標準的なプロセスとツールのフレームワークを定義します。
+name: 実装ガイド編 (The Implementation Guide)
+description: OSを実際に運用し、自己進化のサイクルを駆動させるための、標準的なプロセスとツールのフレームワーク。
+quick_start_guide:
+  name: クイックスタートガイド
+  description: OSの思想と基本操作を理解するための導入部。
+information_architecture:
+  name: 情報アーキテクチャ
+  description: OS基盤と動的ログ（Guard, Task, Decision）で構成される情報階層の定義。
+activity_structure:
+  name: 活動構造
+  description: OSプラットフォーム開発（内省）と実践の場（経験）という2つの連携プロジェクトの定義。
+  learning_loop_interface:
+    name: 学習ループインターフェース
+    description: 「内省」と「経験」を共生的な成長サイクルにするための『黄金の流れ（Golden Flow）』の定義。
+os_evolution_workflow:
+  name: OS学習・進化ワークフロー
+  description: ガード発動や日々の気づきを分析し、OS自体を継続的に改善するワークフローの枠組み。
+core_engine:
+  name: ビジョン・ポートフォリオ・エンジン (Vision Portfolio Engine)
+  description: 「ポートフォリオ思考」を実践するためのOSの中核的プロセス。
+kpis:
+  name: KPIs
+  description: OSの「可観測性」を定量的に把握するための指標の枠組み。
+acceleration_strategies:
+  name: 活動加速戦略
+  description: OSの活動サイクルタイムを短縮し、実行効率とフィードバックの質を最大化するための戦略フレームワーク。
+safety_mode_conditions:
+  name: セーフティモードの発動条件
+  description: OSの健全性を最優先するために活動を一時中断するセーフティモードの発動条件の枠組み。
+versioning_procedure:
+  name: バージョニング手順の要件
+  description: OSのバージョニングにおける、原則（What）と実装（How）の分離を定義する。

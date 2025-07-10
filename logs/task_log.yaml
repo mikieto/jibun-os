@@ -4,7 +4,7 @@
   stage: 1
   purpose: obs
   description: 三層フォルダへ移動 & imports 追記
-  status: todo
+  status: done
   related_decision: layer_split_go
 - id: layer_ci_lint_rule
   stage: 1
@@ -16,19 +16,19 @@
   stage: 1
   purpose: obs
   description: personal/profile.yaml を作成し固定属性を集約
-  status: todo
+  status: done
   related_decision: profile_yaml_go
 - id: core_common_extract
   stage: 1
   purpose: obs
   description: jibun_os.yaml から普遍憲法を抽出→common/core_principles.yaml
-  status: todo
+  status: done
   related_decision: common_split_approved
 - id: template_seed
   stage: 1
   purpose: obs
   description: common/projects/project_template.yaml を生成
-  status: todo
+  status: done
   related_decision: common_split_approved
 - id: book_project_seed
   stage: 1
@@ -40,13 +40,13 @@
   stage: 1
   purpose: obs
   description: common & personal に domains/ を作成しテンプレ配置
-  status: todo
+  status: done
   related_decision: domain_folder_go
 - id: taxonomy_file_add
   stage: 1
   purpose: obs
   description: common/taxonomy.yaml を作成しタグを列挙
-  status: todo
+  status: done
   related_decision: taxonomy_tags_go
 - id: ci_decision_link_check
   stage: 1
@@ -81,9 +81,21 @@
 - id: yamlfix_migration_task
   stage: 1
   purpose: quality
-  description: "yamlfix で全 YAML を整形し CI RED を解消"
+  description: yamlfix で全 YAML を整形し CI RED を解消
   status: done
   related_decision: yaml_formatter_switch
+- id: os_refactor_for_reusability
+  stage: 1
+  purpose: quality
+  description: OS全体を『共通フレームワーク』と『個人実装』に分離するリファクタリング
+  status: done
+  related_decision: os_refactor_for_reusability_go
+- id: system_map_creation
+  stage: 1
+  purpose: quality
+  description: OSのファイル構造と役割を定義するcommon/system_map.yamlを作成（機械可読性向上）
+  status: done
+  related_decision: system_map_creation_go
 
 # ======== Stage-2 : 自動品質保証 ==============================
 - id: precommit_hook_setup
