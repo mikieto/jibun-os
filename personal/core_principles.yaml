@@ -1,0 +1,12 @@
+---
+version: 10.0.0-alpha.1
+last_updated: '2025-07-11'
+supreme_purpose: >
+  AI＋外部フィードバックを高速循環し
+  「学習データ ⇒ 具体的価値」へ即転換できる自分OSを実現する。
+imports: [common/core_principles.yaml]
+core_code_overrides:
+  - name: Decision–Action Traceability
+    description: >-
+      全 Decision は Task / Guard / KPI と 1-to-1 でリンクし、
+      CI が整合チェックを行う。

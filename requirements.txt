@@ -1,3 +1,1 @@
-# requirements.txt
-yamllint
-check-jsonschema[yaml]
+# runtime deps; keep file for tooling
