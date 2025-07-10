@@ -2,7 +2,7 @@
 name: Validate Jibun OS
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
     paths: ['**.yml', '**.yaml']
   pull_request:
     paths: ['**.yml', '**.yaml']
