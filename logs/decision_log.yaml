@@ -146,3 +146,65 @@
     これにより、AIによる自動検証、ガイダンス、冗長性排除、一貫性確保が可能となり、
     将来的な改造・機能追加時の間違いや余分な作業を削減するため。
   follow_up: [system_map_creation]
+- date: '2025-07-10'
+  tag: book_project_refactor_go
+  project_id: os_platform_v1
+  options: [decision-log.mdを現状維持, decision-log.mdを共通/個人に分離]
+  chosen_option: decision-log.mdを共通/個人に分離
+  reason: |
+    書籍プロジェクトのdecision-log.mdを普遍的なプロジェクト管理原則と
+    書籍執筆プロジェクト固有の要素に分離することで、
+    OSの「コピー可能な自己」の最高目的をプロジェクト管理にも適用し、
+    再利用性、一貫性、AI協働の効率性を向上させるため。
+  follow_up: [book_project_refactor_split]
+- date: '2025-07-10'
+  tag: ci_develop_validation_enable_go
+  project_id: os_platform_v1
+  options: [developブランチのCI検証を有効にしない, developブランチのCI検証を有効にする]
+  chosen_option: developブランチのCI検証を有効にする
+  reason: |
+    developブランチでの変更の品質を早期に保証し、mainブランチへのマージをスムーズに行うため。
+    以前発生していたjibun_os.yml参照エラーを解消し、CIをパスさせることを目的とする。
+  follow_up: [ci_develop_validation_enable]
+- date: '2025-07-10'
+  tag: ai_context_optimization_go
+  project_id: os_platform_v1
+  options: [手動でのコンテキストフィードを維持, コア＆プラットフォームコンテキストスクリプトを導入]
+  chosen_option: コア＆プラットフォームコンテキストスクリプトを導入
+  reason: |
+    AIへのコンテキストフィードの手間を20%の手間で80%の価値を得る形で大幅に削減するため。
+    OSの根幹情報とプラットフォーム状況を常にAIに共有し、自律的な認識と協働を促進する。
+    生成ファイルはGitトラッキングから除外する。
+  follow_up:
+    - create_base_os_context_script
+
+# logs/decision_log.yaml へ追記 (最新の決定の下に追加)
+- date: '2025-07-10'
+  tag: ai_context_dynamic_load_go
+  project_id: os_platform_v1
+  options:
+    - AIコンテキストファイルをスクリプトにハードコード
+    - system_map.yamlからAIコンテキストファイルを動的にロード
+  chosen_option: system_map.yamlからAIコンテキストファイルを動的にロード
+  reason: |
+    AIへのコンテキストフィードにおける「実体との乖離」リスクを排除し、
+    system_map.yamlをOSの唯一の信頼できる情報源（Single Source of Truth）として維持するため。
+    これにより、system_map.yamlの更新が自動的にAIコンテキストに反映され、
+    手動でのスクリプト修正の手間とミスを削減する。
+    生成ファイルはGitトラッキングから除外する。
+  follow_up:
+    - update_system_map_with_context_level
+    - update_base_os_context_script
+- date: '2025-07-10'
+  tag: lean_data_book_repo_move_go
+  project_id: os_platform_v1
+  options:
+    - lean_data_engineering_book.yamlをjibun-os内に維持
+    - lean_data_engineering_book.yamlを本執筆リポジトリへ移動
+  chosen_option: lean_data_engineering_book.yamlを本執筆リポジトリへ移動
+  reason: |
+    書籍執筆プロジェクトのルールと計画の「唯一の信頼できる情報源」を、
+    そのプロジェクトのGitリポジトリ自体に配置することで、プロジェクトの自己完結性を高める。
+    これにより、jibun-osリポジトリの「共通フレームワークとOS個人実装」という役割がより明確になり、
+    OSが個別プロジェクトを「管理」する形から「統合・連携」する形へと進化する。
+  follow_up: [move_lean_data_book_to_repo]
