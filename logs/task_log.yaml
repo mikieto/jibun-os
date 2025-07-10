@@ -97,11 +97,35 @@
   status: done
   related_decision: system_map_creation_go
 - id: book_project_refactor_split
-  stage: 1  # 基盤整備の一環
-  purpose: quality  # 品質向上と再利用性のため
+  stage: 1
+  purpose: quality
   description: 書籍プロジェクトのdecision-log.mdを共通/個人要素に分離・統合し、personal/projects/book_writing.yamlを生成（または更新）するリファクタリング
   status: done
   related_decision: book_project_refactor_go
+- id: ci_develop_validation_enable
+  stage: 1
+  purpose: quality
+  description: .github/workflows/validate.yamlを修正し、developブランチでのYAML検証CIを有効にする
+  status: done
+  related_decision: ci_develop_validation_enable_go
+- id: create_base_os_context_script
+  stage: 1
+  purpose: quality
+  description: AIへのベースコンテキスト（コア+プラットフォーム）を自動生成するscripts/get_base_os_context.pyを作成
+  status: done
+  related_decision: ai_context_optimization_go
+- id: update_system_map_with_context_level
+  stage: 1
+  purpose: quality
+  description: common/system_map.yamlにcontext_levelフィールドを追加し、各ファイルのコンテキストレベルを定義
+  status: done
+  related_decision: ai_context_dynamic_load_go
+- id: update_base_os_context_script
+  stage: 1
+  purpose: quality
+  description: AIへのベースコンテキスト（コア+プラットフォーム）をsystem_map.yamlから動的に生成するscripts/get_base_os_context.pyを修正
+  status: done
+  related_decision: ai_context_dynamic_load_go
 
 # ======== Stage-2 : 自動品質保証 ==============================
 - id: precommit_hook_setup
@@ -124,6 +148,12 @@
   description: 週次で外部情報取得→Impact Issue 自動生成 PoC
   status: todo
   related_decision: feedback_review_20250710
+- id: docs_folder_setup
+  stage: 3
+  purpose: obs
+  description: docs/フォルダを作成し、READMEからの導線を整理して初見者の体験を向上（OS公開向けドキュメント整備の基盤）
+  status: todo
+  related_decision: v3_arch_feedback_adopt
 
 # ======== Stage-4 : 外化ブースト ==============================
 - id: demo_token_compare
@@ -146,6 +176,12 @@
   purpose: security
   description: BYO-Storage & ローカル LLM 手順を文書化
   status: todo
+- id: setup_external_framework_publish
+  stage: 4
+  purpose: value
+  description: Jibun OS共通フレームワークの外部公開に向けた準備（ライセンス、CONTRIBUTINGガイド等）
+  status: todo
+  related_decision: ai_context_optimization_go
 
 # ======== Stage-5 : 週次ループ定着 ============================
 - id: weekly_efl_review
