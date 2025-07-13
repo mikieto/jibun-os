@@ -4,65 +4,75 @@
 # Jibun OSの全体的なファイル構造と、各ファイルの役割、および主要な依存関係を定義する。
 # AIがOSの内部構造を理解し、自己監査や自動化を支援するための機械可読なマップ。
 system_architecture:
-  version: 3.0.0
+  version: 3.1.0  # バージョンを更新
   layers:
     - name: common
       description: 誰でも再利用可能な、OSの核となる普遍的なフレームワークや定義。
       files:
         - path: common/constitution.yaml
           role: universal_constitution
-          description: OSの最高規範。普遍的な目的、原則、AI関係、メタルールを定義。
+          description: OSフレームワークの最高規範。統治機構、コア機能、運用哲学を定義。
           context_level: base_os_context
-          dependencies: []
-        - path: common/guards.yaml
-          role: guard_definitions
-          description: OSの保護機能。思考と行動の逸脱を防ぐガードを定義。
+          dependencies:
+            - ../docs/charter.md  # 憲章の理念を実装
+            - common/taxonomy.yaml
+            - common/implementation_framework.yaml
+        - path: common/immune_system.yaml
+          role: intellectual_immune_system_framework
+          description: OSの自己防衛・自己成長メカニズム（生得免疫系）を定義する、普遍的なフレームワーク。
           context_level: base_os_context
           dependencies: []
         - path: common/mappings.yaml
           role: component_mappings
-          description: 'OS内の異なるコンポーネント間の関連性（例: コアコードとガードの紐付け）を定義。'
+          description: OS内の異なるコンポーネント間の関連性を定義。
           context_level: base_os_context
-          dependencies: [common/constitution.yaml, common/guards.yaml]
+          dependencies: [common/constitution.yaml, common/immune_system.yaml]
         - path: common/implementation_framework.yaml
           role: implementation_framework
-          description: OS運用、自己進化サイクル駆動のための標準プロセスとツールの枠組みを定義。
+          description: OS運用、知識の循環プロセス（結晶化・普遍化）など、標準プロセスを定義。
           context_level: base_os_context
-          dependencies: []
+          dependencies: [common/taxonomy.yaml]
         - path: common/taxonomy.yaml
           role: system_taxonomy
-          description: OS全体で共有されるタグや分類（severity_levels, rule_typesなど）を定義。
+          description: 四階層モデルなど、OS全体で共有されるタグや分類を定義。
           context_level: base_os_context
           dependencies: []
         - path: common/prompt_patterns.yaml
-          role: prompt_pattern_definitions
-          description: (計画中) 標準化されたプロンプトの型を定義。
+          role: ai_interface_patterns
+          description: (計画中) AIとの協働モデルを実装するための標準化されたプロンプトの型を定義。
           status: planned
           context_level: future_context
           dependencies: [common/constitution.yaml]
-        - path: common/projects/project_template.yaml
-          role: project_template
-          description: 新規プロジェクト作成時の共通テンプレート。
+        - path: common/legislation/project_template.yaml
+          role: playbook_template_project
+          description: 第二階層(Legislation)に属する、新規プロジェクト作成時の共通テンプレート。
           context_level: template_data
           dependencies: []
-        - path: common/domains/domain_template.yaml
-          role: domain_template
-          description: 新規ドメイン作成時の共通テンプレート。
+        - path: common/legislation/domain_template.yaml
+          role: playbook_template_domain
+          description: 第二階層(Legislation)に属する、新規ドメイン作成時の共通テンプレート。
           context_level: template_data
           dependencies: []
     - name: personal
       description: OS所有者固有の価値観、設定、および具体的な実装。
       files:
+        - path: personal/constitution.yaml  # 追加
+          role: personal_constitution  # 追加
+          description: OS所有者個人の究極の目的や核となる価値観を定義する。
+          context_level: base_os_context
+          dependencies: [../common/constitution.yaml]
         - path: personal/core_principles.yaml
-          role: personal_implementation_root
-          description: 個人のOSインスタンスの最上位ファイル。共通フレームワークをインポートし、個人の価値観や具体的な設定を記述。
+          role: personal_implementation_config  # 役割を修正
+          description: 個人のOSインスタンスの具体的な設定、役割、ガードの詳細、KPI、改善バックログなどを定義。  # 説明を修正
           context_level: base_os_context
           dependencies:
             - ../common/constitution.yaml
-            - ../common/guards.yaml
-            - ../common/mappings.yaml
-            - ../common/implementation_framework.yaml
-            - ../common/taxonomy.yaml
+            - ./constitution.yaml  # personal/constitution.yamlへの依存を追加
+        - path: personal/acquired_immunity.yaml
+          role: personal_adaptive_rules
+          description: 個人的な経験から獲得した、特異的なルール（抗体）の集合。
+          context_level: personal_data
+          dependencies: [common/immune_system.yaml]
         - path: personal/profile.yaml
           role: personal_profile
           description: OS所有者の固定的なプロフィール（名前、タイムゾーンなど）を定義。
@@ -73,36 +83,37 @@ system_architecture:
           description: Jibun OSプラットフォーム自体の開発プロジェクト定義、バージョン、ステージ、開発バックログを管理。
           context_level: base_os_context
           dependencies: []
-        - path: personal/projects/book_writing.yaml
-          role: user_project_instance
-          description: 書籍『リーン・アプローチに基づく完全ガイド』執筆プロジェクトの具体的な定義。
-          status: deleted_replaced_by_lean_data_engineering_book
-          context_level: legacy_context
-          dependencies: [common/projects/project_template.yaml]
         - path: personal/domains/learning.yaml
           role: user_domain_instance
           description: OS所有者の学習領域に関する定義。
           context_level: domain_context
-          dependencies: [common/domains/domain_template.yaml]
+          dependencies: [common/legislation/domain_template.yaml]
     - name: logs
       description: OSの運用中に動的に生成される、行動や決定に関するログデータ。
       files:
         - path: logs/task_log.yaml
           role: task_log
-          description: タスクの進捗（ID、ステージ、目的、ステータス、関連決定）を記録。
-          context_level: log_data
-          dependencies: [logs/decision_log.yaml]
-        - path: logs/decision_log.yaml
-          role: decision_log
-          description: 重要な意思決定の「なぜ」（理由）、選択肢、最終決定、関連タスクを記録。Decision-Action Traceabilityを保証。
+          description: タスクの進捗を記録。
           context_level: log_data
           dependencies: []
+        - path: logs/decision_log.yaml
+          role: decision_log
+          description: 重要な意思決定の「なぜ」を記録。
+          context_level: log_data
+          dependencies: [logs/task_log.yaml]
         - path: logs/guard_log.yaml
           role: guard_invocation_log
-          description: ガード発動時の記録や、AIとの対話履歴などを動的に記録。
+          description: 知的免疫システムの発動記録や、AIとの対話履歴などを動的に記録。
           context_level: log_data
-          dependencies: [common/guards.yaml]
+          dependencies:
+            - common/immune_system.yaml
+            - personal/acquired_immunity.yaml
   other_root_files:
+    - path: docs/charter.md
+      role: system_charter
+      description: デジタルツインの理念、構造、運用を定義する最高規範。全てのコンポーネントはこの憲章の思想に従う。
+      context_level: documentation
+      dependencies: []  # common/system_map.yamlへの依存を削除
     - path: .github/workflows/validate.yaml
       role: ci_workflow
       description: CI/CDワークフロー定義。OSの構造、スキーマ、lintなどを検証。
@@ -110,21 +121,9 @@ system_architecture:
       dependencies: []
     - path: docs/architecture_overview.md
       role: system_documentation
-      description: OSの全体的なアーキテクチャ概要。人間が読むための設計ドキュメント。
+      description: OSの技術的なアーキテクチャ概要。docs/charter.mdを補完する、人間が読むための設計ドキュメント。
       context_level: documentation
-      dependencies: [common/system_map.yaml]
-    - path: jibun_os.yml
-      role: legacy_root_config
-      description: 以前のOSのモノリシックなルート設定ファイル。新しいモジュール構造へ移行済み。
-      status: to_be_deleted
-      context_level: legacy_context
-      dependencies: []
-    - path: decision-log.md
-      role: legacy_book_project_constitution
-      description: 書籍執筆プロジェクトの以前の憲法（Markdown形式）。新しいpersonal/projects/lean_data_engineering_book.yamlへ移行済み。
-      status: to_be_deleted
-      context_level: legacy_context
-      dependencies: []
+      dependencies: [common/system_map.yaml, docs/charter.md]
     - path: README.md
       role: project_readme
       description: プロジェクトの概要と導入手順。

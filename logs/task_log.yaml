@@ -1,206 +1,288 @@
 ---
-# ======== Stage-1 : 基盤整備 =================================
-- id: layer_split_migration
-  stage: 1
-  purpose: obs
-  description: 三層フォルダへ移動 & imports 追記
-  status: done
-  related_decision: layer_split_go
-- id: layer_ci_lint_rule
-  stage: 1
-  purpose: obs
-  description: common/personal 重複禁止 lint を追加
-  status: todo
-  related_decision: layer_split_go
-- id: profile_yaml_add
-  stage: 1
-  purpose: obs
-  description: personal/profile.yaml を作成し固定属性を集約
-  status: done
-  related_decision: profile_yaml_go
-- id: core_common_extract
-  stage: 1
-  purpose: obs
-  description: jibun_os.yaml から普遍憲法を抽出→common/core_principles.yaml
-  status: done
-  related_decision: common_split_approved
-- id: template_seed
-  stage: 1
-  purpose: obs
-  description: common/projects/project_template.yaml を生成
-  status: done
-  related_decision: common_split_approved
-- id: book_project_seed
-  stage: 1
-  purpose: value
-  description: personal/projects/book_writing.yaml をテンプレから生成
-  status: done
-  related_decision: common_split_approved
-- id: domain_folder_setup
-  stage: 1
-  purpose: obs
-  description: common & personal に domains/ を作成しテンプレ配置
-  status: done
-  related_decision: domain_folder_go
-- id: taxonomy_file_add
-  stage: 1
-  purpose: obs
-  description: common/taxonomy.yaml を作成しタグを列挙
-  status: done
-  related_decision: taxonomy_tags_go
-- id: ci_decision_link_check
-  stage: 1
-  purpose: obs
-  description: CIで Decision↔Task ID を必須チェック
-  status: todo
-  related_decision: feedback_review_20250710
-- id: kpi_sheet_add_profit_col
-  stage: 1
-  purpose: value
-  description: KPIシートに『収益／社会貢献』列を追加
-  status: todo
-  related_decision: plan_alignment_check
-- id: ci_add_g009_lint
-  stage: 1
-  purpose: security
-  description: ci/security_lint.yml に G009 静的解析ジョブを追加
-  status: todo
-  related_decision: plan_alignment_check
-- id: ci_add_g009_lint
-  stage: 1
-  purpose: security
-  description: ci/security_lint.yml に G009 静的解析ジョブを追加
-  status: done
-  related_decision: plan_alignment_check
-- id: core_root_remove
-  stage: 1
-  purpose: obs
-  description: ルート core_principles.yaml の退役を確認
-  status: done
-  related_decision: root_core_retire
-- id: yamlfix_migration_task
-  stage: 1
-  purpose: quality
-  description: yamlfix で全 YAML を整形し CI RED を解消
-  status: done
-  related_decision: yaml_formatter_switch
-- id: os_refactor_for_reusability
-  stage: 1
-  purpose: quality
-  description: OS全体を『共通フレームワーク』と『個人実装』に分離するリファクタリング
-  status: done
-  related_decision: os_refactor_for_reusability_go
-- id: system_map_creation
-  stage: 1
-  purpose: quality
-  description: OSのファイル構造と役割を定義するcommon/system_map.yamlを作成（機械可読性向上）
-  status: done
-  related_decision: system_map_creation_go
-- id: book_project_refactor_split
-  stage: 1
-  purpose: quality
-  description: 書籍プロジェクトのdecision-log.mdを共通/個人要素に分離・統合し、personal/projects/book_writing.yamlを生成（または更新）するリファクタリング
-  status: done
-  related_decision: book_project_refactor_go
-- id: ci_develop_validation_enable
-  stage: 1
-  purpose: quality
-  description: .github/workflows/validate.yamlを修正し、developブランチでのYAML検証CIを有効にする
-  status: done
-  related_decision: ci_develop_validation_enable_go
-- id: create_base_os_context_script
-  stage: 1
-  purpose: quality
-  description: AIへのベースコンテキスト（コア+プラットフォーム）を自動生成するscripts/get_base_os_context.pyを作成
-  status: done
-  related_decision: ai_context_optimization_go
-- id: update_system_map_with_context_level
-  stage: 1
-  purpose: quality
-  description: common/system_map.yamlにcontext_levelフィールドを追加し、各ファイルのコンテキストレベルを定義
-  status: done
-  related_decision: ai_context_dynamic_load_go
-- id: update_base_os_context_script
-  stage: 1
-  purpose: quality
-  description: AIへのベースコンテキスト（コア+プラットフォーム）をsystem_map.yamlから動的に生成するscripts/get_base_os_context.pyを修正
-  status: done
-  related_decision: ai_context_dynamic_load_go
-- id: move_lean_data_book_to_repo
-  stage: 1
-  purpose: quality
-  description: personal/projects/lean_data_engineering_book.yamlを本執筆リポジトリへ移動し、関連するsystem_map.yamlを更新する
-  status: done
-  related_decision: lean_data_book_repo_move_go
+# タスクログ (Task Log)
+# このファイルには、意思決定から生まれた具体的なタスクを記録します。
+# 各タスクは、進捗状況、担当者、関連する決定などを明確にします。
+version: 2.0.0
+tasks:
+  # ======== Stage-1 : 基盤整備 =================================
+  - id: TASK-001
+    timestamp: '2025-07-10T10:31:00+09:00'
+    related_decision: DEC-004
+    summary: 三層フォルダへ移動 & imports 追記 (layer_split_migration)
+    status: done
+    assignee: mikieto
+    description: OSのファイル構造をcommon, personal, logsの三層に物理的に移動し、関連するimportパスを修正する。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: observability
+    priority: High
+  - id: TASK-002
+    timestamp: '2025-07-10T10:32:00+09:00'
+    related_decision: DEC-004
+    summary: common/personal 重複禁止 lint を追加 (layer_ci_lint_rule)
+    status: todo
+    assignee: mikieto
+    description: CIプロセスに、commonとpersonalディレクトリ間でファイル名の重複を禁止するリンターチェックを追加する。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: observability
+    priority: Medium
+  - id: TASK-003
+    timestamp: '2025-07-10T11:01:00+09:00'
+    related_decision: DEC-005
+    summary: personal/profile.yaml を作成し固定属性を集約 (profile_yaml_add)
+    status: done
+    assignee: mikieto
+    description: OS所有者の固定的なプロフィール（名前、タイムゾーンなど）を定義するprofile.yamlをpersonalディレクトリに作成する。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: observability
+    priority: Medium
+  - id: TASK-004
+    timestamp: '2025-07-10T11:31:00+09:00'
+    related_decision: DEC-006
+    summary: jibun_os.yaml から普遍憲法を抽出 (core_common_extract)
+    status: done
+    assignee: mikieto
+    description: モノリシックだったjibun_os.yamlから、誰でも再利用可能な普遍的な原則を抽出し、common/constitution.yamlとして分離する。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: observability
+    priority: High
+  - id: TASK-005
+    timestamp: '2025-07-10T11:32:00+09:00'
+    related_decision: DEC-006
+    summary: common/projects/project_template.yaml を生成 (template_seed)
+    status: done
+    assignee: mikieto
+    description: 新規プロジェクト作成時の共通テンプレート（プレイブック）をcommon/projectsディレクトリに作成する。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: observability
+    priority: High
+  - id: TASK-006
+    timestamp: '2025-07-10T11:33:00+09:00'
+    related_decision: DEC-006
+    summary: personal/projects/book_writing.yaml をテンプレから生成 (book_project_seed)
+    status: done
+    assignee: mikieto
+    description: 書籍執筆プロジェクトの定義ファイルを、新しく作成したテンプレートから生成する。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: value
+    priority: Medium
+  - id: TASK-007
+    timestamp: '2025-07-10T12:01:00+09:00'
+    related_decision: DEC-007
+    summary: common & personal に domains/ を作成しテンプレ配置 (domain_folder_setup)
+    status: done
+    assignee: mikieto
+    description: プロジェクト横断的な知識領域を管理するため、commonおよびpersonalディレクトリにdomainsフォルダとテンプレートを作成する。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: observability
+    priority: Medium
+  - id: TASK-008
+    timestamp: '2025-07-10T13:01:00+09:00'
+    related_decision: DEC-008
+    summary: common/taxonomy.yaml を作成しタグを列挙 (taxonomy_file_add)
+    status: done
+    assignee: mikieto
+    description: OS全体で共有されるタグや分類を定義するtaxonomy.yamlをcommonディレクトリに作成する。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: observability
+    priority: High
+  - id: TASK-009
+    timestamp: '2025-07-10T09:31:00+09:00'
+    related_decision: DEC-002
+    summary: KPIシートに『収益／社会貢献』列を追加 (kpi_sheet_add_profit_col)
+    status: todo
+    assignee: mikieto
+    description: プロジェクトの価値を測定するため、KPI管理シートに収益性や社会貢献度を測るための列を追加する。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: value
+    priority: Medium
+  - id: TASK-010
+    timestamp: '2025-07-10T09:32:00+09:00'
+    related_decision: DEC-002
+    summary: ci/security_lint.yml に G009 静的解析ジョブを追加 (ci_add_g009_lint)
+    status: done
+    assignee: mikieto
+    description: 倫理的・社会的文脈ガード（G009）をCIプロセスに組み込み、自動的にチェックする。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: security
+    priority: High
+  - id: TASK-011
+    timestamp: '2025-07-10T14:31:00+09:00'
+    related_decision: DEC-011
+    summary: ルート core_principles.yaml の退役を確認 (core_root_remove)
+    status: done
+    assignee: mikieto
+    description: リファクタリングに伴い不要となった、リポジトリルートの旧core_principles.yamlを削除する。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: observability
+    priority: Medium
+  - id: TASK-012
+    timestamp: '2025-07-10T15:01:00+09:00'
+    related_decision: DEC-012
+    summary: OS全体を『共通フレームワーク』と『個人実装』に分離するリファクタリング (os_refactor_for_reusability)
+    status: done
+    assignee: mikieto
+    description: OSの再利用性を高めるため、大規模なリファクタリングを実施する。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: quality
+    priority: Critical
+  - id: TASK-013
+    timestamp: '2025-07-10T16:01:00+09:00'
+    related_decision: DEC-014
+    summary: OSのファイル構造と役割を定義するcommon/system_map.yamlを作成 (system_map_creation)
+    status: done
+    assignee: mikieto
+    description: AIがOSの構造を機械的に理解できるようにするため、system_map.yamlを作成する。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: quality
+    priority: Critical
+  - id: TASK-014
+    timestamp: '2025-07-10T16:31:00+09:00'
+    related_decision: DEC-015
+    summary: 書籍プロジェクトのdecision-log.mdを共通/個人要素に分離・統合 (book_project_refactor_split)
+    status: done
+    assignee: mikieto
+    description: 書籍プロジェクトの意思決定ログを、普遍的な原則とプロジェクト固有の要素に分離する。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: quality
+    priority: High
+  - id: TASK-015
+    timestamp: '2025-07-10T17:01:00+09:00'
+    related_decision: DEC-016
+    summary: developブランチでのYAML検証CIを有効にする (ci_develop_validation_enable)
+    status: done
+    assignee: mikieto
+    description: .github/workflows/validate.yamlを修正し、developブランチでの品質を早期に保証する。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: quality
+    priority: High
+  - id: TASK-016
+    timestamp: '2025-07-10T17:31:00+09:00'
+    related_decision: DEC-017
+    summary: AIへのベースコンテキストを自動生成するスクリプトを作成 (create_base_os_context_script)
+    status: done
+    assignee: mikieto
+    description: scripts/get_base_os_context.pyを作成し、AIへのコンテキスト供給を自動化する。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: quality
+    priority: High
+  - id: TASK-017
+    timestamp: '2025-07-10T18:01:00+09:00'
+    related_decision: DEC-018
+    summary: system_map.yamlにcontext_levelフィールドを追加 (update_system_map_with_context_level)
+    status: done
+    assignee: mikieto
+    description: 各ファイルのコンテキストレベルを定義し、AIコンテキスト生成の動的なロードを可能にする。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: quality
+    priority: High
+  - id: TASK-018
+    timestamp: '2025-07-10T18:02:00+09:00'
+    related_decision: DEC-018
+    summary: AIコンテキスト生成スクリプトをsystem_map.yamlから動的にロードするよう修正 (update_base_os_context_script)
+    status: done
+    assignee: mikieto
+    description: scripts/get_base_os_context.pyを修正し、system_map.yamlを唯一の信頼できる情報源とする。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: quality
+    priority: Critical
+  - id: TASK-019
+    timestamp: '2025-07-10T18:31:00+09:00'
+    related_decision: DEC-019
+    summary: 書籍プロジェクト定義ファイルを本執筆リポジトリへ移動 (move_lean_data_book_to_repo)
+    status: done
+    assignee: mikieto
+    description: personal/projects/lean_data_engineering_book.yamlを専用リポジトリへ移動し、プロジェクトの自己完結性を高める。
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: quality
+    priority: High
 
-# ======== Stage-2 : 自動品質保証 ==============================
-- id: precommit_hook_setup
-  stage: 2
-  purpose: security
-  description: pre-commit で yamllint / schema / secret-scan を強制
-  status: todo
-  related_decision: workflow_simplification_20250710
+  # ======== Stage-2 : 自動品質保証 ==============================
+  - id: TASK-020
+    timestamp: '2025-07-11T09:00:00+09:00'
+    related_decision: DEC-XXX  # workflow_simplification_20250710 に対応する決定ID
+    summary: pre-commitフックでyamllint/schema/secret-scanを強制 (precommit_hook_setup)
+    status: todo
+    assignee: mikieto
+    description: コミット前に自動的に品質とセキュリティをチェックする仕組みを導入する。
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: security
+    priority: Critical
 
-# ======== Stage-3 : 可視化 & インサイト =======================
-- id: token_meter_script
-  stage: 3
-  purpose: obs
-  description: prompt_tokens を計測し Guard Log に自動書込む
-  status: todo
-  related_decision: workflow_simplification_20250710
-- id: horizon_scan_poc
-  stage: 3
-  purpose: speed
-  description: 週次で外部情報取得→Impact Issue 自動生成 PoC
-  status: todo
-  related_decision: feedback_review_20250710
-- id: docs_folder_setup
-  stage: 3
-  purpose: obs
-  description: docs/フォルダを作成し、READMEからの導線を整理して初見者の体験を向上（OS公開向けドキュメント整備の基盤）
-  status: todo
-  related_decision: v3_arch_feedback_adopt
-
-# ======== Stage-4 : 外化ブースト ==============================
-- id: demo_token_compare
-  stage: 4
-  purpose: value
-  description: ワンクリック体験デモ (Streamlit) を公開
-  status: todo
-- id: devcontainer_template
-  stage: 4
-  purpose: value
-  description: 公式 Dev Container & docker-compose を提供
-  status: todo
-- id: benchmark_blog_post
-  stage: 4
-  purpose: value
-  description: KPI 改善を記事化し外部発信
-  status: todo
-- id: byo_storage_docs
-  stage: 4
-  purpose: security
-  description: BYO-Storage & ローカル LLM 手順を文書化
-  status: todo
-- id: setup_external_framework_publish
-  stage: 4
-  purpose: value
-  description: Jibun OS共通フレームワークの外部公開に向けた準備（ライセンス、CONTRIBUTINGガイド等）
-  status: todo
-  related_decision: ai_context_optimization_go
-
-# ======== Stage-5 : 週次ループ定着 ============================
-- id: weekly_efl_review
-  stage: 5
-  purpose: speed
-  description: Golden Flow 5-Step を Issue テンプレで回す
-  status: todo
-  related_decision: workflow_simplification_20250710
-
-# ======== 完了済み ============================================
-- id: core_add_traceability
-  stage: 1
-  purpose: obs
-  description: core_principles.yaml に Traceability 原則を追加
-  status: done
-  related_decision: feedback_review_20250710
+  # ======== Stage-3 : 可視化 & インサイト =======================
+  - id: TASK-021
+    timestamp: '2025-07-11T10:00:00+09:00'
+    related_decision: DEC-XXX  # workflow_simplification_20250710 に対応する決定ID
+    summary: prompt_tokensを計測しGuard Logに自動書込み (token_meter_script)
+    status: todo
+    assignee: mikieto
+    description: AIとの対話で消費したトークン量を計測し、コスト管理と利用状況の可視化を行う。
+    scope:
+      project: os_platform_v1
+      stage: 3
+      domain: observability
+    priority: Medium
+  - id: TASK-022
+    timestamp: '2025-07-11T11:00:00+09:00'
+    related_decision: DEC-013  # v3_arch_feedback_adopt
+    summary: 週次で外部情報取得→Impact Issue自動生成PoC (horizon_scan_poc)
+    status: todo
+    assignee: mikieto
+    description: 機会発見エンジン（Opportunity Engine）の概念実証として、外部情報をスキャンし、影響のありそうなIssueを自動起票する。
+    scope:
+      project: os_platform_v1
+      stage: 3
+      domain: speed
+    priority: High
+  - id: TASK-023
+    timestamp: '2025-07-11T12:00:00+09:00'
+    related_decision: DEC-013  # v3_arch_feedback_adopt
+    summary: docs/フォルダをセットアップし、初見者の体験を向上 (docs_folder_setup)
+    status: todo
+    assignee: mikieto
+    description: OS公開に向け、ドキュメントを整備するための基盤を構築する。
+    scope:
+      project: os_platform_v1
+      stage: 3
+      domain: observability
+    priority: High
+# --- 他のStageのタスクも同様に変換 ---

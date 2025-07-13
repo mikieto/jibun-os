@@ -1,210 +1,374 @@
 ---
-# 1. 最上位 Why
-- date: '2025-07-10'
-  tag: os_evolution_master_why
-  project_id: os_platform_v1
-  options: [挑戦を進める, 現状維持]
-  chosen_option: 挑戦を進める
-  reason: |
-    私の思考と行動を最小摩擦で可観測データに変換し、
-    AI と外部フィードバックを高速循環させながら
-    学習成果を安全かつ倫理的に
-    具体的価値へ即転換できる自分OSを実現するため。
-  follow_up: []
-
-# 2. 計画整合チェック
-- date: '2025-07-10'
-  tag: plan_alignment_check
-  project_id: os_platform_v1
-  options: [計画維持, 大幅修正]
-  chosen_option: 計画維持
-  follow_up:
-    - kpi_sheet_add_profit_col
-    - ci_add_g009_lint
-
-# 3. PoC-1 完了宣言
-- date: '2025-07-10'
-  tag: milestone_poc1_complete
-  project_id: os_platform_v1
-  options: [完了を宣言する, 作業を継続する]
-  chosen_option: 完了を宣言する
-
-# 4. 三層＋フォルダ分割 GO
-- date: '2025-07-10'
-  tag: layer_split_go
-  project_id: os_platform_v1
-  options: [実施, 延期]
-  chosen_option: 実施
-  follow_up:
-    - layer_split_migration
-    - layer_ci_lint_rule
-
-# 5. profile.yaml 作成 GO
-- date: '2025-07-10'
-  tag: profile_yaml_go
-  project_id: os_platform_v1
-  options: [作成する, 見送る]
-  chosen_option: 作成する
-  follow_up:
-    - profile_yaml_add
-
-# 6. 共通憲法抽出 GO
-- date: '2025-07-10'
-  tag: common_split_approved
-  project_id: os_platform_v1
-  options: [split_common, keep_mono]
-  chosen_option: split_common
-  follow_up:
-    - core_common_extract
-    - template_seed
-    - book_project_seed
-
-# 7. domains フォルダ GO
-- date: '2025-07-10'
-  tag: domain_folder_go
-  project_id: os_platform_v1
-  options: [追加する, 見送る]
-  chosen_option: 追加する
-  follow_up:
-    - domain_folder_setup
-
-# 8. taxonomy ファイル GO
-- date: '2025-07-10'
-  tag: taxonomy_tags_go
-  project_id: os_platform_v1
-  options: [作成する, 見送る]
-  chosen_option: 作成する
-  follow_up:
-    - taxonomy_file_add
-
-# 9. オーバーエンジニアリング抑止方針
-- date: '2025-07-10'
-  tag: anti_overengineering_check
-  project_id: os_platform_v1
-  options: [最小実装で進む, 追加施策も同時実装]
-  chosen_option: 最小実装で進む
-  follow_up: []
-
-# 10. 依存分割 GO
-- date: '2025-07-10'
-  tag: deps_split_go
-  project_id: os_platform_v1
-  options: [split, single_file]
-  chosen_option: split
-  reason: |
-    ランタイムと CI 依存を分離し、本番イメージの
-    セキュリティとビルド速度を最適化するため。
-  follow_up: [deps_split_task]
-- date: '2025-07-10'
-  tag: root_core_retire
-  project_id: os_platform_v1
-  options: [delete, pointer, archive]
-  chosen_option: delete
-  reason: >
-    三層分割後は役割が重複。
-    CI 競合とメンテ負荷を避けるため削除する。
-  follow_up: [core_root_remove]
-- date: '2025-07-10'
-  tag: os_refactor_for_reusability_go
-  project_id: os_platform_v1
-  options: [憲法のみリファクタリング, OS全体をリファクタリング]
-  chosen_option: OS全体をリファクタリング
-  reason: |
-    OSの再利用性と構造的完成度を飛躍的に高めるため。
-    憲法だけでなく実装ガイドも含めた全体を「共通フレームワーク」と「個人実装」に分離することで、
-    個人のツールから他者も利用可能なOSフレームワークへと進化させる。
-  follow_up: [os_refactor_for_reusability]
-- date: '2025-07-10'
-  tag: os_refactor_for_reusability_go
-  project_id: os_platform_v1
-  options: [憲法のみリファクタリング, OS全体をリファクタリング（高モジュール化）]
-  chosen_option: OS全体をリファクタリング（高モジュール化）
-  reason: |
-    OSの再利用性と構造的完成度を飛躍的に高めるため。
-    憲法だけでなく実装ガイドも含めた全体を「共通フレームワーク」と「個人実装」に分離することで、
-    個人のツールから他者も利用可能なOSフレームワークへと進化させる。
-  follow_up: [os_refactor_for_reusability]
-- date: '2025-07-10'
-  tag: v3_arch_feedback_adopt
-  project_id: os_platform_v1
-  options: [現行案を維持, フィードバックを採択]
-  chosen_option: フィードバックを採択
-  reason: 機械可読性、CI堅牢性、ドキュメント導線を強化し、AIと新規協力者の双方にとっての運用性を高めるため。
-  follow_up:
-    - ci_jobs_enhancement
-    - log_rotation_policy
-    - guard_id_namespace
-    - docs_folder_setup
-- date: '2025-07-10'
-  tag: system_map_creation_go
-  project_id: os_platform_v1
-  options: [system_mapを作成しない, system_mapを作成する]
-  chosen_option: system_mapを作成する
-  reason: |
-    OSの目的である「コピー可能な自己」と「他者利用可能なフレームワーク」の実現のため、
-    AIがOSの構造、役割、依存関係を機械的に理解できる必要性がある。
-    これにより、AIによる自動検証、ガイダンス、冗長性排除、一貫性確保が可能となり、
-    将来的な改造・機能追加時の間違いや余分な作業を削減するため。
-  follow_up: [system_map_creation]
-- date: '2025-07-10'
-  tag: book_project_refactor_go
-  project_id: os_platform_v1
-  options: [decision-log.mdを現状維持, decision-log.mdを共通/個人に分離]
-  chosen_option: decision-log.mdを共通/個人に分離
-  reason: |
-    書籍プロジェクトのdecision-log.mdを普遍的なプロジェクト管理原則と
-    書籍執筆プロジェクト固有の要素に分離することで、
-    OSの「コピー可能な自己」の最高目的をプロジェクト管理にも適用し、
-    再利用性、一貫性、AI協働の効率性を向上させるため。
-  follow_up: [book_project_refactor_split]
-- date: '2025-07-10'
-  tag: ci_develop_validation_enable_go
-  project_id: os_platform_v1
-  options: [developブランチのCI検証を有効にしない, developブランチのCI検証を有効にする]
-  chosen_option: developブランチのCI検証を有効にする
-  reason: |
-    developブランチでの変更の品質を早期に保証し、mainブランチへのマージをスムーズに行うため。
-    以前発生していたjibun_os.yml参照エラーを解消し、CIをパスさせることを目的とする。
-  follow_up: [ci_develop_validation_enable]
-- date: '2025-07-10'
-  tag: ai_context_optimization_go
-  project_id: os_platform_v1
-  options: [手動でのコンテキストフィードを維持, コア＆プラットフォームコンテキストスクリプトを導入]
-  chosen_option: コア＆プラットフォームコンテキストスクリプトを導入
-  reason: |
-    AIへのコンテキストフィードの手間を20%の手間で80%の価値を得る形で大幅に削減するため。
-    OSの根幹情報とプラットフォーム状況を常にAIに共有し、自律的な認識と協働を促進する。
-    生成ファイルはGitトラッキングから除外する。
-  follow_up:
-    - create_base_os_context_script
-
-# logs/decision_log.yaml へ追記 (最新の決定の下に追加)
-- date: '2025-07-10'
-  tag: ai_context_dynamic_load_go
-  project_id: os_platform_v1
-  options:
-    - AIコンテキストファイルをスクリプトにハードコード
-    - system_map.yamlからAIコンテキストファイルを動的にロード
-  chosen_option: system_map.yamlからAIコンテキストファイルを動的にロード
-  reason: |
-    AIへのコンテキストフィードにおける「実体との乖離」リスクを排除し、
-    system_map.yamlをOSの唯一の信頼できる情報源（Single Source of Truth）として維持するため。
-    これにより、system_map.yamlの更新が自動的にAIコンテキストに反映され、
-    手動でのスクリプト修正の手間とミスを削減する。
-    生成ファイルはGitトラッキングから除外する。
-  follow_up:
-    - update_system_map_with_context_level
-    - update_base_os_context_script
-- date: '2025-07-10'
-  tag: lean_data_book_repo_move_go
-  project_id: os_platform_v1
-  options:
-    - lean_data_engineering_book.yamlをjibun-os内に維持
-    - lean_data_engineering_book.yamlを本執筆リポジトリへ移動
-  chosen_option: lean_data_engineering_book.yamlを本執筆リポジトリへ移動
-  reason: |
-    書籍執筆プロジェクトのルールと計画の「唯一の信頼できる情報源」を、
-    そのプロジェクトのGitリポジトリ自体に配置することで、プロジェクトの自己完結性を高める。
-    これにより、jibun-osリポジトリの「共通フレームワークとOS個人実装」という役割がより明確になり、
-    OSが個別プロジェクトを「管理」する形から「統合・連携」する形へと進化する。
-  follow_up: [move_lean_data_book_to_repo]
+# 意思決定ログ (Decision Log)
+# このファイルには、重要な意思決定の「なぜ」を記録します。
+# 各決定は、将来の自分やAIが文脈を理解できるよう、理由や背景と共に記録されます。
+version: 2.1.0  # バージョンを更新
+decisions:
+  - id: DEC-001
+    timestamp: '2025-07-10T09:00:00+09:00'
+    status: decided
+    summary: OS進化の最上位Whyとして『挑戦を進める』ことを決定
+    reason: |
+      私の思考と行動を最小摩擦で可観測データに変換し、
+      AIと外部フィードバックを高速循環させながら
+      学習成果を安全かつ倫理的に
+      具体的価値へ即転換できる自分OSを実現するため。
+    alternatives:
+      - name: 挑戦を進める
+        pros: システムの進化を加速させ、自己探求という究極の目的を達成できる。
+        cons: 不確実性が高く、開発コストが増大するリスクがある。
+      - name: 現状維持
+        pros: 安定しており、追加の開発コストが発生しない。
+        cons: システムの進化が停滞し、長期的な価値向上が見込めない。
+    related_tasks: []
+    scope:
+      project: os_platform_v1
+      domain: philosophy
+    severity: Critical
+  - id: DEC-002
+    timestamp: '2025-07-10T09:30:00+09:00'
+    status: decided
+    summary: 計画整合性チェックの結果、計画を維持することを決定
+    reason: KPIシートへの利益列追加とCIへのG009リント追加により、計画の妥当性が担保されるため。
+    alternatives:
+      - name: 計画維持
+        pros: 一貫した開発プロセスを継続できる。
+        cons: N/A
+      - name: 大幅修正
+        pros: リスクを早期に回避できる可能性がある。
+        cons: 手戻りが発生し、開発スケジュールが遅延する。
+    related_tasks: [TASK-001, TASK-002]  # kpi_sheet_add_profit_col, ci_add_g009_lint
+    scope:
+      project: os_platform_v1
+      domain: project_management
+    severity: High
+  - id: DEC-003
+    timestamp: '2025-07-10T10:00:00+09:00'
+    status: decided
+    summary: PoC-1の完了を宣言
+    reason: 定義された要件を満たし、次のステップに進む準備が整ったため。
+    alternatives:
+      - name: 完了を宣言する
+        pros: プロジェクトを次のフェーズに進め、マイルストーンを達成できる。
+        cons: 未発見の問題が残っている可能性がある。
+      - name: 作業を継続する
+        pros: 品質をさらに高めることができる。
+        cons: スケジュールが遅延し、機会損失に繋がるリスクがある。
+    related_tasks: []
+    scope:
+      project: os_platform_v1
+      domain: milestone
+    severity: High
+  - id: DEC-004
+    timestamp: '2025-07-10T10:30:00+09:00'
+    status: decided
+    summary: OSの三層（common, personal, logs）＋フォルダ分割の実施を決定
+    reason: システムのモジュール性と可読性を高め、長期的なメンテナンス性を向上させるため。
+    alternatives:
+      - name: 実施
+        pros: 関心の分離が実現し、アーキテクチャが堅牢になる。
+        cons: 初期の移行コストが発生する。
+      - name: 延期
+        pros: 目先の開発に集中できる。
+        cons: 技術的負債が蓄積し、将来の変更が困難になる。
+    related_tasks: [TASK-003, TASK-004]  # layer_split_migration, layer_ci_lint_rule
+    scope:
+      project: os_platform_v1
+      domain: system_architecture
+    severity: Critical
+  - id: DEC-005
+    timestamp: '2025-07-10T11:00:00+09:00'
+    status: decided
+    summary: personal/profile.yamlの作成を決定
+    reason: OS所有者固有の固定情報を一元管理し、他の設定ファイルから参照可能にするため。
+    alternatives:
+      - name: 作成する
+        pros: 設定情報がDRY（Don't Repeat Yourself）になり、一貫性が保たれる。
+        cons: ファイルが一つ増える。
+      - name: 見送る
+        pros: ファイル数を増やさずに済む。
+        cons: 同じ情報が複数のファイルに分散し、管理が煩雑になる。
+    related_tasks: [TASK-005]  # profile_yaml_add
+    scope:
+      project: os_platform_v1
+      domain: configuration
+    severity: Medium
+  - id: DEC-006
+    timestamp: '2025-07-10T11:30:00+09:00'
+    status: decided
+    summary: OSの共通部分と個人部分の分離を決定
+    reason: OSを再利用可能なフレームワークと、個人インスタンスに分離することで、システムのポータビリティと個人の独自性を両立させるため。
+    alternatives:
+      - name: split_common
+        pros: システムの再利用性が飛躍的に向上し、他者への展開が可能になる。
+        cons: 初期の設計と実装の複雑性が増す。
+      - name: keep_mono
+        pros: 単一リポジトリで管理がシンプル。
+        cons: システム全体が個人に密結合し、再利用が困難になる。
+    related_tasks: [TASK-006, TASK-007, TASK-008]  # core_common_extract, template_seed, book_project_seed
+    scope:
+      project: os_platform_v1
+      domain: system_architecture
+    severity: Critical
+  - id: DEC-007
+    timestamp: '2025-07-10T12:00:00+09:00'
+    status: decided
+    summary: domainsフォルダの追加を決定
+    reason: プロジェクト横断的な知識領域（例：学習、健康）を管理するための、新しいスコープを導入するため。
+    alternatives:
+      - name: 追加する
+        pros: 知識の分類体系がより豊かになり、Zettelkastenの表現力が高まる。
+        cons: ディレクトリ構造が一段階深くなる。
+      - name: 見送る
+        pros: シンプルな構造を維持できる。
+        cons: プロジェクトに属さない知識の置き場所に困る可能性がある。
+    related_tasks: [TASK-009]  # domain_folder_setup
+    scope:
+      project: os_platform_v1
+      domain: system_architecture
+    severity: Medium
+  - id: DEC-008
+    timestamp: '2025-07-10T13:00:00+09:00'
+    status: decided
+    summary: taxonomyファイルの作成を決定
+    reason: OS全体で使われるタグや分類（例：severity_levels）を一元管理し、システム全体の一貫性を保証するため。
+    alternatives:
+      - name: 作成する
+        pros: 分類体系の唯一の信頼できる情報源（Single Source of Truth）となり、機械可読性も高まる。
+        cons: 管理するファイルが一つ増える。
+      - name: 見送る
+        pros: ファイル数を増やさずに済む。
+        cons: 各ファイルで分類がバラバラに定義され、不整合が発生するリスクがある。
+    related_tasks: [TASK-010]  # taxonomy_file_add
+    scope:
+      project: os_platform_v1
+      domain: system_architecture
+    severity: High
+  - id: DEC-009
+    timestamp: '2025-07-10T13:30:00+09:00'
+    status: decided
+    summary: オーバーエンジニアリングを抑止し、最小実装で進む方針を決定
+    reason: 価値を最速で検証し、不要な機能開発による無駄を避けるため。リーンなアプローチを維持する。
+    alternatives:
+      - name: 最小実装で進む
+        pros: 開発サイクルが速まり、早期にフィードバックを得られる。
+        cons: 将来的な拡張性を見越した設計が不足する可能性がある。
+      - name: 追加施策も同時実装
+        pros: 将来の拡張に対応しやすい。
+        cons: 開発が遅れ、市場投入が遅れるリスクがある。また、使われない機能を作る可能性がある。
+    related_tasks: []
+    scope:
+      project: os_platform_v1
+      domain: development_philosophy
+    severity: High
+  - id: DEC-010
+    timestamp: '2025-07-10T14:00:00+09:00'
+    status: decided
+    summary: 依存関係ファイルの分割を決定
+    reason: ランタイムとCI依存を分離し、本番イメージのセキュリティとビルド速度を最適化するため。
+    alternatives:
+      - name: split
+        pros: 本番環境のコンテナイメージが軽量になり、セキュリティリスクが低減する。
+        cons: 依存関係の管理がわずかに複雑になる。
+      - name: single_file
+        pros: 管理がシンプル。
+        cons: 本番環境に不要なライブラリが含まれ、イメージサイズと脆弱性が増大する。
+    related_tasks: [TASK-011]  # deps_split_task
+    scope:
+      project: os_platform_v1
+      domain: ci_cd
+    severity: Medium
+  - id: DEC-011
+    timestamp: '2025-07-10T14:30:00+09:00'
+    status: decided
+    summary: 旧式のルートコア設定ファイルを削除
+    reason: 三層分割後は役割が重複。CI競合とメンテナンス負荷を避けるため削除する。
+    alternatives:
+      - name: delete
+        pros: 技術的負債が解消され、システムがシンプルになる。
+        cons: 過去の参照が完全に失われる。
+      - name: pointer
+        pros: 過去の参照を残せる。
+        cons: 不要なファイルが残り続ける。
+      - name: archive
+        pros: 履歴として保存できる。
+        cons: リポジトリ内に残り、ノイズとなる可能性がある。
+    related_tasks: [TASK-012]  # core_root_remove
+    scope:
+      project: os_platform_v1
+      domain: refactoring
+    severity: Medium
+  - id: DEC-012  # 2つの類似ログを1つに統合
+    timestamp: '2025-07-10T15:00:00+09:00'
+    status: decided
+    summary: OS全体をリファクタリングし、再利用性を高めることを決定
+    reason: |
+      OSの再利用性と構造的完成度を飛躍的に高めるため。
+      憲法だけでなく実装ガイドも含めた全体を「共通フレームワーク」と「個人実装」に分離することで、
+      個人のツールから他者も利用可能なOSフレームワークへと進化させる。
+    alternatives:
+      - name: OS全体をリファクタリング（高モジュール化）
+        pros: システムのポータビリティと個人の独自性を両立できる、理想的なアーキテクチャになる。
+        cons: 大規模な変更となり、時間とコストがかかる。
+      - name: 憲法のみリファクタリング
+        pros: 変更範囲が限定的で、リスクが低い。
+        cons: 中途半端な分離となり、根本的な課題が解決されない。
+    related_tasks: [TASK-013]  # os_refactor_for_reusability
+    scope:
+      project: os_platform_v1
+      domain: system_architecture
+    severity: Critical
+  - id: DEC-013
+    timestamp: '2025-07-10T15:30:00+09:00'
+    status: decided
+    summary: v3アーキテクチャに関するフィードバックの採択を決定
+    reason: 機械可読性、CI堅牢性、ドキュメント導線を強化し、AIと新規協力者の双方にとっての運用性を高めるため。
+    alternatives:
+      - name: フィードバックを採択
+        pros: 第三者の視点を取り入れ、システムの客観的な品質が向上する。
+        cons: 追加の修正作業が発生する。
+      - name: 現行案を維持
+        pros: 追加作業が不要。
+        cons: 潜在的な改善機会を逃す。
+    related_tasks: [TASK-014, TASK-015, TASK-016, TASK-017]
+    # ci_jobs_enhancement, log_rotation_policy, guard_id_namespace, docs_folder_setup
+    scope:
+      project: os_platform_v1
+      domain: project_management
+    severity: High
+  - id: DEC-014
+    timestamp: '2025-07-10T16:00:00+09:00'
+    status: decided
+    summary: system_map.yamlの作成を決定
+    reason: |
+      AIがOSの構造、役割、依存関係を機械的に理解できる必要性がある。
+      これにより、AIによる自動検証、ガイダンス、冗長性排除、一貫性確保が可能となり、
+      将来的な改造・機能追加時の間違いや余分な作業を削減するため。
+    alternatives:
+      - name: system_mapを作成する
+        pros: OSが自己記述性を持ち、AIとの協働レベルが飛躍的に向上する。
+        cons: マップ自体のメンテナンスコストが発生する。
+      - name: system_mapを作成しない
+        pros: 管理ファイルが一つ少なくて済む。
+        cons: AIがOSの全体像を把握できず、支援の質が低下する。
+    related_tasks: [TASK-018]  # system_map_creation
+    scope:
+      project: os_platform_v1
+      domain: system_architecture
+    severity: Critical
+  - id: DEC-015
+    timestamp: '2025-07-10T16:30:00+09:00'
+    status: decided
+    summary: 書籍プロジェクトのdecision-log.mdを共通/個人に分離することを決定
+    reason: |
+      書籍プロジェクトのdecision-log.mdを普遍的なプロジェクト管理原則と
+      書籍執筆プロジェクト固有の要素に分離することで、
+      OSの「コピー可能な自己」の最高目的をプロジェクト管理にも適用し、
+      再利用性、一貫性、AI協働の効率性を向上させるため。
+    alternatives:
+      - name: decision-log.mdを共通/個人に分離
+        pros: プロジェクト管理のノウハウが再利用可能な資産になる。
+        cons: 初期の分離作業に手間がかかる。
+      - name: decision-log.mdを現状維持
+        pros: 作業が不要。
+        cons: 特定のプロジェクトに依存した知見となり、再利用性が低い。
+    related_tasks: [TASK-019]  # book_project_refactor_split
+    scope:
+      project: os_platform_v1
+      domain: refactoring
+    severity: High
+  - id: DEC-016
+    timestamp: '2025-07-10T17:00:00+09:00'
+    status: decided
+    summary: developブランチのCI検証を有効にすることを決定
+    reason: |
+      developブランチでの変更の品質を早期に保証し、mainブランチへのマージをスムーズに行うため。
+      以前発生していたjibun_os.yml参照エラーを解消し、CIをパスさせることを目的とする。
+    alternatives:
+      - name: developブランチのCI検証を有効にする
+        pros: マージ前の品質が向上し、mainブランチの安定性が高まる。
+        cons: developブランチでのコミットに対するフィードバックサイクルがわずかに長くなる。
+      - name: developブランチのCI検証を有効にしない
+        pros: 開発中のコミットが素早く行える。
+        cons: 問題の発見が遅れ、マージ時に大きな手戻りが発生するリスクがある。
+    related_tasks: [TASK-020]  # ci_develop_validation_enable
+    scope:
+      project: os_platform_v1
+      domain: ci_cd
+    severity: High
+  - id: DEC-017
+    timestamp: '2025-07-10T17:30:00+09:00'
+    status: decided
+    summary: AIコンテキスト供給用のスクリプト導入を決定
+    reason: |
+      AIへのコンテキストフィードの手間を大幅に削減するため。
+      OSの根幹情報とプラットフォーム状況を常にAIに共有し、自律的な認識と協働を促進する。
+    alternatives:
+      - name: コア＆プラットフォームコンテキストスクリプトを導入
+        pros: AIとの対話の準備時間が短縮され、協働がよりスムーズになる。
+        cons: スクリプト自体のメンテナンスが必要になる。
+      - name: 手動でのコンテキストフィードを維持
+        pros: 追加のツールが不要。
+        cons: 毎回の手作業が煩雑で、コンテキストの与え忘れによる精度低下のリスクがある。
+    related_tasks: [TASK-021]  # create_base_os_context_script
+    scope:
+      project: os_platform_v1
+      domain: automation
+    severity: High
+  - id: DEC-018
+    timestamp: '2025-07-10T18:00:00+09:00'
+    status: decided
+    summary: AIコンテキストファイルをsystem_map.yamlから動的にロードすることを決定
+    reason: |
+      AIへのコンテキストフィードにおける「実体との乖離」リスクを排除し、
+      system_map.yamlをOSの唯一の信頼できる情報源（Single Source of Truth）として維持するため。
+    alternatives:
+      - name: system_map.yamlからAIコンテキストファイルを動的にロード
+        pros: system_map.yamlの更新が自動的にAIコンテキストに反映され、手動修正の手間とミスがなくなる。
+        cons: スクリプトがsystem_map.yamlの構造に依存するようになる。
+      - name: AIコンテキストファイルをスクリプトにハードコード
+        pros: スクリプトが自己完結している。
+        cons: OSのファイル構造を変更するたびに、スクリプトの修正が必要になり、メンテナンス性が低い。
+    related_tasks: [TASK-022, TASK-023]  # update_system_map_with_context_level, update_base_os_context_script
+    scope:
+      project: os_platform_v1
+      domain: automation
+    severity: Critical
+  - id: DEC-019
+    timestamp: '2025-07-10T18:30:00+09:00'
+    status: decided
+    summary: 書籍『リーンデータエンジニアリング(仮)』の定義ファイルを、専用リポジトリへ移動することを決定
+    reason: |
+      書籍執筆プロジェクトのルールと計画の「唯一の信頼できる情報源」を、
+      そのプロジェクトのGitリポジトリ自体に配置することで、プロジェクトの自己完結性を高める。
+    alternatives:
+      - name: lean_data_engineering_book.yamlを本執筆リポジトリへ移動
+        pros: プロジェクトの関心事が明確に分離され、各リポジトリの役割が純化する。
+        cons: リポジトリをまたいだ管理が必要になる。
+      - name: lean_data_engineering_book.yamlをjibun-os内に維持
+        pros: 単一リポジトリで管理できる。
+        cons: jibun-osリポジトリに、本来の責務ではないプロジェクト固有の情報が混在する。
+    related_tasks: [TASK-024]  # move_lean_data_book_to_repo
+    scope:
+      project: os_platform_v1
+      domain: system_architecture
+    severity: High
+  - id: DEC-020  # 新しいアイテム
+    timestamp: '2025-07-13T22:21:00+09:00'
+    status: decided
+    summary: task_log.yamlの構造を定義し、導入することを決定
+    reason: |
+      decision_logが構造化された今、次に行動の記録であるtask_logを構造化することで、
+      決定から行動へのトレーサビリティを確保し、プロジェクトの実行状況の可観測性を高めるため。
+    alternatives:
+      - name: 新しい構造を導入する
+        pros: 決定とタスクの連携が明確になり、進捗管理が容易になる。
+        cons: フォーマットの変更に伴う、既存ツールの修正が必要になる可能性がある。
+      - name: 現状のフォーマットを維持する
+        pros: 追加の作業が不要。
+        cons: ログの価値が限定的で、AIによる自動分析や支援が困難。
+    related_tasks: [TASK-025]  # Define task_log.yaml structure
+    scope:
+      project: os_platform_v1
+      domain: system_architecture
+    severity: High

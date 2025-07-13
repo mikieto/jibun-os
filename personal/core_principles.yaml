@@ -2,16 +2,17 @@
 # personal/core_principles.yaml
 #
 # 自分OSの個人的な実装を定義する最上位ファイル。
-# 共通フレームワークをインポートし、個人の価値観や具体的な設定を記述します。
+# 共通フレームワークをインポートし、個人の具体的な設定や運用詳細を記述します。
 imports:
   - ../common/constitution.yaml
   - ../common/guards.yaml
   - ../common/mappings.yaml
   - ../common/implementation_framework.yaml
+  - ./constitution.yaml  # 新しく作成した個人の憲法をインポートします
 # ------------------------------------------------
 # OSインスタンスのメタデータ
 # ------------------------------------------------
-version: 10.0.0-beta.0  # v3アーキテクチャへの更新
+version: 10.0.0-beta.0
 last_updated: '2025-07-10'
 author: Miki Eto
 # ------------------------------------------------
@@ -34,14 +35,7 @@ personal_definitions:
 # 個人的な実装 (Personal Implementations)
 # ------------------------------------------------
 personal_implementations:
-  constitution_details:
-    supreme_purpose_motivation: |
-      この目的の根源には、以下のOS所有者の究極の欲求がある。
-        - 「自分が何者か」という根源的な問いへの答えを見つける。
-        - 「怖がり」という性質を認識しつつ、外界との能動的なインタラクションを通じて、未知を「知る」喜びを得る。
-        - 外界からの「承認（褒められること）」を得ながら、自己の真の能力を「力試し」する。
-        - その能力が最も「役に立つ」世界、すなわち具体的な貢献と影響を生み出せる場を探求する。
-        - 他者を尊重し、独りよがりや不快感を避け、真に「気持ちよく生きられる」状態、すなわち複数動機の「微妙なバランス」を最適化し続ける。
+  # constitution_details: supreme_purpose_motivation は personal/constitution.yaml に移動しました
   core_code_overrides:  # 既存ファイルから取り込んだ重要な原則
     - name: Decision–Action Traceability
       description: |
@@ -59,3 +53,13 @@ personal_implementations:
   kpi_metrics:
     quantity: [ガード発動件数, OS更新頻度, 拡張フィードバックループのサイクルタイム]
     quality: [ガード是正完了率, 重大度別MTTR, OS改善後のパフォーマンス変化]
+# ------------------------------------------------
+# OS改善バックログ (OS Improvement Backlog)
+# ------------------------------------------------
+os_improvement_backlog:
+  - id: prompt_patterns_systemize
+    description: プロンプトパターンの体系化
+    status: planned
+  - id: guard_map_coverage
+    description: 全てのコアコードに対するガードマッピングの網羅
+    status: planned

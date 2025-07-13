@@ -1,0 +1,44 @@
+---
+# 知的免疫システムのフレームワーク定義
+# このファイルは、OSの自己防衛・自己成長メカニズム（生得免疫系）を定義する、
+# 誰でも再利用可能な普遍的なフレームワークです。
+version: 1.0.0
+# 生得免疫系：OSの核となる普遍的な防御・成長メカニズム
+innate_immune_system:
+  # 失敗を予見し、警告するエンジンの定義
+  proactive_guard_engine:
+    description: 特定の行動パターンから、将来の失敗リスクを予見し、警告を発する機能。将来的には、AIがユーザーの行動ログを分析し、リスクの高いパターンを自動で検知する。
+    status: planned  # 計画中の機能
+
+  # 失敗から学ぶプロセスの定義
+  learning_process:
+    description: 失敗ログ(records)から、具体的なルール(抗体)の草案を生成するための標準プロセス。AIとの協働により、失敗を永続的な資産へと変換する。
+    steps:
+      - name: インシデントの検知
+        trigger: CI/CDの失敗、バグレポートの提出、guard_logへの手動記録など
+      - name: AIによる原因分析
+        action: 関連するログ(task_log, decision_log)を分析し、失敗の根本原因の仮説を立てる。
+      - name: ルール草案の自動生成
+        output: personal/acquired_immunity.yaml に追記するための、具体的なYAML形式のルール草案（id, name,
+          description, trigger, action, severity, source_recordを含む）。
+      - name: 人間による承認
+        action: オーナーがルール草案をレビューし、承認、修正、または却下する。
+
+  # 機会を発見するエンジンの定義
+  opportunity_engine:
+    description: Zettelkastenの内容と外部情報を照合し、機会損失という最大のリスクを防ぐための提案を行う機能。
+    status: planned  # 計画中の機能
+    scan_targets:
+      - arXiv (論文)
+      - Hacker News
+      - 特定の技術ブログのRSSフィード
+
+  # システムの安全モードの定義
+  security_levels:
+    description: プロジェクトやタスクの性質に応じて、免疫システムの厳格さを動的に変更するためのモード。
+    default: fortress
+    levels:
+      - name: fortress
+        description: 本番環境など、最大限の安全性を確保するモード。全てのルールが強制的にブロックされる。
+      - name: sandbox
+        description: 新しい力試しのための実験モード。致命的でないルールは警告のみに留め、試行錯誤を許容する。
