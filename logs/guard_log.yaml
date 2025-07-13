@@ -1,1 +1,30 @@
+---
+# ガードログ (Guard Log) / 知的免疫システム発動記録
+# このファイルには、「知的免疫システム」が発動した際の記録を残します。
+# なぜルールが発動し、どう対処したかを記録することで、失敗を学習資産に変えます。
+version: 1.0.0
+invocations:
+  - id: GL-001
+    timestamp: '2025-07-13T23:00:00+09:00'
 
+    # 発動したガード（抗体）のID
+    # common/innate_immunity.yaml または personal/acquired_immunity.yaml のIDを参照
+    triggered_guard_id: GUARD-P-001
+
+    # ガードが発動した際の状況説明
+    context: |
+      プロジェクト「new-feature-launch」において、金曜日の16:30に本番環境へのデプロイタスクを実行しようとした。
+
+    # システムが取ったアクション
+    action_taken: BLOCKED  # BLOCKED(ブロック), WARNED(警告), OVERRIDDEN(手動で無視)
+    # オーナー（あなた）が取った最終的な対応
+    owner_response: デプロイを中止し、翌週月曜日の朝にスケジュールを再設定した。
+
+    # 関連するタスクや意思決定
+    related_task: TASK-XXX  # デプロイタスクのID
+    # このイベントの重要度
+    severity: High
+
+    # このイベントからの学びや分析（任意）
+    analysis: ルールが正しく機能し、週末の潜在的な障害リスクを未然に防ぐことができた。ルールの有効性を再確認。
+# --- ここに新しい発動記録を追記していく ---

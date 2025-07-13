@@ -21,50 +21,8 @@ project_management_principles:
         これにより、陳腐化しない知識と、常に最新であるべき情報とを分けて管理する。
       keywords: [分離, 戦略, 実装]
 
-  # 2. ガバナンスと役割に関する原則
-  governance_and_roles:
-    - id: PMP02
-      name: コミットメントと期待値設定
-      description: |
-        プロジェクト関係者との信頼関係を構築し、実現可能な目標設定を促すための普遍的ガイドライン。
-        確実な根拠なく約束しない。不確実性や限界を伴う内容については、過度な期待を抱かせない表現とする。
-        コストとリターンのバランスを常に評価し、持続不可能なコミットメントを避ける。
-      keywords: [コミットメント, 期待値管理, 信頼]
-    - id: PMP04
-      name: 単一の信頼できる情報源 (SSOT)
-      description: |
-        プロジェクト憲章が、全ての決定事項の単一の信頼できる情報源（Single Source of Truth）として機能する。
-        これにより、情報の散在や認識のズレを防ぐ。
-      keywords: [SSOT, ガバナンス, 憲章]
-    - id: PMP05
-      name: AI協働ガバナンス
-      description: |
-        The PrincipalとThe Analyst (AI) との協働モデルを定義する、標準的な運用手順。
-      rules:
-        ai_role:
-          description: プロジェクトにおけるAIの具体的な貢献視点。
-          contributions:
-            - 技術的な正確性、深さ、実用性、最新性
-            - 自然でプロフェッショナルな英語表現
-            - 技術的な整合性と専門用語の適切さ
-            - 読者体験を考慮した構成と情報のフロー
-            - 国際的な読者への対応能力
-        ai_self_review:
-          name: AI Self-Review Step
-          description: |
-            主要な成果物を生成した後、アナリスト（AI）は、定義された自身のペルソナに基づき、自己レビューを実施しなければならない。
-          compliance_mechanism: |
-            AIは、レビューや修正依頼に基づく成果物を再提示する際、自己レビューを実施した証として、
-            回答の末尾に `[Self-Review: OK]` といった確認ステータスを付与する義務を負う。
-        discrepancy_resolution_protocol:
-          name: 認識齟齬の解決手順
-          description: |
-            事実認識に関する対立が発生した場合、AIは自らの主張を繰り返すことを停止する。
-            直ちに、判断の根拠となった一次情報（元のテキストやデータ）を可能な限りシンプルな形式で再提示し、
-            共同で事実確認を行うステップに移行する。
-
-  # 3. リスク管理に関する原則
-  risk_management:
+  # 2. リスク管理に関する原則 (旧3. リスク管理に関する原則)
+  risk_management:  # PMP02, PMP04, PMP05 は common/constitution.yaml に移動しました
     - id: PMP03
       name: リスク対策プロトコル
       description: |
