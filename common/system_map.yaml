@@ -4,7 +4,7 @@
 # Jibun OSの全体的なファイル構造と、各ファイルの役割、および主要な依存関係を定義する。
 # AIがOSの内部構造を理解し、自己監査や自動化を支援するための機械可読なマップ。
 system_architecture:
-  version: 3.1.0  # バージョンを更新
+  version: 3.1.0 # バージョンを更新
   layers:
     - name: common
       description: 誰でも再利用可能な、OSの核となる普遍的なフレームワークや定義。
@@ -14,7 +14,7 @@ system_architecture:
           description: OSフレームワークの最高規範。統治機構、コア機能、運用哲学を定義。
           context_level: base_os_context
           dependencies:
-            - ../docs/charter.md  # 憲章の理念を実装
+            - ../docs/charter.md # 憲章の理念を実装
             - common/taxonomy.yaml
             - common/implementation_framework.yaml
         - path: common/immune_system.yaml
@@ -53,21 +53,27 @@ system_architecture:
           description: 第二階層(Legislation)に属する、新規ドメイン作成時の共通テンプレート。
           context_level: template_data
           dependencies: []
+        - path: common/innate_immunity.yaml # innate_immunity.yaml がここに含まれています
+          role: universal_guards
+          description: OSフレームワークに標準搭載されている普遍的なガードルール。
+          context_level: base_os_context
+          dependencies: []
     - name: personal
       description: OS所有者固有の価値観、設定、および具体的な実装。
       files:
-        - path: personal/constitution.yaml  # 追加
-          role: personal_constitution  # 追加
+        - path: personal/constitution.yaml
+          role: personal_constitution
           description: OS所有者個人の究極の目的や核となる価値観を定義する。
-          context_level: base_os_context
-          dependencies: [../common/constitution.yaml]
-        - path: personal/core_principles.yaml
-          role: personal_implementation_config  # 役割を修正
-          description: 個人のOSインスタンスの具体的な設定、役割、ガードの詳細、KPI、改善バックログなどを定義。  # 説明を修正
           context_level: base_os_context
           dependencies:
             - ../common/constitution.yaml
-            - ./constitution.yaml  # personal/constitution.yamlへの依存を追加
+        - path: personal/core_principles.yaml
+          role: personal_implementation_config
+          description: 個人のOSインスタンスの具体的な設定、役割、ガードの詳細、KPI、改善バックログなどを定義。
+          context_level: base_os_context
+          dependencies:
+            - ../common/constitution.yaml
+            - ./constitution.yaml
         - path: personal/acquired_immunity.yaml
           role: personal_adaptive_rules
           description: 個人的な経験から獲得した、特異的なルール（抗体）の集合。
@@ -113,7 +119,7 @@ system_architecture:
       role: system_charter
       description: デジタルツインの理念、構造、運用を定義する最高規範。全てのコンポーネントはこの憲章の思想に従う。
       context_level: documentation
-      dependencies: []  # common/system_map.yamlへの依存を削除
+      dependencies: []
     - path: .github/workflows/validate.yaml
       role: ci_workflow
       description: CI/CDワークフロー定義。OSの構造、スキーマ、lintなどを検証。
