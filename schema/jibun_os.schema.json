@@ -1,250 +1,58 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Jibun OS - schema (v1.6)",
-  "description": "Draft-07 schema for validating the structure of jibun_os.yml (v8.x)",
+  "title": "Jibun OS - System Architecture Schema (v3.x)",
+  "description": "Schema for validating the structure and inter-file consistency of Jibun OS configuration files based on the Four-Layer Model (v3.x).",
   "type": "object",
   "required": [
-    "version",
-    "last_updated",
-    "author",
-    "name",
-    "common",
-    "definitions",
-    "constitution",
-    "implementation_guide"
+    "system_architecture"
   ],
   "properties": {
-    "version": {
-      "description": "The OS version. Must follow Semantic Versioning (e.g., X.Y.Z-beta.N).",
-      "type": "string",
-      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.-]+)?$"
-    },
-    "last_updated": {
-      "type": "string",
-      "format": "date"
-    },
-    "author": {
-      "type": "string"
-    },
-    "name": {
-      "type": "string"
-    },
-    "common": {
+    "system_architecture": {
       "type": "object",
-      "required": [
-        "name",
-        "severity_levels",
-        "rule_types"
-      ],
+      "required": ["version", "layers", "other_root_files"],
       "properties": {
-        "name": {
-          "type": "string"
-        },
-        "severity_levels": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "rule_types": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "definitions": {
-      "type": "object",
-      "required": [
-        "name",
-        "parties"
-      ],
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "parties": {
+        "version": { "type": "string" },
+        "layers": {
           "type": "array",
           "items": {
             "type": "object",
-            "required": [
-              "party",
-              "name",
-              "role"
-            ],
+            "required": ["name", "description", "files"],
             "properties": {
-              "party": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "role": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "constitution": {
-      "type": "object",
-      "required": [
-        "name",
-        "supreme_purpose",
-        "core_code",
-        "guards",
-        "ai_relationship",
-        "meta_rule"
-      ],
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "supreme_purpose": {
-          "type": "string"
-        },
-        "core_code": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        },
-        "guards": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "required": [
-              "id",
-              "name",
-              "description"
-            ],
-            "properties": {
-              "id": {
-                "type": "string",
-                "pattern": "^G\\d{3}$"
-              },
-              "name": {
-                "type": "string"
-              },
-              "description": {
-                "type": "string"
-              }
-            },
-            "additionalProperties": true
-          }
-        },
-        "ai_relationship": {
-          "type": "string"
-        },
-        "meta_rule": {
-          "type": "string"
-        }
-      }
-    },
-    "implementation_guide": {
-      "type": "object",
-      "properties": {
-        "risk_return_profile": {
-          "type": "object",
-          "properties": {
-            "env_build": {
-              "type": "object",
-              "properties": {
-                "target_phase": {
-                  "type": "string"
-                },
-                "weight": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            },
-            "downgrade_strategy": {
-              "type": "object",
-              "properties": {
-                "accept_temporary_fix": {
-                  "type": "boolean"
-                },
-                "log_guard_trigger": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        },
-        "core_engine": {
-          "type": "object",
-          "required": [
-            "name",
-            "description",
-            "steps"
-          ],
-          "properties": {
-            "name": {
-              "type": "string"
-            },
-            "description": {
-              "type": "string"
-            },
-            "steps": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "patternProperties": {
-                  "^.*$": { "type": "string" }
-                },
-                "minProperties": 1,
-                "maxProperties": 1
-              }
-            }
-          }
-        },
-        "evolution_phases": {
-          "type": "object",
-          "properties": {
-            "future_enhancements_backlog": {
-              "type": "object",
-              "required": [
-                "name",
-                "description",
-                "items"
-              ],
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
+              "name": { "type": "string", "enum": ["constitution", "legislation", "precedents", "records"] },
+              "description": { "type": "string" },
+              "files": {
+                "type": "array",
                 "items": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "name",
-                      "re-evaluation"
-                    ],
-                    "properties": {
-                      "name": {
-                        "type": "string"
-                      },
-                      "re-evaluation": {
-                        "type": "string"
-                      }
-                    }
-                  }
+                  "$ref": "#/definitions/fileEntry"
                 }
               }
             }
           }
         },
-        "additionalProperties": true
-      },
-      "additionalProperties": true
+        "other_root_files": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/fileEntry"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "fileEntry": {
+      "type": "object",
+      "required": ["path", "role", "description", "context_level"],
+      "properties": {
+        "path": { "type": "string" },
+        "role": { "type": "string" },
+        "description": { "type": "string" },
+        "context_level": { "type": "string" },
+        "dependencies": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "status": { "type": "string" }
+      }
     }
   },
   "additionalProperties": true

@@ -1,4 +1,6 @@
 ---
+# .github/workflows/validate.yaml
+
 name: Validate Jibun OS
 on:
   push:
@@ -22,6 +24,10 @@ jobs:
         run: pip install -r requirements-dev.txt
       - name: Run yamllint
         run: yamllint .
+      - name: Install PyYAML (for verify_system_map_paths.py)
+        run: pip install pyyaml
+      - name: Run system_map path verification
+        run: python scripts/verify_system_map_paths.py
       - name: Run yamale (Schema Validation)
         run: |-
           # check-jsonschema --schemafile schema/jibun_os.schema.json jibun_os.yml

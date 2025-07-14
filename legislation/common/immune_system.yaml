@@ -19,8 +19,7 @@ innate_immune_system:
       - name: AIによる原因分析
         action: 関連するログ(task_log, decision_log)を分析し、失敗の根本原因の仮説を立てる。
       - name: ルール草案の自動生成
-        output: personal/acquired_immunity.yaml に追記するための、具体的なYAML形式のルール草案（id, name,
-          description, trigger, action, severity, source_recordを含む）。
+        output: legislation/personal/acquired_immunity.yaml  # パスを修正
       - name: 人間による承認
         action: オーナーがルール草案をレビューし、承認、修正、または却下する。
 
