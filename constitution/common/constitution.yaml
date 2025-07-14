@@ -30,10 +30,22 @@ governance_structure:
       name: Legislation (法律・知恵)
       path: /legislation/
       description: 憲法に基づき、特定の領域や機能に関する具体的な規則やポリシーを定める。
+      additional_policies:
+        - id: feedback_source_validation
+          description: |
+            すべての外部フィードバックには出所と信頼性評価を付与する。
+            信頼性スコアが閾値以下のものは自動除外される。
+        - id: observation_scope
+          description: |
+            内部状態のどの範囲を外部に可観測化し、どこを非公開にするかを定期的に見直す。
     - id: L3
       name: Precedents (判例・意識)
       path: /precedents/
       description: 個々の経験や記録から抽出された、具体的な状況における行動指針やパターン。
+      precedents_metadata:
+        tags:
+          - feedback_derived: |
+              外部フィードバックループから抽出された行動パターンであることを示す。
     - id: L4
       name: Records (記録・経験)
       path: /records/
@@ -75,6 +87,24 @@ evolution_engine:
     - type: acquired_immunity
       name: 獲得免疫系 (Acquired Immunity)
       description: OS所有者の具体的な失敗経験から生まれた、個別最適化された特異的なルール（抗体）。
+  integration_workflow:
+    - step: observation
+      description: |
+        内部ログ・外部環境・AI出力などの多層データを継続的に観測する。
+    - step: validation
+      description: |
+        信頼性評価ルールに従い、ノイズや偏りを除外する。
+    - step: learning
+      description: |
+        有効なフィードバックをパターン化し、必要に応じて判例や法律に昇格させる。
+    - step: integration
+      description: |
+        学習結果を憲法や法律に矛盾しない形で統合し、変更履歴を記録する。
+  review_cycle:
+    description: |
+      全ての観測ルールと統合ワークフローは、3か月ごとにレビューされ、
+      実態に即して更新される。
+
 # ------------------------------------------------
 # 第四条：循環（How to Circulate） ― 生命活動としての知識循環
 # ------------------------------------------------
