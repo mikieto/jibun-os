@@ -1,7 +1,7 @@
 ---
 # common/system_map.yaml はプロジェクトルート直下に移動したため、パスは不要
 #
-# Jibun OSの全体的なファイル構造と、各ファイルの役割、および主要な依存関係を定義する。
+# Digital Twin OSの全体的なファイル構造と、各ファイルの役割、および主要な依存関係を定義する。
 # AIがOSの内部構造を理解し、自己監査や自動化を支援するための機械可読なマップ。
 system_architecture:
   version: 3.1.0  # バージョンを更新
@@ -88,7 +88,7 @@ system_architecture:
           dependencies: []
         - path: legislation/personal/projects/os_platform.yaml  # パスを修正
           role: os_development_project
-          description: Jibun OSプラットフォーム自体の開発プロジェクト定義、バージョン、ステージ、開発バックログを管理。
+          description: Digital Twin OSプラットフォーム自体の開発プロジェクト定義、バージョン、ステージ、開発バックログを管理。
           context_level: base_os_context
           dependencies: []
         - path: legislation/personal/domains/learning.yaml  # パスを修正
@@ -145,7 +145,7 @@ system_architecture:
       description: Pythonプロジェクトの依存ライブラリリスト。
       context_level: operational_tooling
       dependencies: []
-    - path: schema/jibun_os.schema.json  # スキーマファイルの記述を追加
+    - path: schema/os_architecture.schema.json
       role: os_schema_definition
       description: OSのYAML設定ファイルやデータ構造の整合性を検証するためのJSONスキーマ。
       context_level: operational_tooling

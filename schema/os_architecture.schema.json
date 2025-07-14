@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Jibun OS - System Architecture Schema (v3.x)",
+  "title": "OS Architecture Definition Schema (v3.x)",
   "description": "Schema for validating the structure and inter-file consistency of Jibun OS configuration files based on the Four-Layer Model (v3.x).",
   "type": "object",
   "required": [

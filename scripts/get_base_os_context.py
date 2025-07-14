@@ -79,9 +79,9 @@ def generate_base_os_context(output_file_path, system_map_path='system_map.yaml'
 
     # 1. 冒頭の概要ドキュメント
     overview_doc = {
-        "jibun_os_base_context_overview": {
+        "digital_twin_os_base_context_overview": {
             "purpose": "Core OS Identity and Platform State",
-            "overview": "This consolidated context provides the fundamental principles of Jibun OS, its structural blueprint, operational framework, and its current platform status. It is always loaded to give the AI a complete understanding of the OS it operates within."
+            "overview": "This consolidated context provides the fundamental principles of Digital Twin OS, its structural blueprint, operational framework, and its current platform status. It is always loaded to give the AI a complete understanding of the OS it operates within."
         }
     }
     combined_documents.append(overview_doc)
@@ -138,4 +138,4 @@ if __name__ == "__main__":
 
     generate_base_os_context(output_full_path)
     print(f"\nAIへのフィード方法: '{output_full_path}' の内容をコピーして貼り付けてください。")
-    print("注意: Jibun OSのソースYAMLファイルを修正した場合は、このスクリプトを再実行してください。")
+    print("注意: Digital Twin OSのソースYAMLファイルを修正した場合は、このスクリプトを再実行してください。")
