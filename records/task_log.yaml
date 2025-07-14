@@ -8,10 +8,10 @@ tasks:
   - id: TASK-001
     timestamp: '2025-07-10T10:31:00+09:00'
     related_decision: DEC-004
-    summary: 三層フォルダへ移動 & imports 追記 (layer_split_migration)
+    summary: 四階層フォルダへ移動 & imports 追記 (layer_split_migration)
     status: done
     assignee: mikieto
-    description: OSのファイル構造をcommon, personal, logsの三層に物理的に移動し、関連するimportパスを修正する。
+    description: OSのファイル構造をconstitution, legislation, recordsなどの四階層に物理的に移動し、関連するimportパスを修正する。
     scope:
       project: os_platform_v1
       stage: 1
@@ -20,10 +20,10 @@ tasks:
   - id: TASK-002
     timestamp: '2025-07-10T10:32:00+09:00'
     related_decision: DEC-004
-    summary: common/personal 重複禁止 lint を追加 (layer_ci_lint_rule)
+    summary: 新しいパスでのファイル重複禁止 lint を追加 (layer_ci_lint_rule)
     status: todo
     assignee: mikieto
-    description: CIプロセスに、commonとpersonalディレクトリ間でファイル名の重複を禁止するリンターチェックを追加する。
+    description: CIプロセスに、constitution/common/ と legislation/personal/ など新しいディレクトリ構造間でのファイル名の重複を禁止するリンターチェックを追加する。
     scope:
       project: os_platform_v1
       stage: 1
@@ -32,10 +32,10 @@ tasks:
   - id: TASK-003
     timestamp: '2025-07-10T11:01:00+09:00'
     related_decision: DEC-005
-    summary: personal/profile.yaml を作成し固定属性を集約 (profile_yaml_add)
+    summary: legislation/personal/profile.yaml を作成し固定属性を集約 (profile_yaml_add)
     status: done
     assignee: mikieto
-    description: OS所有者の固定的なプロフィール（名前、タイムゾーンなど）を定義するprofile.yamlをpersonalディレクトリに作成する。
+    description: OS所有者の固定的なプロフィール（名前、タイムゾーンなど）を定義するlegislation/personal/profile.yamlを作成する。
     scope:
       project: os_platform_v1
       stage: 1
@@ -44,10 +44,10 @@ tasks:
   - id: TASK-004
     timestamp: '2025-07-10T11:31:00+09:00'
     related_decision: DEC-006
-    summary: jibun_os.yaml から普遍憲法を抽出 (core_common_extract)
+    summary: 旧OS設定から普遍憲法を抽出 (core_common_extract)
     status: done
     assignee: mikieto
-    description: モノリシックだったjibun_os.yamlから、誰でも再利用可能な普遍的な原則を抽出し、common/constitution.yamlとして分離する。
+    description: モノリシックだった旧OS設定ファイルから、誰でも再利用可能な普遍的な原則を抽出し、constitution/common/constitution.yamlとして分離する。
     scope:
       project: os_platform_v1
       stage: 1
@@ -56,10 +56,10 @@ tasks:
   - id: TASK-005
     timestamp: '2025-07-10T11:32:00+09:00'
     related_decision: DEC-006
-    summary: common/projects/project_template.yaml を生成 (template_seed)
+    summary: legislation/common/projects/project_template.yaml を生成 (template_seed)
     status: done
     assignee: mikieto
-    description: 新規プロジェクト作成時の共通テンプレート（プレイブック）をcommon/projectsディレクトリに作成する。
+    description: 新規プロジェクト作成時の共通テンプレート（プレイブック）をlegislation/common/projects/ディレクトリに作成する。
     scope:
       project: os_platform_v1
       stage: 1
@@ -68,7 +68,7 @@ tasks:
   - id: TASK-006
     timestamp: '2025-07-10T11:33:00+09:00'
     related_decision: DEC-006
-    summary: personal/projects/book_writing.yaml をテンプレから生成 (book_project_seed)
+    summary: legislation/personal/projects/book_writing.yaml をテンプレから生成 (book_project_seed)
     status: done
     assignee: mikieto
     description: 書籍執筆プロジェクトの定義ファイルを、新しく作成したテンプレートから生成する。
@@ -80,10 +80,12 @@ tasks:
   - id: TASK-007
     timestamp: '2025-07-10T12:01:00+09:00'
     related_decision: DEC-007
-    summary: common & personal に domains/ を作成しテンプレ配置 (domain_folder_setup)
+    summary: legislation/common/domains/ & legislation/personal/domains/ を作成しテンプレ配置
+      (domain_folder_setup)
     status: done
     assignee: mikieto
-    description: プロジェクト横断的な知識領域を管理するため、commonおよびpersonalディレクトリにdomainsフォルダとテンプレートを作成する。
+    description: プロジェクト横断的な知識領域を管理するため、legislation/common/ および legislation/personal/
+      ディレクトリにdomainsフォルダとテンプレートを作成する。
     scope:
       project: os_platform_v1
       stage: 1
@@ -92,10 +94,10 @@ tasks:
   - id: TASK-008
     timestamp: '2025-07-10T13:01:00+09:00'
     related_decision: DEC-008
-    summary: common/taxonomy.yaml を作成しタグを列挙 (taxonomy_file_add)
+    summary: legislation/common/taxonomy.yaml を作成しタグを列挙 (taxonomy_file_add)
     status: done
     assignee: mikieto
-    description: OS全体で共有されるタグや分類を定義するtaxonomy.yamlをcommonディレクトリに作成する。
+    description: OS全体で共有されるタグや分類を定義するlegislation/common/taxonomy.yamlを作成する。
     scope:
       project: os_platform_v1
       stage: 1
@@ -128,10 +130,10 @@ tasks:
   - id: TASK-011
     timestamp: '2025-07-10T14:31:00+09:00'
     related_decision: DEC-011
-    summary: ルート core_principles.yaml の退役を確認 (core_root_remove)
+    summary: 旧式のルートコア設定ファイルを削除 (core_root_remove)
     status: done
     assignee: mikieto
-    description: リファクタリングに伴い不要となった、リポジトリルートの旧core_principles.yamlを削除する。
+    description: リファクタリングに伴い不要となった、リポジトリルートの旧personal/core_principles.yamlを削除する。
     scope:
       project: os_platform_v1
       stage: 1
@@ -152,10 +154,10 @@ tasks:
   - id: TASK-013
     timestamp: '2025-07-10T16:01:00+09:00'
     related_decision: DEC-014
-    summary: OSのファイル構造と役割を定義するcommon/system_map.yamlを作成 (system_map_creation)
+    summary: OSのファイル構造と役割を定義するsystem_map.yamlを作成 (system_map_creation)
     status: done
     assignee: mikieto
-    description: AIがOSの構造を機械的に理解できるようにするため、system_map.yamlを作成する。
+    description: AIがOSの構造を機械的に理解できるようにするため、system_map.yamlをルート直下に作成する。
     scope:
       project: os_platform_v1
       stage: 1
@@ -164,10 +166,10 @@ tasks:
   - id: TASK-014
     timestamp: '2025-07-10T16:31:00+09:00'
     related_decision: DEC-015
-    summary: 書籍プロジェクトのdecision-log.mdを共通/個人要素に分離・統合 (book_project_refactor_split)
+    summary: 書籍プロジェクトのログをrecords/decision_log.yamlに統合 (book_project_refactor_split)
     status: done
     assignee: mikieto
-    description: 書籍プロジェクトの意思決定ログを、普遍的な原則とプロジェクト固有の要素に分離する。
+    description: 書籍プロジェクトの意思決定ログを、新しいrecords/decision_log.yamlに統合する。
     scope:
       project: os_platform_v1
       stage: 1
@@ -224,7 +226,7 @@ tasks:
   - id: TASK-019
     timestamp: '2025-07-10T18:31:00+09:00'
     related_decision: DEC-019
-    summary: 書籍プロジェクト定義ファイルを本執筆リポジトリへ移動 (move_lean_data_book_to_repo)
+    summary: 書籍プロジェクト定義ファイルを専用リポジトリへ移動 (move_lean_data_book_to_repo)
     status: done
     assignee: mikieto
     description: personal/projects/lean_data_engineering_book.yamlを専用リポジトリへ移動し、プロジェクトの自己完結性を高める。

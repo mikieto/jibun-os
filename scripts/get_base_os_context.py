@@ -1,7 +1,7 @@
 import yaml
 import os
 import sys
-import subprocess # subprocess モジュールをインポート
+import subprocess
 
 
 # リポジトリのルートディレクトリを基準パスとして取得
@@ -33,7 +33,8 @@ def get_files_by_context_level(system_map_path, desired_context_level):
     """
     system_map.yamlを読み込み、指定されたcontext_levelを持つファイルのパスを返す。
     """
-    full_system_map_path = os.path.join(REPO_ROOT, system_map_path)
+    # system_map.yaml がルートにあるため、直接指定
+    full_system_map_path = os.path.join(REPO_ROOT, system_map_path) # system_map_path は "system_map.yaml"
     if not os.path.exists(full_system_map_path):
         print(f"エラー: system_map.yaml が見つかりません - {full_system_map_path}")
         return []
@@ -50,7 +51,7 @@ def get_files_by_context_level(system_map_path, desired_context_level):
                         if file_entry.get('context_level') == desired_context_level:
                             files_to_include.append(file_entry['path'])
             # 'other_root_files' もチェック
-            if 'other_root_files' in system_map_data['system_architecture']:
+            if 'system_architecture' in system_map_data and 'other_root_files' in system_map_data['system_architecture']: # Noneチェック追加
                 for file_entry in system_map_data['system_architecture']['other_root_files']:
                     if file_entry.get('context_level') == desired_context_level:
                         files_to_include.append(file_entry['path'])
@@ -62,7 +63,7 @@ def get_files_by_context_level(system_map_path, desired_context_level):
         print(f"エラー: system_map.yaml の読み込み中に問題が発生しました: {e}")
         return []
 
-def generate_base_os_context(output_file_path, system_map_path='common/system_map.yaml'):
+def generate_base_os_context(output_file_path, system_map_path='system_map.yaml'): # system_map_pathのデフォルト値を修正
     """
     コア＆プラットフォームコンテキストを結合し、指定されたファイルに出力する。
     system_map.yamlからファイルを動的に取得する。
@@ -87,7 +88,7 @@ def generate_base_os_context(output_file_path, system_map_path='common/system_ma
 
     # 2. 各ファイルのコンテンツを個別のドキュメントとして追加
     for relative_path in base_context_file_paths:
-        parsed_content = get_parsed_yaml_content(relative_path)
+        parsed_content = get_parsed_yaml_content(relative_path) # ここで相対パスをそのまま使用
         if parsed_content is not None:
             # 各ファイルのコンテンツを独立したYAMLドキュメントとしてリストに追加
             # AIが「これはファイルの内容である」と認識しやすいように、メタ情報を追加
@@ -107,13 +108,11 @@ def generate_base_os_context(output_file_path, system_map_path='common/system_ma
             # explicit_start=True で各ドキュメントの前に --- を明示的に追加
             # width=120 は行長警告へのヒント。indent=2で yamllint のデフォルトに合わせる
             # default_style='|' を追加して複数行文字列をリテラルスタイルで出力
-            yaml.dump_all(combined_documents, outfile, default_flow_style=False, allow_unicode=True, sort_keys=False, explicit_start=True, width=120, indent=2, default_style='|') # ← ここに「 , default_style='|' 」を追加
+            yaml.dump_all(combined_documents, outfile, default_flow_style=False, allow_unicode=True, sort_keys=False, explicit_start=True, width=120, indent=2, default_style='|')
         print(f"AIベースコンテキストが '{output_file_path}' に生成されました。")
-        
+
         # --- ここから yamlfix の組み込み ---
-        # yamlfix を実行して、生成されたファイルを整形
         try:
-            # subprocess.run の第一引数はリストでコマンドと引数を渡す
             subprocess.run(['yamlfix', output_file_path], check=True, capture_output=True)
             print(f"'{output_file_path}' を yamlfix で自動整形しました。")
         except subprocess.CalledProcessError as e:
