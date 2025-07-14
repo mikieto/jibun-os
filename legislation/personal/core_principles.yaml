@@ -1,0 +1,275 @@
+---
+# personal/core_principles.yaml
+#
+# あなた個人のデジタルツインOSの具体的な実装設定、運用詳細を定義する最上位ファイル。
+# 共通フレームワークに基づき、個人の設定、役割、ガードの詳細、KPI、そしてOS改善のバックログを管理する。
+imports:
+  - ../../constitution/common/constitution.yaml
+  - ../../legislation/common/immune_system.yaml
+  - ../../legislation/common/mappings.yaml
+  - ../../legislation/common/implementation_framework.yaml
+  - ../../constitution/personal/constitution.yaml
+# ------------------------------------------------
+# OSインスタンスのメタデータ
+# ------------------------------------------------
+version: 10.0.0-beta.0
+last_updated: '2025-07-14'
+author: Miki Eto
+# ------------------------------------------------
+# 個人的な定義 (Personal Definitions)
+# ------------------------------------------------
+personal_definitions:
+  name: 自分OS
+  parties:
+    - party: The Principal
+      name: 江藤 幹 (Miki Eto)
+      role: |
+        本OSの所有者であり、自己進化における主体。
+        自身の思考や感情を分析対象として提供し、最終的な意思決定を行う。
+    - party: The Analyst
+      name: AI
+      role: |
+        The Principalの協働パートナー。提供されたデータを客観的に分析し、構造化された洞察やレポートを提供する分析官。
+        OSのガード機能を通じて分析プロセスの品質を保証する。
+# ------------------------------------------------
+# 個人的な実装 (Personal Implementations)
+# ------------------------------------------------
+personal_implementations:
+  # constitution_details: supreme_purpose_motivation は constitution/personal/constitution.yaml に移動しました
+  core_code_overrides:  # 既存ファイルから取り込んだ重要な原則
+    - name: Decision–Action Traceability
+      description: |
+        全 Decision は Task / Guard / KPI と 1-to-1 でリンクし、
+        CI が整合チェックを行う。
+  guard_details:
+    - guard_id: G005  # 認知バイアス監視ガード
+      monitoring_targets:
+        - name: 自動化への強い志向
+          bias_type: core
+        - name: 計画中毒（完璧な構造への固執）
+          bias_type: personal
+        - name: 結果回避 / 評価恐怖
+          bias_type: personal
+  kpi_metrics:
+    quantity: [ガード発動件数, OS更新頻度, 拡張フィードバックループのサイクルタイム]
+    quality: [ガード是正完了率, 重大度別MTTR, OS改善後のパフォーマンス変化]
+# ------------------------------------------------
+# OS改善バックログ (OS Improvement Backlog) - backlog.md と personal/projects/os_platform.yaml から統合
+# ------------------------------------------------
+os_improvement_backlog:
+  # --- P0 ---
+  - id: os-release-v9-2-1
+    name: v9.2.1リリース
+    priority: P0
+    category: Core OS Release
+    goal: 提案①②を反映したOSのマイナーバージョンアップを完了させる。
+    related_principles: [meta_rule]
+    status: 最優先タスク
+  # --- P1 ---
+  - id: readme-activity-ci-expansion
+    name: READMEにactivity_structure追記とCI要件を明記
+    priority: P1
+    category: Documentation & Onboarding
+    goal: 新しい二重プロジェクト構造とLearning-LoopをOnboardingに反映し、スキーマv1.5の要件を明記する。
+    related_principles: [G001, Phase 2 Requirements]
+    status: v9.2.1リリース後に着手
+  # --- P2 ---
+  - id: passive-logging-plugin
+    name: VSCode/Obsidian で Guard Log 自動収集
+    priority: P2
+    category: Tooling & Automation
+    goal: Guard Log の自動収集とデータ蓄積のハードルを下げる。
+    related_principles: []
+    status: planned
+  - id: ci-jobs-enhancement
+    name: CIジョブの強化
+    priority: P2
+    category: CI/CD & Repository Health
+    goal: CIジョブをlint/schema/testに分割し、JSON SchemaでYAML構造検証も追加する。
+    related_principles: []
+    status: planned
+  - id: dogfooding-data-collection
+    name: Dog-foodingデータ収集開始
+    priority: P2
+    category: Data Ops
+    goal: Guard/KPIの実データを定期的に取得し、可視化する仕組みを構築する。
+    related_principles: [実践的効果重視, kpis]
+    status: 新目標達成のため優先度上昇を検討
+  - id: guard-log-integration-script-design
+    name: Guard Log連携スクリプトの設計
+    priority: P2
+    category: Tooling & Automation
+    goal: Guard_Activation_Logシートへの記録を省力化・自動化する仕組み（Apps Script等）を設計し、データ蓄積のハードルを下げる。
+    related_principles: [実践的効果重視, kpis]
+    status: 新目標達成のため優先度上昇を検討
+  - id: externalization-model-pilot
+    name: 外化モデルパイロット実装
+    priority: P2
+    category: Outreach
+    goal: 最小ターゲットで1ループ検証し、Guard Logと紐付けを行う。
+    related_principles: [acceleration_strategies]
+    status: planned
+  - id: kpi-expansion-quantification
+    name: KPIの拡張と定量化
+    priority: P2
+    category: Core Feature Enhancements
+    goal: enhanced_kpis案を参考に、KPIをより具体的で測定可能な指標（例：仮説→行動の時間）に進化させる。
+    related_principles: [可観測性, 実践的効果重視]
+    status: planned
+  - id: file-modularization-review
+    name: ファイル分割（モジュール化）の検討
+    priority: P2
+    category: Documentation & Onboarding
+    goal: OSのYAMLファイルをcore, implementation, commonなどに分割し、可読性とメンテナンス性を向上させる。
+    related_principles: [G006, オーバーエンジニアリング検知ガード]
+    status: planned
+  # --- P3 ---
+  - id: moment-replay-poc
+    name: 行動ログを LLM でタイムライン再構成
+    priority: P3
+    category: Core Feature Enhancements
+    goal: LLM を活用して行動ログからユーザーの行動や意思決定のタイムラインを再構成する PoC を実施する。
+    related_principles: []
+    status: planned
+  - id: marketplace-template-v0
+    name: Guard/KPI テンプレ販売 PoC
+    priority: P3
+    category: Outreach
+    goal: Guard および KPI のテンプレートをマーケットプレイス形式で提供するための PoC を実施する。
+    related_principles: []
+    status: planned
+  - id: pair-os-review-protocol
+    name: Discord 週次ペアレビュー手順
+    priority: P3
+    category: Documentation & Onboarding
+    goal: Discord を活用した週次ペアレビューの運用手順を策定し、OS の運用効率と品質を向上させる。
+    related_principles: []
+    status: planned
+  - id: dx-scaffolding-script
+    name: 新規利用者のための自動セットアップスクリプト
+    priority: P3
+    category: Tooling & Automation
+    goal: 新規利用者が質問形式で personal 配下を自動生成できるスクリプトを開発し、導入体験を向上させる。
+    related_principles: []
+    status: planned
+  - id: guard-id-namespace
+    name: Guard ID 名前空間の設計とチェック
+    priority: P3
+    category: CI/CD & Repository Health
+    goal: common (Gxxx) と personal (Pxxx) で ID 名前空間を分け、CI で重複をチェックする仕組みを導入し、ID の一意性を保証する。
+    related_principles: []
+    status: planned
+  - id: docs-folder-setup
+    name: docs/フォルダの整備
+    priority: P3
+    category: Documentation & Onboarding
+    goal: docs/フォルダを作成し、README からの導線を整理して初見者の体験を向上させる。
+    related_principles: []
+    status: planned
+  - id: safety-mode-doc-creation
+    name: セーフティモード運用手順ドキュメント作成
+    priority: P3
+    category: Security/Ethics
+    goal: 発動から復旧までのフローを明文化する。
+    related_principles: [G008, G009]
+    status: planned
+  - id: schema-v1-6-design-impl
+    name: スキーマ v1.6 設計 & 実装
+    priority: P3
+    category: CI/CD & Repository Health
+    goal: threshold の型を厳格化し、Guard Log 側の Enum 参照もバリデートできるようスキーマを設計・更新する。
+    related_principles: [G008, 可観測性]
+    status: planned
+  - id: guard-log-enum-lint
+    name: Guard Log Enum整合Lint導入
+    priority: P3
+    category: CI/CD & Repository Health
+    goal: log_linking_guidelines.data_format_example.severity が common.severity_levels
+      に必ず一致する静的チェックを CI に追加する。
+    related_principles: [G008, 可観測性]
+    status: planned
+  - id: metacognitive-layer-intro
+    name: メタ認知レイヤーの導入
+    priority: P3
+    category: Core Feature Enhancements
+    goal: metacognitive_layer 案を基に、思考パターンの自動検出や認知の死角を可視化する、より高次の自己監視機能を設計する。
+    related_principles: [supreme_purpose, 可観測性]
+    status: planned
+  - id: ai-evolution-adaptation-protocol
+    name: AI進化適応プロトコルの実装
+    priority: P3
+    category: Core Feature Enhancements
+    goal: ai_evolution_adaptation 案を基に、AI の能力向上を定期的に評価し、人間と AI の役割を再配分する仕組みを具体化する。
+    related_principles: [ai_relationship, meta_rule]
+    status: planned
+  - id: os-api-exposure
+    name: OSのAPI化
+    priority: P3
+    category: Tooling & Automation
+    goal: ガード定義などを JSON としてエクスポートするスクリプトを用意し、外部ツールからの参照を容易にする。
+    related_principles: [Phase 3 Requirements]
+    status: planned
+  - id: phase-2-mvp-material
+    name: Phase 2 (MVP) 資料の作成
+    priority: P3
+    category: Documentation & Onboarding
+    goal: 外部ユーザー向けの README やランディングページのワイヤーフレームを作成し、他者への共有準備を開始する。
+    related_principles: [Phase 2 Requirements]
+    status: planned
+  - id: glossary-creation
+    name: 用語集（Glossary）の作成
+    priority: P3
+    category: Documentation & Onboarding
+    goal: 「世界道場」など OS 固有の用語を解説するドキュメントを作成し、外部ユーザーの理解を助ける。
+    related_principles: [Phase 2 Requirements]
+    status: planned
+  - id: tech-roadmap-task-log-template
+    name: 技術ロードマップ用Task Logテンプレ作成
+    priority: P3
+    category: Documentation & Onboarding
+    goal: Kernel/Overlay プロジェクト管理用のテンプレートを作成する。
+    related_principles: [G001, 計画中毒バイアス]
+    status: 新規追加 / Phase 2開始前まで凍結
+  # --- P4 ---
+  - id: lora-local-model
+    name: LoRA 微調整モデルを端末常駐化
+    priority: P4
+    category: Core Feature Enhancements
+    goal: LoRA 微調整モデルを端末に常駐させ、より高速でパーソナライズされた AI 応答を実現する。
+    related_principles: []
+    status: planned
+  - id: team-os-template
+    name: Team-OS テンプレ (RACI + 監査証跡)
+    priority: P4
+    category: Outreach
+    goal: チームでの OS 運用をサポートする RACI および監査証跡を含むテンプレートを開発する。
+    related_principles: []
+    status: planned
+  - id: zk-log-encrypt-poc
+    name: Guard Log を ZK 暗号で保護する PoC
+    priority: P4
+    category: Security/Ethics
+    goal: Guard Log のプライバシーとセキュリティを強化するため、ZK (Zero-Knowledge) 暗号による保護の PoC を実施する。
+    related_principles: []
+    status: planned
+  - id: log-rotation-policy
+    name: ログローテーション方針の策定・実装
+    priority: P4
+    category: Data Ops
+    goal: ログの肥大化に備え、四半期ごとのログローテーション方針を策定・実装し、ストレージ効率とパフォーマンスを維持する。
+    related_principles: []
+    status: planned
+  - id: time-axis-balancer
+    name: 時間軸バランサー
+    priority: P4
+    category: Core Feature Enhancements
+    goal: ポートフォリオ内のプロジェクトへのリソース配分を最適化する機能を開発する。
+    related_principles: []
+    status: planned
+  - id: socrates-alert
+    name: ソクラテス・アラート
+    priority: P4
+    category: Core Feature Enhancements
+    goal: 安易な結論や知ったかぶりを防ぐための内省補助機能を開発する。
+    related_principles: []
+    status: planned
