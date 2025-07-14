@@ -66,6 +66,18 @@ os_improvement_backlog:
     related_principles: [meta_rule]
     status: 最優先タスク
   # --- P1 ---
+  - id: opportunity-engine-prep
+    name: 機会発見エンジンの準備タスク
+    priority: P1
+    category: Core Feature Enhancements
+    goal: 機会発見エンジンの本格実装を迅速に開始できるよう、入力データと出力フォーマットを事前に定義する。
+    related_principles: ["G001", "CC01"]
+    status: 進行中
+    sub_tasks:
+      - "スキャン対象（scan_targets）の具体化とRSSフィードURLのリスト作成"
+      - "機会発見のトリガーとなる内部キーワードの抽出（5〜10個）"
+      - "発見した機会を記録するためのMarkdownテンプレートの設計"
+
   - id: readme-activity-ci-expansion
     name: READMEにactivity_structure追記とCI要件を明記
     priority: P1
