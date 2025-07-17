@@ -1,7 +1,7 @@
 ---
 # personal/core_principles.yaml
 #
-# あなた個人のデジタルツインOSの具体的な実装設定、運用詳細を定義する最上位ファイル。
+# あなた個人の自分OSの具体的な実装設定、運用詳細を定義する最上位ファイル。
 # 共通フレームワークに基づき、個人の設定、役割、ガードの詳細、KPI、そしてOS改善のバックログを管理する。
 imports:
   - ../../constitution/common/constitution.yaml
@@ -19,7 +19,7 @@ author: Miki Eto
 # 個人的な定義 (Personal Definitions)
 # ------------------------------------------------
 personal_definitions:
-  name: デジタルツインOS
+  name: 自分OS
   parties:
     - party: The Principal
       name: 江藤 幹 (Miki Eto)
@@ -71,13 +71,12 @@ os_improvement_backlog:
     priority: P1
     category: Core Feature Enhancements
     goal: 機会発見エンジンの本格実装を迅速に開始できるよう、入力データと出力フォーマットを事前に定義する。
-    related_principles: ["G001", "CC01"]
+    related_principles: [G001, CC01]
     status: 進行中
     sub_tasks:
-      - "スキャン対象（scan_targets）の具体化とRSSフィードURLのリスト作成"
-      - "機会発見のトリガーとなる内部キーワードの抽出（5〜10個）"
-      - "発見した機会を記録するためのMarkdownテンプレートの設計"
-
+      - スキャン対象（scan_targets）の具体化とRSSフィードURLのリスト作成
+      - 機会発見のトリガーとなる内部キーワードの抽出（5〜10個）
+      - 発見した機会を記録するためのMarkdownテンプレートの設計
   - id: readme-activity-ci-expansion
     name: READMEにactivity_structure追記とCI要件を明記
     priority: P1
