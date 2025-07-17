@@ -48,6 +48,10 @@ system_architecture:
           dependencies:
             - constitution/common/constitution.yaml
             - legislation/common/immune_system.yaml
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6eee6932a85a61838858f29386fc1f9258d336e2
   #     - path: legislation/common/mappings/guards.yaml
   #       context_level: tooling
   #       description: Guard ID ↔ Guard 定義
@@ -60,6 +64,10 @@ system_architecture:
   #     - path: legislation/common/mappings/driver_stub.yaml
   #       context_level: tooling
   #       description: driver stub
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6eee6932a85a61838858f29386fc1f9258d336e2
         - path: legislation/common/implementation_framework.yaml
           role: implementation_framework
           description: 結晶化・普遍化など標準プロセス
