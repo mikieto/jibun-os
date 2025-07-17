@@ -1,36 +1,9 @@
-<<<<<<< HEAD
 <!-- docs/charter.md (updated) -->
 
 # 自分OS憲章 v3.1 — Prompt‑Ingestion × Digital‑Twin OS
 
 > *This charter sets the universal principles for **Jibun OS**, a personal operating system that unifies a **Prompt‑Ingestion layer** (short‑term context) with a **Digital‑Twin layer** (long‑term memory).*
 > 旧 **Digital‑Twin Charter** を改題し、二層＋橋渡しレイヤを明示。
-=======
-<!-- docs/charter.md -->
-
-# 自分OS憲章 v3.1 — Prompt‑Ingestion × Digital‑Twin OS
-
-> *This charter defines the universal principles of **Jibun OS**, a personal operating system that fuses a **Prompt‑Ingestion layer** (short‑term context) with a **Digital‑Twin layer** (long‑term memory).*
-> 旧称 *Digital‑Twin Charter* を改称し、二層モデルを明示しました。
-
----
-
-## 0. 序文 — われわれの北極星 (Why)
-
-**自分OS** の最高目的は、
-
-> **「コピー可能な自己 (The Reproducible Self)」** を構築し、学習と価値創出のループを加速すること。
-
-この目的を達成するため、本憲章は以下の二層を統合した OS フレームを掲げる。
-
-| Layer | 役割 | 物理パス |
-|-------|------|---------|
-| **Prompt‑Ingestion OS** | 直近文脈を AI に高速インジェストし、即応判断を最適化 | `records/`, RAM Context |
-| **Digital‑Twin OS** | 行動・意思決定の履歴を蓄積し、長期学習・責任分担を担保 | `constitution/`, `legislation/` |
-| **Jibun OS (Unified)** | 二層を橋渡しし、自己進化ループを駆動 | 全ディレクトリ |
->>>>>>> 6eee6932a85a61838858f29386fc1f9258d336e2
-
----
 
 ## 0. 序文 — われわれの北極星 (Why)
 
