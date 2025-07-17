@@ -40,6 +40,7 @@ system_architecture:
           description: 共通ガードルール
           context_level: base_os_context
           dependencies: []
+
         - path: legislation/common/mappings.yaml
           role: component_mappings
           description: Component mapping table
@@ -59,6 +60,7 @@ system_architecture:
 #        - path: legislation/common/mappings/driver_stub.yaml
 #          context_level: tooling
 #          description: driver stub
+
         - path: legislation/common/implementation_framework.yaml
           role: implementation_framework
           description: 結晶化・普遍化など標準プロセス
