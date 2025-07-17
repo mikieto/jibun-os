@@ -5,6 +5,7 @@
 # ------------------------------------------------------------
 system_architecture:
   version: 3.1.0
+  description: Prompt‑Ingestion & Digital‑Twin unified map
   layers:
     # ---------- L1 : constitution ----------
     - name: constitution
@@ -48,18 +49,19 @@ system_architecture:
           dependencies:
             - constitution/common/constitution.yaml
             - legislation/common/immune_system.yaml
-#        - path: legislation/common/mappings/guards.yaml
-#          context_level: tooling
-#          description: Guard ID ↔ Guard 定義
-#        - path: legislation/common/mappings/field_task_decision.yaml
-#          context_level: tooling
-#          description: Task ↔ Decision mapping (skeleton)
-#        - path: legislation/common/mappings/field_kpi_ci.yaml
-#          context_level: tooling
-#          description: KPI ← CI mapping (skeleton)
-#        - path: legislation/common/mappings/driver_stub.yaml
-#          context_level: tooling
-#          description: driver stub
+
+  #     - path: legislation/common/mappings/guards.yaml
+  #       context_level: tooling
+  #       description: Guard ID ↔ Guard 定義
+  #     - path: legislation/common/mappings/field_task_decision.yaml
+  #       context_level: tooling
+  #       description: Task ↔ Decision mapping (skeleton)
+  #     - path: legislation/common/mappings/field_kpi_ci.yaml
+  #       context_level: tooling
+  #       description: KPI ← CI mapping (skeleton)
+  #     - path: legislation/common/mappings/driver_stub.yaml
+  #       context_level: tooling
+  #       description: driver stub
 
         - path: legislation/common/implementation_framework.yaml
           role: implementation_framework
