@@ -1,0 +1,8 @@
+---
+# KPI ← CI Gate mapping
+id: field_kpi_ci
+status: TODO
+selector:
+  source_path: .github/workflows/validate.yaml
+  target_path: legislation/personal/projects/os_platform.yaml
+rules: []  # ex: job.conclusion → kpi.policy_ci_pass_rate

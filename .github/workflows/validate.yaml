@@ -1,6 +1,5 @@
 ---
 # .github/workflows/validate.yaml
-
 name: Validate Digital Twin OS
 on:
   push:
@@ -28,6 +27,10 @@ jobs:
         run: pip install pyyaml
       - name: Run system_map path verification
         run: python scripts/verify_system_map_paths.py
+      - name: Load mappings (dry‑run)
+        run: |
+          python scripts/apply_mappings.py \
+                 --mapping-glob "legislation/common/mappings/*.yaml"
       - name: Run yamale (Schema Validation)
         run: |-
           # check-jsonschema --schemafile schema/os_architecture.schema.json jibun_os.yml

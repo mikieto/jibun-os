@@ -3,3 +3,4 @@ yamlfix>=1.17.0
 check-jsonschema
 pytest>=8.0.0
 pyyaml>=6.0
+pre-commit==3.6.2
