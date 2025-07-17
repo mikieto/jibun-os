@@ -348,7 +348,7 @@ decisions:
       - name: lean_data_engineering_book.yamlをjibun-os内に維持
         pros: 単一リポジトリで管理できる。
         cons: jibun-osリポジトリに、本来の責務ではないプロジェクト固有の情報が混在する。
-    related_tasks: [TASK-024]  # move_lean_data_book_to_repo
+    related_tasks: []  # move_lean_data_book_to_repo
     scope:
       project: os_platform_v1
       domain: system_architecture
@@ -367,8 +367,79 @@ decisions:
       - name: 現状のフォーマットを維持する
         pros: 追加の作業が不要。
         cons: ログの価値が限定的で、AIによる自動分析や支援が困難。
-    related_tasks: [TASK-025]  # Define task_log.yaml structure
+    related_tasks: [TASK-2025-07-024]  # Define task_log.yaml structure
     scope:
       project: os_platform_v1
       domain: system_architecture
     severity: High
+  - id: DEC-2025-07-021
+    timestamp: '2025-07-17T10:20:00+09:00'
+    status: closed
+    reason: |
+      プロンプト短期文脈とデジタルツイン長期文脈を整合させるため、
+      四層統治モデル（ログ・Zettel・法律・憲法）を正式採択する。
+    related_tasks: [TASK-2025-07-029, TASK-2025-07-031]
+    scope: {project: os_platform_v1, domain: governance}
+    severity: High
+  - id: DEC-2025-07-022
+    timestamp: '2025-07-17T10:25:00+09:00'
+    status: closed
+    reason: |
+      6 か月以内に実運用事例を獲得し、市場適合を検証するため
+      PoC→有償PoC→Case Study の三段階プランを採用。
+    related_tasks: [TASK-2025-07-028]
+    scope: {project: os_platform_v1, domain: value}
+    severity: High
+  - id: DEC-2025-07-023
+    timestamp: '2025-07-17T10:30:00+09:00'
+    status: closed
+    reason: |
+      IDE 直結で学習ループを加速させるため、
+      VSCode/Cursor チャット I/F ＋ YAML ホットリロードをロードマップに組み込む。
+    related_tasks: []  # TODO: TASK-2025-07-032〜034 を追加予定
+    scope: {project: os_platform_v1, domain: ux}
+    severity: Medium
+  - id: DEC-2025-07-024
+    timestamp: '2025-07-17T10:40:00+09:00'
+    status: closed
+    reason: README・ドキュメントを英語化し国際 OSS コミュニティに対応する。
+    related_tasks: [TASK-2025-07-028]
+    scope: {project: os_platform_v1, domain: documentation}
+    severity: Medium
+  - id: DEC-2025-07-025
+    timestamp: '2025-07-17T10:45:00+09:00'
+    status: closed
+    reason: コミュニティで一般的なライセンスを採用し、利用・貢献の障壁を下げるため Apache‑2.0 を採択。
+    related_tasks: [TASK-2025-07-029]
+    scope: {project: os_platform_v1, domain: licensing}
+    severity: High
+  - id: DEC-2025-07-026
+    timestamp: '2025-07-17T10:50:00+09:00'
+    status: closed
+    reason: Stabilize フェーズに集中し、Amplify 施策は M2 まで凍結する。
+    related_tasks:
+      - TASK-2025-07-024
+      - TASK-2025-07-025
+      - TASK-2025-07-026
+      - TASK-2025-07-027
+      - TASK-2025-07-030
+      - TASK-2025-07-031
+    scope: {project: os_platform_v1, domain: roadmap}
+    severity: Critical
+  - id: DEC-2025-07-027
+    timestamp: '2025-07-17T17:10:00+09:00'
+    status: decided
+    summary: mappings ディレクトリを guards / field / driver に分割する
+    reason: |
+      ● プロジェクト増・共同編集者増を見据え、ガードとデータ同期ルールの責務を分離する。
+      ● ファイル単位で PR 衝突を抑え、モジュールごとにアクセス権を設定しやすくする。
+    alternatives:
+      - name: 分割してモジュール化
+        pros: スケール時の保守性とレビュー効率が向上。
+        cons: 初回リネームと CI 修正の作業コストが発生。
+      - name: mappings.yaml 単一ファイルを維持
+        pros: 現状のまま運用できる。
+        cons: 将来ファイル肥大・コンフリクトが加速する。
+    related_tasks: [TASK-2025-07-033, TASK-2025-07-034, TASK-2025-07-035]
+    scope: {project: os_platform_v1, domain: system_architecture}
+    severity: Medium
