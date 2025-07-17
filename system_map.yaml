@@ -1,152 +1,176 @@
 ---
-# common/system_map.yaml はプロジェクトルート直下に移動したため、パスは不要
-#
-# Digital Twin OSの全体的なファイル構造と、各ファイルの役割、および主要な依存関係を定義する。
-# AIがOSの内部構造を理解し、自己監査や自動化を支援するための機械可読なマップ。
+# common/system_map.yaml
+# ------------------------------------------------------------
+# Jibun OS - an AI‑Collaborative OS の全体構造を AI に機械可読で伝えるシステムマップ
+# ------------------------------------------------------------
 system_architecture:
-  version: 3.1.0  # バージョンを更新
+  version: 3.1.0
   layers:
+    # ---------- L1 : constitution ----------
     - name: constitution
-      description: OSの最高規範となる普遍的な憲法と、OS所有者個人の核となる価値観。
+      description: OS の最高規範 (普遍憲法＋個人憲法)
       files:
-        - path: constitution/common/constitution.yaml  # パスを修正
+        - path: constitution/common/constitution.yaml
           role: universal_constitution
-          description: OSフレームワークの最高規範。統治機構、コア機能、運用哲学を定義。
+          description: OS フレームワークの最高規範
           context_level: base_os_context
           dependencies:
-            - docs/charter.md  # ルート直下からの相対パス
-            - legislation/common/taxonomy.yaml  # パスを修正
-            - legislation/common/implementation_framework.yaml  # パスを修正
-        - path: constitution/personal/constitution.yaml  # パスを修正
+            - docs/charter.md
+            - legislation/common/taxonomy.yaml
+            - legislation/common/implementation_framework.yaml
+        - path: constitution/personal/constitution.yaml
           role: personal_constitution
-          description: OS所有者個人の究極の目的や核となる価値観を定義する。
+          description: 個人の核となる価値観・目的
           context_level: base_os_context
           dependencies:
-            - constitution/common/constitution.yaml  # パスを修正
-    - name: legislation
-      description: 憲法に基づいた具体的な運用ルール、フレームワーク、テンプレート、および個別の設定やプロジェクト/ドメイン定義。
-      files:
-        - path: legislation/common/immune_system.yaml  # パスを修正
-          role: intellectual_immune_system_framework
-          description: OSの自己防衛・自己成長メカニズム（生得免疫系）を定義する、普遍的なフレームワーク。
-          context_level: base_os_context
-          dependencies: []
-        - path: legislation/common/innate_immunity.yaml  # パスを修正
-          role: universal_guards
-          description: OSフレームワークに標準搭載されている普遍的なガードルール。
-          context_level: base_os_context
-          dependencies: []
-        - path: legislation/common/mappings.yaml  # パスを修正
-          role: component_mappings
-          description: OS内の異なるコンポーネント間の関連性を定義。
-          context_level: base_os_context
-          dependencies:  # パスを修正
             - constitution/common/constitution.yaml
-            - legislation/common/immune_system.yaml
-        - path: legislation/common/implementation_framework.yaml  # パスを修正
-          role: implementation_framework
-          description: OS運用、知識の循環プロセス（結晶化・普遍化）など、標準プロセスを定義。
-          context_level: base_os_context
-          dependencies: [legislation/common/taxonomy.yaml]  # パスを修正
-        - path: legislation/common/taxonomy.yaml  # パスを修正
-          role: system_taxonomy
-          description: 四階層モデルなど、OS全体で共有されるタグや分類を定義。
-          context_level: base_os_context
-          dependencies: []
-        - path: legislation/common/prompt_patterns.yaml  # パスを修正
-          role: ai_interface_patterns
-          description: (計画中) AIとの協働モデルを実装するための標準化されたプロンプトの型を定義。
-          status: planned
-          context_level: future_context
-          dependencies: [constitution/common/constitution.yaml]  # パスを修正
-        - path: legislation/common/projects/project_template.yaml  # パスを修正
-          role: playbook_template_project
-          description: 第二階層(Legislation)に属する、新規プロジェクト作成時の共通テンプレート。
-          context_level: template_data
-          dependencies: []
-        - path: legislation/common/domains/domain_template.yaml  # パスを修正
-          role: playbook_template_domain
-          description: 第二階層(Legislation)に属する、新規ドメイン作成時の共通テンプレート。
-          context_level: template_data
-          dependencies: []
-        - path: legislation/personal/core_principles.yaml  # パスを修正
-          role: personal_implementation_config
-          description: 個人のOSインスタンスの具体的な設定、役割、ガードの詳細、KPI、改善バックログなどを定義。
-          context_level: base_os_context
-          dependencies:
-            - constitution/common/constitution.yaml  # パスを修正
-            - constitution/personal/constitution.yaml  # パスを修正
-        - path: legislation/personal/acquired_immunity.yaml  # パスを修正
-          role: personal_adaptive_rules
-          description: 個人的な経験から獲得した、特異的なルール（抗体）の集合。
-          context_level: personal_data
-          dependencies: [legislation/common/immune_system.yaml]  # パスを修正
-        - path: legislation/personal/profile.yaml  # パスを修正
-          role: personal_profile
-          description: OS所有者の固定的なプロフィール（名前、タイムゾーンなど）を定義。
-          context_level: personal_data
-          dependencies: []
-        - path: legislation/personal/projects/os_platform.yaml  # パスを修正
-          role: os_development_project
-          description: Digital Twin OSプラットフォーム自体の開発プロジェクト定義、バージョン、ステージ、開発バックログを管理。
-          context_level: base_os_context
-          dependencies: []
-        - path: legislation/personal/domains/learning.yaml  # パスを修正
-          role: user_domain_instance
-          description: OS所有者の学習領域に関する定義。
-          context_level: domain_context
-          dependencies: [legislation/common/domains/domain_template.yaml]  # パスを修正
-    - name: precedents
-      description: 個々の経験や記録から抽出された、より抽象化された知識や行動パターン。現在は空。
-      files: []  # 現状は空なので空リスト
-    - name: records
-      description: OSの運用中に動的に生成される、行動や決定に関するログデータ。
+
+    # ---------- L2 : legislation ----------
+    - name: legislation
+      description: 憲法に基づく具体ルール・テンプレート
       files:
-        - path: records/task_log.yaml  # パスを修正
-          role: task_log
-          description: タスクの進捗を記録。
-          context_level: log_data
+        # --- 共通 ---
+        - path: legislation/common/immune_system.yaml
+          role: intellectual_immune_system_framework
+          description: 生得免疫系フレームワーク
+          context_level: base_os_context
           dependencies: []
-        - path: records/decision_log.yaml  # パスを修正
-          role: decision_log
-          description: 重要な意思決定の「なぜ」を記録。
-          context_level: log_data
-          dependencies: [records/task_log.yaml]  # パスを修正
-        - path: records/guard_log.yaml  # パスを修正
-          role: guard_invocation_log
-          description: 知的免疫システムの発動記録や、AIとの対話履歴などを動的に記録。
-          context_level: log_data
+        - path: legislation/common/innate_immunity.yaml
+          role: universal_guards
+          description: 共通ガードルール
+          context_level: base_os_context
+          dependencies: []
+        - path: legislation/common/mappings/guards.yaml
+          context_level: tooling
+          description: Guard ID ↔ Guard 定義
+        - path: legislation/common/mappings/field_task_decision.yaml
+          context_level: tooling
+          description: Task ↔ Decision mapping (skeleton)
+        - path: legislation/common/mappings/field_kpi_ci.yaml
+          context_level: tooling
+          description: KPI ← CI mapping (skeleton)
+        - path: legislation/common/mappings/driver_stub.yaml
+          context_level: tooling
+          description: driver stub
+        - path: legislation/common/implementation_framework.yaml
+          role: implementation_framework
+          description: 結晶化・普遍化など標準プロセス
+          context_level: base_os_context
+          dependencies: [legislation/common/taxonomy.yaml]
+        - path: legislation/common/taxonomy.yaml
+          role: system_taxonomy
+          description: OS 全体のタグ／分類
+          context_level: base_os_context
+          dependencies: []
+        - path: legislation/common/prompt_patterns.yaml
+          role: ai_interface_patterns
+          status: planned
+          description: AI 協働用プロンプト標準型
+          context_level: future_context
+          dependencies: [constitution/common/constitution.yaml]
+
+        # --- テンプレート ---
+        - path: legislation/common/projects/project_template.yaml
+          role: playbook_template_project
+          context_level: template_data
+          description: プロジェクト作成テンプレ
+          dependencies: []
+        - path: legislation/common/domains/domain_template.yaml
+          role: playbook_template_domain
+          context_level: template_data
+          description: ドメイン作成テンプレ
+          dependencies: []
+
+        # --- 個人 ---
+        - path: legislation/personal/core_principles.yaml
+          role: personal_implementation_config
+          context_level: base_os_context
+          description: 個人 OS の設定・KPI 等
           dependencies:
-            - legislation/common/immune_system.yaml  # パスを修正
-            - legislation/personal/acquired_immunity.yaml  # パスを修正
+            - constitution/common/constitution.yaml
+            - constitution/personal/constitution.yaml
+        - path: legislation/personal/acquired_immunity.yaml
+          role: personal_adaptive_rules
+          context_level: personal_data
+          description: 獲得免疫ルール（個人）
+          dependencies: [legislation/common/immune_system.yaml]
+        - path: legislation/personal/profile.yaml
+          role: personal_profile
+          context_level: personal_data
+          description: 固定プロフィール
+          dependencies: []
+
+        # --- Jibun OS 開発プロジェクト ---
+        - path: legislation/personal/projects/os_platform.yaml
+          role: os_development_project
+          description: Jibun OS プラットフォーム憲章＋実装メタ
+          context_level: base_os_context
+          roadmap_phase: stabilize
+          dependencies:
+            - records/decision_log.yaml
+            - records/task_log.yaml
+
+        # --- サンプルユーザードメイン ---
+        - path: legislation/personal/domains/learning.yaml
+          role: user_domain_instance
+          context_level: domain_context
+          description: 学習ドメイン定義
+          dependencies: [legislation/common/domains/domain_template.yaml]
+
+    # ---------- L3 : precedents ----------
+    - name: precedents
+      description: 抽象化された知識・行動パターン（現在空）
+      files: []
+
+    # ---------- L4 : records ----------
+    - name: records
+      description: 実行ログ・決定ログ
+      files:
+        - path: records/task_log.yaml
+          role: task_log
+          context_level: log_data
+          description: タスクの進捗履歴
+          dependencies: []
+        - path: records/decision_log.yaml
+          role: decision_log
+          context_level: log_data
+          description: 重要意思決定の履歴
+          dependencies: [records/task_log.yaml]
+        - path: records/guard_log.yaml
+          role: guard_invocation_log
+          context_level: log_data
+          description: 知的免疫システム発動＆AI対話履歴
+          dependencies:
+            - legislation/common/immune_system.yaml
+            - legislation/personal/acquired_immunity.yaml
   other_root_files:
     - path: docs/charter.md
       role: system_charter
-      description: デジタルツインの理念、構造、運用を定義する最高規範。全てのコンポーネントはこの憲章の思想に従う。
       context_level: documentation
+      description: システムの最高理念ドキュメント
       dependencies: []
     - path: .github/workflows/validate.yaml
       role: ci_workflow
-      description: CI/CDワークフロー定義。OSの構造、スキーマ、lintなどを検証。
       context_level: operational_tooling
+      description: 構造・スキーマ・lint 検証
       dependencies: []
     - path: docs/architecture_overview.md
       role: system_documentation
-      description: OSの技術的なアーキテクチャ概要。docs/charter.mdを補完する、人間が読むための設計ドキュメント。
       context_level: documentation
-      dependencies: [system_map.yaml, docs/charter.md]  # パスを修正 (system_mapはルート直下なので直接参照)
+      description: 技術アーキテクチャ概要
+      dependencies: [system_map.yaml, docs/charter.md]
     - path: README.md
       role: project_readme
-      description: プロジェクトの概要と導入手順。
       context_level: documentation
+      description: プロジェクト概要・導入手順
       dependencies: []
     - path: requirements.txt
       role: python_dependencies
-      description: Pythonプロジェクトの依存ライブラリリスト。
       context_level: operational_tooling
+      description: Python 依存ライブラリ
       dependencies: []
     - path: schema/os_architecture.schema.json
       role: os_schema_definition
-      description: OSのYAML設定ファイルやデータ構造の整合性を検証するためのJSONスキーマ。
       context_level: operational_tooling
+      description: YAML/JSON スキーマ
       dependencies: []
