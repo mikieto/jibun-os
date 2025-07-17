@@ -1,0 +1,16 @@
+---
+# .pre-commit-config.yaml  ── Digital Twin OS (starter)
+repos:
+  # --- 公式プリセット：YAML 構文チェック & EoF 修正など --------------
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0  # 固定することで再現性を確保
+    hooks:
+      - id: check-yaml  # YAML のパース確認
+      - id: end-of-file-fixer  # EOF に改行を入れる
+      - id: trailing-whitespace  # 行末スペース除去
+
+  # --- yamllint ----------------------------------------------------
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.34.0
+    hooks:
+      - id: yamllint
