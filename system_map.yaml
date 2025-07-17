@@ -40,18 +40,27 @@ system_architecture:
           description: 共通ガードルール
           context_level: base_os_context
           dependencies: []
-        - path: legislation/common/mappings/guards.yaml
-          context_level: tooling
-          description: Guard ID ↔ Guard 定義
-        - path: legislation/common/mappings/field_task_decision.yaml
-          context_level: tooling
-          description: Task ↔ Decision mapping (skeleton)
-        - path: legislation/common/mappings/field_kpi_ci.yaml
-          context_level: tooling
-          description: KPI ← CI mapping (skeleton)
-        - path: legislation/common/mappings/driver_stub.yaml
-          context_level: tooling
-          description: driver stub
+
+        - path: legislation/common/mappings.yaml
+          role: component_mappings
+          description: Component mapping table
+          context_level: base_os_context
+          dependencies:
+            - constitution/common/constitution.yaml
+            - legislation/common/immune_system.yaml
+#        - path: legislation/common/mappings/guards.yaml
+#          context_level: tooling
+#          description: Guard ID ↔ Guard 定義
+#        - path: legislation/common/mappings/field_task_decision.yaml
+#          context_level: tooling
+#          description: Task ↔ Decision mapping (skeleton)
+#        - path: legislation/common/mappings/field_kpi_ci.yaml
+#          context_level: tooling
+#          description: KPI ← CI mapping (skeleton)
+#        - path: legislation/common/mappings/driver_stub.yaml
+#          context_level: tooling
+#          description: driver stub
+
         - path: legislation/common/implementation_framework.yaml
           role: implementation_framework
           description: 結晶化・普遍化など標準プロセス
