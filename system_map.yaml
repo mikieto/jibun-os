@@ -41,7 +41,6 @@ system_architecture:
           description: 共通ガードルール
           context_level: base_os_context
           dependencies: []
-
         - path: legislation/common/mappings.yaml
           role: component_mappings
           description: Component mapping table
