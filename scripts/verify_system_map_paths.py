@@ -14,7 +14,7 @@ def verify_system_map_paths(system_map_path="system_map.yaml"):
         bool: 全てのパスが存在すれば True、一つでも存在しなければ False。
     """
     print(f"--- Verifying paths in {system_map_path} ---")
-    
+
     if not os.path.exists(system_map_path):
         print(f"ERROR: system_map.yaml not found at {system_map_path}")
         return False
@@ -31,7 +31,7 @@ def verify_system_map_paths(system_map_path="system_map.yaml"):
 
     # system_map.yaml がルートに置かれていることを前提に、そのディレクトリをベースとする
     base_dir = os.path.dirname(os.path.abspath(system_map_path))
-    
+
     found_errors = False
     checked_paths_count = 0
 
@@ -45,14 +45,14 @@ def verify_system_map_paths(system_map_path="system_map.yaml"):
 
             full_path = os.path.join(base_dir, relative_path)
             checked_paths_count += 1
-            
+
             if not os.path.exists(full_path):
                 print(f"ERROR: Path in system_map.yaml does not exist: {relative_path} (Full: {full_path})")
                 found_errors = True
             elif not os.path.isfile(full_path):
                 print(f"ERROR: Path in system_map.yaml is not a file (or is a directory): {relative_path} (Full: {full_path})")
                 found_errors = True
-            
+
             # (オプション) dependencies のパスも検証する場合はここに追加
             # 例: for dep_rel_path in file_entry.get('dependencies', []):
             #         dep_full_path = os.path.join(os.path.dirname(full_path), dep_rel_path) # 依存元からの相対パス
