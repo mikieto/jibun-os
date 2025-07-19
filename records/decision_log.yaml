@@ -443,3 +443,135 @@ decisions:
     related_tasks: [TASK-2025-07-033, TASK-2025-07-034, TASK-2025-07-035]
     scope: {project: os_platform_v1, domain: system_architecture}
     severity: Medium
+
+  - id: DEC-2025-07-19-001
+    timestamp: '2025-07-19T13:47:00+09:00'
+    status: decided
+    summary: OSの倫理的基盤を再構築する「リファクタリング計画 "Guardian"」の即時着手を決定
+    reason: |
+      現在のOSは、自己進化と生産性向上（内向きの目的）には最適化されているが、
+      社会的な信頼性や安全性を担保する普遍的な倫理基盤（外向きの制約）が欠けている。
+      AIを真に信頼できるパートナーとし、その知的生産物の価値を最大化するためには、
+      技術的改善よりも上位の次元である「統治思想のパラダイムシフト」が不可欠である。
+      この倫理的基盤の再構築は、他のどのタスクよりも優先されるべき最重要課題であると判断した。
+    alternatives:
+      - name: "Guardian計画"を最優先で即時着手
+        pros: OSの信頼性と安全性が飛躍的に向上し、将来的な手戻りリスクを最小化できる。全ての開発が正しい倫理基盤の上で行われることが保証される。
+        cons: 短期的に、既存の技術的タスクの進捗が遅れる可能性がある。
+      - name: 既存の技術的タスクを優先
+        pros: 目先の機能改善や品質向上が進む。
+        cons: 倫理的基盤がないまま開発を進めることになり、将来的に大きな手戻りや信頼性の問題を引き起こす「倫理的・技術的負債」が蓄積する。
+    related_tasks: [TASK-2025-07-19A, TASK-2025-07-19B, TASK-2025-07-19C]
+    scope:
+      project: os_platform_v1
+      domain: philosophy
+    severity: Critical
+
+  - id: DEC-2025-07-19-002
+    timestamp: '2025-07-19T14:00:00+09:00'
+    status: decided
+    summary: ログIDの命名規則を`[PREFIX]-YYYY-MM-DD-[NNN]`形式に正式決定
+    reason: |
+      システムの根幹であるログIDについて、トレーサビリティ、ソート可能性、ユニーク性、そして人間と機械双方にとっての可読性を最大化するため。
+      この形式は、`timestamp`フィールドとは別に、ID自体が時系列ソートを可能にすることでデータベース性能を向上させるという、現代的なベストプラクティスを反映している。
+      また、3桁のゼロパディング連番は、人間主体の意思決定において十分なスケーラビリティを確保する、実践的な選択である。
+    alternatives:
+      - name: `[PREFIX]-YYYY-MM-DD-[NNN]` (今回採択案)
+        pros: 時系列ソート可能、スケーラブル、直感的で曖昧さがない。
+        cons: IDがやや長くなる。
+      - name: `[PREFIX]-YYYY-MM-[NNN]` (旧形式)
+        pros: 月単位でのグルーピングがしやすい。
+        cons: IDから正確な日付が分からず、ID単体での時系列ソートが不可能。
+      - name: `[PREFIX]-NNN` (単純連番)
+        pros: 最もシンプル。
+        cons: スケーラビリティやコンフリクトの問題があり、時系列情報が全くない。
+    related_tasks: [TASK-2025-07-19D, TASK-2025-07-19E] # 命名規則ガイドの更新, 命名規則を強制するリンターの導入
+    scope:
+      project: os_platform_v1
+      domain: system_architecture
+    severity: High
+
+  - id: DEC-2025-07-19-003
+    timestamp: '2025-07-19T14:15:00+09:00'
+    status: decided
+    summary: 憲法など中核フレームワークファイルの命名規則として、ファイル名にバージョンを含めることを決定
+    reason: |
+      OSの根幹をなす設定ファイル（例: MVC、UDRH）を、ソフトウェアのリリースバージョンのように扱うため。
+      これにより、以下の点を保証する。
+      1. 不変性の保証：`v1.0`ファイルは変更せず、改訂時は`v2.0`を新設することで、意図しない変更を防ぐ。
+      2. 安全な移行：新旧バージョンを並行稼働させ、安全性を検証した上で移行やロールバックを行えるようにする。
+      3. 明確な依存関係：`import`する側が、どのバージョンに依存しているかを明確に宣言できるようにする。
+    alternatives:
+      - name: ファイル名にバージョンを含める（`mvc_v1.0.yaml`）
+        pros: 不変性が保証され、安全な移行が可能。依存関係が明確。
+        cons: バージョンアップごとにファイルが増える。
+      - name: ファイル名は固定し、内部でバージョンを管理（`mvc.yaml`内に`version: 1.0`）
+        pros: ファイル数が少ない。
+        cons: 意図せずファイルが変更されるリスクがあり、複数バージョンの並行稼働が困難。
+    related_tasks: [TASK-2025-07-19-004, TASK-2025-07-19-006] # 憲法構成ファイルの作成, 開発ガイドラインへの命名規則の追記
+    scope:
+      project: os_platform_v1
+      domain: configuration_management
+    severity: High
+
+  - id: DEC-2025-07-19-004
+    timestamp: '2025-07-19T14:18:00+09:00'
+    status: decided
+    summary: OSの「法律(L2)」層に、法の一般原則（信義誠実、適正手続き等）を導入することを決定
+    reason: |
+      AIの判断基準として、最上位の「憲法(L1)」だけでは抽象的すぎ、個別の「判例(L3)」だけでは網羅性に欠ける。
+      その中間層である「法律(L2)」に、人間社会で広く受け入れられている法の一般原則を組み込むことで、AIの判断に予測可能性、公平性、社会的妥当性を与える。
+      これにより、AIはより高度で複雑なインタラクションを、公正に処理できるようになる。
+    alternatives:
+      - name: 法の一般原則を体系的に導入する
+        pros: AIの判断が堅牢で公正になり、信頼性が向上する。未知の状況への対応能力が高まる。
+        cons: 原則の選定と、それをAIが解釈可能なルールに変換する初期コストがかかる。
+      - name: 憲法と判例のみに依存する
+        pros: システムがシンプルに保たれる。
+        cons: AIの判断が場当たり的になり、一貫性や公平性に欠けるリスクがある。
+    related_tasks: [TASK-2025-07-19-007]
+    scope:
+      project: os_platform_v1
+      domain: governance
+    severity: High
+
+  - id: DEC-2025-07-19-005
+    timestamp: '2025-07-19T14:25:00+09:00'
+    status: decided
+    summary: ドキュメント構成をシンプルに再編し、`index.md`と`development_conventions.md`を追加することを決定
+    reason: |
+      既存のドキュメントの合理性を活かしつつ、新規参画者のための「読むべき順番」を明確にするため。
+      過度な階層化を避け、`index.md`をハブとして配置することで、最小の変更で最大限の分かりやすさを実現する。
+    alternatives:
+      - name: `index.md`と規約ファイルを追加する（今回採択案）
+        pros: シンプルで直感的。既存の構造を大きく変更する必要がない。
+        cons: 将来ドキュメントが増えた際に、再度整理が必要になる可能性がある。
+      - name: ディレクトリ階層化を導入する
+        pros: スケールしやすい。
+        cons: 現状ではやや過剰な設計であり、ファイルパスの変更など影響範囲が大きい。
+    related_tasks: [TASK-2025-07-19-008]
+    scope:
+      project: os_platform_v1
+      domain: documentation
+    severity: Medium
+
+  - id: DEC-2025-07-19-006
+    timestamp: '2025-07-19T14:35:00+09:00'
+    status: decided
+    summary: `general_legal_principles.yaml`のファイル名を`jurisprudence.yaml`に変更することを決定
+    reason: |
+      元のファイル名は冗長であったため、より簡潔で本質を捉えた名前に変更する。
+      `jurisprudence`（法理学）という用語は、「OSが従うべき法の哲学」というファイルの内容を的確に表現しており、
+      システムの知的な一貫性を高める。
+    alternatives:
+      - name: jurisprudence.yaml
+        pros: 簡潔、専門的、的確。
+        cons: 一般的な単語ではないため、初見では意味が分かりにくい可能性がある。
+      - name: legal_principles.yaml
+        pros: 分かりやすい。
+        cons: やや一般的すぎる。
+    related_tasks: [TASK-2025-07-19-007]
+    scope:
+      project: os_platform_v1
+      domain: configuration_management
+    severity: Low

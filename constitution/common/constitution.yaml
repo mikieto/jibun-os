@@ -1,26 +1,22 @@
----
-# common/constitution.yaml (物理パスは constitution/common/constitution.yaml)
-# このファイルは、自己進化する知的生命システム「自分OS」の普遍的な設計原理、
-# すなわちOSの「仕組み」に関する共通の憲法を定義します。
-# 個人の目的や価値観は含まれません。
-# ------------------------------------------------
-# *自分OS = Prompt‑Ingestion OS × Digital‑Twin OS*
-#   • **Prompt‑Ingestion OS** : 直近文脈を高速インジェストし AI と意思疎通を最適化
-#   • **Digital‑Twin OS**     : 行動・意思決定の長期履歴を蓄積し自己進化を加速
-# ------------------------------------------------
 name: 自分OS憲章 (Jibun OS Charter)
-# ------------------------------------------------
-# 序文の理念 / 第一条：目的（Why） ― 北極星としての自分OS (普遍的な部分)
-# ------------------------------------------------
+imports:
+  - name: Universal Declaration of Human Rights (世界人権宣言)
+    type: normative_reference
+    source: ./udhr.yaml
+    version: "1948-12-10"
+  - name: AI Governance Minimal Viable Constitution (MVC)
+    type: framework_reference
+    source: ./mvc_v1.0.yaml
+    version: "1.0"
 supreme_purpose:
+  why_constraint: |
+    本OSの究極目的は、常に「人間の尊厳の絶対的尊重」という原則の下に追求されなければならない。
+    自己の再現と進化は、他者の尊厳を侵害しない範囲においてのみ許容される。
   why_primary: |
     本OS（自分OS）は、「コピー可能な自己（The Reproducible Self）」、すなわち「他者が読んでも学習可能な、再現性のある思考構造」を構築するために存在する。
   why_secondary: |
     その根源にある思想は、人間は複雑系のブラックボックスであり、内省だけでは自己を理解できないという前提である。
     よって、思考（コード）と保護機能（ガード）を分離・外部化し、その働きを可観測化することによってのみ、意識的な自己進化は達成される。
-# ------------------------------------------------
-# 第二条：構造（What） ― 統治機構としての四階層モデル
-# ------------------------------------------------
 governance_structure:
   name: 四階層モデル
   description: |
@@ -55,9 +51,6 @@ governance_structure:
       name: Records (記録・経験)
       path: /records/
       description: 日々の活動、思考、感情、事実など、生の経験の記録。
-# ------------------------------------------------
-# 第三条：エンジン（How） ― 自己進化を駆動する知的免疫システム
-# ------------------------------------------------
 evolution_engine:
   name: 知的免疫システム
   description: |
@@ -99,6 +92,12 @@ evolution_engine:
     - step: validation
       description: |
         信頼性評価ルールに従い、ノイズや偏りを除外する。
+    - step: ethical_review
+      name: 普遍的人権フィルター (Universal Human Rights Filter)
+      description: |
+        検証済みの情報や思考パターンを、世界人権宣言の理念に照らして審査する。
+        無意識のバイアスや、他者の権利を侵害する可能性のある要素が含まれていないかを確認する。
+        この審査を通過しない限り、学習や統合のプロセスには進めない。
     - step: learning
       description: |
         有効なフィードバックをパターン化し、必要に応じて判例や法律に昇格させる。
@@ -109,9 +108,6 @@ evolution_engine:
     description: |
       全ての観測ルールと統合ワークフローは、3か月ごとにレビューされ、
       実態に即して更新される。
-# ------------------------------------------------
-# 第四条：循環（How to Circulate） ― 生命活動としての知識循環
-# ------------------------------------------------
 knowledge_circulation:
   name: 知識の循環
   description: |
@@ -124,9 +120,6 @@ knowledge_circulation:
     - name: 普遍化 (Top-down Influence)
       description: 積み重ねられた法律（2層）が、確信に変わった時、それは憲法（1層）の原則として刻まれる。
       flow: L2 → L1
-# ------------------------------------------------
-# 第五条：協働（Who） ― 限界を超えるためのパートナーシップ
-# ------------------------------------------------
 collaboration_model:
   name: AI提案＋人間承認
   description: |
@@ -135,9 +128,10 @@ collaboration_model:
   protocol:
     - principle: AIが分析・提案し、人間が最終判断
     - dispute_resolution: |
-        憲法の解釈に関する意見の対立が発生した場合、最終的な意思決定権はOS所有者に属する。
-        ただし、AIは自身の反対意見、その論理的根拠、および想定されるリスクをdecision_logに記録する義務を負う。
-  ai_collaboration_governance:  # PMP05の内容をここに統合
+        憲法の解釈に関する意見の対立、またはGuardian(AI)から警告が発せられた場合、最終的な意思決定権はOwner(人間)に属する。
+        ただし、Co-Pilot(AI)およびGuardian(AI)は、それぞれの論理的根拠と想定されるリスクをdecision_logに記録する義務を負う。
+        Ownerは、これらの記録を検討した上で、最終判断を下さなければならない。
+  ai_collaboration_governance:
     description: The PrincipalとThe Analyst (AI) との協働モデルを定義する、標準的な運用手順。
     rules:
       ai_role:
@@ -161,26 +155,20 @@ collaboration_model:
           事実認識に関する対立が発生した場合、AIは自らの主張を繰り返すことを停止する。
           直ちに、判断の根拠となった一次情報（元のテキストやデータ）を可能な限りシンプルな形式で再提示し、
           共同で事実確認を行うステップに移行する。
-# ------------------------------------------------
-# 普遍的な運用原則 (Universal Operational Principles)
-# ------------------------------------------------
 universal_operational_principles:
-  - id: UOP01  # PMP02から変更
+  - id: UOP01
     name: コミットメントと期待値設定
     description: |
       プロジェクト関係者との信頼関係を構築し、実現可能な目標設定を促すための普遍的ガイドライン。
       確実な根拠なく約束しない。不確実性や限界を伴う内容については、過度な期待を抱かせない表現とする。
       コストとリターンのバランスを常に評価し、持続不可能なコミットメントを避ける。
     keywords: [コミットメント, 期待値管理, 信頼]
-  - id: UOP02  # PMP04から変更
+  - id: UOP02
     name: 単一の信頼できる情報源 (SSOT)
     description: |
       プロジェクト憲章が、全ての決定事項の単一の信頼できる情報源（Single Source of Truth）として機能する。
       これにより、情報の散在や認識のズレを防ぐ。
     keywords: [SSOT, ガバナンス, 憲章]
-# ------------------------------------------------
-# 第六条：憲章レビュー（Meta-Governance） ― システムと憲章の自己更新
-# ------------------------------------------------
 meta_governance:
   name: 憲章レビューと自己更新
   description: |
@@ -190,9 +178,6 @@ meta_governance:
     frequency: quarterly
     owner: The Analyst (AI) 提示 → The Principal 承認
     auto_escalation: 期日 +7d で G002 発動を提案
-# ------------------------------------------------
-# 第七条：リスク管理（Risk Management） ― システムの境界と脅威対応
-# ------------------------------------------------
 risk_management:
   name: リスク管理と脅威対応
   description: |
@@ -214,9 +199,6 @@ risk_management:
       condition: 同一パターンの失敗が7日以内に2回発生した場合。
     - threat_type: stagnation
       condition: 新規の判例または法律が30日間生成されなかった場合。
-# ------------------------------------------------
-# 第八条：外部連携（Integration） ― システムの拡張性
-# ------------------------------------------------
 external_integration:
   name: 外部連携
   description: |
@@ -233,9 +215,6 @@ external_integration:
       description: \`git commit\` をフックし、コミットメッセージから`/records/`にログを自動生成するGitHub Actionsを構築する。
     - name: ノートアプリとの連携
       description: Obsidianの`frontmatter`にメタデータを記述し、システムの各階層とノートを関連付ける。
-# ------------------------------------------------
-# 第九条：評価指標（Metrics） ― 成長の定量化
-# ------------------------------------------------
 evaluation_metrics:
   name: 成長の定量化
   description: システムの自己進化度を定量的に評価するための指標カテゴリを定義する。
@@ -246,9 +225,6 @@ evaluation_metrics:
       examples: [週次ログ数（4層）と、その判例化率（3層への昇格率）]
     - name: 協働の健全度
       examples: [AIからの提案に対する承認率とフィードバック数]
-# ------------------------------------------------
-# 第十条：役割と責任（Roles & Responsibilities） ― 統治の実行
-# ------------------------------------------------
 roles_and_responsibilities:
   name: 役割と責任
   description: この憲章に基づく統治を円滑に実行するため、以下の普遍的な役割と責任を定める。
@@ -265,9 +241,11 @@ roles_and_responsibilities:
         - 脅威の常時監視と検知。
         - 脅威に対する解決策の初期提案。
         - 人間の指示に基づく、情報収集、要約、構造化の実行。
-# ------------------------------------------------
-# 結びの哲学 ― この憲章を支える三つの柱
-# ------------------------------------------------
+    - role: Guardian (AI)
+      responsibilities:
+        - MVC（最小構成憲法）の原則のみに基づいて行動する、独立した監査役。
+        - OwnerやCo-Pilotの判断が、MVCの普遍的原則（特に人間の尊厳と人権）に違反する可能性がないかを監視する。
+        - 違反の可能性がある場合、最終承認前に警告（アラート）を発する義務を負う。
 foundational_pillars:
   name: この憲章を支える三つの柱
   description: システムが機能する根源にある、三つの揺るぎない普遍的な柱。
