@@ -406,7 +406,7 @@ tasks:
     timestamp: '2025-07-19T13:47:00+09:00'
     related_decision: DEC-2025-07-19-001
     summary: 憲法(v2.0)改正：外部憲章のimportと倫理的制約の追加
-    status: todo
+    status: Done
     assignee: mikieto
     description: |
       constitution.yamlをリファクタリングし、`imports`セクションを追加して世界人権宣言とMVCを参照する。
@@ -421,7 +421,7 @@ tasks:
     timestamp: '2025-07-19T13:47:00+09:00'
     related_decision: DEC-2025-07-19-001
     summary: 統治機構(v2.0)更新：Guardianロールの定義と協働プロトコルの更新
-    status: todo
+    status: Done
     assignee: mikieto
     description: |
       constitution.yamlの`roles_and_responsibilities`に独立監査役「Guardian (AI)」を定義する。
@@ -436,7 +436,7 @@ tasks:
     timestamp: '2025-07-19T13:47:00+09:00'
     related_decision: DEC-2025-07-19-001
     summary: 学習プロセス(v2.0)更新：普遍的人権フィルターの実装
-    status: todo
+    status: Done
     assignee: mikieto
     description: |
       constitution.yamlの`integration_workflow`に、`ethical_review`ステップを追加し、
@@ -452,7 +452,7 @@ tasks:
     timestamp: '2025-07-19T14:10:00+09:00'
     related_decision: DEC-2025-07-19-001
     summary: 憲法(v2.0)の構成ファイルを作成 (`mvc_v1.0.yaml`, `udhr.yaml`)
-    status: todo
+    status: Done
     assignee: mikieto
     description: |
       `constitution/common/`配下に、`mvc_v1.0.yaml`（実用最小限の憲法5条）と`udhr.yaml`（世界人権宣言の要点）をYAML形式で具体的に記述したファイルを新設する。
@@ -468,7 +468,7 @@ tasks:
     timestamp: '2025-07-19T14:10:00+09:00'
     related_decision: DEC-2025-07-19-001
     summary: `system_map.yaml`を更新し、新しい憲法ファイル群を定義
-    status: todo
+    status: Done
     assignee: mikieto
     description: |
       `system_map.yaml`の`constitution`レイヤーを編集し、新設した`mvc_v1.0.yaml`と`udhr.yaml`のファイル定義、および関連ファイルの依存関係を正確に記述する。
@@ -483,7 +483,7 @@ tasks:
     timestamp: '2025-07-19T14:18:00+09:00'
     related_decision: DEC-2025-07-19-004
     summary: `legislation/common/jurisprudence.yaml`を新設し、初期ルールセットを定義
-    status: todo
+    status: Done
     assignee: mikieto
     description: |
       OSの法律層の基盤として、`jurisprudence.yaml`ファイルを新設する。
@@ -499,7 +499,7 @@ tasks:
     timestamp: '2025-07-19T14:25:00+09:00'
     related_decision: DEC-2025-07-19-005
     summary: `docs/`配下に`index.md`と`development_conventions.md`を新設
-    status: todo
+    status: Done
     assignee: mikieto
     description: |
       1. `docs/index.md`を新設し、各ドキュメントの役割と推奨読解順序を記述する。
