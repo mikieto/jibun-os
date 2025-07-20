@@ -49,13 +49,11 @@ system_architecture:
           description: 共通ガードルール
           context_level: base_os_context
           dependencies: []
-
         - path: legislation/common/jurisprudence.yaml
           role: general_legal_principles
           description: AIが従うべき法の一般原則（信義誠実、適正手続き等）
           context_level: base_os_context
           dependencies: []
-
         - path: legislation/common/mappings/guards.yaml
           context_level: tooling
           description: Guard ID ↔ Guard 定義
@@ -68,7 +66,6 @@ system_architecture:
         - path: legislation/common/mappings/driver_stub.yaml
           context_level: tooling
           description: driver stub
-
         - path: legislation/common/implementation_framework.yaml
           role: implementation_framework
           description: 結晶化・普遍化など標準プロセス
@@ -85,6 +82,13 @@ system_architecture:
           description: AI 協働用プロンプト標準型
           context_level: future_context
           dependencies: [constitution/common/constitution.yaml]
+        - path: legislation/common/kpi.yaml
+          role: kpi_definitions
+          description: プロジェクトおよびOS全体のKPI定義
+          context_level: base_os_context
+          dependencies:
+            - legislation/personal/projects/os_platform.yaml
+            - constitution/common/constitution.yaml
 
         - path: legislation/common/kpi.yaml
           role: kpi_definitions
