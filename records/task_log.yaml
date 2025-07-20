@@ -447,6 +447,7 @@ tasks:
       domain: security
     priority: Critical
     labels: [guardian_mvp]
+
   - id: TASK-2025-07-19-004
     timestamp: '2025-07-19T14:10:00+09:00'
     related_decision: DEC-2025-07-19-001
@@ -462,10 +463,12 @@ tasks:
       domain: governance
     priority: Critical
     labels: [guardian_mvp]
+
   - id: TASK-2025-07-19-005
     timestamp: '2025-07-19T14:10:00+09:00'
     related_decision: DEC-2025-07-19-001
     summary: system_map.yamlを更新し、新しい憲法ファイル群を定義
+
     status: Done
     assignee: mikieto
     description: |
@@ -476,10 +479,12 @@ tasks:
       domain: system_architecture
     priority: Critical
     labels: [guardian_mvp]
+
   - id: TASK-2025-07-19-007
     timestamp: '2025-07-19T14:18:00+09:00'
     related_decision: DEC-2025-07-19-004
     summary: legislation/common/jurisprudence.yamlを新設し、初期ルールセットを定義
+
     status: Done
     assignee: mikieto
     description: |
