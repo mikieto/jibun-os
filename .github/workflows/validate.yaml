@@ -24,13 +24,17 @@ jobs:
       - name: Run yamllint
         run: yamllint .
 
-      - name: Check OPA policies
-        uses: instrumenta/opa-actions@v1.0.0
+      - name: Set up OPA
+        uses: open-policy-agent/setup-opa@v2
         with:
-          files: |
-            legislation/personal/projects/*.yaml
-          policy: |
-            policy/project_purpose_exists.rego
+          opa-version: latest
+
+      - name: Run OPA policy checks
+        run: |
+          for file in legislation/personal/projects/*.yaml; do
+            echo "Checking policy for $file"
+            opa eval --input "$file" --data policy/project_purpose_exists.rego --fail-defined "data.jibun_os.policy.project.violation"
+          done
 
       - name: Install PyYAML (for verify_system_map_paths.py)
         run: pip install pyyaml
