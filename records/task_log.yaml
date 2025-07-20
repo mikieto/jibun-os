@@ -311,7 +311,7 @@ tasks:
     related_decision: DEC-2025-07-026
     summary: README に Quick PoC セクション追加
     assignee: mikieto
-    status: ToDo
+    status: Done
     due: '2025-07-27'
     scope: {project: os_platform_v1, stage: 1, domain: value}
     priority: High
@@ -506,3 +506,19 @@ tasks:
       domain: documentation
     priority: Medium
     labels: [guardian_mvp]
+
+  - id: TASK-2025-07-20-001
+      timestamp: '2025-07-20T18:32:00+09:00'
+      related_decision: 'DEC-2025-07-20-002'
+      summary: Devcontainer/Dockerfileで依存ライブラリのインストールを自動化
+      status: todo
+      assignee: mikieto
+      description: |
+        GitHub Codespacesでの利用開始時の体験を向上させるため、
+        .devcontainer/devcontainer.jsonおよび関連するDockerfileを編集し、
+        コンテナビルド時に`pip install -r requirements.txt`が自動的に実行されるように構成する。
+      scope:
+        project: os_platform_v1
+        stage: 1
+        domain: dx
+      priority: High
