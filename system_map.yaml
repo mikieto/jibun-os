@@ -84,7 +84,7 @@ system_architecture:
           context_level: future_context
           dependencies: [constitution/common/constitution.yaml]
 
-        - path: legislation/common/kpi.yml
+        - path: legislation/common/kpi.yaml
           role: kpi_definitions
           description: プロジェクトおよびOS全体のKPI定義
           context_level: base_os_context
