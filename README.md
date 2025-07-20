@@ -39,44 +39,44 @@ This OS is built on a four-layer governance model, separating timeless principle
 ```
 
 repo-root/
-├─ constitution/            \# L1: The Soul (Core Principles)
+├─ constitution/            # L1: The Soul (Core Principles)
 │   ├─ common/
 │   │   ├─ constitution.yaml
-│   │   ├─ mvc\_v1.0.yaml
+│   │   ├─ mvc_v1.0.yaml
 │   │   └─ udhr.yaml
 │   └─ personal/
 │       └─ constitution.yaml
 │
-├─ legislation/             \# L2: The Intellect (Rules & Policies)
+├─ legislation/             # L2: The Intellect (Rules & Policies)
 │   ├─ common/
-│   │   ├─ immune\_system.yaml
-│   │   ├─ innate\_immunity.yaml
-│   │   ├─ jurisprudence.yaml        \# NEW: General Legal Principles
-│   │   ├─ kpi.yml                   \# NEW: KPI Definitions
-│   │   ├─ implementation\_framework.yaml
+│   │   ├─ immune_system.yaml
+│   │   ├─ innate_immunity.yaml
+│   │   ├─ jurisprudence.yaml        # NEW: General Legal Principles
+│   │   ├─ kpi.yml                   # NEW: KPI Definitions
+│   │   ├─ implementation_framework.yaml
 │   │   ├─ taxonomy.yaml
-│   │   └─ mappings/                 \# UPDATED: Separated Mappings
+│   │   └─ mappings/                 # UPDATED: Separated Mappings
 │   │       ├─ guards.yaml
-│   │       ├─ field\_task\_decision.yaml
+│   │       ├─ field_task_decision.yaml
 │   │       └─ ...
 │   └─ personal/
-│       ├─ core\_principles.yaml
-│       ├─ acquired\_immunity.yaml
+│       ├─ core_principles.yaml
+│       ├─ acquired_immunity.yaml
 │       ├─ profile.yaml
 │       └─ projects/
-│           └─ os\_platform.yaml
+│           └─ os_platform.yaml
 │
-├─ precedents/              \# L3: The Consciousness (Patterns)
+├─ precedents/              # L3: The Consciousness (Patterns)
 │
-├─ records/                 \# L4: The Experience (Logs)
-│   ├─ task\_log.yaml
-│   ├─ decision\_log.yaml
-│   └─ guard\_log.yaml
+├─ records/                 # L4: The Experience (Logs)
+│   ├─ task_log.yaml
+│   ├─ decision_log.yaml
+│   └─ guard_log.yaml
 │
-├─ docs/                    \# Documentation
-├─ .devcontainer/           \# Devcontainer for Codespaces
-├─ .github/                 \# CI/CD Workflows
-└─ system\_map.yaml          \# The single source of truth for the OS structure
+├─ docs/                    # Documentation
+├─ .devcontainer/           # Devcontainer for Codespaces
+├─ .github/                 # CI/CD Workflows
+└─ system_map.yaml          # The single source of truth for the OS structure
 
 ```
 
