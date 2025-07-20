@@ -1,6 +1,6 @@
 ---
 # .github/workflows/validate.yaml
-name: Validate Digital Twin OS
+name: Validate Jibun OS
 on:
   push:
     branches: [main, develop]
