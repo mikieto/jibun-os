@@ -329,7 +329,7 @@ tasks:
     related_decision: DEC-2025-07-024
     summary: PoC Metrics Google Form 作成
     assignee: mikieto
-    status: ToDo
+    status: Pending
     due: '2025-08-05'
     scope: {project: os_platform_v1, stage: 1, domain: speed}
     priority: Medium
@@ -338,10 +338,21 @@ tasks:
     related_decision: DEC-2025-07-025
     summary: OPA Policy CI スイート実装
     assignee: mikieto
-    status: ToDo
+    status: InProgress
     due: '2025-08-12'
     scope: {project: os_platform_v1, stage: 1, domain: security}
     priority: Medium
+    notes: |
+      OPA Policy CI スイートの対象ファイルとポリシーの種類を洗い出した。
+      初期実装として、以下を優先的に組み込む：
+      - プロジェクト定義ファイル (`legislation/personal/projects/*.yaml`) に対する `project_purpose_exists.rego` (実装済み)
+      - タスクログファイル (`records/task_log.yaml`) に対する `task_log_entry_validation.rego` (実装予定)
+      将来的には、以下のファイル群に対してもポリシーチェックを拡張する計画：
+      - L1: Constitution (憲法・魂) レイヤー
+      - L2: Legislation (法律・知恵) レイヤー (共通の法律、マッピング、テンプレート、個人の法律など)
+      - L4: Records (記録・経験) レイヤー (decision_log.yaml, guard_log.yaml など)
+      - その他のルートファイル (.github/workflows/*.yaml, schema/*.json など)
+      各レイヤー/ファイルタイプごとに、適切なRegoポリシーを定義し、CIワークフローに個別のチェックステップを追加する。
   - id: TASK-2025-07-030
     timestamp: '2025-07-17T11:30:00+09:00'
     related_decision: DEC-2025-07-026
