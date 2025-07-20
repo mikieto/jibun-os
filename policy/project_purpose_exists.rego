@@ -2,15 +2,14 @@
 
 package jibun_os.policy.project
 
-# 違反（violation）のルールを定義
-# プロジェクトファイルに purpose_short がない、または空の場合に違反とする
-violation[msg] {
-    # 入力されるYAMLファイルがプロジェクト定義だと仮定
-    input.project_name
-    
-    # purpose_short が存在しない、または空文字列の場合
+# Deny if a project file is missing a non-empty purpose_short.
+deny[msg] {
+    # Check that this rule applies only to project files (which have a project_name).
+    _ = input.project_name
+
+    # The rule's logic: deny if purpose_short is not provided or is empty.
     not input.project_charter.purpose_short
 
-    # 違反メッセージを生成
+    # The error message to return.
     msg := sprintf("Project '%s' must have a non-empty purpose_short.", [input.project_name])
 }
