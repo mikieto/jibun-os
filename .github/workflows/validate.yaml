@@ -33,7 +33,10 @@ jobs:
         run: |
           for file in legislation/personal/projects/*.yaml; do
             echo "Checking policy for $file"
-            opa eval --input "$file" --fail-defined --data policy/project_purpose_exists.rego "data.jibun_os.policy.project.deny[_]"
+            opa eval --input "$file" \
+                     --fail-defined \
+                     --data policy/project_purpose_exists.rego \
+                     "data.jibun_os.policy.project.deny[_]"
           done
 
       - name: Install PyYAML (for verify_system_map_paths.py)
