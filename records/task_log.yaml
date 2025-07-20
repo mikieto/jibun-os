@@ -302,7 +302,7 @@ tasks:
     related_decision: DEC-2025-07-026
     summary: kpi.yml テンプレートをコミット
     assignee: mikieto
-    status: InProgress
+    status: Done
     due: '2025-07-25'
     scope: {project: os_platform_v1, stage: 1, domain: governance}
     priority: High
