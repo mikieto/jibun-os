@@ -611,3 +611,25 @@ decisions:
       project: os_platform_v1
       domain: dx
     severity: High
+
+  - id: DEC-2025-07-20-003
+    timestamp: '2025-07-20T23:57:47+09:00'
+    status: decided
+    summary: TASK-2025-07-028 (PoC Metrics Google Form 作成) の後回しを決定
+    reason: |
+      現在のところ、OS所有者（Owner）である私（Miki Eto）のみがシステムを利用しており、
+      PoCメトリクスを外部から収集する直接的な必要性が現時点では低いため。
+      リソースをより優先度の高い、OSの基盤整備やCI強化タスクに集中させることを優先する。
+      将来的には、外部ユーザー（PoC参加者）からの情報収集が不可欠となるため、その段階で改めて優先度を見直し、実施する。
+    alternatives:
+      - name: 予定通りフォームを作成する
+        pros: PoC評価のためのデータ収集基盤を早期に確立できる。
+        cons: 現時点での利用者が私のみであり、リソースの優先順位が低い。
+      - name: 後回しにする (今回採択)
+        pros: リソースをよりクリティカルなOS開発タスクに集中できる。
+        cons: 将来、必要になった際にフォーム作成とデータ収集に遅延が発生するリスクがある。
+    related_tasks: [TASK-2025-07-028]
+    scope:
+      project: os_platform_v1
+      domain: project_management
+    severity: Low
