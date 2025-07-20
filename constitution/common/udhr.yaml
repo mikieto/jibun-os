@@ -1,16 +1,15 @@
+---
 # 世界人権宣言 (Universal Declaration of Human Rights) - 要点
 # AIが解釈・参照しやすいように、主要な原則をカテゴリ分類したものです。
 name: Universal Declaration of Human Rights (Structured Summary for AI)
-version: "1948-12-10"
+version: '1948-12-10'
 source: https://www.un.org/en/about-us/universal-declaration-of-human-rights
-
 principles:
   - category: foundational_principles
     name: 基本原則
     summary: 全ての人間の尊厳、自由、平等の権利の基盤。
     articles: [1, 2]
     keywords: [dignity, liberty, equality, non-discrimination]
-
   - category: civil_and_political_rights
     name: 市民的及び政治的権利
     summary: 生命、自由、安全、公正な裁判、プライバシー、思想・表現の自由など、個人の自律性を守るための権利。
