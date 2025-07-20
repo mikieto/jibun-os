@@ -2,7 +2,9 @@
 FROM python:3.11-slim-bullseye
 
 RUN apt-get update -y \
-  && apt-get install -y --no-install-recommends git \
+  && apt-get install -y --no-install-recommends git curl \
+  && curl -L -o /usr/local/bin/opa https://openpolicyagent.org/downloads/latest/opa_linux_amd64 \
+  && chmod +x /usr/local/bin/opa \
   && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt /tmp/
