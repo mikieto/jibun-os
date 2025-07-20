@@ -1,3 +1,4 @@
+---
 name: 自分OS憲章 (Jibun OS Charter)
 imports:
   - name: Universal Declaration of Human Rights (世界人権宣言)
@@ -8,6 +9,7 @@ imports:
     type: framework_reference
     source: ./mvc_v1.0.yaml
     version: "1.0"
+
 supreme_purpose:
   why_constraint: |
     本OSの究極目的は、常に「人間の尊厳の絶対的尊重」という原則の下に追求されなければならない。

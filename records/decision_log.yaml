@@ -455,7 +455,7 @@ decisions:
       技術的改善よりも上位の次元である「統治思想のパラダイムシフト」が不可欠である。
       この倫理的基盤の再構築は、他のどのタスクよりも優先されるべき最重要課題であると判断した。
     alternatives:
-      - name: "Guardian計画"を最優先で即時着手
+      - name: Guardian計画を最優先で即時着手
         pros: OSの信頼性と安全性が飛躍的に向上し、将来的な手戻りリスクを最小化できる。全ての開発が正しい倫理基盤の上で行われることが保証される。
         cons: 短期的に、既存の技術的タスクの進捗が遅れる可能性がある。
       - name: 既存の技術的タスクを優先
@@ -466,7 +466,6 @@ decisions:
       project: os_platform_v1
       domain: philosophy
     severity: Critical
-
   - id: DEC-2025-07-19-002
     timestamp: '2025-07-19T14:00:00+09:00'
     status: decided
@@ -476,16 +475,16 @@ decisions:
       この形式は、`timestamp`フィールドとは別に、ID自体が時系列ソートを可能にすることでデータベース性能を向上させるという、現代的なベストプラクティスを反映している。
       また、3桁のゼロパディング連番は、人間主体の意思決定において十分なスケーラビリティを確保する、実践的な選択である。
     alternatives:
-      - name: `[PREFIX]-YYYY-MM-DD-[NNN]` (今回採択案)
+      - name: '[PREFIX]-YYYY-MM-DD-[NNN] (今回採択案)'
         pros: 時系列ソート可能、スケーラブル、直感的で曖昧さがない。
         cons: IDがやや長くなる。
-      - name: `[PREFIX]-YYYY-MM-[NNN]` (旧形式)
+      - name: '[PREFIX]-YYYY-MM-[NNN] (旧形式)'
         pros: 月単位でのグルーピングがしやすい。
         cons: IDから正確な日付が分からず、ID単体での時系列ソートが不可能。
-      - name: `[PREFIX]-NNN` (単純連番)
+      - name: '[PREFIX]-NNN (単純連番)'
         pros: 最もシンプル。
         cons: スケーラビリティやコンフリクトの問題があり、時系列情報が全くない。
-    related_tasks: [TASK-2025-07-19D, TASK-2025-07-19E] # 命名規則ガイドの更新, 命名規則を強制するリンターの導入
+    related_tasks: [TASK-2025-07-19D, TASK-2025-07-19E]
     scope:
       project: os_platform_v1
       domain: system_architecture
@@ -505,15 +504,14 @@ decisions:
       - name: ファイル名にバージョンを含める（`mvc_v1.0.yaml`）
         pros: 不変性が保証され、安全な移行が可能。依存関係が明確。
         cons: バージョンアップごとにファイルが増える。
-      - name: ファイル名は固定し、内部でバージョンを管理（`mvc.yaml`内に`version: 1.0`）
+      - name: 'ファイル名は固定し、内部でバージョンを管理（mvc.yaml内にversion: 1.0）'
         pros: ファイル数が少ない。
         cons: 意図せずファイルが変更されるリスクがあり、複数バージョンの並行稼働が困難。
-    related_tasks: [TASK-2025-07-19-004, TASK-2025-07-19-006] # 憲法構成ファイルの作成, 開発ガイドラインへの命名規則の追記
+    related_tasks: [TASK-2025-07-19-004, TASK-2025-07-19-006]
     scope:
       project: os_platform_v1
       domain: configuration_management
     severity: High
-
   - id: DEC-2025-07-19-004
     timestamp: '2025-07-19T14:18:00+09:00'
     status: decided
@@ -534,7 +532,6 @@ decisions:
       project: os_platform_v1
       domain: governance
     severity: High
-
   - id: DEC-2025-07-19-005
     timestamp: '2025-07-19T14:25:00+09:00'
     status: decided
@@ -543,7 +540,7 @@ decisions:
       既存のドキュメントの合理性を活かしつつ、新規参画者のための「読むべき順番」を明確にするため。
       過度な階層化を避け、`index.md`をハブとして配置することで、最小の変更で最大限の分かりやすさを実現する。
     alternatives:
-      - name: `index.md`と規約ファイルを追加する（今回採択案）
+      - name: index.mdと規約ファイルを追加する（今回採択案）
         pros: シンプルで直感的。既存の構造を大きく変更する必要がない。
         cons: 将来ドキュメントが増えた際に、再度整理が必要になる可能性がある。
       - name: ディレクトリ階層化を導入する
@@ -554,11 +551,10 @@ decisions:
       project: os_platform_v1
       domain: documentation
     severity: Medium
-
   - id: DEC-2025-07-19-006
     timestamp: '2025-07-19T14:35:00+09:00'
     status: decided
-    summary: `general_legal_principles.yaml`のファイル名を`jurisprudence.yaml`に変更することを決定
+    summary: general_legal_principles.yamlのファイル名をjurisprudence.yamlに変更することを決定
     reason: |
       元のファイル名は冗長であったため、より簡潔で本質を捉えた名前に変更する。
       `jurisprudence`（法理学）という用語は、「OSが従うべき法の哲学」というファイルの内容を的確に表現しており、

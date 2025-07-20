@@ -1,8 +1,8 @@
+---
 # AI統治のための最小構成憲法 (Minimal Viable Constitution for AI Governance)
 name: AI Governance Minimal Viable Constitution
-version: "1.0"
+version: '1.0'
 based_on: ./udhr.yaml
-
 articles:
   - id: MVC-ART-01
     name: 基本原則と究極目的 (Core Principles & Supreme Purpose)
@@ -61,4 +61,3 @@ articles:
       - id: MVC-5-2
         summary: 独立した番人
         description: AIの活動がこの憲法に適合しているかを審査する、独立した組織またはプロセスが存在しなければならない。
-        

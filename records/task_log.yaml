@@ -401,7 +401,7 @@ tasks:
     scope: {project: os_platform_v1, stage: 1, domain: ci_cd}
     priority: Medium
 
-# ======== Project: Guardian Refactoring - Phase 1 ==============================
+  # ======== Project: Guardian Refactoring - Phase 1 ==============================
   - id: TASK-2025-07-19-001
     timestamp: '2025-07-19T13:47:00+09:00'
     related_decision: DEC-2025-07-19-001
@@ -467,7 +467,8 @@ tasks:
   - id: TASK-2025-07-19-005
     timestamp: '2025-07-19T14:10:00+09:00'
     related_decision: DEC-2025-07-19-001
-    summary: `system_map.yaml`を更新し、新しい憲法ファイル群を定義
+    summary: system_map.yamlを更新し、新しい憲法ファイル群を定義
+
     status: Done
     assignee: mikieto
     description: |
@@ -482,7 +483,8 @@ tasks:
   - id: TASK-2025-07-19-007
     timestamp: '2025-07-19T14:18:00+09:00'
     related_decision: DEC-2025-07-19-004
-    summary: `legislation/common/jurisprudence.yaml`を新設し、初期ルールセットを定義
+    summary: legislation/common/jurisprudence.yamlを新設し、初期ルールセットを定義
+
     status: Done
     assignee: mikieto
     description: |
@@ -490,15 +492,14 @@ tasks:
       初期実装として、「信義誠実の原則」「適正手続きの保障」「権利濫用の禁止」の3つの原則を、AIが解釈可能な形式で定義する。
     scope:
       project: os_platform_v1
-      stage: 2 # 憲法(L1)の次の段階
+      stage: 2
       domain: governance
     priority: High
     labels: [guardian_mvp]
-
   - id: TASK-2025-07-19-008
     timestamp: '2025-07-19T14:25:00+09:00'
     related_decision: DEC-2025-07-19-005
-    summary: `docs/`配下に`index.md`と`development_conventions.md`を新設
+    summary: docs/配下にindex.mdとdevelopment_conventions.mdを新設
     status: Done
     assignee: mikieto
     description: |
