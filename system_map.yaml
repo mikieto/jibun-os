@@ -1,3 +1,4 @@
+---
 system_architecture:
   version: 3.1.0
   description: Prompt‑Ingestion & Digital‑Twin unified map
@@ -20,8 +21,7 @@ system_architecture:
           role: ai_governance_framework
           description: 実用最小限のAI統治憲法（MVC）の原則定義
           context_level: base_os_context
-          dependencies:
-            - constitution/common/udhr.yaml
+          dependencies: [constitution/common/udhr.yaml]
         - path: constitution/common/udhr.yaml
           role: universal_human_rights_standard
           description: 世界人権宣言に基づく普遍的な人権規範
@@ -66,7 +66,6 @@ system_architecture:
         - path: legislation/common/mappings/driver_stub.yaml
           context_level: tooling
           description: driver stub
-
         - path: legislation/common/implementation_framework.yaml
           role: implementation_framework
           description: 結晶化・普遍化など標準プロセス
