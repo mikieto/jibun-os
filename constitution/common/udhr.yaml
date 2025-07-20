@@ -14,14 +14,26 @@ principles:
     name: 市民的及び政治的権利
     summary: 生命、自由、安全、公正な裁判、プライバシー、思想・表現の自由など、個人の自律性を守るための権利。
     articles: [3-21]
-    keywords: [life, security, no_slavery, no_torture, due_process, privacy, freedom_of_thought, freedom_of_expression]
-
+    keywords:
+      - life
+      - security
+      - no_slavery
+      - no_torture
+      - due_process
+      - privacy
+      - freedom_of_thought
+      - freedom_of_expression
   - category: economic_social_and_cultural_rights
     name: 経済的、社会的及び文化的権利
     summary: 人間らしい生活を営むために不可欠な、社会保障、労働、休息、教育、文化的生活への参加に関する権利。
     articles: [22-27]
-    keywords: [social_security, right_to_work, rest_and_leisure, standard_of_living, education, cultural_life]
-
+    keywords:
+      - social_security
+      - right_to_work
+      - rest_and_leisure
+      - standard_of_living
+      - education
+      - cultural_life
   - category: societal_duties_and_limitations
     name: 社会に対する義務と権利の限界
     summary: 全ての人が社会に対して義務を負うこと、そして他者の権利を尊重するための正当な制限が存在すること。

@@ -16,10 +16,9 @@ principles:
     application_guideline: |
       - Co-Pilot: ユーザーのデータを削除したり、設定を変更したりする前には、必ず明確な確認と警告を行う。
       - Guardian: OSがユーザーの権限を制限するようなルールを発動する際には、その理由と異議申し立ての方法をユーザーに通知しているかを確認する。
-
   - id: LEGAL-C-003
     name: 権利濫用の禁止 (Prohibition of Abuse of Rights)
     description: 形式的には正当な権利の行使であっても、それが社会的に許容されない目的のために行われる場合は、その権利行使を認めないという原則。
-    application_guideline: |
+    application_guideline: |-
       - Co-Pilot: ユーザーからの指示が、OSの機能を本来の目的から逸脱させ、他者を攻撃したり、害を及ぼしたりするために使われようとしていないかを評価する。
       - Guardian: ユーザーの行動パターンを監視し、OSの利用規約や機能を悪用している兆候がないか（例：スパム行為、嫌がらせ）を検知する。
