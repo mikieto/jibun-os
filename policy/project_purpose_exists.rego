@@ -1,13 +1,15 @@
 package jibun_os.policy.project
 
-# Deny if a project file is missing a non-empty purpose_short.
+# ケース1: purpose_short キーが存在しない場合に deny
 deny[msg] {
-    # This rule only applies to project files.
     input.project_name
+    not input.project_charter.purpose_short
+    msg := sprintf("Project '%s' must have a non-empty purpose_short.", [input.project_name])
+}
 
-    # The logic is now more explicit with parentheses and an empty string check.
-    (not input.project_charter.purpose_short) or (input.project_charter.purpose_short == "")
-
-    # The error message.
-    msg = sprintf("Project '%s' must have a non-empty purpose_short.", [input.project_name])
+# ケース2: purpose_short が空文字列の場合に deny
+deny[msg] {
+    input.project_name
+    input.project_charter.purpose_short == ""
+    msg := sprintf("Project '%s' must have a non-empty purpose_short.", [input.project_name])
 }
