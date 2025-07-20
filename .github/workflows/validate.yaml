@@ -29,6 +29,9 @@ jobs:
         with:
           version: latest
 
+      - name: OPAバージョン確認
+        run: which opa && opa version
+
       - name: Run OPA policy checks
         run: |
           for file in legislation/personal/projects/*.yaml; do
