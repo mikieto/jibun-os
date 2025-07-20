@@ -443,7 +443,6 @@ decisions:
     related_tasks: [TASK-2025-07-033, TASK-2025-07-034, TASK-2025-07-035]
     scope: {project: os_platform_v1, domain: system_architecture}
     severity: Medium
-
   - id: DEC-2025-07-19-001
     timestamp: '2025-07-19T13:47:00+09:00'
     status: decided
@@ -489,7 +488,6 @@ decisions:
       project: os_platform_v1
       domain: system_architecture
     severity: High
-
   - id: DEC-2025-07-19-003
     timestamp: '2025-07-19T14:15:00+09:00'
     status: decided
