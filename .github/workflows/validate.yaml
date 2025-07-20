@@ -27,7 +27,7 @@ jobs:
       - name: Set up OPA
         uses: open-policy-agent/setup-opa@v2
         with:
-          opa-version: latest
+          version: latest
 
       - name: Run OPA policy checks
         run: |

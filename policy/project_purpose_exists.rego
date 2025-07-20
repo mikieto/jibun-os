@@ -11,5 +11,5 @@ deny[msg] {
     not input.project_charter.purpose_short
 
     # The error message to return.
-    msg := sprintf("Project '%s' must have a non-empty purpose_short.", [input.project_name])
+    msg = sprintf("Project '%s' must have a non-empty purpose_short.", [input.project_name])
 }
