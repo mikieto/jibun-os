@@ -443,7 +443,6 @@ decisions:
     related_tasks: [TASK-2025-07-033, TASK-2025-07-034, TASK-2025-07-035]
     scope: {project: os_platform_v1, domain: system_architecture}
     severity: Medium
-
   - id: DEC-2025-07-19-001
     timestamp: '2025-07-19T13:47:00+09:00'
     status: decided
@@ -489,7 +488,6 @@ decisions:
       project: os_platform_v1
       domain: system_architecture
     severity: High
-
   - id: DEC-2025-07-19-003
     timestamp: '2025-07-19T14:15:00+09:00'
     status: decided
@@ -571,48 +569,45 @@ decisions:
       project: os_platform_v1
       domain: configuration_management
     severity: Low
-
   - id: DEC-2025-07-20-001
-      timestamp: '2025-07-20T18:52:00+09:00'
-      status: decided
-      summary: OSS公開計画の正式開始と、関連する目標・ロードマップの採択を決定
-      reason: |
-        プロジェクトプランで定義された「OSSテンプレートとしての公開」という戦略的目標を、公式な意思決定として位置づけるため。
-        この決定には、以下の主要なコミットメントが含まれる：
-        1. 定量的目標: 「意思決定サイクル30%短縮」を最優先KPIとする。
-        2. 公開目標: 2025年9月15日までにOSSテンプレートを公開する。
-        3. リスク対策: PoC募集のための広報戦略（Twitter/GitHub活用）をM1フェーズで実行する。
-        
-        これらの計画を実行するための専用ブランチとして `feat/oss-launch-plan` を使用する。
-      alternatives:
-        - name: OSS公開計画として正式に決定
-          pros: プロジェクトの目的とコミットメントが全関係者（AI含む）に対して明確になり、開発に集中できる。
-          cons: N/A
-        - name: 個別の決定として都度記録
-          pros: 個々の決定は詳細に記録できる。
-          cons: 全体像が見えにくく、戦略的な繋がりが分かりにくくなる可能性がある。
-      related_tasks: []
-      scope:
-        project: os_platform_v1
-        domain: project_management
-      severity: Critical
-
+    timestamp: '2025-07-20T18:52:00+09:00'
+    status: decided
+    summary: OSS公開計画の正式開始と、関連する目標・ロードマップの採択を決定
+    reason: |
+      プロジェクトプランで定義された「OSSテンプレートとしての公開」という戦略的目標を、公式な意思決定として位置づけるため。
+      この決定には、以下の主要なコミットメントが含まれる：
+      1. 定量的目標: 「意思決定サイクル30%短縮」を最優先KPIとする。
+      2. 公開目標: 2025年9月15日までにOSSテンプレートを公開する。
+      3. リスク対策: PoC募集のための広報戦略（Twitter/GitHub活用）をM1フェーズで実行する。
+      これらの計画を実行するための専用ブランチとして `feat/oss-launch-plan` を使用する。
+    alternatives:
+      - name: OSS公開計画として正式に決定
+        pros: プロジェクトの目的とコミットメントが全関係者（AI含む）に対して明確になり、開発に集中できる。
+        cons: N/A
+      - name: 個別の決定として都度記録
+        pros: 個々の決定は詳細に記録できる。
+        cons: 全体像が見えにくく、戦略的な繋がりが分かりにくくなる可能性がある。
+    related_tasks: []
+    scope:
+      project: os_platform_v1
+      domain: project_management
+    severity: Critical
   - id: DEC-2025-07-20-002
-      timestamp: '2025-07-20T18:36:00+09:00'
-      status: decided
-      summary: Devcontainer/Dockerfileで依存ライブラリのインストールを自動化することを決定
-      reason: |
-        GitHubテンプレートとして公開するにあたり、Codespacesで開いた瞬間に利用可能となる「ゼロセットアップ体験」を提供するため。
-        これにより、新規ユーザーの導入障壁を最小化し、プロジェクトの核心的価値である「AIとの対話によるOS操作」に即座に集中できるようにする。
-      alternatives:
-        - name: セットアップを自動化する
-          pros: 導入体験が劇的に向上し、全開発環境の一貫性が保たれる。
-          cons: Dockerfileやdevcontainer.jsonの初期設定にわずかな手間がかかる。
-        - name: 手動でのセットアップを維持する
-          pros: 追加の設定作業が不要。
-          cons: ユーザーが最初のステップで手間取り、プロジェクトの利用を断念するリスクがある。
-      related_tasks: ["TASK-2025-07-20-001"]
-      scope:
-        project: os_platform_v1
-        domain: dx
-      severity: High
+    timestamp: '2025-07-20T18:36:00+09:00'
+    status: decided
+    summary: Devcontainer/Dockerfileで依存ライブラリのインストールを自動化することを決定
+    reason: |
+      GitHubテンプレートとして公開するにあたり、Codespacesで開いた瞬間に利用可能となる「ゼロセットアップ体験」を提供するため。
+      これにより、新規ユーザーの導入障壁を最小化し、プロジェクトの核心的価値である「AIとの対話によるOS操作」に即座に集中できるようにする。
+    alternatives:
+      - name: セットアップを自動化する
+        pros: 導入体験が劇的に向上し、全開発環境の一貫性が保たれる。
+        cons: Dockerfileやdevcontainer.jsonの初期設定にわずかな手間がかかる。
+      - name: 手動でのセットアップを維持する
+        pros: 追加の設定作業が不要。
+        cons: ユーザーが最初のステップで手間取り、プロジェクトの利用を断念するリスクがある。
+    related_tasks: [TASK-2025-07-20-001]
+    scope:
+      project: os_platform_v1
+      domain: dx
+    severity: High
