@@ -90,6 +90,14 @@ system_architecture:
             - legislation/personal/projects/os_platform.yaml
             - constitution/common/constitution.yaml
 
+        - path: legislation/common/kpi.yaml
+          role: kpi_definitions
+          description: プロジェクトおよびOS全体のKPI定義
+          context_level: base_os_context
+          dependencies:
+            - legislation/personal/projects/os_platform.yaml
+            - constitution/common/constitution.yaml
+
         # --- テンプレート ---
         - path: legislation/common/projects/project_template.yaml
           role: playbook_template_project
