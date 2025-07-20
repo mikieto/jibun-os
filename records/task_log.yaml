@@ -320,7 +320,7 @@ tasks:
     related_decision: DEC-2025-07-026
     summary: policy/ 最小 Rego ルール + CI Actions
     assignee: mikieto
-    status: ToDo
+    status: Done
     due: '2025-07-31'
     scope: {project: os_platform_v1, stage: 1, domain: security}
     priority: Medium
