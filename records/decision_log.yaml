@@ -652,3 +652,26 @@ decisions:
       project: os_platform_v1
       domain: philosophy
     severity: Critical
+  - id: DEC-2025-07-21-002
+    timestamp: '2025-07-21T19:07:00+09:00'
+    summary: Codespaces Chat UIを通じた自分OS価値提示の最優先化
+    context: |
+      OSS Launch (2025年9月15日) に向け、自分OSの価値を初見ユーザーに効果的に伝えることが喫緊の課題である。
+      AIが内部的にコンテキストを動的にロードする基盤は確立されているものの、CodespacesのChat UIを介したユーザー体験が不足しており、
+      その価値が直感的に伝わりにくいという懸念が提起された。
+      特に、ユーザーがai_base_contextなどを手作業でLLMにフィードする必要がある現状はUXを著しく損ねており、
+      「Quick PoC 動作」の成功（ユーザーが自分OSのインテリジェンスを簡単に体験できること）を阻害する。
+      このUXの改善は、OSS Launch時のユーザーエンゲージメントとGitHub Stars獲得に直接貢献すると判断された。
+    decision: |
+      CodespacesのChat UIを介した動的なコンテキストロード機能の価値を、初見ユーザーが直感的に理解・体験できる仕組みの実装を、
+      OSS Launch前のM1フェーズにおける最優先事項（Critical優先度）と位置付け、新規タスクとして定義し、早期に完了させることを決定した。
+      これにより、自分OSの「賢さ」と「使いやすさ」を明確にアピールし、利用開始時の障壁を大幅に低減する。
+    impact: |
+      - OSS Launch時のユーザーエンゲージメントとGitHub Stars獲得に直接貢献する。
+      - 自分OSの「賢さ」と「使いやすさ」を明確にアピールできる。
+      - 開発者体験(DX)が飛躍的に向上する。
+      - Quick PoCの成功率を高める。
+    status: accepted
+    related_tasks: [TASK-2025-07-21-002]
+    stakeholders: [mikieto, Gemini]
+    tags: [oss_launch_critical, dx, user_experience, core_value]
