@@ -633,3 +633,24 @@ decisions:
       project: os_platform_v1
       domain: project_management
     severity: Low
+
+  - id: DEC-2025-07-21-001
+    timestamp: '2025-07-21T13:31:00+09:00'
+    status: decided
+    summary: OSの進化パラダイムを「知的生命体」へと転換する戦略的方針の採択
+    reason: |
+      現在のOSは「自己の可観測化による生産性向上」という目的において高度に完成されている。
+      しかし、その究極目的である「普遍的な価値の創出」と「信頼できるAIとの協働」を達成するためには、新たなパラダイムへの移行が不可欠であると判断した。
+      これよりOSの進化方針を、閉じた「個人用ツール」から、外部と相互作用し、共創し、集合知に貢献する開かれた「知的生命体」へと、正式に転換する。
+    alternatives:
+      - name: 新パラダイム（知的生命体）への進化
+        pros: OSのポテンシャルを最大限に引き出し、より高次の価値創造が可能になる。AIとのパートナーシップが本質的に深化する。
+        cons: 開発の複雑性が増し、未知の課題に直面する可能性がある。
+      - name: 現行パラダイムの維持・改善
+        pros: 開発スコープが明確で、リスクが低い。既存機能の着実な改善に集中できる。
+        cons: OSの価値が個人的な範囲に限定され、成長が頭打ちになる。AIの役割も補助的なツールに留まる。
+    related_tasks: []
+    scope:
+      project: os_platform_v1
+      domain: philosophy
+    severity: Critical
