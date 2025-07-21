@@ -104,9 +104,7 @@ system_architecture:
           role: kpi_definitions
           description: プロジェクトおよびOS全体のKPI定義
           context_level: base_os_context
-          dependencies:
-            - legislation/personal/projects/os_platform.yaml
-            - constitution/common/constitution.yaml
+          dependencies: []
 
         # --- テンプレート ---
         - path: legislation/common/projects/project_template.yaml
