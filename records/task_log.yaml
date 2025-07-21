@@ -532,7 +532,6 @@ tasks:
       stage: 1
       domain: dx
     priority: High
-
   - id: TASK-2025-07-21-001
     timestamp: '2025-07-21T14:19:00+09:00'
     related_decision: DEC-2025-07-21-001
@@ -546,7 +545,6 @@ tasks:
       stage: 1
       domain: governance
     priority: Critical
-
   - id: TASK-2025-07-21-002
     timestamp: '2025-07-21T14:19:00+09:00'
     related_decision: DEC-2025-07-21-001
@@ -561,7 +559,6 @@ tasks:
       stage: 1
       domain: system_architecture
     priority: Critical
-
   - id: TASK-2025-07-21-003
     timestamp: '2025-07-21T14:19:00+09:00'
     related_decision: DEC-2025-07-21-001
@@ -575,7 +572,6 @@ tasks:
       stage: 1
       domain: governance
     priority: High
-
   - id: TASK-2025-07-21-004
     timestamp: '2025-07-21T14:19:00+09:00'
     related_decision: DEC-2025-07-21-001
@@ -589,7 +585,6 @@ tasks:
       stage: 1
       domain: governance
     priority: High
-
   - id: TASK-2025-07-21-005
     timestamp: '2025-07-21T14:19:00+09:00'
     related_decision: DEC-2025-07-21-001

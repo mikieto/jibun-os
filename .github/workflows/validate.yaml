@@ -23,12 +23,10 @@ jobs:
         run: pip install -r requirements-dev.txt
       - name: Run yamllint
         run: yamllint .
-
       - name: Set up OPA
         uses: open-policy-agent/setup-opa@v2
         with:
           version: latest
-
       - name: Run OPA policy checks
         run: |
           for file in legislation/personal/projects/*.yaml; do
@@ -38,7 +36,6 @@ jobs:
                      --data policy/project_purpose_exists.rego \
                      "data.jibun_os.policy.project.deny[_]"
           done
-
       - name: Install PyYAML (for verify_system_map_paths.py)
         run: pip install pyyaml
       - name: Run system_map path verification
