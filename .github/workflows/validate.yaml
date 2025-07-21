@@ -48,12 +48,11 @@ jobs:
         run: |-
           # check-jsonschema --schemafile schema/os_architecture.schema.json jibun_os.yml
           echo "Schema validation for modular files will be fully implemented in ci_jobs_enhancement task."
-
   regression-test-ai-partner:
     runs-on: ubuntu-latest
     needs: lint-and-schema-check
     env:
-      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }} 
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
