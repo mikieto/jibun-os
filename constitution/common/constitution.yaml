@@ -296,7 +296,7 @@ evolutionary_roadmap:
     - id: Paradigm_Shift_2
       name: 使命の自覚 (The Intellectual Life Form)
       description: 外部世界と相互作用し、普遍的な価値を共創する活動を開始する。
-      status: In_Progress
+      status: Implemented
     - id: Paradigm_Shift_3
       name: 自己の超越 (The Meta-Being)
       description: 自らの限界とライフサイクルを認識し、その知恵を次世代に継承する能力を持つ。
