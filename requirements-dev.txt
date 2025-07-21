@@ -1,6 +1,12 @@
 yamllint>=1.35.0
 yamlfix>=1.17.0
 check-jsonschema
+pre-commit==3.6.2
+
 pytest>=8.0.0
 pyyaml>=6.0
-pre-commit==3.6.2
+pydantic
+langchain
+langchain-google-genai
+langchain-core
+python-dotenv
