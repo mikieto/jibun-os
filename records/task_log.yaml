@@ -617,3 +617,27 @@ tasks:
       より厳密なOPAポリシーチェックとJSONスキーマバリデーションをCIワークフローに組み込む。
       これにより、OSの核となる定義の品質と整合性を自動的に保証し、OSSとしての信頼性を高める。
     labels: [amplify_phase, ci_enhancement]
+
+  - id: TASK-2025-07-21-002
+    timestamp: '2025-07-21T19:07:00+09:00'
+    related_decision: DEC-2025-07-21-001
+    summary: Codespaces Chat UIを介した動的コンテキストロードの価値提示
+    assignee: mikieto
+    status: ToDo
+    due: '2025-08-10'
+    scope: {project: os_platform_v1, stage: 1, domain: dx}
+    priority: Critical
+    description: |
+      CodespacesのChat UIを介して、自分OSの「動的に必要箇所をロードする」機能の価値を
+      初見ユーザーが直感的に理解・体験できる仕組みを実装する。
+      現状、ユーザーがai_base_contextなどを手作業でLLMにフィードする必要があり、これがUXを著しく損ねている。
+      このタスクの目的は、この手作業を排除し、ユーザーが「自分OSは賢く、必要な情報を自動で引き出して答えてくれる」
+      という体験を、Codespacesのチャットを通じて明確に感じられるようにすること。
+      具体的には、以下のいずれか、または複数の方法を検討する：
+      1.  **チャットインターフェースからのスクリプト呼び出しの簡素化**:
+          `scripts/get_base_os_context.py` をチャットから簡単に呼び出し、その結果をコンテキストとして利用できるようなガイドラインやコマンド例の提供。
+      2.  **プロンプトエンジニアリングの最適化**:
+          ユーザーがチャットで質問する際に、動的コンテキストロードの恩恵を最大限に受けられるような質問の仕方や、AIからの応答例を明示。
+      3.  **Codespacesのカスタム機能の活用（調査）**:
+          Codespacesの拡張機能や設定を調査し、チャットUI内で自分OSのコンテキストロード機能をよりシームレスに統合できる方法を模索。
+    labels: [oss_launch_critical, dx_improvement, user_experience]
