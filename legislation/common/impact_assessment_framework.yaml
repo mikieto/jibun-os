@@ -1,0 +1,21 @@
+---
+# legislation/common/impact_assessment_framework.yaml
+name: Impact Assessment Framework
+version: 1.0.0
+description: 意思決定の影響を評価するための、普遍的な5軸評価フレームワーク。
+axes:
+  - id: technical
+    name: Technical Impact
+    description: システム、ツール、アーキテクチャへの影響。品質、保守性、セキュリティなど。
+  - id: project
+    name: Project Impact
+    description: プロジェクトの目標達成、スケジュール、金銭的リターンへの影響。
+  - id: organizational
+    name: Organizational Impact
+    description: 人間関係、外部からの評判、チームの信頼への影響。
+  - id: personal
+    name: Personal Impact
+    description: 個人のモチベーション、学び、心身の健康への影響。
+  - id: ethical_societal
+    name: Ethical & Societal Impact
+    description: 倫理的な妥当性や、意図しない社会的影響。

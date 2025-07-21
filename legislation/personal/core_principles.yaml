@@ -53,6 +53,24 @@ personal_implementations:
   kpi_metrics:
     quantity: [ガード発動件数, OS更新頻度, 拡張フィードバックループのサイクルタイム]
     quality: [ガード是正完了率, 重大度別MTTR, OS改善後のパフォーマンス変化]
+  impact_assessment_weights:
+    description: 普遍的な5軸評価フレームワークに対する、個人的な価値観に基づいた重み付け。合計100ポイントで配分する。
+    weights:
+      - axis_id: technical
+        weight: 15
+        rationale: 堅牢な基盤は重要だが、それ自体が目的ではない。
+      - axis_id: project
+        weight: 15
+        rationale: 価値の実現は重要だが、短期的な成果に固執しない。
+      - axis_id: organizational
+        weight: 20
+        rationale: 他者との信頼関係は、長期的な資産である。
+      - axis_id: personal
+        weight: 35
+        rationale: 自己の成長と探求が、このOSの根源的な目的であるため最重要視する。
+      - axis_id: ethical_societal
+        weight: 15
+        rationale: 全ての活動の土台となる、必須の制約条件。
 # ------------------------------------------------
 # OS改善バックログ (OS Improvement Backlog) - backlog.md と personal/projects/os_platform.yaml から統合
 # ------------------------------------------------

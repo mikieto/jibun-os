@@ -89,14 +89,11 @@ system_architecture:
           dependencies:
             - legislation/personal/projects/os_platform.yaml
             - constitution/common/constitution.yaml
-
-        - path: legislation/common/kpi.yaml
-          role: kpi_definitions
-          description: プロジェクトおよびOS全体のKPI定義
+        - path: legislation/common/impact_assessment_framework.yaml
+          layer: L2
+          purpose: 意思決定の影響を評価するための、OS共通の5軸評価フレームワークを定義する。
           context_level: base_os_context
-          dependencies:
-            - legislation/personal/projects/os_platform.yaml
-            - constitution/common/constitution.yaml
+          dependencies: []
 
         # --- テンプレート ---
         - path: legislation/common/projects/project_template.yaml
