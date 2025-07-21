@@ -375,7 +375,7 @@ tasks:
     timestamp: '2025-07-17T16:00:00+09:00'
     related_decision: DEC-2025-07-029
     summary: RAG 回帰テスト CI ジョブ実装 (rag_regression_ci)
-    status: todo
+    status: Done
     assignee: mikieto
     description: |
       OSの根幹である「AIの回答品質」を保証する、自動回帰テストの仕組みをGitHub Actionsに組み込む。
