@@ -279,7 +279,7 @@ tasks:
     timestamp: '2025-07-11T12:00:00+09:00'
     related_decision: DEC-013  # v3_arch_feedback_adopt
     summary: docs/フォルダをセットアップし、初見者の体験を向上 (docs_folder_setup)
-    status: todo
+    status: Done
     assignee: mikieto
     description: OS公開に向け、ドキュメントを整備するための基盤を構築する。
     scope:
@@ -358,7 +358,7 @@ tasks:
     related_decision: DEC-2025-07-026
     summary: RAG 回帰テストスイート構築
     assignee: mikieto
-    status: ToDo
+    status: Done
     due: '2025-08-20'
     scope: {project: os_platform_v1, stage: 1, domain: quality}
     priority: Medium
@@ -391,7 +391,7 @@ tasks:
     related_decision: DEC-2025-07-027
     summary: guard_map を legislation/common/mappings/guards.yaml へ git mv
     assignee: mikieto
-    status: ToDo
+    status: Done
     due: '2025-07-19'
     scope: {project: os_platform_v1, stage: 1, domain: refactoring}
     priority: High
@@ -401,7 +401,7 @@ tasks:
     related_decision: DEC-2025-07-027
     summary: field_stub.yaml / driver_stub.yaml を作成し空定義を配置
     assignee: mikieto
-    status: ToDo
+    status: Done
     due: '2025-07-19'
     scope: {project: os_platform_v1, stage: 1, domain: refactoring}
     priority: Medium
@@ -411,7 +411,7 @@ tasks:
     related_decision: DEC-2025-07-027
     summary: CI ローダーを legislation/common/mappings/*.yaml グロブ読み込みに変更
     assignee: mikieto
-    status: ToDo
+    status: Done
     due: '2025-07-22'
     scope: {project: os_platform_v1, stage: 1, domain: ci_cd}
     priority: Medium
@@ -602,3 +602,18 @@ tasks:
       stage: 1
       domain: documentation
     priority: Medium
+
+  - id: TASK-2025-07-21-001
+    timestamp: '2025-07-21T18:43:04+09:00'
+    related_decision: N/A
+    summary: マッピングファイルに対する包括的CIバリデーションの実装
+    assignee: mikieto
+    status: ToDo
+    due: '2025-09-30'
+    scope: {project: os_platform_v1, stage: 2, domain: security}
+    priority: High
+    description: |
+      legislation/common/mappings/ ディレクトリ内のファイル（ガード定義、フィールド定義など）に対して、
+      より厳密なOPAポリシーチェックとJSONスキーマバリデーションをCIワークフローに組み込む。
+      これにより、OSの核となる定義の品質と整合性を自動的に保証し、OSSとしての信頼性を高める。
+    labels: [amplify_phase, ci_enhancement]
