@@ -536,7 +536,7 @@ tasks:
     timestamp: '2025-07-21T14:19:00+09:00'
     related_decision: DEC-2025-07-21-001
     summary: 憲法に「進化のロードマップ」を新設し、4つのパラダイムシフトを明記する
-    status: todo
+    status: Done
     assignee: mikieto
     description: |
       constitution/common/constitution.yamlに`evolutionary_roadmap`セクションを新設し、OSの公式な進化の道筋を定義する。
@@ -549,7 +549,7 @@ tasks:
     timestamp: '2025-07-21T14:19:00+09:00'
     related_decision: DEC-2025-07-21-001
     summary: 5軸評価フレームワークの共通定義ファイルを作成する
-    status: todo
+    status: Done
     assignee: mikieto
     description: |
       legislation/common/impact_assessment_framework.yamlを新設し、5つの評価軸を定義する。
@@ -563,7 +563,7 @@ tasks:
     timestamp: '2025-07-21T14:19:00+09:00'
     related_decision: DEC-2025-07-21-001
     summary: 5軸評価フレームワークに対する個人的な重み付けを定義する
-    status: todo
+    status: Done
     assignee: mikieto
     description: |
       legislation/personal/core_principles.yamlに`impact_assessment_weights`セクションを追加し、個人の価値観を反映させる。
@@ -576,7 +576,7 @@ tasks:
     timestamp: '2025-07-21T14:19:00+09:00'
     related_decision: DEC-2025-07-21-001
     summary: AI協働プロトコルを憲法に標準手順として追加する
-    status: todo
+    status: Done
     assignee: mikieto
     description: |
       constitution/common/constitution.yamlの`ai_collaboration_governance`セクションに`standard_task_protocol`を新設し、協働の原則を明記する。
@@ -589,7 +589,7 @@ tasks:
     timestamp: '2025-07-21T14:19:00+09:00'
     related_decision: DEC-2025-07-21-001
     summary: 統治メタファー（最高裁判所、守り/攻め）を憲法と法律に反映させる
-    status: todo
+    status: Done
     assignee: mikieto
     description: |
       constitution/common/constitution.yamlおよびlegislation/common/immune_system.yamlを修正し、OSの概念モデルを洗練させる。
