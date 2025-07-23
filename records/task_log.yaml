@@ -616,6 +616,7 @@ tasks:
       より厳密なOPAポリシーチェックとJSONスキーマバリデーションをCIワークフローに組み込む。
       これにより、OSの核となる定義の品質と整合性を自動的に保証し、OSSとしての信頼性を高める。
     labels: [amplify_phase, ci_enhancement]
+
   - id: TASK-2025-07-21-007
     timestamp: '2025-07-21T19:07:00+09:00'
     related_decision: DEC-2025-07-21-001
