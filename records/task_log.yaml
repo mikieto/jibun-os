@@ -673,3 +673,15 @@ tasks:
       stage: 4  # 将来のステージ
       domain: refactoring
     priority: Low  # 書籍プロジェクト完了後に対応
+  - id: TASK-2025-07-23-003
+    timestamp: '2025-07-23T15:51:00+09:00'
+    related_decision: DEC-2025-07-23-003
+    summary: 普遍的ガード`GUARD-C-012`を`innate_immunity.yaml`に実装する
+    status: todo
+    assignee: mikieto
+    description: '`legislation/common/innate_immunity.yaml`に、`GUARD-C-012: AI自己プロセス遵守ガード`の定義を追記する。'
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: quality
+    priority: Critical
