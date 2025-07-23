@@ -79,7 +79,7 @@ def generate_base_os_context(output_file_path, system_map_path='system_map.yaml'
 
     # 1. 冒頭の概要ドキュメント
     overview_doc = {
-        "digital_twin_os_base_context_overview": {
+        "jibun_os_base_context_overview": {
             "purpose": "Core OS Identity and Platform State",
             "overview": "This consolidated context provides the fundamental principles of Jibun OS, its structural blueprint, operational framework, and its current platform status. It is always loaded to give the AI a complete understanding of the OS it operates within."
         }
