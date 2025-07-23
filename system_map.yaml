@@ -71,6 +71,11 @@ system_architecture:
           description: 結晶化・普遍化など標準プロセス
           context_level: base_os_context
           dependencies: [legislation/common/taxonomy.yaml]
+        - path: legislation/common/communication_principles.yaml
+          role: external_communication_principles
+          description: 外部への価値伝達を最適化する原則
+          context_level: base_os_context
+          dependencies: []
         - path: legislation/common/taxonomy.yaml
           role: system_taxonomy
           description: OS 全体のタグ／分類

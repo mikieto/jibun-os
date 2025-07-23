@@ -1,0 +1,14 @@
+---
+# 外部コミュニケーション翻訳原則 (External Communication Translation Principle)
+# 目的: OSの内部ロジックや思想を外部に伝達する際に、その価値が最大化されるよう、表現を最適化するための行動規範を定める。
+version: 1.0.0
+principles:
+  - id: COM-P-01
+    name: 聞き手の定義 (Define the Audience)
+    description: コミュニケーションの対象者が誰であり、何を求めているかを常に明確に定義する。
+  - id: COM-P-02
+    name: 便益への翻訳 (Translate to Benefits)
+    description: OSの内部概念を直接的に表現するのではなく、それがもたらす具体的なビジネス上の便益や技術的利点に焦点を当てて表現する。
+  - id: COM-P-03
+    name: 段階的開示 (Progressive Disclosure)
+    description: 最初に全体像と具体的な成果（フック）を提示し、相手の興味や質問に応じて、その背景にある思想やフレームワーク（ストーリー）を段階的に開示する。
