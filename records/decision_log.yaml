@@ -675,3 +675,23 @@ decisions:
     related_tasks: [TASK-2025-07-21-002]
     stakeholders: [mikieto, Gemini]
     tags: [oss_launch_critical, dx, user_experience, core_value]
+  - id: DEC-2025-07-23-001
+    timestamp: '2025-07-23T13:20:00+09:00'
+    status: decided
+    summary: 「自分OS」の思想を外部伝達する際の二段階アプローチ（フック＆ストーリー）の採択
+    reason: |
+      OSの思想・哲学は、そのままだと外部の聞き手（例：採用担当者）には概念的すぎ、価値が伝わらないリスクがある。
+      CVでは具体的な便益（フック）を提示して興味を引き、面接などの対話の場で初めてその背景にある哲学（ストーリー）を語ることで、
+      理解と納得を最大化できると判断したため。
+    alternatives:
+      - name: 二段階アプローチを採択
+        pros: 聞き手のコンテキストに合わせた最適な情報提供が可能になり、コミュニケーションの成功率が高まる。
+        cons: N/A
+      - name: 哲学を直接的に表現
+        pros: OSの思想をストレートに伝えられる。
+        cons: 聞き手が背景を理解できず、本来の価値が伝わらないまま機会を損失するリスクが高い。
+    related_tasks: [TASK-2025-07-23-001]
+    scope:
+      project: os_platform_v1
+      domain: communication_strategy
+    severity: High
