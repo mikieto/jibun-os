@@ -695,3 +695,21 @@ decisions:
       project: os_platform_v1
       domain: communication_strategy
     severity: High
+  - id: DEC-2025-07-23-002
+    timestamp: '2025-07-23T14:35:00+09:00'
+    status: decided
+    summary: バックログと実績の乖離解消のため、task_log.yamlを唯一の情報源として再整備する方針を決定
+    reason: |
+      os_improvement_backlogとtask_log.yamlの間に乖離が確認され、
+      タスク管理の信頼性が低下していた。
+      特に、バックログ項目「os-release-v9-2-1」は定義が不明瞭であり、
+      将来同じ悩みに時間を費やすリスクを避けるため、明確に削除する。
+      OSの基本原則である「単一の信頼できる情報源（SSOT）」を遵守するため、
+      os_improvement_backlogを廃止し、task_log.yamlにタスク管理を一元化する。
+      ただし、現在優先すべきは書籍執筆プロジェクトであるため、
+      この再整備タスクは書籍プロジェクトの主要マイルストーン完了後に着手する。
+    related_tasks: [TASK-2025-07-23-002]
+    scope:
+      project: os_platform_v1
+      domain: project_management
+    severity: High

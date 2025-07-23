@@ -656,3 +656,20 @@ tasks:
       domain: value
     priority: High
     labels: [insight_generation, external_communication]
+  - id: TASK-2025-07-23-002
+    timestamp: '2025-07-23T14:36:00+09:00'
+    related_decision: DEC-2025-07-23-002
+    summary: os_improvement_backlogを廃止し、task_log.yamlへタスクを棚卸し・統合する
+    status: todo
+    assignee: mikieto
+    description: |
+      os_improvement_backlogの全項目をレビューし、
+      「完了済み」「task_logへ転記」「不要」に分類する。
+      特に「os-release-v9-2-1」は明確に削除対象とする。
+      有効なタスクはtask_log.yamlに新しいIDで転記し、
+      完了後にはos_improvement_backlogセクションを完全に削除する。
+    scope:
+      project: os_platform_v1
+      stage: 4  # 将来のステージ
+      domain: refactoring
+    priority: Low  # 書籍プロジェクト完了後に対応
