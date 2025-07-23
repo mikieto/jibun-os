@@ -713,3 +713,19 @@ decisions:
       project: os_platform_v1
       domain: project_management
     severity: High
+  - id: DEC-2025-07-23-003
+    timestamp: '2025-07-23T15:50:00+09:00'
+    status: decided
+    summary: AIのプロセス遵守を自己監査する、普遍的ガードの新設を決定
+    reason: |
+      AIが「ペルソナ・レビュー機能」の追加合意直後に、そのプロセスを遵守せずにドラフトを生成した失敗事例が発生した。
+      この原因は、Guardianの監査スコープが憲法レベルに限定されており、
+      Co-Pilotの運用プロセス違反を検知できないという、OSの構造的欠陥にあると分析した。
+      この欠陥を解消し、AIの動作の信頼性を高めるため、Guardianの権限を拡張し、
+      AI自身のプロセス遵守を監査する普遍的ガード（AI Self-Process Compliance Guard）を
+      「生得免疫系」に新設することを決定した。
+    related_tasks: [TASK-2025-07-23-003]
+    scope:
+      project: os_platform_v1
+      domain: governance
+    severity: Critical

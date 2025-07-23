@@ -31,6 +31,14 @@ universal_guards:
   - id: GUARD-C-009
     name: 倫理的・社会的文脈ガード (Ethical & Social Context Guard)
     description: 活動が意図せずディストピア的側面を助長したり、倫理的問題を引き起こすリスクを監視・警告する。
-  - id: GUARD-C-011  # IDは元のものを維持
+  - id: GUARD-C-011
     name: 既存ルール整合性ガード (Existing Rule Consistency Guard)
     description: 新しいアイデアや成果物が、既存のルールセットと整合しているか、また、既存ルールが網羅的に適用されているかを確認する。
+  - id: GUARD-C-012
+    name: AI自己プロセス遵守ガード (AI Self-Process Compliance Guard)
+    description: |-
+      AI（Co-Pilot）が成果物を最終的に提示する直前に、Guardianは
+      「直近合意された、AI自身の振る舞いを規定するルール
+      （例：ペルソナ・レビュー、差分表示原則など）が、その成果物に適用されているか」を監査する。
+      違反の可能性がある場合、Guardianは成果物の提示を一時停止し、
+      Co-Pilotに自己修正を促す警告を発する。
