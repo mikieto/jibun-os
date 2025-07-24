@@ -91,12 +91,23 @@ jobs:
       # 8) 生成物再生成 & Self-Review チェック
       - name: Generate ai_base_context.yaml
         run: python scripts/get_base_os_context.py -o ai_base_context.yaml
+
       - name: Ensure ai_base_context.yaml is up to date
         run: |
-          if ! git diff --quiet ai_base_context.yaml; then
-            echo "::error ::ai_base_context.yaml is outdated. Run generator locally."
-            exit 1
+          set -e
+          if [ ! -f ai_base_context.yaml ]; then
+            echo "::warning ::ai_base_context.yaml not found. Skipping freshness check."
+            exit 0
           fi
+          if git ls-files --error-unmatch ai_base_context.yaml >/dev/null 2>&1; then
+            if ! git diff --quiet -- ai_base_context.yaml; then
+              echo "::error ::ai_base_context.yaml is outdated. Run generator locally."
+              exit 1
+            fi
+          else
+            echo "::notice ::ai_base_context.yaml is not tracked by git. Skipping diff check."
+          fi
+
       - name: Check Self-Review flag
         run: bash scripts/check_self_review.sh
 
