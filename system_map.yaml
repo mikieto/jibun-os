@@ -41,7 +41,7 @@ system_architecture:
         # --- 共通 ---
         - path: legislation/common/immune_system.yaml
           role: intellectual_immune_system_framework
-          description: 生得免疫系フレームワーク
+          description: 知的免疫系フレームワーク
           context_level: base_os_context
           dependencies: []
         - path: legislation/common/innate_immunity.yaml

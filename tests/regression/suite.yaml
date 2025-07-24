@@ -27,7 +27,7 @@ test_suite:
     question: system_map.yamlによると、`legislation/common/immune_system.yaml`の役割は何ですか？
     context_files: [system_map.yaml]
     expected_answer:
-      contains_keywords: [生得免疫系フレームワーク]
+      contains_keywords: [知的免疫系フレームワーク]
   - id: TC-STRUCT-002
     name: 設定場所の理解度テスト
     question: 5軸評価の個人的な重み付けは、どのファイルで定義されていますか？
