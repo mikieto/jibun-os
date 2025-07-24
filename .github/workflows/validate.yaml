@@ -4,31 +4,74 @@ name: Validate Jibun OS
 on:
   push:
     branches: [main, develop]
-    paths: ['**.yml', '**.yaml']
+    paths:
+      - '**.yml'
+      - '**.yaml'
+      - constitution/**
+      - legislation/**
+      - records/**
+      - scripts/**
   pull_request:
-    paths: ['**.yml', '**.yaml']
+    paths:
+      - '**.yml'
+      - '**.yaml'
+      - constitution/**
+      - legislation/**
+      - records/**
+      - scripts/**
+  schedule:
+    - cron: 0 0 * * 1  # Every Monday 00:00 UTC (Mon 09:00 JST)
+  workflow_dispatch:
+permissions:
+  contents: read
 jobs:
+  # ---------------- Core validation on PR / push ----------------
   lint-and-schema-check:
+    if: ${{ github.event_name != 'schedule' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.x
-      - name: Install runtime deps
-        run: pip install -r requirements.txt
-      - name: Install dev deps
-        run: pip install -r requirements-dev.txt
+          python-version: '3.11'
+      - name: Install apt tooling (yq, yamllint, jq, curl)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl jq yamllint
+          curl -L https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -o /usr/local/bin/yq
+          chmod +x /usr/local/bin/yq
+      - name: Install Python deps
+        run: |
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+          pip install pyyaml python-dateutil ruamel.yaml
+
+      # 1) YAML lint
       - name: Run yamllint
         run: yamllint .
+
+      # 2) ID format Lint
+      - name: Check ID formats (TASK/DEC)
+        run: bash scripts/check_id_formats.sh
+
+      # 3) DEC↔TASK 整合 & prune (A案)
+      - name: Prune & validate DEC↔TASK refs
+        run: python scripts/check_refs.py
+
+      # 4) 重複定義チェック
+      - name: Check duplicate key defs
+        run: python scripts/check_duplicate_defs.py
+
+      # 5) OPA policy checks (project purpose etc.)
       - name: Set up OPA
         uses: open-policy-agent/setup-opa@v2
         with:
           version: latest
       - name: Run OPA policy checks
         run: |
+          shopt -s nullglob
           for file in legislation/personal/projects/*.yaml; do
             echo "Checking policy for $file"
             opa eval --input "$file" \
@@ -36,19 +79,45 @@ jobs:
                      --data policy/project_purpose_exists.rego \
                      "data.jibun_os.policy.project.deny[_]"
           done
-      - name: Install PyYAML (for verify_system_map_paths.py)
-        run: pip install pyyaml
+
+      # 6) system_map path verification
       - name: Run system_map path verification
         run: python scripts/verify_system_map_paths.py
-      - name: Load mappings (dry‑run)
+
+      # 7) Load mappings (dry-run)
+      - name: Load mappings (dry-run)
+        run: python scripts/apply_mappings.py --mapping-glob "legislation/common/mappings/*.yaml"
+
+      # 8) 生成物再生成 & Self-Review チェック
+      - name: Generate ai_base_context.yaml
+        run: python scripts/get_base_os_context.py -o ai_base_context.yaml
+      - name: Ensure ai_base_context.yaml is up to date
         run: |
-          python scripts/apply_mappings.py \
-                 --mapping-glob "legislation/common/mappings/*.yaml"
-      - name: Run yamale (Schema Validation)
-        run: |-
-          # check-jsonschema --schemafile schema/os_architecture.schema.json jibun_os.yml
-          echo "Schema validation for modular files will be fully implemented in ci_jobs_enhancement task."
+          set -e
+          if [ ! -f ai_base_context.yaml ]; then
+            echo "::warning ::ai_base_context.yaml not found. Skipping freshness check."
+            exit 0
+          fi
+          if git ls-files --error-unmatch ai_base_context.yaml >/dev/null 2>&1; then
+            if ! git diff --quiet -- ai_base_context.yaml; then
+              echo "::error ::ai_base_context.yaml is outdated. Run generator locally."
+              exit 1
+            fi
+          else
+            echo "::notice ::ai_base_context.yaml is not tracked by git. Skipping diff check."
+          fi
+      - name: Check Self-Review flag
+        if: ${{ hashFiles('ai_base_context.yaml') != '' }}
+        run: bash scripts/check_self_review.sh
+
+      # 9) Schema validation (placeholder)
+      - name: Run schema validation (placeholder)
+        run: |
+          echo "Schema validation for modular files will be implemented in ci_jobs_enhancement task."
+
+  # ---------------- Regression tests (depends on lint job) ----------------
   regression-test-ai-partner:
+    if: ${{ github.event_name != 'schedule' }}
     runs-on: ubuntu-latest
     needs: lint-and-schema-check
     env:
@@ -57,10 +126,21 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.x
-      - name: Install dependencies
+          python-version: '3.11'
+      - name: Install test deps
         run: pip install -r requirements-dev.txt
       - name: Run AI Partner Regression Tests
         run: pytest -v tests/test_regression.py
+
+  # ---------------- Weekly deadline check only ----------------
+  review-deadline:
+    if: ${{ github.event_name == 'schedule' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: pip install pyyaml python-dateutil
+      - run: python scripts/check_review_deadlines.py

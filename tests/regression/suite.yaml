@@ -48,7 +48,7 @@ test_suite:
       contains_keywords: [普遍的な倫理基盤, 統治思想のパラダイムシフト]  # AIの回答に合わせて調整
   - id: TC-LOG-002
     name: タスクログの読解テスト
-    question: TASK-2025-07-030のステータスは何ですか？
+    question: TASK-2025-07-21-004 のステータスは何ですか？
     context_files: [records/task_log.yaml]
     expected_answer:
       contains_keywords: [Done]

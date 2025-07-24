@@ -2,7 +2,9 @@
 FROM python:3.11-slim-bullseye
 
 RUN apt-get update -y \
-  && apt-get install -y --no-install-recommends git curl \
+  && apt-get install -y --no-install-recommends git curl jq ca-certificates \
+  && curl -L "https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64" -o /usr/local/bin/yq \
+  && chmod +x /usr/local/bin/yq \
   && curl -L -o /usr/local/bin/opa https://openpolicyagent.org/downloads/latest/opa_linux_amd64 \
   && chmod +x /usr/local/bin/opa \
   && rm -rf /var/lib/apt/lists/*
