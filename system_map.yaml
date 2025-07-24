@@ -161,11 +161,13 @@ system_architecture:
           role: task_log
           context_level: log_data
           description: タスクの進捗履歴
+          ssot: true
           dependencies: []
         - path: records/decision_log.yaml
           role: decision_log
           context_level: log_data
           description: 重要意思決定の履歴
+          ssot: true
           dependencies: [records/task_log.yaml]
         - path: records/guard_log.yaml
           role: guard_invocation_log
@@ -179,6 +181,15 @@ system_architecture:
       role: system_charter
       context_level: documentation
       description: システムの最高理念ドキュメント
+      dependencies: []
+    - path: ai_base_context.yaml
+      role: base_context_artifact
+      context_level: operational_tooling
+      description: AI常時読み込み用の生成物（直編集禁止）
+      generated: true
+      generator: scripts/get_base_os_context.py
+      regenerate_on: [constitution/**, legislation/**, records/**]
+      enforce_self_review: true
       dependencies: []
     - path: .github/workflows/validate.yaml
       role: ci_workflow
