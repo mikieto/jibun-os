@@ -691,7 +691,7 @@ tasks:
     timestamp: '2025-07-24T09:32:00+09:00'
     related_decision: DEC-2025-07-24-002
     summary: レビュー期限監視(+7dエスカレーション)のCI実装
-    status: todo
+    status: done
     assignee: mikieto
     description: decision_logのtimestampとreview_cycleを参照し、期限超過時にIssue/PRコメントを自動生成。
     scope:
@@ -704,7 +704,7 @@ tasks:
     timestamp: '2025-07-24T09:35:00+09:00'
     related_decision: DEC-2025-07-24-002
     summary: '[Self-Review: OK] チェックリスト & CIバリデーション導入'
-    status: todo
+    status: done
     assignee: mikieto
     description: 1. 自己レビュー項目チェックリストを定義。2. 生成物末尾のステータス有無をCIで検証、欠落時はfail。
     scope:
@@ -717,7 +717,7 @@ tasks:
     timestamp: '2025-07-24T09:40:00+09:00'
     related_decision: DEC-2025-07-24-003
     summary: ai_base_context.yaml再生成CIを実装し、直編集禁止ルールを追加
-    status: todo
+    status: done
     assignee: mikieto
     description: 1. GitHub Actionsで生成スクリプトを実行。2. 差分があれば自動コミット or CI fail方針を決定・実装。3.
       README/CONTRIBUTINGに生成物の扱いを追記。
@@ -731,7 +731,7 @@ tasks:
     timestamp: '2025-07-24T09:43:00+09:00'
     related_decision: DEC-2025-07-24-003
     summary: get_base_os_context.pyを改修（hash埋め込み/エラー制御/複数レベル対応）
-    status: todo
+    status: done
     assignee: mikieto
     description: 各元ファイルのhash/mtimeをメタに付与し差分検知を容易化。context_level複数指定、yamlfix失敗時の終了コード制御などを実装。
     scope:
@@ -772,7 +772,7 @@ tasks:
     timestamp: '2025-07-24T09:55:00+09:00'
     related_decision: DEC-2025-07-24-004
     summary: 生成スクリプト/ドキュメントを新ID形式へ対応
-    status: todo
+    status: done
     assignee: mikieto
     description: get_base_os_context.py等でID抽出・ソートを新形式前提に変更。README/CONTRIBUTINGへルールを明記。
     scope:
@@ -781,3 +781,45 @@ tasks:
       domain: tooling
     priority: Medium
     labels: [tooling, doc]
+  - id: TASK-2025-07-24-010
+    timestamp: '2025-07-24T18:50:00+09:00'
+    related_decision: DEC-2025-07-24-004
+    summary: duplicate‑check を CI fail 条件に切り替える
+    status: done  # ← 厳格モードを CI に入れたら done へ
+    assignee: mikieto
+    description: |
+      scripts/check_duplicate_defs.py をホワイトリスト方式で
+      sys.exit(err) に切り替え、validate.yaml に組み込む。
+    scope: {project: os_platform_v1, stage: 2, domain: ci}
+    priority: High
+    labels: [ci, lint, ssot]
+  - id: TASK-2025-07-24-011
+    timestamp: '2025-07-24T11:05:00+09:00'
+    related_decision: DEC-2025-07-24-004
+    summary: Guard/KPI ID も CI で正規表現チェック
+    status: done
+    assignee: mikieto
+    description: |
+      check_id_formats.sh に以下を追加し、
+      PR ごとに Guard/KPI ID の形式逸脱や重複を検知させる。
+        guard_common   ^G\d{3}$
+        guard_personal ^P\d{3}$
+        kpi            ^KPI-(PROJ|HEALTH)-\d{3}$
+    scope: {project: os_platform_v1, stage: 2, domain: ci}
+    priority: High
+    labels: [ci, lint]
+  - id: TASK-2025-07-24-012
+    timestamp: '2025-07-24T11:10:00+09:00'
+    related_decision: DEC-2025-07-24-004
+    summary: Guard/KPI 旧 ID → 新 ID の自動置換スクリプトを実装
+    status: done
+    assignee: mikieto
+    description: |
+      migrate_ids.py を拡張し、
+      - GUARD‑C‑### → G###
+      - GUARD‑P‑### → P###
+      - 旧 KPI フォーマット → 新 KPI フォーマット
+      を自動変換。migration_map_guards.yaml も更新。
+    scope: {project: os_platform_v1, stage: 2, domain: tooling}
+    priority: Medium
+    labels: [migration, ssot]
