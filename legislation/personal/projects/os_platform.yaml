@@ -6,9 +6,9 @@ project_id: os_platform_v1
 branch: feat/triple-layer
 current_version: v10.0.0-alpha.0
 current_stage: 1
-purpose_short: 自分OSプラットフォーム基盤を実装し価値転換速度を最大化する
 # --- Project Charter ----------------------------------------
 project_charter:
+  purpose_short: 自分OSプラットフォーム基盤を実装し価値転換速度を最大化する
   sponsor: Miki Eto
   effort_budget: {hours_per_week: 5, duration_weeks: 26}
   cash_budget_usd: 100

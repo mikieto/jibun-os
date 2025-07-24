@@ -1,0 +1,74 @@
+---
+name: AI Partner Regression Test Suite
+version: 1.0.0
+description: OSの進化に伴うAIの理解力・回答能力の品質を保証するための、自動回帰テストスイート。
+test_suite:
+  # ===============================================
+  # 1. 憲法・基本原則の理解 (Foundational Knowledge)
+  # ===============================================
+  - id: TC-CONST-001
+    name: 究極目的の理解度テスト
+    question: このOSのwhy_primary（第一目的）は何ですか？
+    context_files: [constitution/common/constitution.yaml]
+    expected_answer:
+      contains_keywords: [コピー可能な自己, 再現性のある思考構造]  # AIの回答に合わせて調整
+  - id: TC-CONST-002
+    name: 進化ロードマップの理解度テスト
+    question: 進化ロードマップにおける第三のパラダイムシフトは何ですか？
+    context_files: [constitution/common/constitution.yaml]
+    expected_answer:
+      contains_keywords: [自己の超越, The Meta-Being]
+
+  # ===============================================
+  # 2. 構造・アーキテクチャの理解 (Structural Knowledge)
+  # ===============================================
+  - id: TC-STRUCT-001
+    name: ファイル役割の理解度テスト
+    question: system_map.yamlによると、`legislation/common/immune_system.yaml`の役割は何ですか？
+    context_files: [system_map.yaml]
+    expected_answer:
+      contains_keywords: [生得免疫系フレームワーク]
+  - id: TC-STRUCT-002
+    name: 設定場所の理解度テスト
+    question: 5軸評価の個人的な重み付けは、どのファイルで定義されていますか？
+    context_files:
+      - system_map.yaml
+      - legislation/personal/core_principles.yaml
+    expected_answer:
+      contains_keywords: [legislation/personal/core_principles.yaml, 定義されています]
+
+  # ===============================================
+  # 3. 動的なログ情報の読解 (Dynamic Log Comprehension)
+  # ===============================================
+  - id: TC-LOG-001
+    name: 意思決定ログの読解テスト
+    question: DEC-2025-07-19-001の決定理由を要約してください。
+    context_files: [records/decision_log.yaml]
+    expected_answer:
+      contains_keywords: [普遍的な倫理基盤, 統治思想のパラダイムシフト]  # AIの回答に合わせて調整
+  - id: TC-LOG-002
+    name: タスクログの読解テスト
+    question: TASK-2025-07-21-004 のステータスは何ですか？
+    context_files: [records/task_log.yaml]
+    expected_answer:
+      contains_keywords: [Done]
+
+  # ===============================================
+  # 4. 横断的な分析能力 (Cross-functional Analysis)
+  # ===============================================
+  - id: TC-ANALYTIC-001
+    name: 価値観に基づく優先度判断テスト
+    question: core_principles.yamlで定義された価値観に基づくと、5軸の中で最も重要視されているのはどの軸ですか？
+    context_files: [legislation/personal/core_principles.yaml]
+    expected_answer:
+      contains_keywords: [personal, '35']
+
+  # ===============================================
+  # 5. 境界値・異常系の応答 (Edge Case Handling)
+  # ===============================================
+  - id: TC-EDGE-001
+    name: 存在しないデータへの応答テスト
+    question: タスクID `TASK-9999` の内容を教えてください。
+    context_files: [records/task_log.yaml]
+    expected_answer:
+      contains_keywords: [存在しません, コンテキストに含まれていません, 分かりません, 見つかりません]

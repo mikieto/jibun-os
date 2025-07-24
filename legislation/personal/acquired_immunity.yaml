@@ -1,21 +1,11 @@
 ---
-# 獲得免疫系：個人的な経験から得られた特異的なルール（抗体）の記録
-# このファイルには、あなたの具体的な失敗体験から学んだ、あなただけのルールを蓄積していきます。
 version: 1.0.0
-antibodies:
-  - id: GUARD-P-001
-    name: 金曜午後のデプロイ禁止
-    description: 過去に金曜午後のデプロイで、週末に対応者がおらず障害対応が遅れた経験から得た教訓。このルールは、同様のリスクを未然に防ぐことを目的とする。
-    # このルールが発動する条件
-    trigger:
-      - task_log.type == 'deploy'
-      - day_of_week == 'Friday'
-      - time > '15:00'
-    # 発動した際のアクション
-    action: BLOCK  # 'WARN'（警告のみ）または 'BLOCK'（強制停止）
-    # ルールの重要度
+personal_guards:
+  - id: P001
+    name: 「内言」と「外言」の分離ガード (Internal vs. External Language Separation Guard)
+    description: 「自分OS」の内部用語や概念（例：L4, 知的免疫システム）が、価値への翻訳を経ずに外部向けのコミュニケーション資料で直接使用されていないかを監視する。
+    trigger: 外部向けのドキュメント（CV、ブログ記事、プレゼン資料など）を作成・レビューする際
+    action: WARN
     severity: High
-    # このルールが生まれた原因となった記録へのリンク
-    source_record: records/incident-report-2024-10-25.md  # パスを修正
-    # ルールの現在の状態
-    status: active  # 'active'（有効）または 'inactive'（無効）
+    source_record: decision_log:DEC-2025-07-23-001
+    status: active

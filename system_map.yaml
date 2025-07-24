@@ -1,10 +1,7 @@
 ---
-# common/system_map.yaml
-# ------------------------------------------------------------
-# Jibun OS - an AI‑Collaborative OS の全体構造を AI に機械可読で伝えるシステムマップ
-# ------------------------------------------------------------
 system_architecture:
   version: 3.1.0
+  description: Prompt‑Ingestion & Digital‑Twin unified map
   layers:
     # ---------- L1 : constitution ----------
     - name: constitution
@@ -15,9 +12,21 @@ system_architecture:
           description: OS フレームワークの最高規範
           context_level: base_os_context
           dependencies:
+            - constitution/common/mvc_v1.0.yaml
+            - constitution/common/udhr.yaml
             - docs/charter.md
             - legislation/common/taxonomy.yaml
             - legislation/common/implementation_framework.yaml
+        - path: constitution/common/mvc_v1.0.yaml
+          role: ai_governance_framework
+          description: 実用最小限のAI統治憲法（MVC）の原則定義
+          context_level: base_os_context
+          dependencies: [constitution/common/udhr.yaml]
+        - path: constitution/common/udhr.yaml
+          role: universal_human_rights_standard
+          description: 世界人権宣言に基づく普遍的な人権規範
+          context_level: base_os_context
+          dependencies: []
         - path: constitution/personal/constitution.yaml
           role: personal_constitution
           description: 個人の核となる価値観・目的
@@ -40,6 +49,11 @@ system_architecture:
           description: 共通ガードルール
           context_level: base_os_context
           dependencies: []
+        - path: legislation/common/jurisprudence.yaml
+          role: general_legal_principles
+          description: AIが従うべき法の一般原則（信義誠実、適正手続き等）
+          context_level: base_os_context
+          dependencies: []
         - path: legislation/common/mappings/guards.yaml
           context_level: tooling
           description: Guard ID ↔ Guard 定義
@@ -57,6 +71,11 @@ system_architecture:
           description: 結晶化・普遍化など標準プロセス
           context_level: base_os_context
           dependencies: [legislation/common/taxonomy.yaml]
+        - path: legislation/common/communication_principles.yaml
+          role: external_communication_principles
+          description: 外部への価値伝達を最適化する原則
+          context_level: base_os_context
+          dependencies: []
         - path: legislation/common/taxonomy.yaml
           role: system_taxonomy
           description: OS 全体のタグ／分類
@@ -68,6 +87,18 @@ system_architecture:
           description: AI 協働用プロンプト標準型
           context_level: future_context
           dependencies: [constitution/common/constitution.yaml]
+        - path: legislation/common/kpi.yaml
+          role: kpi_definitions
+          description: プロジェクトおよびOS全体のKPI定義
+          context_level: base_os_context
+          dependencies:
+            - legislation/personal/projects/os_platform.yaml
+            - constitution/common/constitution.yaml
+        - path: legislation/common/impact_assessment_framework.yaml
+          layer: L2
+          purpose: 意思決定の影響を評価するための、OS共通の5軸評価フレームワークを定義する。
+          context_level: base_os_context
+          dependencies: []
 
         # --- テンプレート ---
         - path: legislation/common/projects/project_template.yaml
@@ -130,11 +161,13 @@ system_architecture:
           role: task_log
           context_level: log_data
           description: タスクの進捗履歴
+          ssot: true
           dependencies: []
         - path: records/decision_log.yaml
           role: decision_log
           context_level: log_data
           description: 重要意思決定の履歴
+          ssot: true
           dependencies: [records/task_log.yaml]
         - path: records/guard_log.yaml
           role: guard_invocation_log
@@ -148,6 +181,15 @@ system_architecture:
       role: system_charter
       context_level: documentation
       description: システムの最高理念ドキュメント
+      dependencies: []
+    - path: ai_base_context.yaml
+      role: base_context_artifact
+      context_level: operational_tooling
+      description: AI常時読み込み用の生成物（直編集禁止）
+      generated: true
+      generator: scripts/get_base_os_context.py
+      regenerate_on: [constitution/**, legislation/**, records/**]
+      enforce_self_review: true
       dependencies: []
     - path: .github/workflows/validate.yaml
       role: ci_workflow

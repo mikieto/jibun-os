@@ -7,8 +7,9 @@ version: 1.0.0
 innate_immune_system:
   # 失敗を予見し、警告するエンジンの定義
   proactive_guard_engine:
-    description: 特定の行動パターンから、将来の失敗リスクを予見し、警告を発する機能。将来的には、AIがユーザーの行動ログを分析し、リスクの高いパターンを自動で検知する。
-    status: planned  # 計画中の機能
+    name: プロアクティブ・ガードエンジン (守りの機能)
+    description: |-
+      特定の行動パターンから、将来の失敗リスクを予見・警告する、OSの「守り」の中核機能。
 
   # 失敗から学ぶプロセスの定義
   learning_process:
@@ -25,7 +26,9 @@ innate_immune_system:
 
   # 機会を発見するエンジンの定義
   opportunity_engine:
-    description: Zettelkastenの内容と外部情報を照合し、機会損失という最大のリスクを防ぐための提案を行う機能。
+    name: オポチュニティ・エンジン (攻めの機能)
+    description: |-
+      Zettelkastenの内容と外部情報を照合し、追求すべき価値を発見・提案する、OSの「攻め」の中核機能。
     status: planned  # 計画中の機能
     scan_targets:
       - arXiv (論文)

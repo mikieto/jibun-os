@@ -1,6 +1,11 @@
+.env
 
 # Python cache
 __pycache__/
+.pytest_cache/
+
+records/*.bak
 
 # Generated files for AI context and temporary outputs
-tmp/
+tmp/*
+!tmp/.gitkeep

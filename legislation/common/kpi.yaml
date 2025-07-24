@@ -1,0 +1,73 @@
+---
+# ===================================================================
+# KPI Definitions (v1.0.0)
+# ===================================================================
+# This file serves as the Single Source of Truth for all Key Performance Indicators.
+# It links high-level objectives to measurable metrics for the 'Jibun OS' project.
+#
+# Related Task: TASK-2025-07-025
+# ===================================================================
+kpi_definitions:
+  # -----------------------------------------------------------------
+  # Project-Specific KPIs: os_platform_v1 (Stabilize Phase)
+  # -----------------------------------------------------------------
+  # Source: legislation/personal/projects/os_platform.yaml
+  # -----------------------------------------------------------------
+  - group_name: 'Project: Jibun OS Platform (Stabilize)'
+    kpis:
+      - id: KPI-PROJ-001
+        name: RAG Accuracy
+        description: RAGの回答精度。回帰テストスイートによって計測される。
+        target: '>=95%'
+        related_task: TASK-2025-07-030
+      - id: KPI-PROJ-002
+        name: Policy CI Pass Rate
+        description: OPA/RegoポリシーのCI成功率。
+        target: 100%
+        related_task: TASK-2025-07-029
+      - id: KPI-PROJ-003
+        name: First User PoC Acquisition
+        description: 最初の有償PoCユーザーの獲得マイルストーン。
+        target: '2026-01-31'
+        related_task: TASK-2025-07-022
+      - id: KPI-PROJ-004
+        name: Decision Cycle Time Reduction
+        description: 意思決定からタスク完了までのサイクルタイム短縮率。
+        target: '>=30%'
+
+  # -----------------------------------------------------------------
+  # OS-level Health KPIs
+  # -----------------------------------------------------------------
+  # Source: constitution/common/constitution.yaml, legislation/personal/core_principles.yaml
+  # -----------------------------------------------------------------
+  - group_name: 'OS Health: System Evolution'
+    kpis:
+      - id: KPI-HEALTH-001
+        name: Framework Revision Rate
+        description: 憲法(L1)・法律(L2)の月次改訂件数。
+        target_type: frequency
+        target: '>= 1 per month'
+      - id: KPI-HEALTH-002
+        name: OS Update Frequency
+        description: OSの更新頻度。システムの改善活動の量を示す。
+        target_type: frequency
+        target: Track weekly
+  - group_name: 'OS Health: Intellectual Productivity & Quality'
+    kpis:
+      - id: KPI-HEALTH-003
+        name: Guard Invocation Count
+        description: 知的免疫システム（ガード）の発動件数。リスク検知の量を示す。
+        target_type: quantity
+        target: Track weekly
+      - id: KPI-HEALTH-004
+        name: Guard Correction Rate
+        description: 発動したガードに対する是正措置の完了率。リスク対応の質を示す。
+        target_type: quality
+        target: '>=90%'
+  - group_name: 'OS Health: Collaboration'
+    kpis:
+      - id: KPI-HEALTH-005
+        name: AI Proposal Approval Rate
+        description: AIからの提案に対する承認率。協働の健全性を示す。
+        target_type: quality
+        target: '>=80%'

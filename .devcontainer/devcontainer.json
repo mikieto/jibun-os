@@ -5,6 +5,10 @@
   "workspaceFolder": "/workspaces/jibun-os",
   "remoteUser": "vscode",
 
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
   "settings": {
     "terminal.integrated.defaultProfile.linux": "bash",
     "terminal.integrated.profiles.linux": {
