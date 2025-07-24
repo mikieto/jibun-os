@@ -91,7 +91,6 @@ jobs:
       # 8) 生成物再生成 & Self-Review チェック
       - name: Generate ai_base_context.yaml
         run: python scripts/get_base_os_context.py -o ai_base_context.yaml
-
       - name: Ensure ai_base_context.yaml is up to date
         run: |
           set -e
@@ -107,8 +106,8 @@ jobs:
           else
             echo "::notice ::ai_base_context.yaml is not tracked by git. Skipping diff check."
           fi
-
       - name: Check Self-Review flag
+        if: ${{ hashFiles('ai_base_context.yaml') != '' }}
         run: bash scripts/check_self_review.sh
 
       # 9) Schema validation (placeholder)
