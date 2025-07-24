@@ -12,3 +12,4 @@ if ! grep -q '\[Self-Review: OK\]' "$FILE"; then
   echo "::error ::[Self-Review: OK] not found in $FILE"
   exit 1
 fi
+
