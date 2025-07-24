@@ -1,6 +1,6 @@
+---
 # .github/workflows/validate.yaml
 name: Validate Jibun OS
-
 on:
   push:
     branches: [main, develop]
@@ -32,7 +32,6 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
