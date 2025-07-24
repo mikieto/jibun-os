@@ -781,12 +781,11 @@ tasks:
       domain: tooling
     priority: Medium
     labels: [tooling, doc]
-
   - id: TASK-2025-07-24-010
     timestamp: '2025-07-24T18:50:00+09:00'
     related_decision: DEC-2025-07-24-004
     summary: duplicate‑check を CI fail 条件に切り替える
-    status: done            # ← 厳格モードを CI に入れたら done へ
+    status: done  # ← 厳格モードを CI に入れたら done へ
     assignee: mikieto
     description: |
       scripts/check_duplicate_defs.py をホワイトリスト方式で
@@ -794,7 +793,6 @@ tasks:
     scope: {project: os_platform_v1, stage: 2, domain: ci}
     priority: High
     labels: [ci, lint, ssot]
-
   - id: TASK-2025-07-24-011
     timestamp: '2025-07-24T11:05:00+09:00'
     related_decision: DEC-2025-07-24-004
@@ -810,7 +808,6 @@ tasks:
     scope: {project: os_platform_v1, stage: 2, domain: ci}
     priority: High
     labels: [ci, lint]
-
   - id: TASK-2025-07-24-012
     timestamp: '2025-07-24T11:10:00+09:00'
     related_decision: DEC-2025-07-24-004
@@ -819,9 +816,9 @@ tasks:
     assignee: mikieto
     description: |
       migrate_ids.py を拡張し、
-      - GUARD‑C‑### → G###  
-      - GUARD‑P‑### → P###  
-      - 旧 KPI フォーマット → 新 KPI フォーマット  
+      - GUARD‑C‑### → G###
+      - GUARD‑P‑### → P###
+      - 旧 KPI フォーマット → 新 KPI フォーマット
       を自動変換。migration_map_guards.yaml も更新。
     scope: {project: os_platform_v1, stage: 2, domain: tooling}
     priority: Medium

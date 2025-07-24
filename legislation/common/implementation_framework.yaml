@@ -38,6 +38,6 @@ versioning_procedure:
 id_rules:
   decision: ^DEC-\\d{4}-\\d{2}-\\d{2}-\\d{3}$
   task: ^TASK-\\d{4}-\\d{2}-\\d{2}-\\d{3}$
-  guard_common:   "^G\\d{3}$"
-  guard_personal: "^P\\d{3}$"
-  kpi:            "^KPI-(PROJ|HEALTH)-\\d{3}$"
+  guard_common: ^G\d{3}$
+  guard_personal: ^P\d{3}$
+  kpi: ^KPI-(PROJ|HEALTH)-\d{3}$

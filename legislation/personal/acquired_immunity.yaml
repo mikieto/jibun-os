@@ -1,10 +1,11 @@
+---
 version: 1.0.0
 personal_guards:
-- id: P001
-  name: 「内言」と「外言」の分離ガード (Internal vs. External Language Separation Guard)
-  description: 「自分OS」の内部用語や概念（例：L4, 知的免疫システム）が、価値への翻訳を経ずに外部向けのコミュニケーション資料で直接使用されていないかを監視する。
-  trigger: 外部向けのドキュメント（CV、ブログ記事、プレゼン資料など）を作成・レビューする際
-  action: WARN
-  severity: High
-  source_record: decision_log:DEC-2025-07-23-001
-  status: active
+  - id: P001
+    name: 「内言」と「外言」の分離ガード (Internal vs. External Language Separation Guard)
+    description: 「自分OS」の内部用語や概念（例：L4, 知的免疫システム）が、価値への翻訳を経ずに外部向けのコミュニケーション資料で直接使用されていないかを監視する。
+    trigger: 外部向けのドキュメント（CV、ブログ記事、プレゼン資料など）を作成・レビューする際
+    action: WARN
+    severity: High
+    source_record: decision_log:DEC-2025-07-23-001
+    status: active
