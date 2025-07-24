@@ -2,16 +2,10 @@
 # .github/workflows/validate.yaml
 name: Validate Jibun OS
 on:
+  pull_request:
+    branches: [main, develop]
   push:
     branches: [main, develop]
-    paths:
-      - '**.yml'
-      - '**.yaml'
-      - constitution/**
-      - legislation/**
-      - records/**
-      - scripts/**
-  pull_request:
     paths:
       - '**.yml'
       - '**.yaml'
