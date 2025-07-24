@@ -1,18 +1,10 @@
----
-# 獲得免疫系：個人的な経験から得られた特異的なルール（抗体）の記録
-# このファイルには、あなたの具体的な失敗体験から学んだ、あなただけのルールを蓄積していきます。
 version: 1.0.0
 personal_guards:
-  - id: GUARD-P-001
-    name: 「内言」と「外言」の分離ガード (Internal vs. External Language Separation Guard)
-    description: 「自分OS」の内部用語や概念（例：L4, 知的免疫システム）が、価値への翻訳を経ずに外部向けのコミュニケーション資料で直接使用されていないかを監視する。
-    # このルールが発動する条件
-    trigger: 外部向けのドキュメント（CV、ブログ記事、プレゼン資料など）を作成・レビューする際
-    # 発動した際のアクション 'WARN'（警告のみ）または 'BLOCK'（強制停止）
-    action: WARN
-    # ルールの重要度
-    severity: High
-    # このルールが生まれた原因となった記録へのリンク
-    source_record: decision_log:DEC-2025-07-23-001
-    # ルールの現在の状態 'active'（有効）または 'inactive'（無効）
-    status: active
+- id: P001
+  name: 「内言」と「外言」の分離ガード (Internal vs. External Language Separation Guard)
+  description: 「自分OS」の内部用語や概念（例：L4, 知的免疫システム）が、価値への翻訳を経ずに外部向けのコミュニケーション資料で直接使用されていないかを監視する。
+  trigger: 外部向けのドキュメント（CV、ブログ記事、プレゼン資料など）を作成・レビューする際
+  action: WARN
+  severity: High
+  source_record: decision_log:DEC-2025-07-23-001
+  status: active

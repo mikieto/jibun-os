@@ -1,44 +1,43 @@
----
-# 生得免疫系：このOSフレームワークに標準搭載されている普遍的なガードルール
-# これらは、OS所有者の個人的な経験によらず、誰が使ってもシステムの品質と健全性を保つための、
-# 普遍的なベストプラクティスです。
 version: 1.0.0
 universal_guards:
-  - id: GUARD-C-001
-    name: 構造化ガード (Structuring Guard)
-    description: 「対象の構造と量が把握できているか？」を自問し、「構造・量が見えないプロジェクトの丸投げ」を禁止する。
-  - id: GUARD-C-002
-    name: 計画的完了ガード (Planned Completion Guard)
-    description: 「予期せぬ事態へのバッファがあるか？」を自問し、「確実性のない約束や楽観的スケジュール提示」を禁止する。
-  - id: GUARD-C-003
-    name: Whyピン止めガード (Pin-the-Why Guard)
-    description: 本質的目的（Why）が不明確なまま、手段（How）の議論が続くことを禁止する。
-  - id: GUARD-C-004
-    name: AI誘導ガード (AI Guidance Guard)
-    description: 「自分の思考や判断が、AIの誘導で不本意な方向へ向かっていないか？」を常に自問する。
-  - id: GUARD-C-005
-    name: 認知バイアス監視ガード (Cognitive Bias Monitoring Guard)
-    description: 判断における認知の歪みを常に監視し、客観性を保つ。
-  - id: GUARD-C-006
-    name: 価値工学ガード (Value Engineering Guard)
-    description: 要件に対する “機能・抽象度・コスト” が過剰になっていないか、そして投入リソースが期待リターンを正当化しているかを同時に評価する。
-  - id: GUARD-C-007
-    name: 非現実的抽象化ガード (Impractical Abstraction Guard)
-    description: 議論やアウトプットが、現実の行動や効果から乖離し、過度に抽象的・理論的になることを禁止する。
-  - id: GUARD-C-008
-    name: セキュリティ&レジリエンス・ガード (Security & Resilience Guard)
-    description: OS基盤（情報・プロトコル・環境）が改ざんや誤用から保護され、障害からの回復可能性を保証する。
-  - id: GUARD-C-009
-    name: 倫理的・社会的文脈ガード (Ethical & Social Context Guard)
-    description: 活動が意図せずディストピア的側面を助長したり、倫理的問題を引き起こすリスクを監視・警告する。
-  - id: GUARD-C-011
-    name: 既存ルール整合性ガード (Existing Rule Consistency Guard)
-    description: 新しいアイデアや成果物が、既存のルールセットと整合しているか、また、既存ルールが網羅的に適用されているかを確認する。
-  - id: GUARD-C-012
-    name: AI自己プロセス遵守ガード (AI Self-Process Compliance Guard)
-    description: |-
-      AI（Co-Pilot）が成果物を最終的に提示する直前に、Guardianは
-      「直近合意された、AI自身の振る舞いを規定するルール
-      （例：ペルソナ・レビュー、差分表示原則など）が、その成果物に適用されているか」を監査する。
-      違反の可能性がある場合、Guardianは成果物の提示を一時停止し、
-      Co-Pilotに自己修正を促す警告を発する。
+- id: G001
+  name: 構造化ガード (Structuring Guard)
+  description: 「対象の構造と量が把握できているか？」を自問し、「構造・量が見えないプロジェクトの丸投げ」を禁止する。
+- id: G002
+  name: 計画的完了ガード (Planned Completion Guard)
+  description: 「予期せぬ事態へのバッファがあるか？」を自問し、「確実性のない約束や楽観的スケジュール提示」を禁止する。
+- id: G003
+  name: Whyピン止めガード (Pin-the-Why Guard)
+  description: 本質的目的（Why）が不明確なまま、手段（How）の議論が続くことを禁止する。
+- id: G004
+  name: AI誘導ガード (AI Guidance Guard)
+  description: 「自分の思考や判断が、AIの誘導で不本意な方向へ向かっていないか？」を常に自問する。
+- id: G005
+  name: 認知バイアス監視ガード (Cognitive Bias Monitoring Guard)
+  description: 判断における認知の歪みを常に監視し、客観性を保つ。
+- id: G006
+  name: 価値工学ガード (Value Engineering Guard)
+  description: 要件に対する “機能・抽象度・コスト” が過剰になっていないか、そして投入リソースが期待リターンを正当化しているかを同時に評価する。
+- id: G007
+  name: 非現実的抽象化ガード (Impractical Abstraction Guard)
+  description: 議論やアウトプットが、現実の行動や効果から乖離し、過度に抽象的・理論的になることを禁止する。
+- id: G008
+  name: セキュリティ&レジリエンス・ガード (Security & Resilience Guard)
+  description: OS基盤（情報・プロトコル・環境）が改ざんや誤用から保護され、障害からの回復可能性を保証する。
+- id: G009
+  name: 倫理的・社会的文脈ガード (Ethical & Social Context Guard)
+  description: 活動が意図せずディストピア的側面を助長したり、倫理的問題を引き起こすリスクを監視・警告する。
+- id: G011
+  name: 既存ルール整合性ガード (Existing Rule Consistency Guard)
+  description: 新しいアイデアや成果物が、既存のルールセットと整合しているか、また、既存ルールが網羅的に適用されているかを確認する。
+- id: G012
+  name: AI自己プロセス遵守ガード (AI Self-Process Compliance Guard)
+  description: 'AI（Co-Pilot）が成果物を最終的に提示する直前に、Guardianは
+
+    「直近合意された、AI自身の振る舞いを規定するルール
+
+    （例：ペルソナ・レビュー、差分表示原則など）が、その成果物に適用されているか」を監査する。
+
+    違反の可能性がある場合、Guardianは成果物の提示を一時停止し、
+
+    Co-Pilotに自己修正を促す警告を発する。'
