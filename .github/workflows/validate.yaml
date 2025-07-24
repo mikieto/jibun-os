@@ -93,7 +93,6 @@ jobs:
         run: |
           mkdir -p tmp
           python scripts/get_base_os_context.py -o tmp/ai_base_context.yaml
-
       - name: Ensure ai_base_context.yaml is up to date
         run: |
           set -e
@@ -110,7 +109,6 @@ jobs:
           else
             echo "::notice ::$FILE is not tracked by git. Skipping diff check."
           fi
-
       - name: Check Self-Review flag
         if: ${{ hashFiles('tmp/ai_base_context.yaml') != '' }}
         run: bash scripts/check_self_review.sh
