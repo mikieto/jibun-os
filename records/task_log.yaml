@@ -1,10 +1,6 @@
 ---
-# タスクログ (Task Log)
-# このファイルには、意思決定から生まれた具体的なタスクを記録します。
-# 各タスクは、進捗状況、担当者、関連する決定などを明確にします。
 version: 2.0.0
 tasks:
-  # ======== Stage-1 : 基盤整備 =================================
   - id: TASK-001
     timestamp: '2025-07-10T10:31:00+09:00'
     related_decision: DEC-004
@@ -235,11 +231,8 @@ tasks:
       stage: 1
       domain: quality
     priority: High
-
-  # ======== Stage-2 : 自動品質保証 ==============================
   - id: TASK-020
     timestamp: '2025-07-11T09:00:00+09:00'
-    related_decision: DEC-XXX  # workflow_simplification_20250710 に対応する決定ID
     summary: pre-commitフックでyamllint/schema/secret-scanを強制 (precommit_hook_setup)
     status: todo
     assignee: mikieto
@@ -249,11 +242,8 @@ tasks:
       stage: 2
       domain: security
     priority: Critical
-
-  # ======== Stage-3 : 可視化 & インサイト =======================
   - id: TASK-021
     timestamp: '2025-07-11T10:00:00+09:00'
-    related_decision: DEC-XXX  # workflow_simplification_20250710 に対応する決定ID
     summary: prompt_tokensを計測しGuard Logに自動書込み (token_meter_script)
     status: todo
     assignee: mikieto
@@ -265,7 +255,7 @@ tasks:
     priority: Medium
   - id: TASK-022
     timestamp: '2025-07-11T11:00:00+09:00'
-    related_decision: DEC-013  # v3_arch_feedback_adopt
+    related_decision: DEC-013
     summary: 週次で外部情報取得→Impact Issue自動生成PoC (horizon_scan_poc)
     status: todo
     assignee: mikieto
@@ -277,7 +267,7 @@ tasks:
     priority: High
   - id: TASK-023
     timestamp: '2025-07-11T12:00:00+09:00'
-    related_decision: DEC-013  # v3_arch_feedback_adopt
+    related_decision: DEC-013
     summary: docs/フォルダをセットアップし、初見者の体験を向上 (docs_folder_setup)
     status: Done
     assignee: mikieto
@@ -294,7 +284,10 @@ tasks:
     assignee: mikieto
     status: Done
     due: '2025-07-22'
-    scope: {project: os_platform_v1, stage: 1, domain: governance}
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: governance
     labels: [next_48h]
     priority: High
   - id: TASK-2025-07-025
@@ -304,7 +297,10 @@ tasks:
     assignee: mikieto
     status: Done
     due: '2025-07-25'
-    scope: {project: os_platform_v1, stage: 1, domain: governance}
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: governance
     priority: High
   - id: TASK-2025-07-026
     timestamp: '2025-07-17T11:10:00+09:00'
@@ -313,7 +309,10 @@ tasks:
     assignee: mikieto
     status: Done
     due: '2025-07-27'
-    scope: {project: os_platform_v1, stage: 1, domain: value}
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: value
     priority: High
   - id: TASK-2025-07-027
     timestamp: '2025-07-17T11:15:00+09:00'
@@ -322,7 +321,10 @@ tasks:
     assignee: mikieto
     status: Done
     due: '2025-07-31'
-    scope: {project: os_platform_v1, stage: 1, domain: security}
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: security
     priority: Medium
   - id: TASK-2025-07-028
     timestamp: '2025-07-17T11:20:00+09:00'
@@ -331,7 +333,10 @@ tasks:
     assignee: mikieto
     status: Pending
     due: '2025-08-05'
-    scope: {project: os_platform_v1, stage: 1, domain: speed}
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: speed
     priority: Medium
   - id: TASK-2025-07-029
     timestamp: '2025-07-17T11:25:00+09:00'
@@ -340,19 +345,18 @@ tasks:
     assignee: mikieto
     status: InProgress
     due: '2025-08-12'
-    scope: {project: os_platform_v1, stage: 1, domain: security}
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: security
     priority: Medium
-    notes: |
-      OPA Policy CI スイートの対象ファイルとポリシーの種類を洗い出した。
-      初期実装として、以下を優先的に組み込む：
-      - プロジェクト定義ファイル (`legislation/personal/projects/*.yaml`) に対する `project_purpose_exists.rego` (実装済み)
-      - タスクログファイル (`records/task_log.yaml`) に対する `task_log_entry_validation.rego` (実装予定)
-      将来的には、以下のファイル群に対してもポリシーチェックを拡張する計画：
-      - L1: Constitution (憲法・魂) レイヤー
-      - L2: Legislation (法律・知恵) レイヤー (共通の法律、マッピング、テンプレート、個人の法律など)
-      - L4: Records (記録・経験) レイヤー (decision_log.yaml, guard_log.yaml など)
-      - その他のルートファイル (.github/workflows/*.yaml, schema/*.json など)
-      各レイヤー/ファイルタイプごとに、適切なRegoポリシーを定義し、CIワークフローに個別のチェックステップを追加する。
+    notes: "OPA Policy CI スイートの対象ファイルとポリシーの種類を洗い出した。\n初期実装として、以下を優先的に組み込む：\n- プロジェクト定義ファイル\
+      \ (`legislation/personal/projects/*.yaml`) に対する `project_purpose_exists.rego`\
+      \ (実装済み)\n- タスクログファイル (`records/task_log.yaml`) に対する `task_log_entry_validation.rego`\
+      \ (実装予定)\n将来的には、以下のファイル群に対してもポリシーチェックを拡張する計画：\n- L1: Constitution (憲法・魂) レイヤー\n\
+      - L2: Legislation (法律・知恵) レイヤー (共通の法律、マッピング、テンプレート、個人の法律など)\n- L4: Records (記録・経験)\
+      \ レイヤー (decision_log.yaml, guard_log.yaml など)\n- その他のルートファイル (.github/workflows/*.yaml,\
+      \ schema/*.json など)\n各レイヤー/ファイルタイプごとに、適切なRegoポリシーを定義し、CIワークフローに個別のチェックステップを追加する。\n"
   - id: TASK-2025-07-030
     timestamp: '2025-07-17T11:30:00+09:00'
     related_decision: DEC-2025-07-026
@@ -360,7 +364,10 @@ tasks:
     assignee: mikieto
     status: Done
     due: '2025-08-20'
-    scope: {project: os_platform_v1, stage: 1, domain: quality}
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: quality
     priority: Medium
   - id: TASK-2025-07-031
     timestamp: '2025-07-17T11:35:00+09:00'
@@ -369,21 +376,24 @@ tasks:
     assignee: mikieto
     status: ToDo
     due: '2025-08-25'
-    scope: {project: os_platform_v1, stage: 1, domain: security}
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: security
     priority: Medium
   - id: TASK-2025-07-032
     timestamp: '2025-07-17T16:00:00+09:00'
-    related_decision: DEC-2025-07-029
     summary: RAG 回帰テスト CI ジョブ実装 (rag_regression_ci)
     status: Done
     assignee: mikieto
-    description: |
-      OSの根幹である「AIの回答品質」を保証する、自動回帰テストの仕組みをGitHub Actionsに組み込む。
-      このタスクは、単なる品質保証（安全網）に留まらず、以下の戦略的・進化的目的を持つ。
-      1.  **信頼の契約**: AIパートナーの回答能力が常に担保されていることを客観的に証明し、人間とAIの間の「信頼の契約」を技術的に確立する。
-      2.  **進化の触媒**: OSが将来のパラダイムシフト「自己の超越（The Meta-Being）」へ進むための前提条件である、AIの「自己認識能力」を育成する教育システムとして機能させる。
-      3.  **自律性への道**: 将来的には、AI自身がこのテストを用いて自らの知識の欠落を発見し、新たな学習を要求する「自律的成長サイクル」のトリガーとする。
-    scope: {project: os_platform_v1, stage: 1, domain: quality}
+    description: "OSの根幹である「AIの回答品質」を保証する、自動回帰テストの仕組みをGitHub Actionsに組み込む。\nこのタスクは、単なる品質保証（安全網）に留まらず、以下の戦略的・進化的目的を持つ。\n\
+      1.  **信頼の契約**: AIパートナーの回答能力が常に担保されていることを客観的に証明し、人間とAIの間の「信頼の契約」を技術的に確立する。\n\
+      2.  **進化の触媒**: OSが将来のパラダイムシフト「自己の超越（The Meta-Being）」へ進むための前提条件である、AIの「自己認識能力」を育成する教育システムとして機能させる。\n\
+      3.  **自律性への道**: 将来的には、AI自身がこのテストを用いて自らの知識の欠落を発見し、新たな学習を要求する「自律的成長サイクル」のトリガーとする。\n"
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: quality
     priority: High
     labels: [risk_mitigation, next_48h]
   - id: TASK-2025-07-033
@@ -393,7 +403,10 @@ tasks:
     assignee: mikieto
     status: Done
     due: '2025-07-19'
-    scope: {project: os_platform_v1, stage: 1, domain: refactoring}
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: refactoring
     priority: High
     labels: [next_48h]
   - id: TASK-2025-07-034
@@ -403,7 +416,10 @@ tasks:
     assignee: mikieto
     status: Done
     due: '2025-07-19'
-    scope: {project: os_platform_v1, stage: 1, domain: refactoring}
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: refactoring
     priority: Medium
     labels: [next_48h]
   - id: TASK-2025-07-035
@@ -413,19 +429,19 @@ tasks:
     assignee: mikieto
     status: Done
     due: '2025-07-22'
-    scope: {project: os_platform_v1, stage: 1, domain: ci_cd}
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: ci_cd
     priority: Medium
-
-  # ======== Project: Guardian Refactoring - Phase 1 ==============================
   - id: TASK-2025-07-19-001
     timestamp: '2025-07-19T13:47:00+09:00'
     related_decision: DEC-2025-07-19-001
     summary: 憲法(v2.0)改正：外部憲章のimportと倫理的制約の追加
     status: Done
     assignee: mikieto
-    description: |
-      constitution.yamlをリファクタリングし、`imports`セクションを追加して世界人権宣言とMVCを参照する。
-      さらに、`supreme_purpose`に「人間の尊厳の尊重」を倫理的制約条件として明記する。
+    description: "constitution.yamlをリファクタリングし、`imports`セクションを追加して世界人権宣言とMVCを参照する。\n\
+      さらに、`supreme_purpose`に「人間の尊厳の尊重」を倫理的制約条件として明記する。\n"
     scope:
       project: os_platform_v1
       stage: 1
@@ -438,9 +454,8 @@ tasks:
     summary: 統治機構(v2.0)更新：Guardianロールの定義と協働プロトコルの更新
     status: Done
     assignee: mikieto
-    description: |
-      constitution.yamlの`roles_and_responsibilities`に独立監査役「Guardian (AI)」を定義する。
-      さらに`collaboration_model`を更新し、Guardianからの警告を意思決定プロセスに正式に組み込む。
+    description: "constitution.yamlの`roles_and_responsibilities`に独立監査役「Guardian (AI)」を定義する。\n\
+      さらに`collaboration_model`を更新し、Guardianからの警告を意思決定プロセスに正式に組み込む。\n"
     scope:
       project: os_platform_v1
       stage: 1
@@ -453,9 +468,8 @@ tasks:
     summary: 学習プロセス(v2.0)更新：普遍的人権フィルターの実装
     status: Done
     assignee: mikieto
-    description: |
-      constitution.yamlの`integration_workflow`に、`ethical_review`ステップを追加し、
-      全ての学習内容が世界人権宣言の理念に照らして審査されるプロセスを実装する。
+    description: "constitution.yamlの`integration_workflow`に、`ethical_review`ステップを追加し、\n\
+      全ての学習内容が世界人権宣言の理念に照らして審査されるプロセスを実装する。\n"
     scope:
       project: os_platform_v1
       stage: 1
@@ -468,9 +482,8 @@ tasks:
     summary: 憲法(v2.0)の構成ファイルを作成 (`mvc_v1.0.yaml`, `udhr.yaml`)
     status: Done
     assignee: mikieto
-    description: |
-      `constitution/common/`配下に、`mvc_v1.0.yaml`（実用最小限の憲法5条）と`udhr.yaml`（世界人権宣言の要点）をYAML形式で具体的に記述したファイルを新設する。
-      ファイル名にはバージョンを含め、不変性を保証する。
+    description: "`constitution/common/`配下に、`mvc_v1.0.yaml`（実用最小限の憲法5条）と`udhr.yaml`（世界人権宣言の要点）をYAML形式で具体的に記述したファイルを新設する。\n\
+      ファイル名にはバージョンを含め、不変性を保証する。\n"
     scope:
       project: os_platform_v1
       stage: 1
@@ -483,8 +496,7 @@ tasks:
     summary: system_map.yamlを更新し、新しい憲法ファイル群を定義
     status: Done
     assignee: mikieto
-    description: |
-      `system_map.yaml`の`constitution`レイヤーを編集し、新設した`mvc_v1.0.yaml`と`udhr.yaml`のファイル定義、および関連ファイルの依存関係を正確に記述する。
+    description: "`system_map.yaml`の`constitution`レイヤーを編集し、新設した`mvc_v1.0.yaml`と`udhr.yaml`のファイル定義、および関連ファイルの依存関係を正確に記述する。\n"
     scope:
       project: os_platform_v1
       stage: 1
@@ -497,9 +509,7 @@ tasks:
     summary: legislation/common/jurisprudence.yamlを新設し、初期ルールセットを定義
     status: Done
     assignee: mikieto
-    description: |
-      OSの法律層の基盤として、`jurisprudence.yaml`ファイルを新設する。
-      初期実装として、「信義誠実の原則」「適正手続きの保障」「権利濫用の禁止」の3つの原則を、AIが解釈可能な形式で定義する。
+    description: "OSの法律層の基盤として、`jurisprudence.yaml`ファイルを新設する。\n初期実装として、「信義誠実の原則」「適正手続きの保障」「権利濫用の禁止」の3つの原則を、AIが解釈可能な形式で定義する。\n"
     scope:
       project: os_platform_v1
       stage: 2
@@ -512,9 +522,7 @@ tasks:
     summary: docs/配下にindex.mdとdevelopment_conventions.mdを新設
     status: Done
     assignee: mikieto
-    description: |
-      1. `docs/index.md`を新設し、各ドキュメントの役割と推奨読解順序を記述する。
-      2. `docs/development_conventions.md`を新設し、ID命名規則やAIの役割定義などの開発規約を記述する。
+    description: "1. `docs/index.md`を新設し、各ドキュメントの役割と推奨読解順序を記述する。\n2. `docs/development_conventions.md`を新設し、ID命名規則やAIの役割定義などの開発規約を記述する。\n"
     scope:
       project: os_platform_v1
       stage: 1
@@ -527,10 +535,8 @@ tasks:
     summary: Devcontainer/Dockerfileで依存ライブラリのインストールを自動化
     status: todo
     assignee: mikieto
-    description: |
-      GitHub Codespacesでの利用開始時の体験を向上させるため、
-      .devcontainer/devcontainer.jsonおよび関連するDockerfileを編集し、
-      コンテナビルド時に`pip install -r requirements.txt`が自動的に実行されるように構成する。
+    description: "GitHub Codespacesでの利用開始時の体験を向上させるため、\n.devcontainer/devcontainer.jsonおよび関連するDockerfileを編集し、\n\
+      コンテナビルド時に`pip install -r requirements.txt`が自動的に実行されるように構成する。\n"
     scope:
       project: os_platform_v1
       stage: 1
@@ -542,8 +548,7 @@ tasks:
     summary: 憲法に「進化のロードマップ」を新設し、4つのパラダイムシフトを明記する
     status: Done
     assignee: mikieto
-    description: |
-      constitution/common/constitution.yamlに`evolutionary_roadmap`セクションを新設し、OSの公式な進化の道筋を定義する。
+    description: "constitution/common/constitution.yamlに`evolutionary_roadmap`セクションを新設し、OSの公式な進化の道筋を定義する。\n"
     scope:
       project: os_platform_v1
       stage: 1
@@ -555,9 +560,8 @@ tasks:
     summary: 5軸評価フレームワークの共通定義ファイルを作成する
     status: Done
     assignee: mikieto
-    description: |
-      legislation/common/impact_assessment_framework.yamlを新設し、5つの評価軸を定義する。
-      その後、system_map.yamlに新しいファイルを登録する。
+    description: "legislation/common/impact_assessment_framework.yamlを新設し、5つの評価軸を定義する。\n\
+      その後、system_map.yamlに新しいファイルを登録する。\n"
     scope:
       project: os_platform_v1
       stage: 1
@@ -569,8 +573,7 @@ tasks:
     summary: 5軸評価フレームワークに対する個人的な重み付けを定義する
     status: Done
     assignee: mikieto
-    description: |
-      legislation/personal/core_principles.yamlに`impact_assessment_weights`セクションを追加し、個人の価値観を反映させる。
+    description: "legislation/personal/core_principles.yamlに`impact_assessment_weights`セクションを追加し、個人の価値観を反映させる。\n"
     scope:
       project: os_platform_v1
       stage: 1
@@ -582,8 +585,7 @@ tasks:
     summary: AI協働プロトコルを憲法に標準手順として追加する
     status: Done
     assignee: mikieto
-    description: |
-      constitution/common/constitution.yamlの`ai_collaboration_governance`セクションに`standard_task_protocol`を新設し、協働の原則を明記する。
+    description: "constitution/common/constitution.yamlの`ai_collaboration_governance`セクションに`standard_task_protocol`を新設し、協働の原則を明記する。\n"
     scope:
       project: os_platform_v1
       stage: 1
@@ -595,8 +597,7 @@ tasks:
     summary: 統治メタファー（最高裁判所、守り/攻め）を憲法と法律に反映させる
     status: Done
     assignee: mikieto
-    description: |
-      constitution/common/constitution.yamlおよびlegislation/common/immune_system.yamlを修正し、OSの概念モデルを洗練させる。
+    description: "constitution/common/constitution.yamlおよびlegislation/common/immune_system.yamlを修正し、OSの概念モデルを洗練させる。\n"
     scope:
       project: os_platform_v1
       stage: 1
@@ -604,19 +605,18 @@ tasks:
     priority: Medium
   - id: TASK-2025-07-21-006
     timestamp: '2025-07-21T18:43:04+09:00'
-    related_decision: N/A
     summary: マッピングファイルに対する包括的CIバリデーションの実装
     assignee: mikieto
     status: ToDo
     due: '2025-09-30'
-    scope: {project: os_platform_v1, stage: 2, domain: security}
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: security
     priority: High
-    description: |
-      legislation/common/mappings/ ディレクトリ内のファイル（ガード定義、フィールド定義など）に対して、
-      より厳密なOPAポリシーチェックとJSONスキーマバリデーションをCIワークフローに組み込む。
-      これにより、OSの核となる定義の品質と整合性を自動的に保証し、OSSとしての信頼性を高める。
+    description: "legislation/common/mappings/ ディレクトリ内のファイル（ガード定義、フィールド定義など）に対して、\n\
+      より厳密なOPAポリシーチェックとJSONスキーマバリデーションをCIワークフローに組み込む。\nこれにより、OSの核となる定義の品質と整合性を自動的に保証し、OSSとしての信頼性を高める。\n"
     labels: [amplify_phase, ci_enhancement]
-
   - id: TASK-2025-07-21-007
     timestamp: '2025-07-21T19:07:00+09:00'
     related_decision: DEC-2025-07-21-001
@@ -624,21 +624,17 @@ tasks:
     assignee: mikieto
     status: ToDo
     due: '2025-08-10'
-    scope: {project: os_platform_v1, stage: 1, domain: dx}
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: dx
     priority: Critical
-    description: |
-      CodespacesのChat UIを介して、自分OSの「動的に必要箇所をロードする」機能の価値を
-      初見ユーザーが直感的に理解・体験できる仕組みを実装する。
-      現状、ユーザーがai_base_contextなどを手作業でLLMにフィードする必要があり、これがUXを著しく損ねている。
-      このタスクの目的は、この手作業を排除し、ユーザーが「自分OSは賢く、必要な情報を自動で引き出して答えてくれる」
-      という体験を、Codespacesのチャットを通じて明確に感じられるようにすること。
-      具体的には、以下のいずれか、または複数の方法を検討する：
-      1.  **チャットインターフェースからのスクリプト呼び出しの簡素化**:
-          `scripts/get_base_os_context.py` をチャットから簡単に呼び出し、その結果をコンテキストとして利用できるようなガイドラインやコマンド例の提供。
-      2.  **プロンプトエンジニアリングの最適化**:
-          ユーザーがチャットで質問する際に、動的コンテキストロードの恩恵を最大限に受けられるような質問の仕方や、AIからの応答例を明示。
-      3.  **Codespacesのカスタム機能の活用（調査）**:
-          Codespacesの拡張機能や設定を調査し、チャットUI内で自分OSのコンテキストロード機能をよりシームレスに統合できる方法を模索。
+    description: "CodespacesのChat UIを介して、自分OSの「動的に必要箇所をロードする」機能の価値を\n初見ユーザーが直感的に理解・体験できる仕組みを実装する。\n\
+      現状、ユーザーがai_base_contextなどを手作業でLLMにフィードする必要があり、これがUXを著しく損ねている。\nこのタスクの目的は、この手作業を排除し、ユーザーが「自分OSは賢く、必要な情報を自動で引き出して答えてくれる」\n\
+      という体験を、Codespacesのチャットを通じて明確に感じられるようにすること。\n具体的には、以下のいずれか、または複数の方法を検討する：\n1.\
+      \  **チャットインターフェースからのスクリプト呼び出しの簡素化**:\n    `scripts/get_base_os_context.py` をチャットから簡単に呼び出し、その結果をコンテキストとして利用できるようなガイドラインやコマンド例の提供。\n\
+      2.  **プロンプトエンジニアリングの最適化**:\n    ユーザーがチャットで質問する際に、動的コンテキストロードの恩恵を最大限に受けられるような質問の仕方や、AIからの応答例を明示。\n\
+      3.  **Codespacesのカスタム機能の活用（調査）**:\n    Codespacesの拡張機能や設定を調査し、チャットUI内で自分OSのコンテキストロード機能をよりシームレスに統合できる方法を模索。\n"
     labels: [oss_launch_critical, dx_improvement, user_experience]
   - id: TASK-2025-07-23-001
     timestamp: '2025-07-23T13:21:00+09:00'
@@ -646,13 +642,11 @@ tasks:
     summary: 複数CVとOS情報を統合し、みずほ銀行向け及び汎用版の戦略的CVを作成
     status: done
     assignee: mikieto, Gemini
-    description: |
-      4つの異なる過去のCVと自分OSの構成情報を分析・統合。
-      みずほ銀行の求人背景に最適化したターゲットCVと、LinkedIn等で利用可能な汎用版CVを生成した。
-      このプロセスを通じて、OSの思想を外部の価値へと翻訳する必要性が明らかになり、OSの改善案（外部コミュニケーション翻訳原則）が創出された。
+    description: "4つの異なる過去のCVと自分OSの構成情報を分析・統合。\nみずほ銀行の求人背景に最適化したターゲットCVと、LinkedIn等で利用可能な汎用版CVを生成した。\n\
+      このプロセスを通じて、OSの思想を外部の価値へと翻訳する必要性が明らかになり、OSの改善案（外部コミュニケーション翻訳原則）が創出された。\n"
     scope:
       project: os_platform_v1
-      stage: 3  # インサイト創出フェーズ
+      stage: 3
       domain: value
     priority: High
     labels: [insight_generation, external_communication]
@@ -662,17 +656,13 @@ tasks:
     summary: os_improvement_backlogを廃止し、task_log.yamlへタスクを棚卸し・統合する
     status: todo
     assignee: mikieto
-    description: |
-      os_improvement_backlogの全項目をレビューし、
-      「完了済み」「task_logへ転記」「不要」に分類する。
-      特に「os-release-v9-2-1」は明確に削除対象とする。
-      有効なタスクはtask_log.yamlに新しいIDで転記し、
-      完了後にはos_improvement_backlogセクションを完全に削除する。
+    description: "os_improvement_backlogの全項目をレビューし、\n「完了済み」「task_logへ転記」「不要」に分類する。\n\
+      特に「os-release-v9-2-1」は明確に削除対象とする。\n有効なタスクはtask_log.yamlに新しいIDで転記し、\n完了後にはos_improvement_backlogセクションを完全に削除する。\n"
     scope:
       project: os_platform_v1
-      stage: 4  # 将来のステージ
+      stage: 4
       domain: refactoring
-    priority: Low  # 書籍プロジェクト完了後に対応
+    priority: Low
   - id: TASK-2025-07-23-003
     timestamp: '2025-07-23T15:51:00+09:00'
     related_decision: DEC-2025-07-23-003
@@ -685,3 +675,123 @@ tasks:
       stage: 2
       domain: quality
     priority: Critical
+  - id: TASK-2025-07-24-001
+    timestamp: '2025-07-24T09:25:00+09:00'
+    related_decision: DEC-2025-07-24-001
+    summary: 重複セクション（foundational_pillars / evolutionary_roadmap等）の統合と参照先一本化
+    status: todo
+    assignee: mikieto
+    description: "1. 重複定義を洗い出し（憲法/法律/記録層）。\n2. 正式なSSOT位置を決定。他箇所は参照のみ残す。\n3. system_map.yamlへ反映。\n"
+    scope:
+      project: os_platform_v1
+      stage: 1
+      domain: system_architecture
+    priority: High
+    labels: [ssot, refactoring]
+  - id: TASK-2025-07-24-002
+    timestamp: '2025-07-24T09:28:00+09:00'
+    related_decision: DEC-2025-07-24-001
+    summary: 重複・整合性チェックをYAMLスキーマ/OPA(Rego)/CIで実装
+    status: todo
+    assignee: mikieto
+    description: "JSON/YAML Schema or Regoで「定義は1箇所のみ」を検証。\nPR時に重複・不整合を検出するジョブを追加。\n"
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: security
+    priority: High
+    labels: [ci, schema, ssot]
+  - id: TASK-2025-07-24-003
+    timestamp: '2025-07-24T09:32:00+09:00'
+    related_decision: DEC-2025-07-24-002
+    summary: レビュー期限監視(+7dエスカレーション)のCI実装
+    status: todo
+    assignee: mikieto
+    description: "decision_logのtimestampとreview_cycleを参照し、期限超過時にIssue/PRコメントを自動生成。\n"
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: governance
+    priority: Critical
+    labels: [ci, governance, escalation]
+  - id: TASK-2025-07-24-004
+    timestamp: '2025-07-24T09:35:00+09:00'
+    related_decision: DEC-2025-07-24-002
+    summary: '[Self-Review: OK] チェックリスト & CIバリデーション導入'
+    status: todo
+    assignee: mikieto
+    description: "1. 自己レビュー項目チェックリストを定義。\n2. 生成物末尾のステータス有無をCIで検証、欠落時はfail。\n"
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: quality
+    priority: High
+    labels: [guardian, ci, quality]
+  - id: TASK-2025-07-24-005
+    timestamp: '2025-07-24T09:40:00+09:00'
+    related_decision: DEC-2025-07-24-003
+    summary: ai_base_context.yaml再生成CIを実装し、直編集禁止ルールを追加
+    status: todo
+    assignee: mikieto
+    description: "1. GitHub Actionsで生成スクリプトを実行。\n2. 差分があれば自動コミット or CI fail方針を決定・実装。\n\
+      3. README/CONTRIBUTINGに生成物の扱いを追記。\n"
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: ci
+    priority: High
+    labels: [ci, ssot, artifact]
+  - id: TASK-2025-07-24-006
+    timestamp: '2025-07-24T09:43:00+09:00'
+    related_decision: DEC-2025-07-24-003
+    summary: get_base_os_context.pyを改修（hash埋め込み/エラー制御/複数レベル対応）
+    status: todo
+    assignee: mikieto
+    description: "各元ファイルのhash/mtimeをメタに付与し差分検知を容易化。\ncontext_level複数指定、yamlfix失敗時の終了コード制御などを実装。\n"
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: tooling
+    priority: Medium
+    labels: [tooling, generator]
+  - id: TASK-2025-07-24-007
+    timestamp: '2025-07-24T09:48:00+09:00'
+    related_decision: DEC-2025-07-24-004
+    summary: 既存TASK IDを新形式へ一括リネーム（timestamp起点）
+    status: todo
+    assignee: mikieto
+    description: "1. task_log.yaml内TASKをtimestamp日付で再生成。\n2. 他ファイル参照（decision_log,\
+      \ scripts等）も置換。\n3. 旧→新IDマッピングをmigration_map.yamlに保持。\n"
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: tooling
+    priority: High
+    labels: [migration, ssot]
+  - id: TASK-2025-07-24-008
+    timestamp: '2025-07-24T09:51:00+09:00'
+    related_decision: DEC-2025-07-24-004
+    summary: ID形式を正規表現でCI検証するジョブを追加
+    status: todo
+    assignee: mikieto
+    description: "正規表現: ^TASK-\\d{4}-\\d{2}-\\d{2}-\\d{3}$ / ^DEC-\\d{4}-\\d{2}-\\\
+      d{2}-\\d{3}$\n1) 重複検知 2) フォーマット違反でfail。\n"
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: ci
+    priority: High
+    labels: [ci, lint]
+  - id: TASK-2025-07-24-009
+    timestamp: '2025-07-24T09:55:00+09:00'
+    related_decision: DEC-2025-07-24-004
+    summary: 生成スクリプト/ドキュメントを新ID形式へ対応
+    status: todo
+    assignee: mikieto
+    description: "get_base_os_context.py等でID抽出・ソートを新形式前提に変更。\nREADME/CONTRIBUTINGへルールを明記。\n"
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: tooling
+    priority: Medium
+    labels: [tooling, doc]
