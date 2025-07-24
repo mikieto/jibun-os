@@ -1,9 +1,8 @@
 ---
-version: 2.0.0
 tasks:
-  - id: TASK-001
+  - id: TASK-2025-07-10-003
     timestamp: '2025-07-10T10:31:00+09:00'
-    related_decision: DEC-004
+    related_decision: DEC-2025-07-10-004
     summary: 四階層フォルダへ移動 & imports 追記 (layer_split_migration)
     status: done
     assignee: mikieto
@@ -13,9 +12,9 @@ tasks:
       stage: 1
       domain: observability
     priority: High
-  - id: TASK-002
+  - id: TASK-2025-07-10-004
     timestamp: '2025-07-10T10:32:00+09:00'
-    related_decision: DEC-004
+    related_decision: DEC-2025-07-10-004
     summary: 新しいパスでのファイル重複禁止 lint を追加 (layer_ci_lint_rule)
     status: todo
     assignee: mikieto
@@ -25,9 +24,9 @@ tasks:
       stage: 1
       domain: observability
     priority: Medium
-  - id: TASK-003
+  - id: TASK-2025-07-10-005
     timestamp: '2025-07-10T11:01:00+09:00'
-    related_decision: DEC-005
+    related_decision: DEC-2025-07-10-005
     summary: legislation/personal/profile.yaml を作成し固定属性を集約 (profile_yaml_add)
     status: done
     assignee: mikieto
@@ -37,9 +36,9 @@ tasks:
       stage: 1
       domain: observability
     priority: Medium
-  - id: TASK-004
+  - id: TASK-2025-07-10-006
     timestamp: '2025-07-10T11:31:00+09:00'
-    related_decision: DEC-006
+    related_decision: DEC-2025-07-10-006
     summary: 旧OS設定から普遍憲法を抽出 (core_common_extract)
     status: done
     assignee: mikieto
@@ -49,9 +48,9 @@ tasks:
       stage: 1
       domain: observability
     priority: High
-  - id: TASK-005
+  - id: TASK-2025-07-10-007
     timestamp: '2025-07-10T11:32:00+09:00'
-    related_decision: DEC-006
+    related_decision: DEC-2025-07-10-006
     summary: legislation/common/projects/project_template.yaml を生成 (template_seed)
     status: done
     assignee: mikieto
@@ -61,9 +60,9 @@ tasks:
       stage: 1
       domain: observability
     priority: High
-  - id: TASK-006
+  - id: TASK-2025-07-10-008
     timestamp: '2025-07-10T11:33:00+09:00'
-    related_decision: DEC-006
+    related_decision: DEC-2025-07-10-006
     summary: legislation/personal/projects/book_writing.yaml をテンプレから生成 (book_project_seed)
     status: done
     assignee: mikieto
@@ -73,9 +72,9 @@ tasks:
       stage: 1
       domain: value
     priority: Medium
-  - id: TASK-007
+  - id: TASK-2025-07-10-009
     timestamp: '2025-07-10T12:01:00+09:00'
-    related_decision: DEC-007
+    related_decision: DEC-2025-07-10-007
     summary: legislation/common/domains/ & legislation/personal/domains/ を作成しテンプレ配置
       (domain_folder_setup)
     status: done
@@ -87,9 +86,9 @@ tasks:
       stage: 1
       domain: observability
     priority: Medium
-  - id: TASK-008
+  - id: TASK-2025-07-10-010
     timestamp: '2025-07-10T13:01:00+09:00'
-    related_decision: DEC-008
+    related_decision: DEC-2025-07-10-008
     summary: legislation/common/taxonomy.yaml を作成しタグを列挙 (taxonomy_file_add)
     status: done
     assignee: mikieto
@@ -99,9 +98,9 @@ tasks:
       stage: 1
       domain: observability
     priority: High
-  - id: TASK-009
+  - id: TASK-2025-07-10-001
     timestamp: '2025-07-10T09:31:00+09:00'
-    related_decision: DEC-002
+    related_decision: DEC-2025-07-10-002
     summary: KPIシートに『収益／社会貢献』列を追加 (kpi_sheet_add_profit_col)
     status: todo
     assignee: mikieto
@@ -111,9 +110,9 @@ tasks:
       stage: 1
       domain: value
     priority: Medium
-  - id: TASK-010
+  - id: TASK-2025-07-10-002
     timestamp: '2025-07-10T09:32:00+09:00'
-    related_decision: DEC-002
+    related_decision: DEC-2025-07-10-002
     summary: ci/security_lint.yml に G009 静的解析ジョブを追加 (ci_add_g009_lint)
     status: done
     assignee: mikieto
@@ -123,9 +122,9 @@ tasks:
       stage: 1
       domain: security
     priority: High
-  - id: TASK-011
+  - id: TASK-2025-07-10-011
     timestamp: '2025-07-10T14:31:00+09:00'
-    related_decision: DEC-011
+    related_decision: DEC-2025-07-10-011
     summary: 旧式のルートコア設定ファイルを削除 (core_root_remove)
     status: done
     assignee: mikieto
@@ -135,9 +134,9 @@ tasks:
       stage: 1
       domain: observability
     priority: Medium
-  - id: TASK-012
+  - id: TASK-2025-07-10-012
     timestamp: '2025-07-10T15:01:00+09:00'
-    related_decision: DEC-012
+    related_decision: DEC-2025-07-10-012
     summary: OS全体を『共通フレームワーク』と『個人実装』に分離するリファクタリング (os_refactor_for_reusability)
     status: done
     assignee: mikieto
@@ -147,9 +146,9 @@ tasks:
       stage: 1
       domain: quality
     priority: Critical
-  - id: TASK-013
+  - id: TASK-2025-07-10-013
     timestamp: '2025-07-10T16:01:00+09:00'
-    related_decision: DEC-014
+    related_decision: DEC-2025-07-10-014
     summary: OSのファイル構造と役割を定義するsystem_map.yamlを作成 (system_map_creation)
     status: done
     assignee: mikieto
@@ -159,9 +158,9 @@ tasks:
       stage: 1
       domain: quality
     priority: Critical
-  - id: TASK-014
+  - id: TASK-2025-07-10-014
     timestamp: '2025-07-10T16:31:00+09:00'
-    related_decision: DEC-015
+    related_decision: DEC-2025-07-10-015
     summary: 書籍プロジェクトのログをrecords/decision_log.yamlに統合 (book_project_refactor_split)
     status: done
     assignee: mikieto
@@ -171,9 +170,9 @@ tasks:
       stage: 1
       domain: quality
     priority: High
-  - id: TASK-015
+  - id: TASK-2025-07-10-015
     timestamp: '2025-07-10T17:01:00+09:00'
-    related_decision: DEC-016
+    related_decision: DEC-2025-07-10-016
     summary: developブランチでのYAML検証CIを有効にする (ci_develop_validation_enable)
     status: done
     assignee: mikieto
@@ -183,9 +182,9 @@ tasks:
       stage: 1
       domain: quality
     priority: High
-  - id: TASK-016
+  - id: TASK-2025-07-10-016
     timestamp: '2025-07-10T17:31:00+09:00'
-    related_decision: DEC-017
+    related_decision: DEC-2025-07-10-017
     summary: AIへのベースコンテキストを自動生成するスクリプトを作成 (create_base_os_context_script)
     status: done
     assignee: mikieto
@@ -195,9 +194,9 @@ tasks:
       stage: 1
       domain: quality
     priority: High
-  - id: TASK-017
+  - id: TASK-2025-07-10-017
     timestamp: '2025-07-10T18:01:00+09:00'
-    related_decision: DEC-018
+    related_decision: DEC-2025-07-10-018
     summary: system_map.yamlにcontext_levelフィールドを追加 (update_system_map_with_context_level)
     status: done
     assignee: mikieto
@@ -207,9 +206,9 @@ tasks:
       stage: 1
       domain: quality
     priority: High
-  - id: TASK-018
+  - id: TASK-2025-07-10-018
     timestamp: '2025-07-10T18:02:00+09:00'
-    related_decision: DEC-018
+    related_decision: DEC-2025-07-10-018
     summary: AIコンテキスト生成スクリプトをsystem_map.yamlから動的にロードするよう修正 (update_base_os_context_script)
     status: done
     assignee: mikieto
@@ -219,9 +218,9 @@ tasks:
       stage: 1
       domain: quality
     priority: Critical
-  - id: TASK-019
+  - id: TASK-2025-07-10-019
     timestamp: '2025-07-10T18:31:00+09:00'
-    related_decision: DEC-019
+    related_decision: DEC-2025-07-10-019
     summary: 書籍プロジェクト定義ファイルを専用リポジトリへ移動 (move_lean_data_book_to_repo)
     status: done
     assignee: mikieto
@@ -231,7 +230,7 @@ tasks:
       stage: 1
       domain: quality
     priority: High
-  - id: TASK-020
+  - id: TASK-2025-07-11-001
     timestamp: '2025-07-11T09:00:00+09:00'
     summary: pre-commitフックでyamllint/schema/secret-scanを強制 (precommit_hook_setup)
     status: todo
@@ -242,7 +241,7 @@ tasks:
       stage: 2
       domain: security
     priority: Critical
-  - id: TASK-021
+  - id: TASK-2025-07-11-002
     timestamp: '2025-07-11T10:00:00+09:00'
     summary: prompt_tokensを計測しGuard Logに自動書込み (token_meter_script)
     status: todo
@@ -253,9 +252,9 @@ tasks:
       stage: 3
       domain: observability
     priority: Medium
-  - id: TASK-022
+  - id: TASK-2025-07-11-003
     timestamp: '2025-07-11T11:00:00+09:00'
-    related_decision: DEC-013
+    related_decision: DEC-2025-07-10-013
     summary: 週次で外部情報取得→Impact Issue自動生成PoC (horizon_scan_poc)
     status: todo
     assignee: mikieto
@@ -265,9 +264,9 @@ tasks:
       stage: 3
       domain: speed
     priority: High
-  - id: TASK-023
+  - id: TASK-2025-07-11-004
     timestamp: '2025-07-11T12:00:00+09:00'
-    related_decision: DEC-013
+    related_decision: DEC-2025-07-10-013
     summary: docs/フォルダをセットアップし、初見者の体験を向上 (docs_folder_setup)
     status: Done
     assignee: mikieto
@@ -277,9 +276,9 @@ tasks:
       stage: 3
       domain: observability
     priority: High
-  - id: TASK-2025-07-024
+  - id: TASK-2025-07-17-001
     timestamp: '2025-07-17T11:00:00+09:00'
-    related_decision: DEC-2025-07-026
+    related_decision: DEC-2025-07-17-006
     summary: system_map.yaml に roadmap_phase と dependencies を追記
     assignee: mikieto
     status: Done
@@ -290,9 +289,9 @@ tasks:
       domain: governance
     labels: [next_48h]
     priority: High
-  - id: TASK-2025-07-025
+  - id: TASK-2025-07-17-002
     timestamp: '2025-07-17T11:05:00+09:00'
-    related_decision: DEC-2025-07-026
+    related_decision: DEC-2025-07-17-006
     summary: kpi.yml テンプレートをコミット
     assignee: mikieto
     status: Done
@@ -302,9 +301,9 @@ tasks:
       stage: 1
       domain: governance
     priority: High
-  - id: TASK-2025-07-026
+  - id: TASK-2025-07-17-003
     timestamp: '2025-07-17T11:10:00+09:00'
-    related_decision: DEC-2025-07-026
+    related_decision: DEC-2025-07-17-006
     summary: README に Quick PoC セクション追加
     assignee: mikieto
     status: Done
@@ -314,9 +313,9 @@ tasks:
       stage: 1
       domain: value
     priority: High
-  - id: TASK-2025-07-027
+  - id: TASK-2025-07-17-004
     timestamp: '2025-07-17T11:15:00+09:00'
-    related_decision: DEC-2025-07-026
+    related_decision: DEC-2025-07-17-006
     summary: policy/ 最小 Rego ルール + CI Actions
     assignee: mikieto
     status: Done
@@ -326,9 +325,9 @@ tasks:
       stage: 1
       domain: security
     priority: Medium
-  - id: TASK-2025-07-028
+  - id: TASK-2025-07-17-005
     timestamp: '2025-07-17T11:20:00+09:00'
-    related_decision: DEC-2025-07-024
+    related_decision: DEC-2025-07-17-004
     summary: PoC Metrics Google Form 作成
     assignee: mikieto
     status: Pending
@@ -338,9 +337,9 @@ tasks:
       stage: 1
       domain: speed
     priority: Medium
-  - id: TASK-2025-07-029
+  - id: TASK-2025-07-17-006
     timestamp: '2025-07-17T11:25:00+09:00'
-    related_decision: DEC-2025-07-025
+    related_decision: DEC-2025-07-17-005
     summary: OPA Policy CI スイート実装
     assignee: mikieto
     status: InProgress
@@ -357,9 +356,9 @@ tasks:
       Legislation (法律・知恵) レイヤー (共通の法律、マッピング、テンプレート、個人の法律など)- L4: Records (記録・経験) レイヤー
       (decision_log.yaml, guard_log.yaml など)- その他のルートファイル (.github/workflows/*.yaml,
       schema/*.json など)各レイヤー/ファイルタイプごとに、適切なRegoポリシーを定義し、CIワークフローに個別のチェックステップを追加する。'
-  - id: TASK-2025-07-030
+  - id: TASK-2025-07-17-007
     timestamp: '2025-07-17T11:30:00+09:00'
-    related_decision: DEC-2025-07-026
+    related_decision: DEC-2025-07-17-006
     summary: RAG 回帰テストスイート構築
     assignee: mikieto
     status: Done
@@ -369,9 +368,9 @@ tasks:
       stage: 1
       domain: quality
     priority: Medium
-  - id: TASK-2025-07-031
+  - id: TASK-2025-07-17-008
     timestamp: '2025-07-17T11:35:00+09:00'
-    related_decision: DEC-2025-07-026
+    related_decision: DEC-2025-07-17-006
     summary: Gatekeeper Action で RACI・Policy チェック
     assignee: mikieto
     status: ToDo
@@ -381,7 +380,7 @@ tasks:
       stage: 1
       domain: security
     priority: Medium
-  - id: TASK-2025-07-032
+  - id: TASK-2025-07-17-009
     timestamp: '2025-07-17T16:00:00+09:00'
     summary: RAG 回帰テスト CI ジョブ実装 (rag_regression_ci)
     status: Done
@@ -395,9 +394,9 @@ tasks:
       domain: quality
     priority: High
     labels: [risk_mitigation, next_48h]
-  - id: TASK-2025-07-033
+  - id: TASK-2025-07-17-010
     timestamp: '2025-07-17T17:15:00+09:00'
-    related_decision: DEC-2025-07-027
+    related_decision: DEC-2025-07-17-007
     summary: guard_map を legislation/common/mappings/guards.yaml へ git mv
     assignee: mikieto
     status: Done
@@ -408,9 +407,9 @@ tasks:
       domain: refactoring
     priority: High
     labels: [next_48h]
-  - id: TASK-2025-07-034
+  - id: TASK-2025-07-17-011
     timestamp: '2025-07-17T17:20:00+09:00'
-    related_decision: DEC-2025-07-027
+    related_decision: DEC-2025-07-17-007
     summary: field_stub.yaml / driver_stub.yaml を作成し空定義を配置
     assignee: mikieto
     status: Done
@@ -421,9 +420,9 @@ tasks:
       domain: refactoring
     priority: Medium
     labels: [next_48h]
-  - id: TASK-2025-07-035
+  - id: TASK-2025-07-17-012
     timestamp: '2025-07-17T17:25:00+09:00'
-    related_decision: DEC-2025-07-027
+    related_decision: DEC-2025-07-17-007
     summary: CI ローダーを legislation/common/mappings/*.yaml グロブ読み込みに変更
     assignee: mikieto
     status: Done

@@ -1,7 +1,6 @@
 ---
-version: 2.1.0
 decisions:
-  - id: DEC-001
+  - id: DEC-2025-07-10-001
     timestamp: '2025-07-10T09:00:00+09:00'
     status: decided
     summary: OS進化の最上位Whyとして『挑戦を進める』ことを決定
@@ -17,7 +16,7 @@ decisions:
       project: os_platform_v1
       domain: philosophy
     severity: Critical
-  - id: DEC-002
+  - id: DEC-2025-07-10-002
     timestamp: '2025-07-10T09:30:00+09:00'
     status: decided
     summary: 計画整合性チェックの結果、計画を維持することを決定
@@ -29,12 +28,12 @@ decisions:
       - name: 大幅修正
         pros: リスクを早期に回避できる可能性がある。
         cons: 手戻りが発生し、開発スケジュールが遅延する。
-    related_tasks: [TASK-001, TASK-002]
+    related_tasks: [TASK-2025-07-10-003, TASK-2025-07-10-004]
     scope:
       project: os_platform_v1
       domain: project_management
     severity: High
-  - id: DEC-003
+  - id: DEC-2025-07-10-003
     timestamp: '2025-07-10T10:00:00+09:00'
     status: decided
     summary: PoC-1の完了を宣言
@@ -50,7 +49,7 @@ decisions:
       project: os_platform_v1
       domain: milestone
     severity: High
-  - id: DEC-004
+  - id: DEC-2025-07-10-004
     timestamp: '2025-07-10T10:30:00+09:00'
     status: decided
     summary: OSの三層（common, personal, logs）＋フォルダ分割の実施を決定
@@ -62,12 +61,12 @@ decisions:
       - name: 延期
         pros: 目先の開発に集中できる。
         cons: 技術的負債が蓄積し、将来の変更が困難になる。
-    related_tasks: [TASK-003, TASK-004]
+    related_tasks: [TASK-2025-07-10-005, TASK-2025-07-10-006]
     scope:
       project: os_platform_v1
       domain: system_architecture
     severity: Critical
-  - id: DEC-005
+  - id: DEC-2025-07-10-005
     timestamp: '2025-07-10T11:00:00+09:00'
     status: decided
     summary: personal/profile.yamlの作成を決定
@@ -79,12 +78,12 @@ decisions:
       - name: 見送る
         pros: ファイル数を増やさずに済む。
         cons: 同じ情報が複数のファイルに分散し、管理が煩雑になる。
-    related_tasks: [TASK-005]
+    related_tasks: [TASK-2025-07-10-007]
     scope:
       project: os_platform_v1
       domain: configuration
     severity: Medium
-  - id: DEC-006
+  - id: DEC-2025-07-10-006
     timestamp: '2025-07-10T11:30:00+09:00'
     status: decided
     summary: OSの共通部分と個人部分の分離を決定
@@ -96,12 +95,15 @@ decisions:
       - name: keep_mono
         pros: 単一リポジトリで管理がシンプル。
         cons: システム全体が個人に密結合し、再利用が困難になる。
-    related_tasks: [TASK-006, TASK-007, TASK-008]
+    related_tasks:
+      - TASK-2025-07-10-008
+      - TASK-2025-07-10-009
+      - TASK-2025-07-10-010
     scope:
       project: os_platform_v1
       domain: system_architecture
     severity: Critical
-  - id: DEC-007
+  - id: DEC-2025-07-10-007
     timestamp: '2025-07-10T12:00:00+09:00'
     status: decided
     summary: domainsフォルダの追加を決定
@@ -113,12 +115,12 @@ decisions:
       - name: 見送る
         pros: シンプルな構造を維持できる。
         cons: プロジェクトに属さない知識の置き場所に困る可能性がある。
-    related_tasks: [TASK-009]
+    related_tasks: [TASK-2025-07-10-001]
     scope:
       project: os_platform_v1
       domain: system_architecture
     severity: Medium
-  - id: DEC-008
+  - id: DEC-2025-07-10-008
     timestamp: '2025-07-10T13:00:00+09:00'
     status: decided
     summary: taxonomyファイルの作成を決定
@@ -130,12 +132,12 @@ decisions:
       - name: 見送る
         pros: ファイル数を増やさずに済む。
         cons: 各ファイルで分類がバラバラに定義され、不整合が発生するリスクがある。
-    related_tasks: [TASK-010]
+    related_tasks: [TASK-2025-07-10-002]
     scope:
       project: os_platform_v1
       domain: system_architecture
     severity: High
-  - id: DEC-009
+  - id: DEC-2025-07-10-009
     timestamp: '2025-07-10T13:30:00+09:00'
     status: decided
     summary: オーバーエンジニアリングを抑止し、最小実装で進む方針を決定
@@ -151,7 +153,7 @@ decisions:
       project: os_platform_v1
       domain: development_philosophy
     severity: High
-  - id: DEC-010
+  - id: DEC-2025-07-10-010
     timestamp: '2025-07-10T14:00:00+09:00'
     status: decided
     summary: 依存関係ファイルの分割を決定
@@ -163,12 +165,12 @@ decisions:
       - name: single_file
         pros: 管理がシンプル。
         cons: 本番環境に不要なライブラリが含まれ、イメージサイズと脆弱性が増大する。
-    related_tasks: [TASK-011]
+    related_tasks: [TASK-2025-07-10-011]
     scope:
       project: os_platform_v1
       domain: ci_cd
     severity: Medium
-  - id: DEC-011
+  - id: DEC-2025-07-10-011
     timestamp: '2025-07-10T14:30:00+09:00'
     status: decided
     summary: 旧式のルートコア設定ファイルを削除
@@ -183,12 +185,12 @@ decisions:
       - name: archive
         pros: 履歴として保存できる。
         cons: リポジトリ内に残り、ノイズとなる可能性がある。
-    related_tasks: [TASK-012]
+    related_tasks: [TASK-2025-07-10-012]
     scope:
       project: os_platform_v1
       domain: refactoring
     severity: Medium
-  - id: DEC-012
+  - id: DEC-2025-07-10-012
     timestamp: '2025-07-10T15:00:00+09:00'
     status: decided
     summary: OS全体をリファクタリングし、再利用性を高めることを決定
@@ -200,12 +202,12 @@ decisions:
       - name: 憲法のみリファクタリング
         pros: 変更範囲が限定的で、リスクが低い。
         cons: 中途半端な分離となり、根本的な課題が解決されない。
-    related_tasks: [TASK-013]
+    related_tasks: [TASK-2025-07-10-013]
     scope:
       project: os_platform_v1
       domain: system_architecture
     severity: Critical
-  - id: DEC-013
+  - id: DEC-2025-07-10-013
     timestamp: '2025-07-10T15:30:00+09:00'
     status: decided
     summary: v3アーキテクチャに関するフィードバックの採択を決定
@@ -217,12 +219,16 @@ decisions:
       - name: 現行案を維持
         pros: 追加作業が不要。
         cons: 潜在的な改善機会を逃す。
-    related_tasks: [TASK-014, TASK-015, TASK-016, TASK-017]
+    related_tasks:
+      - TASK-2025-07-10-014
+      - TASK-2025-07-10-015
+      - TASK-2025-07-10-016
+      - TASK-2025-07-10-017
     scope:
       project: os_platform_v1
       domain: project_management
     severity: High
-  - id: DEC-014
+  - id: DEC-2025-07-10-014
     timestamp: '2025-07-10T16:00:00+09:00'
     status: decided
     summary: system_map.yamlの作成を決定
@@ -234,12 +240,12 @@ decisions:
       - name: system_mapを作成しない
         pros: 管理ファイルが一つ少なくて済む。
         cons: AIがOSの全体像を把握できず、支援の質が低下する。
-    related_tasks: [TASK-018]
+    related_tasks: [TASK-2025-07-10-018]
     scope:
       project: os_platform_v1
       domain: system_architecture
     severity: Critical
-  - id: DEC-015
+  - id: DEC-2025-07-10-015
     timestamp: '2025-07-10T16:30:00+09:00'
     status: decided
     summary: 書籍プロジェクトのdecision-log.mdを共通/個人に分離することを決定
@@ -251,12 +257,12 @@ decisions:
       - name: decision-log.mdを現状維持
         pros: 作業が不要。
         cons: 特定のプロジェクトに依存した知見となり、再利用性が低い。
-    related_tasks: [TASK-019]
+    related_tasks: [TASK-2025-07-10-019]
     scope:
       project: os_platform_v1
       domain: refactoring
     severity: High
-  - id: DEC-016
+  - id: DEC-2025-07-10-016
     timestamp: '2025-07-10T17:00:00+09:00'
     status: decided
     summary: developブランチのCI検証を有効にすることを決定
@@ -268,12 +274,12 @@ decisions:
       - name: developブランチのCI検証を有効にしない
         pros: 開発中のコミットが素早く行える。
         cons: 問題の発見が遅れ、マージ時に大きな手戻りが発生するリスクがある。
-    related_tasks: [TASK-020]
+    related_tasks: [TASK-2025-07-11-001]
     scope:
       project: os_platform_v1
       domain: ci_cd
     severity: High
-  - id: DEC-017
+  - id: DEC-2025-07-10-017
     timestamp: '2025-07-10T17:30:00+09:00'
     status: decided
     summary: AIコンテキスト供給用のスクリプト導入を決定
@@ -285,12 +291,12 @@ decisions:
       - name: 手動でのコンテキストフィードを維持
         pros: 追加のツールが不要。
         cons: 毎回の手作業が煩雑で、コンテキストの与え忘れによる精度低下のリスクがある。
-    related_tasks: [TASK-021]
+    related_tasks: [TASK-2025-07-11-002]
     scope:
       project: os_platform_v1
       domain: automation
     severity: High
-  - id: DEC-018
+  - id: DEC-2025-07-10-018
     timestamp: '2025-07-10T18:00:00+09:00'
     status: decided
     summary: AIコンテキストファイルをsystem_map.yamlから動的にロードすることを決定
@@ -303,12 +309,12 @@ decisions:
       - name: AIコンテキストファイルをスクリプトにハードコード
         pros: スクリプトが自己完結している。
         cons: OSのファイル構造を変更するたびに、スクリプトの修正が必要になり、メンテナンス性が低い。
-    related_tasks: [TASK-022, TASK-023]
+    related_tasks: [TASK-2025-07-11-003, TASK-2025-07-11-004]
     scope:
       project: os_platform_v1
       domain: automation
     severity: Critical
-  - id: DEC-019
+  - id: DEC-2025-07-10-019
     timestamp: '2025-07-10T18:30:00+09:00'
     status: decided
     summary: 書籍『リーンデータエンジニアリング(仮)』の定義ファイルを、専用リポジトリへ移動することを決定
@@ -324,7 +330,7 @@ decisions:
       project: os_platform_v1
       domain: system_architecture
     severity: High
-  - id: DEC-020
+  - id: DEC-2025-07-13-001
     timestamp: '2025-07-13T22:21:00+09:00'
     status: decided
     summary: task_log.yamlの構造を定義し、導入することを決定
@@ -336,30 +342,30 @@ decisions:
       - name: 現状のフォーマットを維持する
         pros: 追加の作業が不要。
         cons: ログの価値が限定的で、AIによる自動分析や支援が困難。
-    related_tasks: [TASK-2025-07-024]
+    related_tasks: [TASK-2025-07-17-001]
     scope:
       project: os_platform_v1
       domain: system_architecture
     severity: High
-  - id: DEC-2025-07-021
+  - id: DEC-2025-07-17-001
     timestamp: '2025-07-17T10:20:00+09:00'
     status: closed
     reason: プロンプト短期文脈とデジタルツイン長期文脈を整合させるため、四層統治モデル（ログ・Zettel・法律・憲法）を正式採択する。
-    related_tasks: [TASK-2025-07-029, TASK-2025-07-031]
+    related_tasks: [TASK-2025-07-17-006, TASK-2025-07-17-008]
     scope:
       project: os_platform_v1
       domain: governance
     severity: High
-  - id: DEC-2025-07-022
+  - id: DEC-2025-07-17-002
     timestamp: '2025-07-17T10:25:00+09:00'
     status: closed
     reason: 6 か月以内に実運用事例を獲得し、市場適合を検証するためPoC→有償PoC→Case Study の三段階プランを採用。
-    related_tasks: [TASK-2025-07-028]
+    related_tasks: [TASK-2025-07-17-005]
     scope:
       project: os_platform_v1
       domain: value
     severity: High
-  - id: DEC-2025-07-023
+  - id: DEC-2025-07-17-003
     timestamp: '2025-07-17T10:30:00+09:00'
     status: closed
     reason: IDE 直結で学習ループを加速させるため、VSCode/Cursor チャット I/F ＋ YAML ホットリロードをロードマップに組み込む。
@@ -367,40 +373,40 @@ decisions:
       project: os_platform_v1
       domain: ux
     severity: Medium
-  - id: DEC-2025-07-024
+  - id: DEC-2025-07-17-004
     timestamp: '2025-07-17T10:40:00+09:00'
     status: closed
     reason: README・ドキュメントを英語化し国際 OSS コミュニティに対応する。
-    related_tasks: [TASK-2025-07-028]
+    related_tasks: [TASK-2025-07-17-005]
     scope:
       project: os_platform_v1
       domain: documentation
     severity: Medium
-  - id: DEC-2025-07-025
+  - id: DEC-2025-07-17-005
     timestamp: '2025-07-17T10:45:00+09:00'
     status: closed
     reason: コミュニティで一般的なライセンスを採用し、利用・貢献の障壁を下げるため Apache‑2.0 を採択。
-    related_tasks: [TASK-2025-07-029]
+    related_tasks: [TASK-2025-07-17-006]
     scope:
       project: os_platform_v1
       domain: licensing
     severity: High
-  - id: DEC-2025-07-026
+  - id: DEC-2025-07-17-006
     timestamp: '2025-07-17T10:50:00+09:00'
     status: closed
     reason: Stabilize フェーズに集中し、Amplify 施策は M2 まで凍結する。
     related_tasks:
-      - TASK-2025-07-024
-      - TASK-2025-07-025
-      - TASK-2025-07-026
-      - TASK-2025-07-027
-      - TASK-2025-07-030
-      - TASK-2025-07-031
+      - TASK-2025-07-17-001
+      - TASK-2025-07-17-002
+      - TASK-2025-07-17-003
+      - TASK-2025-07-17-004
+      - TASK-2025-07-17-007
+      - TASK-2025-07-17-008
     scope:
       project: os_platform_v1
       domain: roadmap
     severity: Critical
-  - id: DEC-2025-07-027
+  - id: DEC-2025-07-17-007
     timestamp: '2025-07-17T17:10:00+09:00'
     status: decided
     summary: mappings ディレクトリを guards / field / driver に分割する
@@ -412,7 +418,10 @@ decisions:
       - name: mappings.yaml 単一ファイルを維持
         pros: 現状のまま運用できる。
         cons: 将来ファイル肥大・コンフリクトが加速する。
-    related_tasks: [TASK-2025-07-033, TASK-2025-07-034, TASK-2025-07-035]
+    related_tasks:
+      - TASK-2025-07-17-010
+      - TASK-2025-07-17-011
+      - TASK-2025-07-17-012
     scope:
       project: os_platform_v1
       domain: system_architecture
@@ -570,7 +579,7 @@ decisions:
       - name: 後回しにする (今回採択)
         pros: リソースをよりクリティカルなOS開発タスクに集中できる。
         cons: 将来、必要になった際にフォーム作成とデータ収集に遅延が発生するリスクがある。
-    related_tasks: [TASK-2025-07-028]
+    related_tasks: [TASK-2025-07-17-005]
     scope:
       project: os_platform_v1
       domain: project_management
