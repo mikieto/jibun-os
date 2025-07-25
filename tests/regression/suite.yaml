@@ -11,7 +11,7 @@ test_suite:
     question: このOSのwhy_primary（第一目的）は何ですか？
     context_files: [constitution/common/constitution.yaml]
     expected_answer:
-      contains_keywords: [コピー可能な自己, 再現性のある思考構造]  # AIの回答に合わせて調整
+      contains_keywords: [知識労働者, ナビゲーションシステム, AI Navigator]  # AIの回答に合わせて調整
   - id: TC-CONST-002
     name: 進化ロードマップの理解度テスト
     question: 進化ロードマップにおける第三のパラダイムシフトは何ですか？

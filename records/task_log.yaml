@@ -895,14 +895,14 @@ tasks:
       stage: 2
       domain: project_management
     priority: High
-
   - id: TASK-2025-07-25-007
     timestamp: '2025-07-25T13:44:00+09:00'
     related_decision: DEC-2025-07-25-001
     summary: README.mdとcharter.mdを、最新の究極目的「AIナビゲーター」と整合させる
     status: todo
     assignee: mikieto
-    description: 'OSの外部向けドキュメントと内部の思想を完全に同期させる。具体的には、1) READMEとCharterのWHYを「AIナビゲーター」構想に書き換える。 2) CharterのAIの役割定義を最新版に更新する。 3) 全体のトーンを客観的・記述的な表現に統一する。'
+    description: OSの外部向けドキュメントと内部の思想を完全に同期させる。具体的には、1) READMEとCharterのWHYを「AIナビゲーター」構想に書き換える。
+      2) CharterのAIの役割定義を最新版に更新する。 3) 全体のトーンを客観的・記述的な表現に統一する。
     scope:
       project: os_platform_v1
       stage: 2
