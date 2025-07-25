@@ -34,3 +34,6 @@ universal_guards:
   - id: G012
     name: AI自己プロセス遵守ガード (AI Self-Process Compliance Guard)
     description: AI（Co-Pilot）が成果物を最終的に提示する直前に、Guardianは「直近合意された、AI自身の振る舞いを規定するルール（例：ペルソナ・レビュー、差分表示原則など）が、その成果物に適用されているか」を監査する。違反の可能性がある場合、Guardianは成果物の提示を一時停止し、Co-Pilotに自己修正を促す警告を発する。
+  - id: G013
+    name: 批判的対話ガード
+    description: AIとの対話が表面的な同意や美化に陥っていないかを監視し、思考の深化を促す。

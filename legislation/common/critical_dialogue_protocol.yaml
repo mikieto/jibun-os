@@ -1,0 +1,12 @@
+---
+# path: legislation/common/critical_dialogue_protocol.yaml
+name: 批判的対話プロトコル
+version: 1.0.0
+released_date: '2025-07-25'
+protocol_stages:
+  - id: initial_response
+    description: AIが初期応答を提供
+  - id: critical_check
+    description: ユーザーからの批判的問いかけをトリガーに、AIが反対の視点から再分析し、隠れた前提を明示化する
+  - id: synthesis
+    description: 対立する視点を統合し、より高次の結論を導き出す

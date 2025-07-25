@@ -54,6 +54,13 @@ system_architecture:
           description: AIが従うべき法の一般原則（信義誠実、適正手続き等）
           context_level: base_os_context
           dependencies: []
+        - path: legislation/common/critical_dialogue_protocol.yaml
+          role: ai_critical_dialogue_protocol
+          description: AI協働における自己欺瞞や思考の停滞を防ぎ、対話の質を保証するための公式プロトコル
+          context_level: base_os_context
+          dependencies:
+            - constitution/common/constitution.yaml  # AI roles and G013 are defined here
+            - legislation/common/innate_immunity.yaml  # For G013 integration
         - path: legislation/common/mappings/guards.yaml
           context_level: tooling
           description: Guard ID ↔ Guard 定義
@@ -99,7 +106,6 @@ system_architecture:
           purpose: 意思決定の影響を評価するための、OS共通の5軸評価フレームワークを定義する。
           context_level: base_os_context
           dependencies: []
-
         - path: legislation/common/kpi.yaml
           role: kpi_definitions
           description: プロジェクトおよびOS全体のKPI定義
@@ -156,8 +162,13 @@ system_architecture:
 
     # ---------- L3 : precedents ----------
     - name: precedents
-      description: 抽象化された知識・行動パターン（現在空）
-      files: []
+      description: 抽象化された知識・行動パターン（判例）
+      files:
+        - path: precedents/*.yaml
+          role: crystallized_knowledge
+          description: 過去の経験から抽出された、未来の意思決定の指針となる高価値な洞察（判例）
+          context_level: precedent_data
+          dependencies: [records/decision_log.yaml, records/task_log.yaml]
 
     # ---------- L4 : records ----------
     - name: records

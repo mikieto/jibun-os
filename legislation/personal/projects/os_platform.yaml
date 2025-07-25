@@ -1,31 +1,41 @@
 ---
-# personal/projects/os_platform.yaml
+# path: legislation/personal/projects/os_platform.yaml
 # ------------------------------------------------------------
 project_name: Jibun OS
 project_id: os_platform_v1
 branch: feat/triple-layer
-current_version: v10.0.0-alpha.0
-current_stage: 1
+current_version: v10.0.0-alpha.0  # To be updated as development progresses
+current_stage: 2  # Moved to the next stage
 # --- Project Charter ----------------------------------------
 project_charter:
-  purpose_short: 自分OSプラットフォーム基盤を実装し価値転換速度を最大化する
+  # --- UPDATED ---
+  purpose_short: AI時代の知識労働者のための“AIナビゲーター”を構築・実証する
   sponsor: Miki Eto
   effort_budget: {hours_per_week: 5, duration_weeks: 26}
   cash_budget_usd: 100
   objectives:
     - publish_oss_template: '2025-09-15'
     - stabilize_complete: '2025-08-15'
+  # --- UPDATED ---
   roadmap:
-    M0:
-      - TASK-2025-07-024
-      - TASK-2025-07-025
-      - TASK-2025-07-026
-      - TASK-2025-07-027
-    M1:
-      - TASK-2025-07-028
-      - TASK-2025-07-029
-      - TASK-2025-07-030
-      - TASK-2025-07-031
+    P0_technical_robustness:
+      description: ユーザー公開前に、システムの技術的な信頼性を保証する
+      tasks:
+        - TASK-2025-07-24-002  # 重複・整合性チェックをCIで実装
+        - TASK-2025-07-11-001  # pre-commitフックを強制
+        - TASK-2025-07-21-006  # マッピングファイルのCIバリデーション実装
+    P1_external_connection:
+      description: OSの価値を外部に伝え、検証し、新規ユーザーが参加できる状態を作る
+      tasks:
+        - TASK-2025-07-25-005  # WHYを検証するユーザーヒアリング計画
+        - TASK-2025-07-21-007  # Codespaces Chat UIでの動的コンテキスト価値提示
+        - TASK-2025-07-25-003  # 新ターゲット向けコミュニケーション戦略刷新
+        - TASK-2025-07-25-004  # 新規ユーザー向け導入ガイド作成
+    P2_feature_enhancement:
+      description: OSの運用効率を高め、より高度な機能を追加する
+      tasks:
+        - opportunity-engine-prep  # from os_improvement_backlog
+        - TASK-2025-07-11-002  # prompt_tokens計測
   kpi:
     decision_cycle_reduction: '>=30%'
     rag_accuracy: '>=95%'
@@ -38,5 +48,5 @@ project_charter:
       mitigation: Weekly LinkedIn call‑for‑contributors + DM past collaborators
     - name: RAG accuracy regression
       mitigation: Add RAG regression test in CI (TASK‑2025‑07‑032) & monitor KPI dashboard
-  approved_on: '2025-07-17'
+  approved_on: '2025-07-25'  # Updated to today's date
 # ------------------------------------------------------------

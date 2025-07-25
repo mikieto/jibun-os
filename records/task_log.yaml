@@ -823,3 +823,75 @@ tasks:
     scope: {project: os_platform_v1, stage: 2, domain: tooling}
     priority: Medium
     labels: [migration, ssot]
+  - id: TASK-2025-07-25-001
+    timestamp: '2025-07-25T12:22:00+09:00'
+    related_decision: DEC-2025-07-25-001
+    summary: 最終決定されたWHY「AIナビゲーターの創造」に基づき、OS憲法を改正する
+    status: done
+    assignee: mikieto
+    description: '`DEC-2025-07-25-001`で最終決定された究極目的を、`constitution.yaml`の`supreme_purpose`に、客観的かつ記述的なトーンで正確に反映させる。'
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: governance
+    priority: Critical
+  - id: TASK-2025-07-25-002
+    timestamp: '2025-07-25T12:29:48+09:00'
+    related_decision: DEC-2025-07-25-002
+    summary: legislation/common/critical_dialogue_protocol.yaml を新設する
+    status: done
+    assignee: mikieto
+    description: '`DEC-2025-07-25-002`の決定に基づき、提案された内容で`legislation/common/critical_dialogue_protocol.yaml`ファイルを新規作成する。'
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: governance
+    priority: High
+  - id: TASK-2025-07-25-003
+    timestamp: '2025-07-25T12:29:48+09:00'
+    related_decision: DEC-2025-07-25-002
+    summary: 新しいガード「G013」をinnate_immunity.yamlに追加する
+    status: done
+    assignee: mikieto
+    description: '`critical_dialogue_protocol.yaml`で定義された、新しい普遍的ガード「G013: 批判的対話ガード」を`legislation/common/innate_immunity.yaml`のリストに追加する。'
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: governance
+    priority: Medium
+  - id: TASK-2025-07-25-004
+    timestamp: '2025-07-25T12:29:48+09:00'
+    related_decision: DEC-2025-07-25-002
+    summary: 憲法の「役割と責任」を更新し、新しいAIの役割を定義する
+    status: done
+    assignee: mikieto
+    description: '`constitution/common/constitution.yaml`の`roles_and_responsibilities`セクションを更新し、Co-PilotとGuardianの強化された役割と、新しい役割「Devils_Advocate」を正式に定義する。'
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: governance
+    priority: Medium
+  - id: TASK-2025-07-25-005
+    timestamp: '2025-07-25T13:15:00+09:00'
+    related_decision: DEC-2025-07-25-002
+    summary: 最初の公式な「判例」を記録し、統治モデルを始動させる
+    status: done
+    assignee: mikieto
+    description: OS憲法L3で定義された「判例」を具体化するため、`precedents/`ディレクトリを新設し、`20250725T124000-ai-navigator-definition.yaml`を作成・記録した。
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: governance
+    priority: High
+  - id: TASK-2025-07-25-006
+    timestamp: '2025-07-25T13:26:00+09:00'
+    related_decision: DEC-2025-07-25-004
+    summary: プロジェクト憲章（os_platform.yaml）のロードマップを最新版に更新する
+    status: todo
+    assignee: mikieto
+    description: '`DEC-2025-07-25-004`で採択された新しい戦略的ロードマップを、`legislation/personal/projects/os_platform.yaml`の`roadmap`セクションに反映させる。P0からP3までの優先度別タスク群を記述する。'
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: project_management
+    priority: High

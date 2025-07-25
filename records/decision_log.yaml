@@ -724,3 +724,52 @@ decisions:
       project: os_platform_v1
       domain: governance
     severity: High
+  - id: DEC-2025-07-25-001
+    timestamp: '2025-07-25T12:22:00+09:00'
+    status: decided
+    summary: OSの究極目的を「知識労働者のためのAIナビゲーター創造」として最終決定する
+    reason: |
+      成果主義とAI代替への不安と完璧主義による行動停止に苦しむ知識労働者が、
+      自分の弱さを強みとして活かし、自分らしく価値を生み出せる
+      “AIナビゲーター”を作る。
+      この目的が、プロジェクトの最も本質的かつ包括的な指針であると最終的に結論付けた。
+    alternatives:
+      - name: このWHYを最終目的として採択する
+        pros: プロジェクトの方向性が完全に明確になり、全ての活動に一貫した意味が生まれる。
+        cons: N/A
+    related_tasks: [TASK-2025-07-25-001]
+    scope:
+      project: os_platform_v1
+      domain: philosophy
+    severity: Critical
+  - id: DEC-2025-07-25-002
+    timestamp: '2025-07-25T12:29:48+09:00'
+    status: decided
+    summary: 「批判的対話プロトコル」をOSの正式な法律として導入する
+    reason: AIとの対話における自己欺瞞や思考の停滞を防ぎ、より深い本質的な洞察に到達するプロセスを自動化・体系化するため。これにより、OSの自己進化能力を飛躍的に向上させる。
+    alternatives:
+      - name: プロトコルを正式な法律として導入する
+        pros: 思考の深化が加速し、AI協働の質が向上する。
+        cons: プロトコルの運用が複雑になる可能性がある。
+    related_tasks:
+      - TASK-2025-07-25-002
+      - TASK-2025-07-25-003
+      - TASK-2025-07-25-004
+    scope:
+      project: os_platform_v1
+      domain: governance
+    severity: High
+  - id: DEC-2025-07-25-004
+    timestamp: '2025-07-25T13:20:00+09:00'
+    status: decided
+    summary: 整理されたバックログをOS開発の公式ロードマップとして採択する
+    reason: OSの思想的基盤が固まった今、次の開発フェーズ（技術的堅牢性の確保、外部接続）の優先順位を明確にするため。このロードマップをSSOTとすることで、開発リソースを最も重要な課題に集中させる。
+    alternatives:
+      - name: ロードマップを正式に採択する
+        pros: 開発の優先順位が明確になり、計画的な進行が可能になる。
+        cons: N/A
+    related_tasks: [TASK-2025-07-25-012]
+    scope:
+      project: os_platform_v1
+      domain: project_management
+    severity: High
