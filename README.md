@@ -1,6 +1,14 @@
-# Jibun OS - A Personal OS for Self-Evolution
+# Jibun OS - An "AI Navigator" for Self-Evolution
 
-**“Jibun OS is a personal operating system, powered by a Prompt-Ingestion & Digital-Twin framework, designed to accelerate your learning loop and evolve with you.”**
+**Jibun OS is a personal operating system, designed as an "AI Navigator," that enables knowledge workers to leverage their weaknesses as strengths and continue creating value in the age of AI.**
+
+---
+
+## 🚀 The Why Behind This Project
+
+In an era of intense meritocracy and the threat of AI substitution, many knowledge workers face anxiety and a "paralysis of action" born from perfectionism.
+
+This project's mission is to provide a robust framework that transforms these challenges—traits often labeled as "weaknesses"—into valuable resources for creativity and problem-solving. We are building an **"AI Navigator"** to help you thrive in this new era.
 
 ---
 
@@ -39,44 +47,25 @@ This OS is built on a four-layer governance model, separating timeless principle
 ```
 
 repo-root/
-├─ constitution/            # L1: The Soul (Core Principles)
+├─ constitution/            \# L1: The Soul (Core Principles)
+│   └─ ...
+│
+├─ legislation/             \# L2: The Intellect (Rules & Policies)
 │   ├─ common/
-│   │   ├─ constitution.yaml
-│   │   ├─ mvc_v1.0.yaml
-│   │   └─ udhr.yaml
+│   │   ├─ ...
+│   │   └─ critical\_dialogue\_protocol.yaml \# ADDED
 │   └─ personal/
-│       └─ constitution.yaml
+│       └─ ...
 │
-├─ legislation/             # L2: The Intellect (Rules & Policies)
-│   ├─ common/
-│   │   ├─ immune_system.yaml
-│   │   ├─ innate_immunity.yaml
-│   │   ├─ jurisprudence.yaml        # NEW: General Legal Principles
-│   │   ├─ kpi.yml                   # NEW: KPI Definitions
-│   │   ├─ implementation_framework.yaml
-│   │   ├─ taxonomy.yaml
-│   │   └─ mappings/                 # UPDATED: Separated Mappings
-│   │       ├─ guards.yaml
-│   │       ├─ field_task_decision.yaml
-│   │       └─ ...
-│   └─ personal/
-│       ├─ core_principles.yaml
-│       ├─ acquired_immunity.yaml
-│       ├─ profile.yaml
-│       └─ projects/
-│           └─ os_platform.yaml
+├─ precedents/              \# L3: The Consciousness (Patterns)
+│   └─ 20250725T124000-ai-navigator-definition.yaml \# ADDED
 │
-├─ precedents/              # L3: The Consciousness (Patterns)
+├─ records/                 \# L4: The Experience (Logs)
+│   └─ ...
 │
-├─ records/                 # L4: The Experience (Logs)
-│   ├─ task_log.yaml
-│   ├─ decision_log.yaml
-│   └─ guard_log.yaml
-│
-├─ docs/                    # Documentation
-├─ .devcontainer/           # Devcontainer for Codespaces
-├─ .github/                 # CI/CD Workflows
-└─ system_map.yaml          # The single source of truth for the OS structure
+├─ docs/                    \# Documentation
+└─ system\_map.yaml          \# The single source of truth for the OS structure
+
 
 ```
 
