@@ -1,0 +1,63 @@
+---
+project_name: 転職活動 2025 (Job Search 2025)
+project_id: job_search_v1
+branch: feat/job-search-2025
+current_version: 1.0.0
+current_stage: 1  # 準備フェーズ
+project_charter:
+  purpose_short: |
+    自分と社会の「不完全性」を、自身の強みである「体系化能力」を用いて秩序ある価値へと転換し、
+    挑戦する人々をナビゲートする役割を担うことで、自分自身が何者であるかを探求し続ける。
+  sponsor: Miki Eto
+  effort_budget:
+    hours_per_week: 10
+    duration_weeks: 12
+  cash_budget_usd: 500  # 書籍購入、イベント参加費など
+  objectives:
+    - target_application_count: 10  # 厳選した企業への応募数
+    - target_offer_date: 2025-10-31
+    - finalize_decision_date: 2025-11-15
+  roadmap:
+    P0_preparation:
+      description: |
+        転職活動の基盤を固め、戦略を定義するフェーズ。
+      tasks:
+        - TASK-2025-07-28-001: 5軸評価フレームワークに基づく企業評価基準の作成
+        - TASK-2025-07-28-002: ターゲット企業リストの作成 (5社)
+        - TASK-2025-07-28-003: 職務経歴書・履歴書の作成 (フック＆ストーリー戦略に基づく)
+    P1_execution:
+      description: |
+        実際に応募し、面接を通じて企業との対話を行うフェーズ。
+      tasks:
+        - TASK-2025-08-01-001: ターゲット企業への応募
+        - TASK-2025-08-01-002: 面接の実施とdecision_logへの記録
+    P2_evaluation_and_decision:
+      description: |
+        得られたオファーを評価し、最終的な意思決定を行うフェーズ。
+      tasks:
+        - TASK-2025-10-15-001: オファー内容の5軸評価フレームワークによる分析
+        - TASK-2025-10-31-001: 最終意思決定の実施と憲法への反映
+  kpi:
+    application_to_interview_rate: '>=30%'  # 応募から面接に進む確率
+    interview_to_offer_rate: '>=20%'  # 面接からオファーに至る確率
+    final_decision_satisfaction: |
+      最終決定後、個人の価値観の重み付け（`impact_assessment_weights`）と
+      決定内容の整合性をレビューし、満足度を定性的に記録する。
+  top_risks:
+    - name: |
+        活動の停滞 (Stagnation)
+      mitigation: |
+        OSの知的免疫システムに基づき、2週間新しい活動ログ（task_log）がない場合に
+        AIが警告を発する（`G002: 計画的完了ガード`を適用）。
+    - name: |
+        価値観とのミスマッチ (Value Mismatch)
+      mitigation: |
+        面接での対話を通じて得られた情報を、5軸評価フレームワークに基づき定量・定性的に評価し、
+        `decision_log`に記録することで、客観的な判断を担保する。
+    - name: |
+        過度な抽象化 (Impractical Abstraction)
+      mitigation: |
+        `G007: 非現実的抽象化ガード`を適用。
+        企業の魅力や業務内容を、具体的な日々の活動や生み出される価値にまで落とし込んで言語化できているか、
+        AIが壁打ち相手となり検証する。
+  approved_on: 2025-07-28  # この憲章が承認された日付

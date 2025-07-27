@@ -102,13 +102,8 @@ system_architecture:
             - legislation/personal/projects/os_platform.yaml
             - constitution/common/constitution.yaml
         - path: legislation/common/impact_assessment_framework.yaml
-          layer: L2
-          purpose: 意思決定の影響を評価するための、OS共通の5軸評価フレームワークを定義する。
-          context_level: base_os_context
-          dependencies: []
-        - path: legislation/common/kpi.yaml
-          role: kpi_definitions
-          description: プロジェクトおよびOS全体のKPI定義
+          role: impact_assessment_framework
+          description: 意思決定の影響を評価するための、OS共通の5軸評価フレームワーク定義。
           context_level: base_os_context
           dependencies: []
 
@@ -149,9 +144,18 @@ system_architecture:
           description: Jibun OS プラットフォーム憲章＋実装メタ
           context_level: base_os_context
           roadmap_phase: stabilize
+          dependencies: [records/decision_log.yaml, records/task_log.yaml]
+        # --- 転職活動プロジェクト ---
+        - path: legislation/personal/projects/job_search_2025.yaml
+          role: career_development_project  # 新規に役割を定義
+          description: |
+            転職活動2025（Job Search 2025）の目的、ロードマップ、KPI、リスクを定義するプロジェクト憲章。
+            OSの自己探求という究極目的を、キャリア選択という具体的な活動で実践するためのSSOT。
+          context_level: base_os_context  # 他の憲章と統一
           dependencies:
-            - records/decision_log.yaml
-            - records/task_log.yaml
+            - constitution/common/constitution.yaml
+            - legislation/common/impact_assessment_framework.yaml
+            - legislation/personal/core_principles.yaml
 
         # --- サンプルユーザードメイン ---
         - path: legislation/personal/domains/learning.yaml

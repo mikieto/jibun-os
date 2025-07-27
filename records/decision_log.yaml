@@ -773,3 +773,25 @@ decisions:
       project: os_platform_v1
       domain: project_management
     severity: High
+  - id: DEC-2025-07-28-001
+    timestamp: '2025-07-28T10:00:00+09:00'
+    status: decided
+    summary: 転職活動プロジェクト2025の開始とプロジェクト憲章の採択を決定
+    reason: |
+      定義された究極目的（Why）に基づき、体系的かつ観測可能な形で転職活動を推進するため。
+      この憲章を活動の唯一の信頼できる情報源（SSOT）とし、AIとの協働を通じて目的達成の確度を最大化する。
+    alternatives:
+      - name: プロジェクト憲章を採択し、構造的に進める
+        pros: 活動の目的とプロセスが明確になり、意思決定の質が向上する。全ての活動が記録され、将来の資産となる。
+        cons: 初期設定に手間がかかる。
+      - name: 都度、場当たり的に活動する
+        pros: すぐに行動を開始できる。
+        cons: 活動の全体像が見えにくく、判断基準がぶれる可能性がある。学習効果が限定的になる。
+    related_tasks:
+      - TASK-2025-07-28-001
+      - TASK-2025-07-28-002
+      - TASK-2025-07-28-003
+    scope:
+      project: job_search_v1
+      domain: project_management
+    severity: Critical

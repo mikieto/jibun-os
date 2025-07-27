@@ -908,3 +908,44 @@ tasks:
       stage: 2
       domain: documentation
     priority: High
+  - id: TASK-2025-07-28-001
+    timestamp: '2025-07-28T10:05:00+09:00'
+    related_decision: DEC-2025-07-28-001
+    summary: 5軸評価フレームワークに基づく企業評価基準の作成
+    status: todo
+    assignee: mikieto
+    description: |
+      legislation/common/impact_assessment_framework.yaml と legislation/personal/core_principles.yaml の
+      impact_assessment_weights を基に、転職候補企業を評価するための具体的な基準とスコアシートを作成する。
+    scope:
+      project: job_search_v1
+      stage: 1
+      domain: governance
+    priority: High
+  - id: TASK-2025-07-28-002
+    timestamp: '2025-07-28T10:10:00+09:00'
+    related_decision: DEC-2025-07-28-001
+    summary: ターゲット企業リストの作成 (5社)
+    status: todo
+    assignee: mikieto
+    description: |
+      作成した評価基準に基づき、転職先の候補となる企業を5社リストアップし、その選定理由を記録する。
+    scope:
+      project: job_search_v1
+      stage: 1
+      domain: value
+    priority: High
+  - id: TASK-2025-07-28-003
+    timestamp: '2025-07-28T10:15:00+09:00'
+    related_decision: DEC-2025-07-28-001
+    summary: 職務経歴書・履歴書の作成（フック＆ストーリー戦略に基づく）
+    status: todo
+    assignee: mikieto
+    description: |
+      DEC-2025-07-23-001で採択された二段階アプローチ（フック＆ストーリー）に基づき、職務経歴書と履歴書を作成する。
+      具体的な実績（フック）と、その背景にあるOSの思想（ストーリー）を連携させる。
+    scope:
+      project: job_search_v1
+      stage: 1
+      domain: communication
+    priority: Critical
