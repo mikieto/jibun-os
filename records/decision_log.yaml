@@ -795,3 +795,86 @@ decisions:
       project: job_search_v1
       domain: project_management
     severity: Critical
+
+  - id: DEC-2025-07-28-002
+    timestamp: '2025-07-28T11:00:00+09:00'
+    status: decided
+    summary: 根源的「Why」のOS憲法への反映と「スターターキット」開発の決定
+    reason: |
+      OSの存在理由を、その根源にある所有者の自己探求の物語と完全に一致させるため。
+      また、OSの役割を「個人のツール」から「社会に価値を実装するためのフレームワーク」へと進化させるため。
+    related_tasks: [TASK-2025-07-28-004, TASK-2025-07-28-005]
+    scope:
+      project: os_platform_v1
+      domain: system_architecture
+    severity: High
+
+  - id: DEC-2025-07-28-003
+    timestamp: '2025-07-28T11:00:00+09:00'
+    status: decided
+    summary: 転職活動の再定義と評価基準の更新を決定
+    reason: |
+      あなたの「Why」である「自己探求」を転職活動の軸に据えることで、活動の質を向上させ、ミスマッチのリスクを低減するため。
+    related_tasks: [TASK-2025-07-28-006]
+    scope:
+      project: job_search_v1
+      domain: governance
+    severity: High
+
+  - id: DEC-2025-07-28-005
+    timestamp: '2025-07-28T11:06:00+09:00'
+    status: decided
+    summary: 全プロジェクトにおけるログID体系の最終決定
+    reason: |
+      全てのログ（decision, task, guard）のID形式を`[PREFIX]-YYYY-MM-DD-[NNN]`に統一し、
+      プロジェクトの区別は各エントリ内の`scope.project`フィールドで行うことを、
+      全プロジェクト横断的な公式ルールとして最終決定する。
+      これにより、システム全体の一貫性、トレーサビリティ、拡張性を最大化する。
+    related_tasks: [TASK-2025-07-28-009]
+    scope:
+      project: os_platform_v1
+      domain: governance
+    severity: Critical
+
+  - id: DEC-2025-07-28-006
+    timestamp: '2025-07-28T11:11:45+09:00'
+    status: decided
+    summary: system_map.yamlを拡張し、外部リポジトリ（書籍プロジェクト）のファイル定義を追加する
+    reason: |
+      現状の`system_map.yaml`には自分OSリポジトリ内のファイルしか定義されておらず、
+      AIが書籍プロジェクトのような外部リポジトリの情報を自動的に認識できないという重大な欠陥が発覚したため。
+      AIの「動的コンテキストローディング」機構を完全に機能させ、プロジェクト横断的な文脈認識を可能にするために、
+      この拡張を最優先で実施する。
+    related_tasks: [TASK-2025-07-28-010]
+    scope:
+      project: os_platform_v1
+      domain: system_architecture
+    severity: Critical
+
+  - id: DEC-2025-07-28-007
+    timestamp: '2025-07-28T11:13:41+09:00'
+    status: decided
+    summary: 【長期目標】「動的コンテキストローディング機構」の本格実装
+    reason: |
+      AIが複数のプロジェクトにまたがる情報を完全かつ自動的に認識する能力は、自分OSの核心的価値を実現するための必須条件である。
+      この機構の不在は、AIのパフォーマンスを著しく制限し、手動での文脈共有という非効率とヒューマンエラーのリスクを生み出している。
+      この最重要の技術的負債を解消し、AI協働の質を飛躍的に向上させるため、本機構の実装を長期的な最重要事項とする。
+    related_tasks: [TASK-2025-07-28-011, TASK-2025-07-28-012, TASK-2025-07-28-013]
+    scope:
+      project: os_platform_v1
+      domain: tooling
+    severity: Critical
+
+  - id: DEC-2025-07-28-008
+    timestamp: '2025-07-28T11:15:00+09:00'
+    status: decided
+    summary: 【最優先】「動的コンテキストローディング機構」計画のMVP化と、書籍執筆支援用ヘルパースクリプトへのスコープ変更
+    reason: |
+      書籍執筆という外部との約束（締め切り）と、OS基盤整備（DEC-2025-07-28-007）という内部投資の間に存在するリソース衝突を解決するため。
+      OSの原則に基づき、長期目標である壮大な機構の実装は一旦保留し、
+      書籍執筆の生産性を直接向上させる、最小限の「コンテキスト結合ヘルパースクリプト」の開発を最優先の応急処置として実施する。
+    related_tasks: [TASK-2025-07-28-014]
+    scope:
+      project: os_platform_v1
+      domain: tooling
+    severity: Critical

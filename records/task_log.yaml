@@ -949,3 +949,122 @@ tasks:
       stage: 1
       domain: communication
     priority: Critical
+
+  - id: TASK-2025-07-28-004
+    timestamp: '2025-07-28T11:00:00+09:00'
+    related_decision: DEC-2025-07-28-002
+    summary: 自分OS憲章（personal/constitution.yaml）の改訂
+    status: todo
+    assignee: Gemini
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: governance
+    priority: High
+
+  - id: TASK-2025-07-28-005
+    timestamp: '2025-07-28T11:00:00+09:00'
+    related_decision: DEC-2025-07-28-002
+    summary: 「自分OSスターターキット」用GitHubテンプレートリポジトリの作成
+    status: todo
+    assignee: Gemini
+    scope:
+      project: os_platform_v1
+      stage: 3
+      domain: dx
+    priority: Medium
+
+  - id: TASK-2025-07-28-006
+    timestamp: '2025-07-28T11:00:00+09:00'
+    related_decision: DEC-2025-07-28-003
+    summary: 転職プロジェクト憲章（job_search_2025.yaml）のKPI更新
+    status: todo
+    assignee: Gemini
+    scope:
+      project: job_search_v1
+      stage: 2
+      domain: governance
+    priority: High
+
+  - id: TASK-2025-07-28-009
+    timestamp: '2025-07-28T11:06:00+09:00'
+    related_decision: DEC-2025-07-28-005
+    summary: guard_log.yamlを新ID体系へ移行する
+    status: todo
+    assignee: Gemini
+    description: |
+      `guard_log.yaml`の既存エントリ（GL-001）を新しい`GL-YYYY-MM-DD-NNN`形式に更新し、
+      ログファイル内に`scope.project`フィールドを追加する。
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: refactoring
+    priority: Medium
+
+  - id: TASK-2025-07-28-010
+    timestamp: '2025-07-28T11:11:45+09:00'
+    related_decision: DEC-2025-07-28-006
+    summary: system_map.yamlに書籍プロジェクトのファイル定義を追記する
+    status: todo
+    assignee: Gemini
+    description: |
+      `system_map.yaml`を編集し、外部リポジトリである`lean-data-engineering-book`の
+      主要なファイル（プロジェクト憲章、decision_log.yaml, task_log.yamlなど）の場所と役割を定義するセクションを追加する。
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: refactoring
+    priority: Critical
+
+  - id: TASK-2025-07-28-011
+    timestamp: '2025-07-28T11:13:41+09:00'
+    related_decision: DEC-2025-07-28-007
+    summary: "【Backlog】Context Loader - Step 1: 要件定義と設計"
+    status: todo
+    assignee: Gemini
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: system_architecture
+    priority: Low # 優先度を下げてバックログ化
+
+  - id: TASK-2025-07-28-012
+    timestamp: '2025-07-28T11:13:41+09:00'
+    related_decision: DEC-2025-07-28-007
+    summary: "【Backlog】Context Loader - Step 2: 最小実行可能プロダクト（MVP）実装"
+    status: todo
+    assignee: mikieto
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: tooling
+    priority: Low # 優先度を下げてバックログ化
+
+  - id: TASK-2025-07-28-013
+    timestamp: '2025-07-28T11:13:41+09:00'
+    related_decision: DEC-2025-07-28-007
+    summary: "【Backlog】Context Loader - Step 3: ワークフローへの統合とテスト"
+    status: todo
+    assignee: mikieto
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: ci_cd
+    priority: Low # 優先度を下げてバックログ化
+
+  - id: TASK-2025-07-28-014
+    timestamp: '2025-07-28T11:15:00+09:00'
+    related_decision: DEC-2025-07-28-008
+    summary: "【最優先】Context Helper Script: 既存スクリプトを拡張し、書籍ログを追加"
+    status: todo
+    assignee: mikieto
+    description: |
+      既存の`scripts/get_base_os_context.py`を修正する。
+      jibun_osのファイルは従来通り`system_map.yaml`から動的に読み込み、
+      外部にある書籍プロジェクトの主要ファイルはハードコードされたパスから読み込んで結合する、
+      ハイブリッド方式のコンテキスト生成スクリプトを実装する。
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: tooling
+    priority: Critical
