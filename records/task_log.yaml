@@ -949,7 +949,6 @@ tasks:
       stage: 1
       domain: communication
     priority: Critical
-
   - id: TASK-2025-07-28-004
     timestamp: '2025-07-28T11:00:00+09:00'
     related_decision: DEC-2025-07-28-002
@@ -961,7 +960,6 @@ tasks:
       stage: 2
       domain: governance
     priority: High
-
   - id: TASK-2025-07-28-005
     timestamp: '2025-07-28T11:00:00+09:00'
     related_decision: DEC-2025-07-28-002
@@ -973,7 +971,6 @@ tasks:
       stage: 3
       domain: dx
     priority: Medium
-
   - id: TASK-2025-07-28-006
     timestamp: '2025-07-28T11:00:00+09:00'
     related_decision: DEC-2025-07-28-003
@@ -985,7 +982,6 @@ tasks:
       stage: 2
       domain: governance
     priority: High
-
   - id: TASK-2025-07-28-009
     timestamp: '2025-07-28T11:06:00+09:00'
     related_decision: DEC-2025-07-28-005
@@ -1000,7 +996,6 @@ tasks:
       stage: 2
       domain: refactoring
     priority: Medium
-
   - id: TASK-2025-07-28-010
     timestamp: '2025-07-28T11:11:45+09:00'
     related_decision: DEC-2025-07-28-006
@@ -1015,47 +1010,43 @@ tasks:
       stage: 2
       domain: refactoring
     priority: Critical
-
   - id: TASK-2025-07-28-011
     timestamp: '2025-07-28T11:13:41+09:00'
     related_decision: DEC-2025-07-28-007
-    summary: "【Backlog】Context Loader - Step 1: 要件定義と設計"
+    summary: '【Backlog】Context Loader - Step 1: 要件定義と設計'
     status: todo
     assignee: Gemini
     scope:
       project: os_platform_v1
       stage: 2
       domain: system_architecture
-    priority: Low # 優先度を下げてバックログ化
-
+    priority: Low  # 優先度を下げてバックログ化
   - id: TASK-2025-07-28-012
     timestamp: '2025-07-28T11:13:41+09:00'
     related_decision: DEC-2025-07-28-007
-    summary: "【Backlog】Context Loader - Step 2: 最小実行可能プロダクト（MVP）実装"
+    summary: '【Backlog】Context Loader - Step 2: 最小実行可能プロダクト（MVP）実装'
     status: todo
     assignee: mikieto
     scope:
       project: os_platform_v1
       stage: 2
       domain: tooling
-    priority: Low # 優先度を下げてバックログ化
-
+    priority: Low  # 優先度を下げてバックログ化
   - id: TASK-2025-07-28-013
     timestamp: '2025-07-28T11:13:41+09:00'
     related_decision: DEC-2025-07-28-007
-    summary: "【Backlog】Context Loader - Step 3: ワークフローへの統合とテスト"
+    summary: '【Backlog】Context Loader - Step 3: ワークフローへの統合とテスト'
     status: todo
     assignee: mikieto
     scope:
       project: os_platform_v1
       stage: 2
       domain: ci_cd
-    priority: Low # 優先度を下げてバックログ化
-
+    priority: Low  # 優先度を下げてバックログ化
   - id: TASK-2025-07-28-014
     timestamp: '2025-07-28T11:15:00+09:00'
     related_decision: DEC-2025-07-28-008
-    summary: "【最優先】Context Helper Script: 既存スクリプトを拡張し、書籍ログを追加"
+    summary: '【最優先】Context Helper Script: 既存スクリプトを拡張し、書籍ログを追加'
     status: todo
     assignee: mikieto
     description: |

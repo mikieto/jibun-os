@@ -795,7 +795,6 @@ decisions:
       project: job_search_v1
       domain: project_management
     severity: Critical
-
   - id: DEC-2025-07-28-002
     timestamp: '2025-07-28T11:00:00+09:00'
     status: decided
@@ -808,7 +807,6 @@ decisions:
       project: os_platform_v1
       domain: system_architecture
     severity: High
-
   - id: DEC-2025-07-28-003
     timestamp: '2025-07-28T11:00:00+09:00'
     status: decided
@@ -820,7 +818,6 @@ decisions:
       project: job_search_v1
       domain: governance
     severity: High
-
   - id: DEC-2025-07-28-005
     timestamp: '2025-07-28T11:06:00+09:00'
     status: decided
@@ -835,7 +832,6 @@ decisions:
       project: os_platform_v1
       domain: governance
     severity: Critical
-
   - id: DEC-2025-07-28-006
     timestamp: '2025-07-28T11:11:45+09:00'
     status: decided
@@ -850,7 +846,6 @@ decisions:
       project: os_platform_v1
       domain: system_architecture
     severity: Critical
-
   - id: DEC-2025-07-28-007
     timestamp: '2025-07-28T11:13:41+09:00'
     status: decided
@@ -859,12 +854,14 @@ decisions:
       AIが複数のプロジェクトにまたがる情報を完全かつ自動的に認識する能力は、自分OSの核心的価値を実現するための必須条件である。
       この機構の不在は、AIのパフォーマンスを著しく制限し、手動での文脈共有という非効率とヒューマンエラーのリスクを生み出している。
       この最重要の技術的負債を解消し、AI協働の質を飛躍的に向上させるため、本機構の実装を長期的な最重要事項とする。
-    related_tasks: [TASK-2025-07-28-011, TASK-2025-07-28-012, TASK-2025-07-28-013]
+    related_tasks:
+      - TASK-2025-07-28-011
+      - TASK-2025-07-28-012
+      - TASK-2025-07-28-013
     scope:
       project: os_platform_v1
       domain: tooling
     severity: Critical
-
   - id: DEC-2025-07-28-008
     timestamp: '2025-07-28T11:15:00+09:00'
     status: decided
