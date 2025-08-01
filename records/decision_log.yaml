@@ -902,3 +902,15 @@ decisions:
       project: os_platform_v1
       domain: governance
     severity: High
+  - id: DEC-2025-08-01-004
+    timestamp: '2025-08-01T11:13:00+09:00'
+    status: decided
+    summary: プロジェクトルール定義における、OSの普遍的原則の参照を義務化する
+    reason: |
+      プロジェクト固有のルールが、OSの普遍的原則と重複・乖離する「再発」を防ぐため。
+      これにより、Jibun OS全体でSSOT（単一の信頼できる情報源）が徹底され、
+      AIのコンテキスト解釈の精度とシステムの一貫性を保証する。
+    scope:
+      project: os_platform_v1
+      domain: governance
+    severity: High

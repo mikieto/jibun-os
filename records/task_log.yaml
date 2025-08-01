@@ -564,7 +564,7 @@ tasks:
     timestamp: '2025-07-21T14:19:00+09:00'
     related_decision: DEC-2025-07-21-001
     summary: 5軸評価フレームワークに対する個人的な重み付けを定義する
-    status: Done
+    status: done
     assignee: mikieto
     description: legislation/personal/core_principles.yamlに`impact_assessment_weights`セクションを追加し、個人の価値観を反映させる。
     scope:
@@ -576,7 +576,7 @@ tasks:
     timestamp: '2025-07-21T14:19:00+09:00'
     related_decision: DEC-2025-07-21-001
     summary: AI協働プロトコルを憲法に標準手順として追加する
-    status: Done
+    status: done
     assignee: mikieto
     description: constitution/common/constitution.yamlの`ai_collaboration_governance`セクションに`standard_task_protocol`を新設し、協働の原則を明記する。
     scope:
@@ -588,7 +588,7 @@ tasks:
     timestamp: '2025-07-21T14:19:00+09:00'
     related_decision: DEC-2025-07-21-001
     summary: 統治メタファー（最高裁判所、守り/攻め）を憲法と法律に反映させる
-    status: Done
+    status: done
     assignee: mikieto
     description: constitution/common/constitution.yamlおよびlegislation/common/immune_system.yamlを修正し、OSの概念モデルを洗練させる。
     scope:
@@ -1085,6 +1085,20 @@ tasks:
       以下の手順を定義する。
       「SOP-001: OSのファイル構造に変更（追加・削除・移動）を加える際は、
       必ずsystem_map.yamlを同一コミット内で更新しなければならない。」
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: documentation
+    priority: High
+  - id: TASK-2025-08-01-004
+    timestamp: '2025-08-01T11:13:00+09:00'
+    related_decision: DEC-2025-08-01-004
+    summary: standard_operating_procedures.yaml に、原則の参照義務（SOP-002）を追記する
+    status: todo
+    assignee: Gemini
+    description: |
+      legislation/common/standard_operating_procedures.yaml に、以下の新しい手順を追加する。
+      「SOP-002: 普遍的原則の参照義務: プロジェクト固有のルールを定義する際、その内容がJibun OSの法律で定義済みの普遍的原則と重複する場合は、再定義を禁止し、OSの法律を参照しなければならない。」
     scope:
       project: os_platform_v1
       stage: 2
