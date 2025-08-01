@@ -14,9 +14,9 @@ BOOK_REPO_PATH = "/home/mikieto/projects/lean-data-engineering-book"
 # 書籍プロジェクトからハードコードで読み込むファイルのリスト
 BOOK_FILES_TO_INCLUDE = [
     "lean_data_engineering_book.yaml",
-    "decision_log.yaml",
-    "task_log.yaml",
-    "guard_log.yaml"
+    "records/decision_log.yaml",
+    "records/task_log.yaml",
+    "records/guard_log.yaml"
 ]
 # --- 設定項目ここまで ---
 

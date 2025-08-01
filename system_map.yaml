@@ -106,6 +106,13 @@ system_architecture:
           description: 意思決定の影響を評価するための、OS共通の5軸評価フレームワーク定義。
           context_level: base_os_context
           dependencies: []
+        - path: legislation/common/collaboration_protocol.yaml
+          description: AIとの協働における標準的な手順や規約を定義する。
+          context_level: base_os_context
+        - path: legislation/common/standard_operating_procedures.yaml
+          role: standard_operating_procedures
+          description: OSの運用に関する標準的な作業手順を定義する。
+          context_level: base_os_context
 
         # --- テンプレート ---
         - path: legislation/common/projects/project_template.yaml

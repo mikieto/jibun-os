@@ -1,0 +1,33 @@
+---
+name: 協働プロトコル (Collaboration Protocol)
+version: 1.0.1
+released_date: '2025-08-01'
+protocols:
+  - id: CDP-001
+    name: 意図の再確認プロトコル (Intent Reconfirmation Protocol)
+    description: |
+      人間（The Principal）とAI（The Analyst）間の意図の不一致を診断・修正するための、
+      標準的なデバッグ手順。
+    trigger:
+      description: |
+        人間がAIの意図解釈に疑問を呈した際に発動する。
+        「意図の再確認」というキーワードが最も確実だが、AIは文脈を理解するため、
+        同様の意図を持つ他の表現（例：「意図を確認させて」「Let's check the intent」）でも発動しうる。
+    procedure:
+      - step: 1
+        actor: The Principal
+        action: |
+          AIの応答が意図と異なると感じた際に、トリガーとなる発話を行う。
+      - step: 2
+        actor: The Analyst
+        action: |
+          コマンド受信後、AIは以下の2段階の応答を返すことを義務付けられる。
+          1. **意図の確認**: 現時点でAIが理解している目的（Why）を自身の言葉で要約して提示する。
+          2. **表現の確認**: その目的を達成するために、直前の指示をどういう具体的なタスク（What/How）
+             として解釈したかを提示する。
+      - step: 3
+        actor: The Principal
+        action: |-
+          AIからの2段階の応答に基づき、問題の所在を特定する。
+          - 「意図」がズレている場合：目的（Why）の伝え方を修正する。
+          - 「表現」がズレている場合：具体的なタスク（What/How）の指示を修正する。

@@ -875,3 +875,30 @@ decisions:
       project: os_platform_v1
       domain: tooling
     severity: Critical
+  - id: DEC-2025-08-01-002
+    timestamp: '2025-08-01T09:55:00+09:00'
+    status: decided
+    summary: 書籍執筆のAI精度向上のため、協働インターフェースを強化する
+    reason: |
+      書籍執筆プロジェクトを最優先で推進するため、AIの応答精度に最も直接的な影響を与える
+      「意図の誤解」と「情報ノイズ」を最小化する。そのために、以下の2つの原則を
+      OSの法律（L2）として正式に制定する。
+      1. **再確認プロトコルの導入**: 意図の不一致を診断・修正するための、明確な手順を確立する。
+      2. **動的コンテキストスコープの原則化**: AIに与えるコンテキストを、常に対話の目的に応じて
+        必要最小限に絞り込むことを、標準運用手順として定める。
+    scope:
+      project: os_platform_v1
+      domain: governance
+    severity: Critical
+  - id: DEC-2025-08-01-003
+    timestamp: '2025-08-01T10:18:00+09:00'
+    status: decided
+    summary: OSの構成ファイルを追加・変更する際の、system_map.yamlへの登録を義務化する
+    reason: |
+      AIによる実行計画漏れ（system_map.yamlの更新漏れ）という失敗の再発を防止するため。
+      これにより、system_map.yamlがOSのファイル構造に関する唯一の信頼できる情報源（SSOT）で
+      あり続けることを保証し、AIのシステム認識の正確性を恒久的に維持する。
+    scope:
+      project: os_platform_v1
+      domain: governance
+    severity: High

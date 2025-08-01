@@ -1059,3 +1059,34 @@ tasks:
       stage: 2
       domain: tooling
     priority: Critical
+  - id: TASK-2025-08-01-002
+    timestamp: '2025-08-01T09:55:00+09:00'
+    related_decision: DEC-2025-08-01-002
+    summary: 協働インターフェース強化の実装
+    status: done
+    assignee: Gemini
+    description: |
+      DEC-2025-08-01-002に基づき、Jibun OSの関連ドキュメントを更新する。
+      - legislation/common/collaboration_protocol.yaml を新設し、「再確認プロトコル」を定義する。
+      - legislation/common/implementation_framework.yaml を更新し、「コンテキストの動的スコープ」原則を追記する。
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: system_architecture
+    priority: Critical
+  - id: TASK-2025-08-01-003
+    timestamp: '2025-08-01T10:18:00+09:00'
+    related_decision: DEC-2025-08-01-003
+    summary: OS標準作業手順書に、system_map.yamlの更新義務を追記する
+    status: todo
+    assignee: Gemini
+    description: |
+      legislation/common/standard_operating_procedures.yaml を新設し、
+      以下の手順を定義する。
+      「SOP-001: OSのファイル構造に変更（追加・削除・移動）を加える際は、
+      必ずsystem_map.yamlを同一コミット内で更新しなければならない。」
+    scope:
+      project: os_platform_v1
+      stage: 2
+      domain: documentation
+    priority: High

@@ -1,0 +1,16 @@
+---
+name: 標準作業手順書 (Standard Operating Procedures)
+version: 1.0.0
+released_date: '2025-08-01'
+procedures:
+  - id: SOP-001
+    name: system_map.yaml の同期義務
+    description: |
+      Jibun OSのファイル構造の完全性と、AIによるシステム認識の正確性を保証するための
+      必須作業手順。
+    rule: |
+      OSのファイル構造に変更（追加・削除・移動）を加える際は、
+      必ずsystem_map.yamlを同一コミット内で更新しなければならない。
+    rationale: |-
+      この手順を怠ると、system_map.yamlと実際のファイル構造間に乖離が生じ、
+      AIの動的コンテキストローディング機能が不正確になるリスクがあるため。(Ref: DEC-2025-08-01-003)

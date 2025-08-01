@@ -41,3 +41,15 @@ id_rules:
   guard_common: ^G\d{3}$
   guard_personal: ^P\d{3}$
   kpi: ^KPI-(PROJ|HEALTH)-\d{3}$
+context_management_strategy:
+  name: コンテキストの動的スコープ (Dynamic Context Scoping)
+  description: |
+    AIとの協働において、トークン上限による物理的破綻と、無関係な情報による精度低下を防ぐための
+    標準的なコンテキスト管理戦略。
+  principles:
+    - id: CTX-P-01
+      name: 基本コンテキストとタスク固有コンテキストの分離
+      description: |-
+        AIへの入力は、常に以下の2種類を結合して生成する。
+        1. 基本コンテキスト (Base Context): OSの憲章や法律など、普遍的で変更頻度の低い情報。
+        2. タスク固有コンテキスト (Task-Specific Context): 現在のタスクに直接関連する、意思決定ログやADRなどの動的な情報。
