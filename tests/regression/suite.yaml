@@ -51,7 +51,7 @@ test_suite:
     question: TASK-2025-07-21-004 のステータスは何ですか？
     context_files: [records/task_log.yaml]
     expected_answer:
-      contains_keywords: [Done]
+      contains_keywords: [done]
 
   # ===============================================
   # 4. 横断的な分析能力 (Cross-functional Analysis)
