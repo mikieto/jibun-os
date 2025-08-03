@@ -23,4 +23,4 @@ WORKDIR /workspaces/jibun-os
 
 RUN git config --system pull.rebase true \
  && git config --system rerere.enabled true \
- && git config --system merge.conflictStyle diff3
+ && git config --system merge.conflictStyle zdiff3

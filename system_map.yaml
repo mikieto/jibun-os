@@ -152,15 +152,6 @@ system_architecture:
           context_level: base_os_context
           roadmap_phase: stabilize
           dependencies: [records/decision_log.yaml, records/task_log.yaml]
-
-        # --- Persistent Context Layer プロジェクト ---
-        - path: legislation/personal/projects/os_platform.yaml
-          role: os_development_project
-          description: Jibun OS プラットフォーム憲章＋実装メタ
-          context_level: base_os_context
-          roadmap_phase: stabilize
-          dependencies: [records/decision_log.yaml, records/task_log.yaml]
-
         # --- 転職活動プロジェクト ---
         - path: legislation/personal/projects/job_search_2025.yaml
           role: career_development_project  # 新規に役割を定義
@@ -172,7 +163,6 @@ system_architecture:
             - constitution/common/constitution.yaml
             - legislation/common/impact_assessment_framework.yaml
             - legislation/personal/core_principles.yaml
-
 
         # --- サンプルユーザードメイン ---
         - path: legislation/personal/domains/learning.yaml
