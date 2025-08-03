@@ -18,9 +18,9 @@ RUN pip install --no-cache-dir -r /tmp/requirements-dev.txt && rm /tmp/requireme
 RUN groupadd -g 1000 vscode \
   && useradd -m -u 1000 -g vscode vscode
 
-USER vscode
-WORKDIR /workspaces/jibun-os
-
 RUN git config --system pull.rebase true \
  && git config --system rerere.enabled true \
- && git config --system merge.conflictStyle zdiff3
+ && git config --system merge.conflictStyle diff3
+
+USER vscode
+WORKDIR /workspaces/jibun-os
