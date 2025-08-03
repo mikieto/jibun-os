@@ -21,6 +21,7 @@ RUN groupadd -g 1000 vscode \
 USER vscode
 WORKDIR /workspaces/jibun-os
 
-RUN git config --system pull.rebase true \
- && git config --system rerere.enabled true \
- && git config --system merge.conflictStyle zdiff3
+RUN git config --global pull.rebase true \
+    && git config --global rerere.enabled true \
+    && git config --global merge.conflictStyle zdiff3
+
