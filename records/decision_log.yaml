@@ -914,3 +914,18 @@ decisions:
       project: os_platform_v1
       domain: governance
     severity: High
+
+  - id: DEC-2025-08-03-001
+    date: "2025-08-03"
+    title: "PCL プロジェクト憲章の採択と独立リポ移行"
+    context:
+      charter: legislation/personal/projects/pcl.yaml
+      repo: https://github.com/yourname/pcl-extension
+    options:
+      - "着手しない（保留）"
+      - "自分OS内で実装"
+      - "独立リポでスピンアウト"      # ← 採択
+    decision: "Option 3 を採択し、Chrome 拡張 MVP を 90 日以内に KPI 達成する計画で進行。"
+    rationale: |
+      - 市場調査と AI-VC フィードバックで高い投資可能性を確認
+      - 独立リポの方が OSS コントリビュートと DD が容易

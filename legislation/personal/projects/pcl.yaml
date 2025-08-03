@@ -1,0 +1,113 @@
+project_charter:
+  name: "Persistent Context Layer (PCL)"
+  date: "2025-08-03"
+  version: "0.1"
+
+  purpose: >
+    Build a Persistent Context Layer that captures, summarizes, and seamlessly
+    re-injects LLM chat context, freeing users from session limits while
+    providing auditable logs for enterprise governance.
+
+  background_rationale:
+    - "AI chat platforms cut sessions, forcing users to re-explain."
+    - "ChatGPT has 300 M+ MAU; no solution offers multi-model context persistence with governance."
+
+  objectives_success_criteria:
+    - id: 1
+      objective: "Ship Chrome Extension MVP"
+      kpi: "Day 14 live in store; TTFU ≤ 1 day"
+    - id: 2
+      objective: "Prove user value"
+      kpi: "DAU ≥ 1 000; 7-day retention ≥ 50 %"
+    - id: 3
+      objective: "Monetize"
+      kpi: "Paid conversion ≥ 5 % at US$8 / mo"
+    - id: 4
+      objective: "Investor readiness"
+      kpi: "NPS ≥ 50; data room + live demo ready"
+
+  scope:
+    in_scope:
+      - "Chrome extension for OpenAI, Anthropic, Google domains"
+      - "Local capture, token-threshold summarization (≥ 1 500 tokens)"
+      - "Pro sync via Supabase + pgvector with AES-GCM encryption"
+      - "One-click context re-injection UI"
+      - "Basic analytics dashboard (DAU, retention, tokens)"
+    out_of_scope:
+      - "Mobile apps, Safari/Edge ports"
+      - "Template marketplace, enterprise policy CI, SOC-2 cert"
+
+  deliverables:
+    - "MVP extension (code + Chrome listing)"
+    - "30-second demo video"
+    - "Beta Discord server & weekly release notes"
+    - "Data room (architecture, legal, metrics)"
+    - "Investor update deck (Day 90)"
+
+  milestones_timeline:
+    - phase: "P0 – Skeleton"
+      dates: "Day 0-7"
+      output: "DOM hook, local save, auto-save timer"
+    - phase: "P1 – Beta Launch"
+      dates: "Day 8-14"
+      output: "Public MVP + waitlist"
+    - phase: "P2 – Metric Loop"
+      dates: "Day 15-30"
+      output: "DAU 1 000; UX polish"
+    - phase: "P3 – Pro Sync"
+      dates: "Day 31-60"
+      output: "Supabase sync; Stripe billing"
+    - phase: "P4 – Investor Ready"
+      dates: "Day 61-90"
+      output: "KPI hit; data room; DD support"
+
+  roles:
+    - role: "Founder / CTO"
+      name: "[Your Name]"
+      focus: "Product, code, infra"
+    - role: "CGO (part-time)"
+      name: "TBD"
+      focus: "Growth, community, content"
+    - role: "Security Advisor"
+      name: "TBD"
+      focus: "Encryption, compliance"
+    - role: "Legal Advisor"
+      name: "TBD"
+      focus: "ToS, privacy policy"
+    - role: "Contractors"
+      name: "On-demand"
+      focus: "Video, design, copy"
+
+  budget_resources_usd:
+    cloud_api: 300
+    contract_services: 2000
+    contingency: 700
+
+  governance_decision_log:
+    format: "DEC-PCL-YYYY-MM-DD (e.g., DEC-PCL-2025-08-03)"
+    description: >
+      Four-layer model stored in YAML, CI-checked via GitHub Actions
+
+  risks_mitigations:
+    - risk: "Big-tech feature parity"
+      impact: "High"
+      mitigation: "Multi-model neutrality, template marketplace, speed lead"
+    - risk: "Data privacy breach"
+      impact: "High"
+      mitigation: "E2E encryption, self-host option, advisor review"
+    - risk: "Solo bandwidth"
+      impact: "Medium"
+      mitigation: "Scope focus, automate ops, enlist advisors"
+
+  communication_plan:
+    daily: "Git commits; Discord #build-log"
+    weekly: "Public changelog tweet & beta email"
+    monthly: "KPI dashboard + investor memo"
+
+  approval_next_steps:
+    - "Review charter within 24 h; log DEC-PCL-2025-08-04"
+    - "Kick-off sprint 0: repo setup, extension boilerplate"
+    - "Advisor outreach (security, legal) by Day 10"
+
+  prepared_by: "Miki Eto"
+  role: "Founder/CTO"
