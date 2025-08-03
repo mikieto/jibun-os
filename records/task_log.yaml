@@ -1104,29 +1104,30 @@ tasks:
       stage: 2
       domain: documentation
     priority: High
-
   - id: TASK-2025-08-03-001
     project: pcl
-    title: "リポジトリ & CI スケルトン作成"
-    owner: "Miki Eto"
-    due: "2025-08-07"
+    title: リポジトリ & CI スケルトン作成
+    owner: Miki Eto
+    due: '2025-08-07'
     status: done
     description: |
       - github.com/yourname/pcl-extension を作成
       - MV3 manifest と Webpack boilerplate を push
       - README にワンクリックビルド手順を記載
-
   - id: TASK-2025-08-03-002
     project: pcl
-    title: "system_map に PCL エントリ追加"
-    owner: "Miki Eto"
-    due: "2025-08-07"
+    title: system_map に PCL エントリ追加
+    owner: Miki Eto
+    due: '2025-08-07'
     status: done
-    link: "PR #42"
-
+    link: 'PR # 42'
   - id: TASK-2025-08-03-003
     project: pcl
-    title: "Chrome MVP: DOM Hook & IndexedDB 保存"
-    owner: "Miki Eto"
-    due: "2025-08-14"
+    title: 'Chrome MVP: DOM Hook & IndexedDB 保存'
+    owner: Miki Eto
+    due: '2025-08-14'
     status: todo
+  - id: TASK-2025-08-03-004
+    title: PCL プロジェクト憲章ファイル作成
+    status: done
+    due: 2025-08-03

@@ -154,13 +154,13 @@ system_architecture:
           dependencies: [records/decision_log.yaml, records/task_log.yaml]
 
         # --- Persistent Context Layer プロジェクト ---
-        - path: legislation/personal/projects/pcl.yaml          # Charter への絶対パス
-          role: context_persistence_project                      # 一意ロール名
+        - path: legislation/personal/projects/pcl.yaml  # Charter への絶対パス
+          role: context_persistence_project  # 一意ロール名
           description: |
             Persistent Context Layer (PCL) — AIチャットのセッション断絶を解消し、
             監査証跡も担保する Chrome 拡張プロジェクト憲章。
-          context_level: base_os_context                         # 他プロジェクトと揃える
-          roadmap_phase: skeleton                                # 現在フェーズ
+          context_level: base_os_context  # 他プロジェクトと揃える
+          roadmap_phase: skeleton  # 現在フェーズ
           dependencies:
             - records/decision_log.yaml
             - records/task_log.yaml

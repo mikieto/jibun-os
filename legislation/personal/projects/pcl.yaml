@@ -1,113 +1,201 @@
+---
 project_charter:
-  name: "Persistent Context Layer (PCL)"
-  date: "2025-08-03"
-  version: "0.1"
-
-  purpose: >
-    Build a Persistent Context Layer that captures, summarizes, and seamlessly
-    re-injects LLM chat context, freeing users from session limits while
-    providing auditable logs for enterprise governance.
-
+  name: Persistent Context Layer (PCL)
+  version: '0.2'
+  date_created: '2025-08-03'
+  last_updated: '2025-08-03'
+  prepared_by: Miki Eto
+  role: Founder/CTO
+  purpose:
+    description: >
+      Build a Persistent Context Layer that captures, summarizes, and seamlessly
+      re-injects LLM chat context, freeing users from session limits while
+      providing auditable logs for enterprise governance.
   background_rationale:
-    - "AI chat platforms cut sessions, forcing users to re-explain."
-    - "ChatGPT has 300 M+ MAU; no solution offers multi-model context persistence with governance."
-
-  objectives_success_criteria:
-    - id: 1
-      objective: "Ship Chrome Extension MVP"
-      kpi: "Day 14 live in store; TTFU ≤ 1 day"
-    - id: 2
-      objective: "Prove user value"
-      kpi: "DAU ≥ 1 000; 7-day retention ≥ 50 %"
-    - id: 3
-      objective: "Monetize"
-      kpi: "Paid conversion ≥ 5 % at US$8 / mo"
-    - id: 4
-      objective: "Investor readiness"
-      kpi: "NPS ≥ 50; data room + live demo ready"
-
+    - id: BR1
+      title: Session Persistence Gap
+      detail: AI chat platforms cut sessions, forcing users to re-explain context.
+    - id: BR2
+      title: Market Opportunity
+      detail: 300M+ MAU on ChatGPT; no multi-model context persistence solution exists.
+  objectives:
+    - id: OBJ1
+      description: Ship Chrome Extension MVP
+      success_criteria:
+        kpi: TTFU ≤ 1 day
+        deadline: '2025-08-17'
+    - id: OBJ2
+      description: Validate user engagement and retention
+      success_criteria:
+        kpi: DAU ≥ 1,000; 7-day retention ≥ 50%
+        deadline: '2025-08-30'
+    - id: OBJ3
+      description: Achieve paid conversion
+      success_criteria:
+        kpi: Paid conversion ≥ 5% at $8/mo
+        deadline: '2025-09-10'
+    - id: OBJ4
+      description: Prepare for investor due diligence
+      success_criteria:
+        kpi: NPS ≥ 50; data room & live demo ready
+        deadline: '2025-11-01'
   scope:
     in_scope:
-      - "Chrome extension for OpenAI, Anthropic, Google domains"
-      - "Local capture, token-threshold summarization (≥ 1 500 tokens)"
-      - "Pro sync via Supabase + pgvector with AES-GCM encryption"
-      - "One-click context re-injection UI"
-      - "Basic analytics dashboard (DAU, retention, tokens)"
+      - id: SC1
+        area: Chrome MV3 extension core
+      - id: SC2
+        area: Local capture & IndexedDB storage
+      - id: SC3
+        area: Token-threshold summarization (≥1,500 tokens)
+      - id: SC4
+        area: AES-GCM encrypted sync via Supabase + pgvector
+      - id: SC5
+        area: One-click context re-injection UI
+      - id: SC6
+        area: Basic analytics dashboard (DAU, retention, summary counts)
     out_of_scope:
-      - "Mobile apps, Safari/Edge ports"
-      - "Template marketplace, enterprise policy CI, SOC-2 cert"
-
+      - id: OS1
+        area: Mobile app development
+      - id: OS2
+        area: Safari/Edge extension ports
+      - id: OS3
+        area: Enterprise policy CI; SOC-2 certification
   deliverables:
-    - "MVP extension (code + Chrome listing)"
-    - "30-second demo video"
-    - "Beta Discord server & weekly release notes"
-    - "Data room (architecture, legal, metrics)"
-    - "Investor update deck (Day 90)"
-
-  milestones_timeline:
-    - phase: "P0 – Skeleton"
-      dates: "Day 0-7"
-      output: "DOM hook, local save, auto-save timer"
-    - phase: "P1 – Beta Launch"
-      dates: "Day 8-14"
-      output: "Public MVP + waitlist"
-    - phase: "P2 – Metric Loop"
-      dates: "Day 15-30"
-      output: "DAU 1 000; UX polish"
-    - phase: "P3 – Pro Sync"
-      dates: "Day 31-60"
-      output: "Supabase sync; Stripe billing"
-    - phase: "P4 – Investor Ready"
-      dates: "Day 61-90"
-      output: "KPI hit; data room; DD support"
-
-  roles:
-    - role: "Founder / CTO"
-      name: "[Your Name]"
-      focus: "Product, code, infra"
-    - role: "CGO (part-time)"
-      name: "TBD"
-      focus: "Growth, community, content"
-    - role: "Security Advisor"
-      name: "TBD"
-      focus: "Encryption, compliance"
-    - role: "Legal Advisor"
-      name: "TBD"
-      focus: "ToS, privacy policy"
-    - role: "Contractors"
-      name: "On-demand"
-      focus: "Video, design, copy"
-
-  budget_resources_usd:
-    cloud_api: 300
-    contract_services: 2000
-    contingency: 700
-
-  governance_decision_log:
-    format: "DEC-PCL-YYYY-MM-DD (e.g., DEC-PCL-2025-08-03)"
-    description: >
-      Four-layer model stored in YAML, CI-checked via GitHub Actions
-
-  risks_mitigations:
-    - risk: "Big-tech feature parity"
-      impact: "High"
-      mitigation: "Multi-model neutrality, template marketplace, speed lead"
-    - risk: "Data privacy breach"
-      impact: "High"
-      mitigation: "E2E encryption, self-host option, advisor review"
-    - risk: "Solo bandwidth"
-      impact: "Medium"
-      mitigation: "Scope focus, automate ops, enlist advisors"
-
-  communication_plan:
-    daily: "Git commits; Discord #build-log"
-    weekly: "Public changelog tweet & beta email"
-    monthly: "KPI dashboard + investor memo"
-
-  approval_next_steps:
-    - "Review charter within 24 h; log DEC-PCL-2025-08-04"
-    - "Kick-off sprint 0: repo setup, extension boilerplate"
-    - "Advisor outreach (security, legal) by Day 10"
-
-  prepared_by: "Miki Eto"
-  role: "Founder/CTO"
+    - id: DL1
+      title: Extension MVP package
+      description: Manifest, background.js, popup UI, packaging script
+    - id: DL2
+      title: Documentation & demo video
+      description: README, 30s screencast, user guide
+    - id: DL3
+      title: Beta community assets
+      description: Discord server, feedback form, weekly release notes
+    - id: DL4
+      title: Data room
+      description: Architecture diagrams, legal docs, metrics dashboard
+    - id: DL5
+      title: Investor update deck
+      description: Pitch deck, traction summary, financial plan
+  milestones:
+    - id: M0
+      phase: P0 – Skeleton
+      period:
+        start: '2025-08-03'
+        end: '2025-08-10'
+      output:
+        - Git repo & CI skeleton
+        - DOM hook + IndexedDB basic save
+        - Auto-save timer implemented
+    - id: M1
+      phase: P1 – Beta Launch
+      period:
+        start: '2025-08-11'
+        end: '2025-08-17'
+      output:
+        - Unlisted MVP published
+        - Waitlist opened; 50 beta users onboarded
+        - Basic telemetry collection
+    - id: M2
+      phase: P2 – Metric Loop
+      period:
+        start: '2025-08-18'
+        end: '2025-09-02'
+      output:
+        - UX polish (re-inject, popups)
+        - Metrics dashboard live
+        - Weekly changelog + NPS survey
+    - id: M3
+      phase: P3 – Pro Sync & Billing
+      period:
+        start: '2025-09-03'
+        end: '2025-10-02'
+      output:
+        - Encrypted Supabase sync
+        - Stripe subscription integration
+        - Billing monitoring in place
+    - id: M4
+      phase: P4 – Investor Ready
+      period:
+        start: '2025-10-03'
+        end: '2025-11-01'
+      output:
+        - KPI targets met
+        - Data room & demos complete
+        - VC pitch materials finalized
+  stakeholders:
+    - id: STK1
+      role: Founder/CTO
+      name: Miki Eto
+      responsibilities:
+        - Product design & development
+        - Infrastructure & CI maintenance
+    - id: STK2
+      role: CGO (Growth)
+      name: TBD
+      responsibilities: [Marketing strategy, Community engagement]
+    - id: STK3
+      role: Security Advisor
+      name: TBD
+      responsibilities: [Encryption architecture review, Compliance roadmap]
+    - id: STK4
+      role: Legal Advisor
+      name: TBD
+      responsibilities: [Terms & Privacy Policy drafting, IP considerations]
+    - id: STK5
+      role: Contractors
+      name: On-demand
+      responsibilities: [Video production, UI/UX design, Copywriting]
+  budget:
+    total_usd: 3000
+    breakdown:
+      cloud_api: 300
+      contractors: 2000
+      contingency: 700
+  risks:
+    - id: R1
+      category: Technical
+      description: Feature parity with vendor platforms
+      likelihood: Medium
+      impact: High
+      mitigation:
+        - Design vendor-neutral architecture
+        - Offer template marketplace
+    - id: R2
+      category: Security
+      description: User data privacy breach
+      likelihood: Low
+      impact: High
+      mitigation:
+        - End-to-end encryption
+        - Self-host deployment option
+        - Security advisor review
+    - id: R3
+      category: Operational
+      description: Limited development bandwidth
+      likelihood: High
+      impact: Medium
+      mitigation:
+        - Scope prioritization
+        - Automate ops tasks
+        - Engage contractors
+  communication:
+    daily: ['Git commit → Discord  # build-log']
+    weekly: [Public changelog tweet, Beta email newsletter]
+    monthly: [KPI dashboard report, Investor memo distribution]
+  governance:
+    decision_log_format: DEC-PCL-YYYY-MM-DD
+    decision_log_path: projects/pcl-extension/decision_log.yaml
+  approval_criteria:
+    - Charter reviewed by core team within 24h
+    - Stakeholder sign-off on scope & deliverables
+    - Budget & timeline consensus
+  next_steps:
+    - id: NS1
+      description: Review and approve project charter
+      due: '2025-08-04'
+    - id: NS2
+      description: 'Kick-off Sprint 0: skeleton tasks'
+      due: '2025-08-05'
+    - id: NS3
+      description: Recruit CGO and advisors
+      due: '2025-08-10'
