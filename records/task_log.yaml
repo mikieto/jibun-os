@@ -1199,3 +1199,51 @@ tasks:
       Update the repository's development environment to support the new
       Python/Streamlit stack. This includes rewriting .devcontainer/devcontainer.json,
       updating .gitignore, and adjusting GitHub Actions workflows.
+  - id: TASK-2025-08-04-008
+    related_decision: DEC-2025-08-04-001
+    summary: Implement conversation history selection UI
+    status: done
+    assignee: mikieto
+    due: '2025-08-18'
+    scope: {project: pcl_navigator_mvp_v1, domain: ux}
+    priority: High
+    description: >
+      Add a UI element (e.g., a sidebar selectbox) that allows the user
+      to view and load past conversations from Supabase into the current
+      chat session.
+  - id: TASK-2025-08-04-009
+    related_decision: DEC-2025-08-04-001
+    summary: Implement end-to-end encryption for user messages
+    status: done
+    assignee: mikieto
+    due: '2025-09-01'  # After initial MVP validation
+    scope: {project: pcl_navigator_mvp_v1, domain: security}
+    priority: Critical
+    description: >
+      Implement client-side encryption/decryption for all messages
+      before they are stored in Supabase. This is a critical step
+      before onboarding external beta users.
+  - id: TASK-2025-08-04-010
+    related_decision: DEC-2025-08-04-001
+    summary: Implement file upload and analysis feature
+    status: done
+    assignee: mikieto
+    due: '2025-09-15'
+    scope: {project: pcl_navigator_mvp_v1, domain: feature}
+    priority: Medium
+    description: >
+      Replace the simple text chat input with a file uploader to allow
+      users to submit documents for analysis. The app will read the text
+      from the uploaded file and use it as a prompt for the Gemini API.
+  - id: TASK-2025-08-04-011
+    related_decision: DEC-2025-08-04-001
+    summary: Add language selection for the system prompt
+    status: todo
+    assignee: mikieto
+    due: '2025-09-30'
+    scope: {project: pcl_navigator_mvp_v1, domain: i18n}
+    priority: Low
+    description: >-
+      Implement a UI element to allow users to select their preferred
+      language (e.g., English/Japanese). The app will dynamically load
+      and use the corresponding system prompt for the AI conversation.
