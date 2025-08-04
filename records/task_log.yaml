@@ -1238,7 +1238,7 @@ tasks:
   - id: TASK-2025-08-04-011
     related_decision: DEC-2025-08-04-001
     summary: Add language selection for the system prompt
-    status: todo
+    status: done
     assignee: mikieto
     due: '2025-09-30'
     scope: {project: pcl_navigator_mvp_v1, domain: i18n}
@@ -1247,3 +1247,14 @@ tasks:
       Implement a UI element to allow users to select their preferred
       language (e.g., English/Japanese). The app will dynamically load
       and use the corresponding system prompt for the AI conversation.
+  - id: TASK-2025-08-04-012
+    related_decision: DEC-2025-08-04-001
+    summary: Implement user language preference
+    status: done
+    assignee: mikieto
+    due: '2025-09-30'
+    scope: {project: pcl_navigator_mvp_v1, domain: i18n}
+    priority: Low
+    description: >-
+      Implement a UI element and backend logic to save and load a
+      user's language preference (EN/JA) in Supabase user_metadata.
