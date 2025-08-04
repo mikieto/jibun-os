@@ -928,3 +928,22 @@ decisions:
     rationale: |-
       - 市場調査と AI-VC フィードバックで高い投資可能性を確認
       - 独立リポの方が OSS コントリビュートと DD が容易
+  - id: DEC-2025-08-04-001
+    timestamp: '2025-08-04T12:28:40+09:00'
+    status: decided
+    summary: PCLプロジェクトのMVPアプローチを「Webサービス」へ正式に方向転換する
+    reason: |
+      当初検討していたChromeエクステンション案は、DOMの不安定性という技術的リスクと、
+      他社サービスへの依存に伴う法的・事業的リスクが高いと判断。
+      より迅速な仮説検証と、将来的な拡張性・安定性を両立できる、
+      Streamlit, Supabase, Gemini API を用いたWebサービスとしてMVPを開発する方針に切り替える。
+    supersedes: [DEC-2025-08-03-001]
+    related_tasks:
+      - TASK-2025-08-04-001
+      - TASK-2025-08-04-002
+      - TASK-2025-08-04-003
+      - TASK-2025-08-04-004
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: project_management
+    severity: Critical

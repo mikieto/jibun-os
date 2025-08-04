@@ -1,0 +1,50 @@
+---
+project_charter:
+  name: Persistent Context Layer (PCL) Navigator - MVP
+  version: '1.0'
+  date_created: '2025-08-04'
+  prepared_by: Miki Eto
+  purpose:
+    description: >
+      AIチャットの「コンテキスト途切れ」問題を解決し、ユーザーの思考をナビゲートする
+      知的パートナーとしての価値を検証する。
+  objectives:
+    - id: OBJ1
+      description: MVPの初期バージョンをデプロイし、コア機能を実装する。
+      success_criteria: [最初のユーザー（自分自身）として、What→Why誘導と履歴保存のサイクルを体験できる。]
+      deadline: '2025-08-11'
+    - id: OBJ2
+      description: 最初の10人のテストユーザーを獲得し、フィードバックを収集する。
+      success_criteria: [ユーザーインタビューを通じて、コア機能の価値が定性的に証明される。]
+      deadline: '2025-08-31'
+  scope:
+    in_scope:
+      - id: SC1
+        area: StreamlitによるWeb UI実装
+      - id: SC2
+        area: Supabaseによるユーザー認証とメッセージ履歴の保存
+      - id: SC3
+        area: Gemini APIを用いた「What→Why」誘導システムプロンプト
+      - id: SC4
+        area: ユーザーごとの利用制限（コスト管理）の基本設計
+    out_of_scope:
+      - id: OS1
+        area: Chromeエクステンション
+      - id: OS2
+        area: L4→L3の自動的な知識の結晶化
+      - id: OS3
+        area: 高度な動的コンテキストローディング
+  budget:
+    total_jpy_per_month: 10000
+    breakdown:
+      cloud_services: 5000
+      llm_api: 5000
+  risks:
+    - id: R1
+      category: Technical
+      description: Gemini APIのレート制限によるUX低下
+      mitigation: [ユーザーごとの利用回数に上限を設定する]
+    - id: R2
+      category: Operational
+      description: 開発リソース不足による遅延
+      mitigation: [MVPスコープを厳格に守り、追加機能を実装しない]

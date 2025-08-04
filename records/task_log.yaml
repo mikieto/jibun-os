@@ -1126,8 +1126,53 @@ tasks:
     title: 'Chrome MVP: DOM Hook & IndexedDB 保存'
     owner: Miki Eto
     due: '2025-08-14'
-    status: todo
+    status: canceled
   - id: TASK-2025-08-03-004
     title: PCL プロジェクト憲章ファイル作成
     status: done
     due: 2025-08-03
+  - id: TASK-2025-08-04-001
+    related_decision: DEC-2025-08-04-001
+    summary: Supabaseプロジェクトをセットアップし、`messages`テーブルを作成する
+    status: todo
+    assignee: mikieto
+    due: '2025-08-05'
+    scope: {project: pcl_navigator_mvp_v1, domain: infrastructure}
+    priority: Critical
+  - id: TASK-2025-08-04-002
+    related_decision: DEC-2025-08-04-001
+    summary: Streamlitアプリの雛形を作成し、Supabaseへの接続を確認する
+    status: todo
+    assignee: mikieto
+    due: '2025-08-06'
+    scope: {project: pcl_navigator_mvp_v1, domain: development}
+    priority: Critical
+  - id: TASK-2025-08-04-003
+    related_decision: DEC-2025-08-04-001
+    summary: Gemini APIを呼び出す関数と「What→Why」システムプロンプトを実装する
+    status: todo
+    assignee: mikieto
+    due: '2025-08-08'
+    scope: {project: pcl_navigator_mvp_v1, domain: development}
+    priority: High
+  - id: TASK-2025-08-04-004
+    related_decision: DEC-2025-08-04-001
+    summary: Streamlit CloudにMVPアプリの初期バージョンをデプロイする
+    status: todo
+    assignee: mikieto
+    due: '2025-08-11'
+    scope: {project: pcl_navigator_mvp_v1, domain: deployment}
+    priority: High
+  - id: TASK-2025-08-04-005
+    related_decision: DEC-2025-08-04-001
+    summary: 旧PCLプロジェクトのタスクと憲章を整理する
+    status: done
+    assignee: mikieto
+    due: '2025-08-04'
+    scope: {project: pcl_navigator_mvp_v1, domain: refactoring}
+    priority: High
+    description: |-
+      Webサービスへの方向転換に伴い、以下の整理作業を実施する。
+      1. TASK-2025-08-03-003 のステータスを `canceled` に変更する。
+      2. 古い `pcl.yaml` を `legislation/personal/projects/pcl_navigator.yaml` にリネームし、内容を新しい計画に更新する。
+      3. `system_map.yaml` を修正し、`pcl_navigator.yaml` を正しく参照するように更新する。
