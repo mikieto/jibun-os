@@ -1134,7 +1134,7 @@ tasks:
   - id: TASK-2025-08-04-001
     related_decision: DEC-2025-08-04-001
     summary: Supabaseプロジェクトをセットアップし、`messages`テーブルを作成する
-    status: todo
+    status: done
     assignee: mikieto
     due: '2025-08-05'
     scope: {project: pcl_navigator_mvp_v1, domain: infrastructure}
@@ -1142,7 +1142,7 @@ tasks:
   - id: TASK-2025-08-04-002
     related_decision: DEC-2025-08-04-001
     summary: Streamlitアプリの雛形を作成し、Supabaseへの接続を確認する
-    status: todo
+    status: done
     assignee: mikieto
     due: '2025-08-06'
     scope: {project: pcl_navigator_mvp_v1, domain: development}
@@ -1150,7 +1150,7 @@ tasks:
   - id: TASK-2025-08-04-003
     related_decision: DEC-2025-08-04-001
     summary: Gemini APIを呼び出す関数と「What→Why」システムプロンプトを実装する
-    status: todo
+    status: done
     assignee: mikieto
     due: '2025-08-08'
     scope: {project: pcl_navigator_mvp_v1, domain: development}
@@ -1176,3 +1176,26 @@ tasks:
       1. TASK-2025-08-03-003 のステータスを `canceled` に変更する。
       2. 古い `pcl.yaml` を `legislation/personal/projects/pcl_navigator.yaml` にリネームし、内容を新しい計画に更新する。
       3. `system_map.yaml` を修正し、`pcl_navigator.yaml` を正しく参照するように更新する。
+  - id: TASK-2025-08-04-006
+    related_decision: DEC-2025-08-04-001
+    summary: Initialize repository for Streamlit web service
+    status: done
+    assignee: mikieto
+    due: '2025-08-04'
+    scope: {project: pcl_navigator_mvp_v1, domain: setup}
+    priority: Critical
+    description: >
+      Remove obsolete Chrome Extension files and create the initial
+      scaffolding for the new Streamlit application.
+  - id: TASK-2025-08-04-007
+    related_decision: DEC-2025-08-04-001
+    summary: Reconfigure development environment for Python/Streamlit
+    status: done
+    assignee: mikieto
+    due: '2025-08-05'
+    scope: {project: pcl_navigator_mvp_v1, domain: setup}
+    priority: Critical
+    description: >-
+      Update the repository's development environment to support the new
+      Python/Streamlit stack. This includes rewriting .devcontainer/devcontainer.json,
+      updating .gitignore, and adjusting GitHub Actions workflows.
