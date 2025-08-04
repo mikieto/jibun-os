@@ -8,6 +8,15 @@ project_charter:
     description: >
       AIチャットの「コンテキスト途切れ」問題を解決し、ユーザーの思考をナビゲートする
       知的パートナーとしての価値を検証する。
+  relationships:
+    - type: origin
+      name: jibun-os
+      description: >
+        This project originated as a feature concept within the 'jibun-os'
+        (github.com/your-repo/jibun-os) repository. It has been spun out as an
+        independent project to accelerate its specific mission. While it operates
+        independently, it inherits many of the core governance principles
+        (e.g., the four-layer model) from 'jibun-os'.
   objectives:
     - id: OBJ1
       description: MVPの初期バージョンをデプロイし、コア機能を実装する。
