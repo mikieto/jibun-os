@@ -1258,3 +1258,47 @@ tasks:
     description: >-
       Implement a UI element and backend logic to save and load a
       user's language preference (EN/JA) in Supabase user_metadata.
+  - id: TASK-2025-08-05-001
+    related_decision: DEC-2025-08-05-001
+    summary: jibun-osの憲章と関連ドキュメントを5層統治モデルに更新する
+    status: todo
+    assignee: mikieto
+    scope: {project: os_platform_v1, domain: documentation}
+    priority: High
+    description: >
+      OSの憲章(constitution.yaml)や関連ドキュメントを修正し、
+      L5: Raw Logs層を追加した新しい5層統治モデルの定義を反映させる。
+  - id: TASK-2025-08-05-002
+    related_decision: DEC-2025-08-05-001
+    summary: PCLのSupabaseテーブル名を`l5_raw_messages`に変更する
+    status: todo
+    assignee: mikieto
+    scope: {project: pcl_navigator_mvp_v1, domain: refactoring}
+    priority: High
+    description: >
+      新しい5層統治モデルの定義に合わせるため、Supabaseのテーブル名を
+      `l4_records_messages`から`l5_raw_messages`に変更し、app.py内の参照も更新する。
+  - id: TASK-2025-08-05-003
+    related_decision: DEC-2025-08-05-003
+    summary: PCLに「AIによる完全自動タイトル生成」機能（L5→L4結晶化）を実装する
+    status: todo
+    assignee: mikieto
+    due: '2025-08-31'
+    scope: {project: pcl_navigator_mvp_v1, domain: feature}
+    priority: High
+    description: >
+      1. 会話の区切りを検知するトリガーを実装する。
+      2. トリガーが発動したら、Gemini APIに会話(L5)を渡し、「この会話のWhyを要約した短いタイトル」を生成させる。
+      3. 生成されたタイトルを、構造化された記録(L4)としてSupabaseの新しいl4_structured_recordsテーブルに自動で保存する。
+      4. サイドバーの会話履歴には、このL4レコードのタイトルを表示する。
+  - id: TASK-2025-08-05-004
+    related_decision: DEC-2025-08-05-004
+    summary: PCLにL4レコードの動的更新機能を実装する
+    status: todo
+    assignee: mikieto
+    scope: {project: pcl_navigator_mvp_v1, domain: feature}
+    priority: Low  # MVP後のタスク
+    description: >-
+      1. L4レコードテーブルに`supersedes_id`フィールドを追加する。
+      2. 要約済みの会話が再開されたことを検知するロジックを実装する。
+      3. 会話の次の区切りで、新しいL4レコードを作成し、その`supersedes_id`に元のレコードIDを記録する。

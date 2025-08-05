@@ -947,3 +947,65 @@ decisions:
       project: pcl_navigator_mvp_v1
       domain: project_management
     severity: Critical
+  - id: DEC-2025-08-05-001
+    timestamp: '2025-08-05T09:38:00+09:00'
+    status: decided
+    summary: 統治モデルを4層から5層構造（L5を追加）に拡張することを決定
+    reason: |
+      PCL Navigatorの導入により、OSが扱うデータが「構造化された記録(L4)」と
+      「生の対話ログ」の2種類に分かれた。両者の役割を明確に分離し、
+      L4層のデータ純度を高く維持するため、生の対話ログをL5層として新たに定義する。
+      これにより、OSの学習精度と情報の完全性を両立させる。
+    scope:
+      project: os_platform_v1
+      domain: system_architecture
+    severity: Critical
+  - id: DEC-2025-08-05-002
+    timestamp: '2025-08-05T09:44:00+09:00'
+    status: decided
+    summary: 知識の結晶化プロセスを「L5→L4→L3」として再定義する
+    reason: |
+      AIによる会話の自動タイトル生成や要約は、生の対話(L5)から構造化された事実(L4)を抽出する行為であり、
+      人間のdecision_log作成と同じ階層の知的作業であると結論付けた。
+      これにより、結晶化のプロセスを「L5(生ログ)→L4(構造化事実)→L3(教訓・パターン)」と再定義し、
+      OSの論理的整合性を高める。
+    scope:
+      project: os_platform_v1
+      domain: system_architecture
+    severity: Critical
+  - id: DEC-2025-08-05-003
+    timestamp: '2025-08-05T10:25:00+09:00'
+    status: decided
+    summary: PCLのL5→L4結晶化UXを、「AIによる完全自動タイトル生成」にすることを最終決定
+    reason: |
+      PCLの究極目的である「OSの仕組みを知らないユーザーでも、無意識のうちに恩恵を受けられる」体験を
+      最も純粋な形で実現するため。ユーザーに「要約しますか？」と問いかけるステップを排除し、
+      AIがバックグラウンドで全自動で会話のタイトル（L4レコード）を生成・保存する方式を採択する。
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: ux
+    severity: Critical
+  - id: DEC-2025-08-05-004
+    timestamp: '2025-08-05T10:28:02+09:00'
+    status: decided
+    summary: L4レコード（会話タイトル）の動的更新機能を導入する方針を決定
+    reason: |
+      一度要約された会話が再開された際に、新しい文脈を加えてL4レコードを更新することで、
+      知識の精度を継続的に向上させるため。ただし、レコードの上書きはせず、
+      新しいレコードが古いレコードを`supersedes`（置き換える）する形で実装し、思考の監査証跡を維持する。
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: feature_enhancement
+    severity: Medium
+  - id: DEC-2025-08-05-005
+    timestamp: '2025-08-05T10:35:00+09:00'
+    status: decided
+    summary: エージェントライブラリの導入はMVP後の検討課題とすることを決定
+    reason: |
+      MVP段階では、OSの核となる5層統治モデルと結晶化プロセスを自前で実装することに集中する。
+      LangChainなどの外部ライブラリは、MVP後の開発スピード向上のための「道具箱」として評価するが、
+      現時点ではOSの思想的な一貫性を優先する。
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: technology_strategy
+    severity: Medium
