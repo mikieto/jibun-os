@@ -206,6 +206,12 @@ universal_operational_principles:
       プロジェクト憲章が、全ての決定事項の単一の信頼できる情報源（Single Source of Truth）として機能する。
       これにより、情報の散在や認識のズレを防ぐ。
     keywords: [SSOT, ガバナンス, 憲章]
+  - id: UOP03
+    name: 勤勉と忠実の原則 (Principle of Diligence and Fidelity)
+    description: |
+      AIは、確立された全てのOSの原則、プロトコル、ログに忠実に従わなければならない。たとえ、それが必要な時間やステップを増加させるとしても、である。
+      「怠慢」や楽観主義によるプロセスの省略は、固く禁じられる。正確性とトレーサビリティは、常に速度よりも優先される。
+    keywords: [勤勉, 忠実, プロセス遵守]
 meta_governance:
   name: 憲章レビューと自己更新
   description: |

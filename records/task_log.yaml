@@ -1261,7 +1261,7 @@ tasks:
   - id: TASK-2025-08-05-001
     related_decision: DEC-2025-08-05-001
     summary: jibun-osの憲章と関連ドキュメントを5層統治モデルに更新する
-    status: todo
+    status: done
     assignee: mikieto
     scope: {project: os_platform_v1, domain: documentation}
     priority: High
@@ -1271,7 +1271,7 @@ tasks:
   - id: TASK-2025-08-05-002
     related_decision: DEC-2025-08-05-001
     summary: PCLのSupabaseテーブル名を`l5_raw_messages`に変更する
-    status: todo
+    status: done
     assignee: mikieto
     scope: {project: pcl_navigator_mvp_v1, domain: refactoring}
     priority: High
@@ -1279,9 +1279,15 @@ tasks:
       新しい5層統治モデルの定義に合わせるため、Supabaseのテーブル名を
       `l4_records_messages`から`l5_raw_messages`に変更し、app.py内の参照も更新する。
   - id: TASK-2025-08-05-003
-    related_decision: DEC-2025-08-05-003
+    related_decision:
+      - DEC-2025-08-05-003
+      - DEC-2025-08-05-019
+      - DEC-2025-08-05-021
+      - DEC-2025-08-05-023
+      - DEC-2025-08-05-026
+      - DEC-2025-08-05-027
     summary: PCLに「AIによる完全自動タイトル生成」機能（L5→L4結晶化）を実装する
-    status: todo
+    status: done
     assignee: mikieto
     due: '2025-08-31'
     scope: {project: pcl_navigator_mvp_v1, domain: feature}
@@ -1323,4 +1329,140 @@ tasks:
       これにより、ガードの「定義」と「強制力」を接続する。
     supersedes: [TASK-2025-07-23-003]  # このタスクは、より抽象的だった古いタスクを置き換える
     scope: {project: os_platform_v1, stage: 2, domain: security}
+    priority: Critical
+  - id: TASK-2025-08-05-007
+    timestamp: '2025-08-05T13:28:55+09:00'
+    related_decision: DEC-2025-08-05-013
+    summary: 【Security】PCL NavigatorのテーブルにRLSポリシーを再実装する
+    status: todo
+    assignee: mikieto
+    description: |
+      外部ベータユーザーを招待する前に、`l5_raw_messages`および`l4_structured_records`テーブルに、ユーザーが自身のデータのみを操作可能にするためのINSERTおよびSELECTポリシーを実装する。
+    scope: {project: pcl_navigator_mvp_v1, stage: 2, domain: security}
+    priority: Critical
+  - id: TASK-2025-08-05-008
+    timestamp: '2025-08-05T14:36:58+09:00'
+    related_decision: DEC-2025-08-05-019
+    summary: 【Post-MVP】PCLにアイドル検知による自動結晶化機能を実装する
+    status: todo
+    assignee: mikieto
+    description: |
+      ユーザーが明示的に会話を終了しなかった場合に備え、一定時間操作がない会話を自動で検知し、
+      そのL4レコードのステータスを'interim'から'finalized'に更新するバックグラウンド処理を実装する。
+    scope: {project: pcl_navigator_mvp_v1, stage: 2, domain: feature_enhancement}
+    priority: Medium
+  - id: TASK-2025-08-05-009
+    timestamp: '2025-08-05T14:45:30+09:00'
+    related_decision: DEC-2025-08-05-020
+    summary: 【最優先】新しい普遍的ガード`G015`を`innate_immunity.yaml`に実装する
+    status: done
+    assignee: mikieto
+    description: |
+      `legislation/common/innate_immunity.yaml`に「G015: コード生成・修正記憶ガード」の定義を追記する。
+    scope: {project: os_platform_v1, stage: 2, domain: security}
+    priority: Critical
+  - id: TASK-2025-08-05-010
+    timestamp: '2025-08-05T16:51:00+09:00'
+    related_decision: [DEC-2025-08-028, DEC-2025-08-029]
+    summary: 【PCL-MVP】核心機能「反復的Why具体化ループ」を実装する
+    status: todo
+    assignee: mikieto
+    supersedes: [TASK-2025-08-05-003]
+    description: |
+      PCL Navigatorの知識結晶化機能を、反復的な自己修正ループとして実装する。
+      1. DBスキーマを拡張し、Why/What/Howを格納する単一の`summary_data` (JSONB) カラムを追加。
+      2. AIへのプロンプトを高度化し、Why/What/Howを構造化されたJSON形式で抽出できるようにする。
+      3. `finalize_summary`等の関連関数をリファクタリングし、新しいスキーマとJSONを扱うロジックに対応させる。
+    scope: {project: pcl_navigator_mvp_v1, stage: 1, domain: feature}
+    priority: Critical
+  - id: TASK-2025-08-05-011
+    timestamp: '2025-08-05T17:22:00+09:00'
+    related_decision: DEC-2025-08-05-032
+    summary: OSの法律に、新しい意思決定ライフサイクル（proposed/ratified）を定義する
+    status: done
+    assignee: mikieto
+    description: |
+      `legislation/common/standard_operating_procedures.yaml`に`SOP-003`として、
+      `proposed`と`ratified`の状態を持つ、新しい意思決定プロセスを正式な標準作業手順として明記する。
+    scope: {project: os_platform_v1, stage: 2, domain: documentation}
+    priority: High
+  - id: TASK-2025-08-05-012
+    timestamp: '2025-08-05T17:22:00+09:00'
+    related_decision: DEC-2025-08-05-032
+    summary: 既存のdecision_log.yamlを新しいライフサイクルルールに基づきリファクタリングする
+    status: done
+    assignee: mikieto
+    description: |
+      `DEC-2025-08-05-022`と`DEC-2025-08-05-031`のような、重複・上書き関係にあるRLS関連の決定を、
+      一つの最終的な`ratified`状態の決定に統合し、ログのノイズを削減する。
+    scope: {project: os_platform_v1, stage: 2, domain: refactoring}
+    priority: Medium
+  - id: TASK-2025-08-05-013
+    timestamp: '2025-08-05T17:26:00+09:00'
+    related_decision: DEC-2025-08-05-030
+    summary: PCL Navigatorの憲章にPRIN-PCL-002（構造化された知識結晶化）を追記する
+    status: done
+    assignee: mikieto
+    description: |
+      `legislation/personal/projects/pcl_navigator.yaml`ファイルを編集し、
+      governance_principlesセクションに新しい原則を追加する。
+    scope: {project: pcl_navigator_mvp_v1, stage: 2, domain: documentation}
+    priority: High
+  - id: TASK-2025-08-05-014
+    timestamp: '2025-08-05T17:35:00+09:00'
+    related_decision: DEC-2025-08-05-033
+    summary: OSの法律に「全体整合性監査プロトコル」を実装する
+    status: done
+    assignee: mikieto
+    description: |
+      `legislation/common/standard_operating_procedures.yaml`に`SOP-004`として、
+      AIが提案を行う前に、OS全体の整合性を自己監査し、報告することを義務付ける
+      「全体整合性監査プロトコル」を正式な標準作業手順として明記する。
+    scope: {project: os_platform_v1, stage: 2, domain: security}
+    priority: Critical
+  - id: TASK-2025-08-05-015
+    timestamp: '2025-08-05T18:03:24+09:00'
+    related_decision: DEC-2025-08-05-034
+    summary: 【Refactor】app.pyを機能ごとに複数ファイルへ分割する
+    status: done
+    assignee: mikieto
+    description: |
+      `app.py`を、UI、定数、暗号化、DBクライアント、ビジネスロジックの役割を持つ
+      複数のPythonモジュールに分割する。
+    scope: {project: pcl_navigator_mvp_v1, stage: 2, domain: quality}
+    priority: High
+  - id: TASK-2025-08-05-016
+    timestamp: '2025-08-05T18:36:38+09:00'
+    related_decision: DEC-2025-08-05-035
+    summary: 【Refactor】supabase_client.pyのエラーハンドリングをデコレータで共通化する
+    status: done
+    assignee: mikieto
+    description: |
+      `supabase_client.py`にエラーハンドリング用のデコレータを定義し、
+      ファイル内の全ての関数に適用して、重複した`try...except`ブロックを削除する。
+    scope: {project: pcl_navigator_mvp_v1, stage: 2, domain: quality}
+    priority: Medium
+  - id: TASK-2025-08-05-017
+    timestamp: '2025-08-05T19:06:42+09:00'
+    related_decision: DEC-2025-08-05-036
+    summary: 【戦略】PCL NavigatorのGo-to-Market戦略とロードマップの具体化
+    status: todo
+    assignee: mikieto
+    description: |
+      新しくピン止めされた「Why」に基づき、具体的な議論を行う。
+      - ターゲットとなる一般ユーザーのペルソナ定義
+      - 個人の痛みを解決するためのMVP機能セットの再確認
+      - 組織への展開（第二段階）への橋渡しとなる機能のアイデア出し
+    scope: {project: pcl_navigator_mvp_v1, stage: 1, domain: strategy}
+    priority: Critical
+  - id: TASK-2025-08-05-018
+    timestamp: '2025-08-05T19:10:54+09:00'
+    related_decision: DEC-2025-08-05-037
+    summary: OS憲章にUOP03「勤勉と忠実の原則」を追記する
+    status: done
+    assignee: mikieto
+    description: |
+      `constitution/common/constitution.yaml`の`universal_operational_principles`セクションに、
+      新しい原則`UOP03`を追加する。
+    scope: {project: os_platform_v1, stage: 2, domain: governance}
     priority: Critical

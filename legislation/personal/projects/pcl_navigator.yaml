@@ -8,6 +8,17 @@ project_charter:
     description: >
       AIチャットの「コンテキスト途切れ」問題を解決し、ユーザーの思考をナビゲートする
       知的パートナーとしての価値を検証する。
+  governance_principles:
+    - id: PRIN-PCL-001
+      name: Privacy First (End-to-End Encryption)
+      description: |
+        全てのユーザー生成コンテンツ（L4およびL5）は、ユーザーのパスワードから派生したキーでのみ復号可能な、強力なエンドツーエンド暗号化によって保護されなければならない。
+        この原則は、コンプライアンス上の最重要要件であり、いかなる機能開発よりも優先される。
+    - id: PRIN-PCL-002
+      name: Structured Knowledge Crystallization
+      description: |
+        本サービスは、生の会話（L5）を、その会話の「本質的な目的（Why）」、「具体的なトピック（What）」、そして「結論や次の行動（How）」を捉えた、構造化されたレコード（L4）へと結晶化させなければならない。
+        この構造化されたデータが、ユーザーの内省と、将来のAIによる洞察の基盤となる。
   relationships:
     - type: origin
       name: jibun-os

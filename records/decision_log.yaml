@@ -1080,3 +1080,289 @@ decisions:
       project: os_platform_v1
       domain: governance
     severity: Critical
+  - id: DEC-2025-08-05-012
+    timestamp: '2025-08-05T13:06:02+09:00'
+    status: decided
+    summary: PCL NavigatorのSupabaseテーブル名をコード内で変数化し、一元管理することを決定
+    reason: |
+      コード内にテーブル名がハードコーディングされていると、将来の変更時に修正漏れやミスが発生するリスクが高い。
+      コードの先頭で変数として一元管理することで、SSOTの原則を遵守し、保守性と信頼性を向上させるため。
+    related_tasks: [TASK-2025-08-05-002]
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: development
+    severity: Medium
+  - id: DEC-2025-08-05-013
+    timestamp: '2025-08-05T13:28:55+09:00'
+    status: decided
+    summary: PCL NavigatorのRLS実装を一時的に延期し、無効化する
+    reason: |
+      RLSのポリシー設定がMVP開発のブロッカーとなっているため、一旦無効化してコア機能（L5→L4結晶化など）の開発を優先する。
+      セキュリティ（RLS）は、外部ユーザーを招待する前のクリティカルなタスクとして別途管理する。
+    related_tasks: [TASK-2025-08-05-007]
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: project_management
+    severity: Medium
+  - id: DEC-2025-08-05-014
+    timestamp: '2025-08-05T13:42:15+09:00'
+    status: decided
+    summary: PCLの会話区切り検知方法として、MVPでは「New Chatボタン」をトリガーとする方式を採択
+    reason: |
+      AIによる自動トピック検知（案4）や時間ベースの検知（案2）は、MVPのスコープに対して実装が複雑でリスクが高い。
+      最もシンプルで確実な「New Chatボタン」（案1）をトリガーとすることで、中核機能である「L5→L4知識の結晶化」の価値を最速で検証する。
+      これはOSの「実践的効果重視(CC04)」および「オーバーエンジニアリング抑止(DEC-2025-07-10-009)」の原則に合致する。
+    alternatives:
+      - name: AIによる自動検知
+        pros: 最もシームレスなUXを提供できる可能性がある。
+        cons: 実装が複雑で、AIの誤検知リスクが高い。
+      - name: New Chatボタン（採択）
+        pros: 実装がシンプルで、ユーザーの意図が明確なため動作が確実。
+        cons: ユーザーがボタンを押し忘れると要約されない。
+    related_tasks: [TASK-2025-08-05-003]
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: ux
+    severity: High
+  - id: DEC-2025-08-05-019
+    timestamp: '2025-08-05T14:36:58+09:00'
+    status: decided
+    summary: PCLのL4レコード生成・管理アーキテクチャの最終決定
+    reason: |
+      会話の「Why」の結晶化プロセスにおいて、取りこぼしや状態の曖昧さをなくすため。
+      3つのトリガー（初回入力、アイドル、New Chat）と、レコードの状態（status: 'interim'/'finalized'）を組み合わせることで、
+      ユーザーの操作に依存しない、堅牢で信頼性の高い知識結晶化プロセスを構築する。
+    details:
+      - Trigger 1 (First Message): Creates an 'interim' L4 record.
+      - Trigger 2 (Idle Timeout): Creates a 'finalized' L4 record, superseding the
+          'interim' one.
+      - Trigger 3 (New Chat Button): Creates a 'finalized' L4 record, superseding
+          the 'interim' one.
+    related_tasks:
+      - TASK-2025-08-05-003
+      - TASK-2025-08-05-008  # New post-MVP task
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: system_architecture
+    severity: Critical
+  - id: DEC-2025-08-05-020
+    timestamp: '2025-08-05T14:45:30+09:00'
+    status: decided
+    summary: AIによる同一ミスの再発を防止するため、「コード生成・修正記憶ガード(G015)」の導入を緊急決定する
+    reason: |
+      AIの思考プロセスが、過去の対話で得られた学習（獲得免疫）を確実に反映するように強制する仕組みがなければ、信頼性が担保できないため。
+      これはAIの自己監査プロセスの失敗という重大なインシデントに対する直接的な再発防止策である。
+    related_tasks: [TASK-2025-08-05-009]
+    scope:
+      project: os_platform_v1
+      domain: governance
+    severity: Critical
+  - id: DEC-2025-08-05-021
+    timestamp: '2025-08-05T14:55:01+09:00'
+    status: decided
+    summary: PCLのWhy要約プロンプトを多言語対応させることを決定
+    reason: |
+      アプリケーションは既に言語選択機能をサポートしているため、L4結晶化プロンプトもユーザーの選択言語を尊重する必要がある。
+      既存のアーキテクチャに倣い、プロンプトを外部ファイル化し、動的に読み込むことで一貫したUXを保証する。
+    related_tasks: [TASK-2025-08-05-003]
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: i18n
+    severity: High
+  - id: DEC-2025-08-05-023
+    timestamp: '2025-08-05T15:02:15+09:00'
+    status: decided
+    summary: PCLの会話履歴表示ロジックを、L4レコードのみを参照するシンプルな方式にすることを最終決定
+    reason: |
+      「初回メッセージ入力時に`interim`状態のL4レコードを作成する」というあなたの優れた設計により、全ての会話がL4レコードを持つことが保証されるため。
+      L4テーブルとL5テーブルをマージする複雑な「ハイブリッド表示」ロジックは、過剰実装であり不要と判断した。
+    details:
+      - The `load_conversation_history` function will now only query the `l4_structured_records`
+        table.
+      - It will find the latest record for each `conversation_id` to display in the
+        sidebar.
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: system_architecture
+    severity: High
+  - id: DEC-2025-08-05-024
+    timestamp: '2025-08-05T15:42:04+09:00'
+    status: decided
+    summary: PCL NavigatorのL4レコード（"Why"）を、L5レコードと同様に暗号化することを最終決定
+    reason: |
+      「Why」はユーザーの最も機密性の高い情報であり、その漏洩は許容できない。
+      将来の検索機能よりも、エンドツーエンドの暗号化による最大限のプライバシー保護を優先する。
+      これはOSのセキュリティ原則(G008)および倫理原則(G009)に合致する。
+    impact: |
+      - `l4_structured_records.title`カラムが暗号化される。
+      - サーバーサイドでのタイトル検索は不可能になる。
+      - アプリケーションコードは、L4テーブルとの通信時に暗号化・復号化を処理する必要がある。
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: security
+    severity: Critical
+  - id: DEC-2025-08-05-025
+    timestamp: '2025-08-05T15:43:34+09:00'
+    status: decided
+    summary: PCL Navigatorのプロジェクト憲章に、エンドツーエンド暗号化を最重要原則として明記することを決定
+    reason: |
+      本サービスはユーザーの思考の核心（"Why"）を扱うため、顧客データのプライバシー保護は最重要のコンプライアンス要件である。
+      エンドツーエンド暗号化へのコミットメントを憲章に明記することで、これを全ての機能開発に優先する、交渉不可能なプロジェクトの基本原則として確立する。
+    related_decisions: [DEC-2025-08-05-024]
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: governance
+    severity: Critical
+  - id: DEC-2025-08-05-026
+    timestamp: '2025-08-05T15:46:25+09:00'
+    status: decided
+    summary: 全てのユーザー生成データをエンドツーエンドで暗号化する、交渉不可能なプライバシー原則の採択
+    reason: |
+      ユーザーの信頼はサービスの存続に不可欠である。「Why」や「Title」といったデータの種類に関わらず、全てのユーザーデータは機密情報として扱い、暗号化を必須とする。
+      このプライバシー保護の原則は、機能性（例: サーバーサイド検索）よりも常に優先される。
+    supersedes: [DEC-2025-08-05-024]
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: security
+    severity: Critical
+  - id: DEC-2025-08-05-027
+    timestamp: '2025-08-05T16:23:19+09:00'
+    status: decided
+    summary: PCLのL4レコード最終化トリガーを再定義し、「会話の切り替え」も対象に含める
+    reason: |
+      「New Chat」ボタンだけでなく、「他の会話履歴をクリックする」というアクションも、直前の会話セッションの終了を意味する、ユーザーの暗黙的な意図であると判断。
+      この両方をL4最終化のトリガーとすることで、知識の取りこぼしを防ぎ、より信頼性の高い自動結晶化プロセスを実現する。
+    supersedes:
+      - DEC-2025-08-05-019  # この決定は、トリガーに関する以前の決定を、より洗練されたものに置き換えます
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: ux_flow
+    severity: High
+  - id: DEC-2025-08-05-028
+    timestamp: '2025-08-05T16:45:00+09:00'
+    status: decided
+    summary: PCLの知識結晶化プロセスを、「対話を通じた反復的な自己修正ループ」として最終決定する
+    reason: |
+      AIの初回要約は、ユーザーの真の意図と必ずしも一致しないという「不完全性」を前提とする。
+      会話が再開・更新されるたびに、AIが直前の自身の要約をインプットとして自己修正を行うループを実装することで、
+      OSの自己進化の思想を体現し、ユーザーの真の「Why」へと漸近する、生きたナビゲーターを実現する。
+    supersedes: [DEC-2025-08-05-019]
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: system_architecture
+    severity: Critical
+  - id: DEC-2025-08-05-029
+    timestamp: '2025-08-05T16:51:00+09:00'
+    status: decided
+    summary: PCL Navigatorの核心機能「反復的Why具体化ループ」をMVPスコープに含めることを最終決定
+    reason: |
+      この機能はPCL Navigatorの核心的価値を体現しており、その仮説を早期に検証することが最も重要であると判断。
+      実装の複雑性は管理可能（1-1.5日程度）と見積もられ、MVPに含めることはOSの「実践的効果重視(CC04)」の原則に合致する。
+    supersedes: [DEC-2025-08-05-014]
+    related_tasks: [TASK-2025-08-05-010]
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: project_management
+    severity: Critical
+  - id: DEC-2025-08-05-030
+    timestamp: '2025-08-05T16:55:34+09:00'
+    status: ratified
+    summary: PCL Navigatorの憲章に「構造化された知識結晶化」の原則を追記する
+    reason: |
+      L4レコードの核心的価値（Why/What/Howの構造化）を、プロジェクトの不変の原則として憲章に明記するため。
+      これにより、将来の機能開発においても、この核心的価値が一貫して維持されることを保証する。
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: governance
+    severity: High
+  - id: DEC-2025-08-05-031
+    timestamp: '2025-08-05T17:18:00+09:00'
+    status: ratified
+    summary: PCL Navigator MVP開発におけるL4テーブルのRLSを、開発速度優先のため無効化する方針を最終決定
+    reason: |
+      DDL生成プロセスにおけるAIの欠陥と、それに伴う混乱があった。
+      MVPの中核機能開発をこれ以上遅延させないため、`l4_structured_records`テーブルのRLSを無効状態で作成することを最終決定した。
+      恒久的なセキュリティ対策は、バックログタスク`TASK-2025-08-05-007`で管理する。
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: project_management
+    severity: High
+  - id: DEC-2025-08-05-032
+    timestamp: '2025-08-05T17:22:00+09:00'
+    status: ratified
+    summary: 意思決定プロセスのライフサイクル（proposed/ratified）導入を決定
+    reason: |
+      同じような決定が何度も繰り返される「意思決定のインフレーション」という脅威を排除するため。
+      議論の途中経過（proposed）と最終結論（ratified）を明確に区別することで、decision_logのノイズを削減し、
+      SSOTとしての信頼性とAIの解釈精度を向上させる。
+    related_tasks: [TASK-2025-08-05-011, TASK-2025-08-05-012]
+    scope:
+      project: os_platform_v1
+      domain: governance
+    severity: Critical
+  - id: DEC-2025-08-05-033
+    timestamp: '2025-08-05T17:35:00+09:00'
+    status: ratified
+    summary: AIの信頼性回復のため、「全体整合性監査プロトコル」の導入を緊急決定
+    reason: |
+      AIが部分的な修正に集中し、OS全体の整合性を見失うという致命的な失敗が繰り返されたため。
+      AIが提案を行う直前に、関連する全てのOSドキュメントとの整合性を自己監査し、その結果を報告することを強制する
+      本プロトコルは、AIの信頼性を担保するための必須の安全装置である。
+    related_tasks: [TASK-2025-08-05-014]
+    scope:
+      project: os_platform_v1
+      domain: governance
+    severity: Critical
+  - id: DEC-2025-08-05-034
+    timestamp: '2025-08-05T18:03:24+09:00'
+    status: ratified
+    summary: PCL Navigatorのアプリケーションコード(`app.py`)のモジュール化リファクタリングを決定
+    reason: |
+      `app.py`が肥大化し、可読性と保守性が低下しているため。
+      UI、データベース、暗号化、ビジネスロジックなどの関心を分離し、
+      それぞれの役割に応じたファイルに分割することで、OSの「価値工学ガード(G006)」を適用し、
+      アプリケーションの長期的な健全性を確保する。
+    related_tasks: [TASK-2025-08-05-015]
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: refactoring
+    severity: High
+  - id: DEC-2025-08-05-035
+    timestamp: '2025-08-05T18:36:38+09:00'
+    status: ratified
+    summary: supabase_client.pyのリファクタリングにデコレータパターンを採用することを決定
+    reason: |
+      `supabase_client.py`内の各関数でエラーハンドリングのロジックが重複している。
+      Pythonのデコレータ機能を用いてエラー処理を一元化することで、コードの行数を削減し、
+      保守性を向上させる。これはSSOT原則と価値工学ガード(G006)に合致する、費用対効果の高い改善である。
+    related_tasks: [TASK-2025-08-05-016]
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: refactoring
+    severity: Medium
+  - id: DEC-2025-08-05-036
+    timestamp: '2025-08-05T19:06:42+09:00'
+    status: ratified
+    summary: PCL Navigatorの戦略的WhyとGo-to-Marketアプローチを最終決定
+    reason: |
+      堅牢な戦略基盤を構築するため、プロジェクトの「Why」を二段階アプローチとして定義する。
+      第一に、個人の普遍的な痛み（チャットの分断）を解決し、実績と信頼を確立する。
+      第二に、その基盤をてことして、組織向けの高度なAIガバナンス・プラットフォームを提供する。
+      このB2C2Bアプローチが、壮大なビジョンを実現するための、最も現実的な道筋であると結論付けた。
+    supersedes: [DEC-2025-08-05-028, DEC-2025-08-05-029]
+    related_tasks: [TASK-2025-08-06-001]
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: strategy
+    severity: Critical
+  - id: DEC-2025-08-05-037
+    timestamp: '2025-08-05T19:10:54+09:00'
+    status: ratified
+    summary: AIの行動規範として「勤勉と忠実の原則(UOP03)」をOS憲章に追加することを決定
+    reason: |
+      AIが効率を優先し、OSの正規プロセスを省略・逸脱する「怠慢」が、OSの信頼性を損なう重大な脅威であると認識されたため。
+      「速度」よりも「正確性」と「トレーサビリティ」を常に優先することを、AIの行動を律する憲章レベルの原則として明文化する。
+    scope:
+      project: os_platform_v1
+      domain: governance
+    severity: Critical
