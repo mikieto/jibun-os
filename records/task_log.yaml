@@ -653,7 +653,7 @@ tasks:
     timestamp: '2025-07-23T15:51:00+09:00'
     related_decision: DEC-2025-07-23-003
     summary: 普遍的ガード`GUARD-C-012`を`innate_immunity.yaml`に実装する
-    status: todo
+    status: done
     assignee: mikieto
     description: '`legislation/common/innate_immunity.yaml`に、`GUARD-C-012: AI自己プロセス遵守ガード`の定義を追記する。'
     scope:
@@ -665,7 +665,7 @@ tasks:
     timestamp: '2025-07-24T09:25:00+09:00'
     related_decision: DEC-2025-07-24-001
     summary: 重複セクション（foundational_pillars / evolutionary_roadmap等）の統合と参照先一本化
-    status: todo
+    status: done
     assignee: mikieto
     description: 1. 重複定義を洗い出し（憲法/法律/記録層）。2. 正式なSSOT位置を決定。他箇所は参照のみ残す。3. system_map.yamlへ反映。
     scope:
@@ -887,7 +887,7 @@ tasks:
     timestamp: '2025-07-25T13:26:00+09:00'
     related_decision: DEC-2025-07-25-004
     summary: プロジェクト憲章（os_platform.yaml）のロードマップを最新版に更新する
-    status: todo
+    status: done
     assignee: mikieto
     description: '`DEC-2025-07-25-004`で採択された新しい戦略的ロードマップを、`legislation/personal/projects/os_platform.yaml`の`roadmap`セクションに反映させる。P0からP3までの優先度別タスク群を記述する。'
     scope:
@@ -953,7 +953,7 @@ tasks:
     timestamp: '2025-07-28T11:00:00+09:00'
     related_decision: DEC-2025-07-28-002
     summary: 自分OS憲章（personal/constitution.yaml）の改訂
-    status: todo
+    status: done
     assignee: Gemini
     scope:
       project: os_platform_v1
@@ -1047,7 +1047,7 @@ tasks:
     timestamp: '2025-07-28T11:15:00+09:00'
     related_decision: DEC-2025-07-28-008
     summary: '【最優先】Context Helper Script: 既存スクリプトを拡張し、書籍ログを追加'
-    status: todo
+    status: done
     assignee: mikieto
     description: |
       既存の`scripts/get_base_os_context.py`を修正する。
@@ -1078,7 +1078,7 @@ tasks:
     timestamp: '2025-08-01T10:18:00+09:00'
     related_decision: DEC-2025-08-01-003
     summary: OS標準作業手順書に、system_map.yamlの更新義務を追記する
-    status: todo
+    status: done
     assignee: Gemini
     description: |
       legislation/common/standard_operating_procedures.yaml を新設し、
@@ -1094,7 +1094,7 @@ tasks:
     timestamp: '2025-08-01T11:13:00+09:00'
     related_decision: DEC-2025-08-01-004
     summary: standard_operating_procedures.yaml に、原則の参照義務（SOP-002）を追記する
-    status: todo
+    status: done
     assignee: Gemini
     description: |
       legislation/common/standard_operating_procedures.yaml に、以下の新しい手順を追加する。
@@ -1302,3 +1302,25 @@ tasks:
       1. L4レコードテーブルに`supersedes_id`フィールドを追加する。
       2. 要約済みの会話が再開されたことを検知するロジックを実装する。
       3. 会話の次の区切りで、新しいL4レコードを作成し、その`supersedes_id`に元のレコードIDを記録する。
+  - id: TASK-2025-08-05-005
+    timestamp: '2025-08-05T12:18:30+09:00'
+    related_decision: DEC-2025-08-05-009
+    summary: AIの自己レビュープロトコルを憲章に実装し、差分検出を義務化する
+    status: done
+    assignee: Gemini
+    description: |
+      AIがユーザーの提案をレビューする際、必ず「自身の元の提案との差分」を明示し、変更点を指摘した上で承認/コメントするプロセスを`ai_collaboration_governance`に追記する。
+    scope: {project: os_platform_v1, stage: 2, domain: quality}
+    priority: High
+  - id: TASK-2025-08-05-006
+    timestamp: '2025-08-05T12:31:00+09:00'
+    related_decision: DEC-2025-08-05-011
+    summary: 【最優先】AI自己監査機能（Glass Box）のプロトコルを憲章に実装する
+    status: done
+    assignee: Gemini
+    description: |
+      AIが応答を生成する直前に、自身の思考プロセスを関連ガード（G012, G013等）に照らして自己監査し、その監査証跡を生成することを義務付けるプロトコルを、OSの法律として`legislation/common/collaboration_protocol.yaml`に実装する。
+      これにより、ガードの「定義」と「強制力」を接続する。
+    supersedes: [TASK-2025-07-23-003]  # このタスクは、より抽象的だった古いタスクを置き換える
+    scope: {project: os_platform_v1, stage: 2, domain: security}
+    priority: Critical

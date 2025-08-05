@@ -23,7 +23,7 @@ supreme_purpose_motivation: |
   それは、成果主義とAI代替への不安、そして完璧主義ゆえに失敗を恐れ行動を止めてしまう自己矛盾といった、具体的な課題認識から生まれている。
   本OSは、これらの課題を解決し、自身の強みである「体系化能力」を用いて「弱さ」を「価値」へと転換するための、ナビゲーションシステムである。
 governance_structure:
-  name: 四階層モデル
+  name: 多層統治モデル
   description: |
     第一条の目的を達成するため、堅牢な「統治機構」を定める。
     これは混沌とした経験から普遍的な原則を生み出すための、知的生産の全体構造である。
@@ -53,13 +53,19 @@ governance_structure:
           - feedback_derived: |
               外部フィードバックループから抽出された行動パターンであることを示す。
     - id: L4
-      name: Records (記録・経験)
+      name: Structured Records (構造化された記録)
       path: /records/
-      description: 日々の活動、思考、感情、事実など、生の経験の記録。
+      description: |-
+        日々の活動、思考、事実など、生の経験(L5)から構造化された記録。(例: decision_log.yaml, task_log.yaml, guard_log.yaml)
+    - id: L5
+      name: Raw Logs (生ログ)
+      path: /logs/
+      description: |-
+        各種ツールや対話から生成される、一切加工されていない生のログデータ。PCL Navigatorのようなシステム的支援がない限り、必ずしも収集できるものではない。
 evolution_engine:
   name: 知的免疫システム
   description: |
-    四階層の構造に生命を吹き込み、自己進化を可能にする成長エンジン。
+    多層の構造に生命を吹き込み、自己進化を可能にする成長エンジン。
     システムを脅威から守るだけでなく、積極的に機会を発見し、適応的に成長していく能力を与える。
   components:
     - type: innate_immunity

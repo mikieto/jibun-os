@@ -1009,3 +1009,74 @@ decisions:
       project: pcl_navigator_mvp_v1
       domain: technology_strategy
     severity: Medium
+  - id: DEC-2025-08-05-006
+    timestamp: '2025-08-05T11:51:58+09:00'
+    status: decided
+    summary: PCL NavigatorのStreamlit Cloudへのデプロイタスクを後回しにすることを決定
+    reason: |
+      現在の利用者はOS所有者のみであり、ローカル環境での開発・検証で十分であるため。
+      リソースをより優先度の高いコア機能（5層モデルへの移行、知識の結晶化）の実装に集中させる。
+      これはOSの基本原則「実践的効果重視 (CC04)」に合致する。
+    related_tasks: [TASK-2025-08-04-004]
+    scope:
+      project: pcl_navigator_mvp_v1
+      domain: project_management
+    severity: Medium
+  - id: DEC-2025-08-05-007
+    timestamp: '2025-08-05T11:58:54+09:00'
+    status: decided
+    summary: OS憲章のL4層の定義に、具体的なログファイル例を追記することを決定
+    reason: |
+      L4（構造化された記録）層の定義が抽象的であったため、`decision_log.yaml`や`task_log.yaml`といった具体的なファイル名を例として追記することで、定義の明確性を向上させる。
+      これにより、OSの理解しやすさと運用の一貫性が高まる。これはOSの基本原則「具体性による価値伝達(CC06)」に合致する。
+    scope:
+      project: os_platform_v1
+      domain: documentation
+    severity: Low
+  - id: DEC-2025-08-05-008
+    timestamp: '2025-08-05T12:01:00+09:00'
+    status: decided
+    summary: 統治モデルの名称を「四階層モデル」から「多層統治モデル」に変更し、L5の制約を追記する
+    reason: |
+      OSの統治モデルが将来の進化に対応できるよう、特定の層の数に依存しない「多層統治モデル」という普遍的な名称に変更する。
+      また、L5（生ログ）層の説明に「PCL Navigatorのようなシステム的支援がない限り、必ずしも収集できるものではない」という現実的な制約を追記し、OSの透明性と実用性を高める。
+    scope:
+      project: os_platform_v1
+      domain: documentation
+    severity: Medium
+  - id: DEC-2025-08-05-009
+    timestamp: '2025-08-05T12:18:30+09:00'
+    status: decided
+    summary: AIのガード機能低下インシデントを受け、知的免疫システムの強化策を採択
+    reason: |
+      直近の対話で発生したAIの自己レビュー不備（インシデント）の再発を防止するため。
+      失敗を`guard_log`に記録し資産化すると同時に、AIの自己レビュープロセス自体を憲章レベルで強化するタスク (`TASK-2025-08-05-005`) を実行することで、OSの自己進化を促進する。
+      これは「不完全性の受容と戦略的活用(CC07)」の原則を実践するものである。
+    related_tasks: [TASK-2025-08-05-005]
+    scope:
+      project: os_platform_v1
+      domain: governance
+    severity: High
+  - id: DEC-2025-08-05-010
+    timestamp: '2025-08-05T12:24:03+09:00'
+    status: decided
+    summary: AI自己レビュープロトコルの実装場所を憲章から法律（collaboration_protocol.yaml）に変更
+    reason: |
+      当初TASK-2025-08-05-005では憲章への実装を想定していたが、対話を通じて、より専門的な法律ファイルである`legislation/common/collaboration_protocol.yaml`に配置する方が、OSの「関心の分離」と「既存の整合性」の原則に合致すると判断したため。
+    related_tasks: [TASK-2025-08-05-005]
+    scope:
+      project: os_platform_v1
+      domain: system_architecture
+    severity: Medium
+  - id: DEC-2025-08-05-011
+    timestamp: '2025-08-05T12:31:00+09:00'
+    status: decided
+    summary: AIの信頼性回復のため、自己監査機能（Glass Box）の実装を最優先タスクとして決定
+    reason: |
+      AIの知的免疫システムが自己のルール違反を検知・防止できなかった重大なインシデントの再発を防止するため。
+      AIの思考プロセスをOSのルールに強制的に準拠させる「自己監査機能」を実装することは、AIへの信頼を回復し、OSの健全な自己進化を担保するための絶対的な要件であると判断した。
+    related_tasks: [TASK-2025-08-05-006]
+    scope:
+      project: os_platform_v1
+      domain: governance
+    severity: Critical
