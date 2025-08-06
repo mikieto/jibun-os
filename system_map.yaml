@@ -144,6 +144,15 @@ system_architecture:
           context_level: personal_data
           description: 固定プロフィール
           dependencies: []
+        - path: legislation/personal/personas.yaml
+          role: application_personas
+          description: |
+            OSが外部世界と相互作用する際に用いる、応用ペルソナのマスター定義ファイル。
+            VC、読者、採用担当者といった外部ステークホルダーや、
+            著者、開発者といったプロジェクト固有の内部役割を定義する。
+          context_level: base_os_context
+          dependencies:
+            - constitution/common/constitution.yaml
 
         # --- Jibun OS 開発プロジェクト ---
         - path: legislation/personal/projects/os_platform.yaml
@@ -252,7 +261,12 @@ system_architecture:
       context_level: operational_tooling
       description: Python 依存ライブラリ
       dependencies: []
-    - path: schema/os_architecture.schema.json
+    - path: schema/system_map.schema.json
+      role: os_schema_definition
+      context_level: operational_tooling
+      description: YAML/JSON スキーマ
+      dependencies: []
+    - path: schema/perusonas.schema.json
       role: os_schema_definition
       context_level: operational_tooling
       description: YAML/JSON スキーマ

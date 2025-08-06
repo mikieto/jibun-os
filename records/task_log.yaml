@@ -1466,3 +1466,79 @@ tasks:
       新しい原則`UOP03`を追加する。
     scope: {project: os_platform_v1, stage: 2, domain: governance}
     priority: Critical
+  - id: TASK-2025-08-06-001
+    timestamp: '2025-08-06T11:53:00+09:00'
+    related_decision: DEC-2025-08-06-001
+    summary: 'ペルソナ管理フレームワークの実装 (Phase 1: 法制化とスキーマ定義)'
+    status: todo
+    assignee: mikieto
+    description: |
+      DEC-2025-08-06-001に基づき、OS全体で利用可能なペルソナ管理の基盤を構築する。
+      1. **法制化:** `legislation/common/personas.yaml`ファイルを新設し、プロジェクト横断的なペルソナのSSOTとする。
+      2. **スキーマ定義:** ペルソナを定義するための標準スキーマ（id, name, role, motivation, assessment_weights, governance_focusなど）を決定し、ドキュメント化する。
+      3. **初期ペルソナの移行:** PCL Navigatorや書籍執筆で検討された既存のペルソナ（VC, Angel, 読者など）を、新しいスキーマに従って`personas.yaml`に記録する。
+      4. **OSへの統合:** `system_map.yaml`に`personas.yaml`を正式に登録し、動的コンテキストエンジンが認識できるようにする。
+      5. **品質保証:** `personas.yaml`の構造を検証するためのCIチェック（JSON Schema等）を追加する。
+    scope:
+      project: os_platform_v1
+      domain: system_architecture
+    priority: Critical
+  - id: TASK-2025-08-06-002
+    timestamp: '2025-08-06T12:26:00+09:00'
+    related_decision: DEC-2025-08-06-001  # ペルソナ導入の議論から派生
+    summary: 【技術的負債】OS全体の整合性を保証するため、`os_architecture.schema.json`（マスタースキーマ）を再整備・有効化する
+    status: todo
+    assignee: mikieto
+    description: |
+      OS全体の構造定義のSSOTであるマスタースキーマが現在機能していない。
+      将来的には、各YAMLファイルの構造を定義した個別スキーマ（例: personas.schema.json）を、
+      マスタースキーマから`$ref`で参照するハイブリッド方式を実装し、OS全体の構造検証を
+      より堅牢かつ体系的に行うことを目指す。
+    scope:
+      project: os_platform_v1
+      domain: refactoring
+    priority: Medium
+  - id: TASK-2025-08-06-003
+    timestamp: '2025-08-06T12:34:00+09:00'
+    related_decision: DEC-2025-08-06-002
+    summary: 【リファクタリング】マスタースキーマのファイル名を`system_map.schema.json`に変更し、関連ファイルを更新
+    status: todo
+    assignee: mikieto
+    description: |
+      DEC-2025-08-06-002に基づき、スキーマの命名規則を適用し、OSの一貫性を向上させる。
+      1. **ファイル名の変更:** `schema/os_architecture.schema.json` を `schema/system_map.schema.json` にリネームする。
+      2. **CIワークフローの更新:** `.github/workflows/validate.yaml` 内で参照しているスキーマのパスを、新しいファイル名に修正する。
+      3. **system_map.yamlの更新:** `system_map.yaml` 内の `other_root_files` セクションに存在する、スキーマファイル自身の定義パスを、新しいファイル名に修正する。
+    scope:
+      project: os_platform_v1
+      domain: refactoring
+    priority: Medium
+  - id: TASK-2025-08-06-004
+    timestamp: '2025-08-06T12:48:00+09:00'
+    related_decision: DEC-2025-08-06-003
+    summary: 【リファクタリング】CIスクリプト内の個別`pip install`を廃止し、`requirements-dev.txt`に集約
+    status: todo
+    assignee: mikieto
+    description: |
+      DEC-2025-08-06-003に基づき、CIワークフローの依存関係管理を改善する。
+      1. **`requirements-dev.txt`の更新:** スキーマ検証に必要な`jsonschema`を`requirements-dev.txt`に追加する。
+      2. **`validate.yaml`の修正:** `lint-and-schema-check`ジョブ内のスキーマ検証ステップから、個別の`pip install`コマンドを削除する。
+      3. **`validate.yaml`の修正(2):** `review-deadline`ジョブも同様に、`requirements.txt`を利用する形式に統一し、個別の`pip install`を削除する。
+    scope:
+      project: os_platform_v1
+      domain: refactoring
+    priority: Medium
+  - id: TASK-2025-08-06-005
+    timestamp: '2025-08-06T13:05:00+09:00'
+    related_decision: DEC-2025-08-06-004
+    summary: 【リファクタリング】`system_map.yaml`の`context_level`を最適化し、`get_base_os_context.py`を拡張する
+    status: todo
+    assignee: mikieto
+    description: |
+      1. `system_map.yaml`内の各プロジェクト憲章の`context_level`を、新設する`project_charter`などに変更する。
+      2. `get_base_os_context.py`を拡張し、`--project [project_id]`のような引数を受け取れるようにする。
+      3. 引数が指定された場合、`base_os_context`に加えて、指定されたプロジェクトの憲章もコンテキストに含めるように修正する。
+    scope:
+      project: os_platform_v1
+      domain: refactoring
+    priority: Medium

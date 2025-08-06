@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "OS Architecture Definition Schema (v3.x)",
-  "description": "Schema for validating the structure and inter-file consistency of Jibun OS configuration files based on the Four-Layer Model (v3.x).",
+  "description": "Schema for validating the structure of system_map.yaml based on the Multi-Layer Model.",
   "type": "object",
   "required": [
     "system_architecture"
@@ -18,7 +18,10 @@
             "type": "object",
             "required": ["name", "description", "files"],
             "properties": {
-              "name": { "type": "string", "enum": ["constitution", "legislation", "precedents", "records"] },
+              "name": { 
+                "type": "string",
+                "enum": ["constitution", "legislation", "precedents", "records", "logs"]
+              },
               "description": { "type": "string" },
               "files": {
                 "type": "array",

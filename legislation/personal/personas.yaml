@@ -1,0 +1,78 @@
+---
+# ==============================================================================
+# Jibun OS - Personal Personas
+#
+# scope: このペルソナが主に関連するプロジェクトIDのリスト
+# tags: ペルソナの分類（internal/external, user/investor/collaboratorなど）
+# ==============================================================================
+personas:
+  # --------------------------------------------------------------------------
+  # System Personas (OS全体の役割)
+  # --------------------------------------------------------------------------
+  - id: Principal-01
+    name: The Principal (Miki Eto)
+    role: OS全体の所有者であり、最終的な意思決定と全ての活動に対する責任を負う。OSの「最高裁判所」として機能する。
+    scope:
+      - os_platform_v1
+      - pcl_navigator_mvp_v1
+      - lean_data_engineering_book_project
+      - job_search_v1
+    tags: [internal, owner]
+
+  # --------------------------------------------------------------------------
+  # Project: PCL Navigator (pcl_navigator_mvp_v1)
+  # --------------------------------------------------------------------------
+  - id: PCL-Lead-01
+    name: The Navigator (PCL推進役)
+    role: PCL Navigatorプロジェクトのビジョンを定義し、開発を主導する役割。
+    scope: [pcl_navigator_mvp_v1]
+    tags: [internal, lead]
+  - id: PCL-Dev-01
+    name: The Builder (PCLデベロッパー)
+    role: PCL Navigatorの機能設計と実装を担当する開発者。
+    scope: [pcl_navigator_mvp_v1]
+    tags: [internal, developer]
+  - id: VC-01
+    name: The Scalability-Focused VC
+    role: 事業の指数関数的な成長可能性と、そのための構造的な堅牢性を評価するベンチャーキャピタリスト。
+    scope: [pcl_navigator_mvp_v1]
+    tags: [external, investor]
+  - id: Angel-01
+    name: The Vision-Driven Angel Investor
+    role: 創業者のビジョンとプロダクトが世界に与える根源的な価値に共感し、初期段階で支援するエンジェル投資家。
+    scope: [pcl_navigator_mvp_v1]
+    tags: [external, investor]
+  - id: B2C-User-01
+    name: The Pragmatic Early Adopter
+    role: 新しい技術やツールを積極的に試すが、自身の具体的な課題解決に繋がるかを冷静に評価する初期の一般ユーザー。
+    scope: [pcl_navigator_mvp_v1]
+    tags: [external, user]
+  - id: B2B-Lead-01
+    name: The Productivity-Focused Manager
+    role: チームの生産性向上とナレッジマネジメントの課題を解決するソリューションを探している、事業部門のマネージャー。
+    scope: [pcl_navigator_mvp_v1]
+    tags: [external, user]
+
+  # --------------------------------------------------------------------------
+  # Project: Lean Data Engineering Book (lean_data_engineering_book_project)
+  # --------------------------------------------------------------------------
+  - id: Author-01
+    name: The Author (著者)
+    role: 書籍のコンセプトを定義し、原稿を執筆する役割。
+    scope: [lean_data_engineering_book_project]
+    tags: [internal, author]
+  - id: Editor-01
+    name: The Critical Editor
+    role: 読者の視点に立ち、書籍の論理構成、表現の明瞭さ、そして全体の一貫性を厳しくレビューする編集者。
+    scope: [lean_data_engineering_book_project]
+    tags: [external, collaborator]
+  - id: Reader-01
+    name: The Aspiring Data Architect
+    role: AI時代のデータ戦略と実践的なAI協働の方法論を学び、自らのキャリアを「AI協働アーキテクト」へと変革させたいと考えている読者。
+    scope: [lean_data_engineering_book_project]
+    tags: [external, user]
+  - id: Reviewer-01
+    name: The Technical Reviewer
+    role: 書籍内のコードや技術的な記述の正確性を検証する、専門的な知識を持つレビュアー。
+    scope: [lean_data_engineering_book_project]
+    tags: [external, collaborator]

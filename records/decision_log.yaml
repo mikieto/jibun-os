@@ -1366,3 +1366,71 @@ decisions:
       project: os_platform_v1
       domain: governance
     severity: Critical
+  - id: DEC-2025-08-06-001
+    timestamp: '2025-08-06T11:53:00+09:00'
+    status: proposed
+    summary: OSの進化を加速するため、ペルソナ管理フレームワークの体系的な導入を正式に決定
+    reason: |
+      現状の自分OSは、堅牢な内部統治機構を持つ`Paradigm_Shift_1: 魂の誕生`を完了したが、
+      その価値を外部世界に効果的に提供するための体系的なインターフェースが欠如している。
+      書籍執筆、PCL Navigator開発、転職活動など、外部との相互作用（`Paradigm_Shift_2: 使命の自覚`）
+      を開始した全てのプロジェクトで、場当たり的なペルソナ定義の必要性が顕在化している。
+      このボトルネックを解消し、OSの知恵を他者に「継承」する`Paradigm_Shift_3: 自己の超越`
+      へと進化するため、OSの「法律(L2)」層に、一元管理されたペルソナ管理フレームワークを
+      導入することを最優先の戦略課題として決定する。
+    alternatives:
+      - name: 体系的なフレームワークを導入する（採択案）
+        pros:
+          - OSの外部への価値提供能力が飛躍的に向上する。
+          - 全プロジェクトで一貫したペルソナ定義が可能になり、SSOTが保たれる。
+          - 将来のAIエージェントとの連携基盤となる。
+        cons: [初期設計と既存ペルソナの移行コストが発生する。]
+      - name: プロジェクトごとに個別対応を続ける
+        pros: [目先のタスクに集中できる。]
+        cons: [ペルソナ定義が散在し、管理が煩雑になる。, OS全体としての学習効率が低下し、進化が停滞する。]
+    related_tasks: [TASK-2025-08-06-001]
+    scope:
+      project: os_platform_v1
+      domain: governance
+    severity: Critical
+  - id: DEC-2025-08-06-002
+    timestamp: '2025-08-06T12:34:00+09:00'
+    status: proposed
+    summary: 'スキーマファイルの命名規則を、検証対象ファイル名に合わせる形式（例: `system_map.schema.json`）に統一'
+    reason: |
+      スキーマファイルがどのYAMLファイルを検証対象としているかを、ファイル名から直感的に理解できるようにするため。
+      これにより、OSの可読性と保守性が向上し、将来のスキーマ追加時における命名の揺れを防ぐ。
+      具体的には、`os_architecture.schema.json`を`system_map.schema.json`にリネームする。
+    related_tasks: [TASK-2025-08-06-003]
+    scope:
+      project: os_platform_v1
+      domain: governance
+    severity: Medium
+  - id: DEC-2025-08-06-003
+    timestamp: '2025-08-06T12:48:00+09:00'
+    status: proposed
+    summary: CIワークフローにおけるPython依存関係の管理を`requirements*.txt`に一元化
+    reason: |
+      CIの各ステップで個別に`pip install`を実行するのは、非効率であり、依存関係のSSOTが失われる原因となる。
+      全てのPython依存関係は`requirements.txt`または`requirements-dev.txt`に集約し、
+      各CIジョブの開始時に一括でインストールする方式に統一する。
+      これにより、CIの実行速度、保守性、再現性を向上させる。
+    related_tasks: [TASK-2025-08-06-004]
+    scope:
+      project: os_platform_v1
+      domain: ci_cd
+    severity: Medium
+  - id: DEC-2025-08-06-004
+    timestamp: '2025-08-06T13:05:00+09:00'
+    status: proposed
+    summary: '`context_level`を細分化し、プロジェクト憲章を基本コンテキストから分離する方針を決定'
+    reason: |
+      OSの基本原則`CTX-P-01`（基本コンテキストとタスク固有コンテキストの分離）をより厳密に適用するため。
+      現状、全てのプロジェクト憲章が`base_os_context`に含まれており、AIへのコンテキストノイズと
+      トークン消費量の増大を招いている。これを解消し、タスクに応じた最適なコンテキストを
+      提供できるようにする。
+    related_tasks: [TASK-2025-08-06-005]
+    scope:
+      project: os_platform_v1
+      domain: system_architecture
+    severity: Medium
