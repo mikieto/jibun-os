@@ -62,15 +62,19 @@ system_architecture:
             - constitution/common/constitution.yaml  # AI roles and G013 are defined here
             - legislation/common/innate_immunity.yaml  # For G013 integration
         - path: legislation/common/mappings/guards.yaml
+          role: guard_mapping
           context_level: tooling
           description: Guard ID ↔ Guard 定義
         - path: legislation/common/mappings/field_task_decision.yaml
+          role: task_decision_mapping
           context_level: tooling
           description: Task ↔ Decision mapping (skeleton)
         - path: legislation/common/mappings/field_kpi_ci.yaml
+          role: kpi_ci_mapping
           context_level: tooling
           description: KPI ← CI mapping (skeleton)
         - path: legislation/common/mappings/driver_stub.yaml
+          role: driver_stub
           context_level: tooling
           description: driver stub
         - path: legislation/common/implementation_framework.yaml
@@ -107,6 +111,7 @@ system_architecture:
           context_level: base_os_context
           dependencies: []
         - path: legislation/common/collaboration_protocol.yaml
+          role: ai_collaboration_protocol
           description: AIとの協働における標準的な手順や規約を定義する。
           context_level: base_os_context
         - path: legislation/common/standard_operating_procedures.yaml
