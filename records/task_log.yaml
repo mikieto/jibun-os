@@ -1470,7 +1470,7 @@ tasks:
     timestamp: '2025-08-06T11:53:00+09:00'
     related_decision: DEC-2025-08-06-001
     summary: 'ペルソナ管理フレームワークの実装 (Phase 1: 法制化とスキーマ定義)'
-    status: todo
+    status: done
     assignee: mikieto
     description: |
       DEC-2025-08-06-001に基づき、OS全体で利用可能なペルソナ管理の基盤を構築する。
@@ -1502,7 +1502,7 @@ tasks:
     timestamp: '2025-08-06T12:34:00+09:00'
     related_decision: DEC-2025-08-06-002
     summary: 【リファクタリング】マスタースキーマのファイル名を`system_map.schema.json`に変更し、関連ファイルを更新
-    status: todo
+    status: done
     assignee: mikieto
     description: |
       DEC-2025-08-06-002に基づき、スキーマの命名規則を適用し、OSの一貫性を向上させる。
@@ -1517,7 +1517,7 @@ tasks:
     timestamp: '2025-08-06T12:48:00+09:00'
     related_decision: DEC-2025-08-06-003
     summary: 【リファクタリング】CIスクリプト内の個別`pip install`を廃止し、`requirements-dev.txt`に集約
-    status: todo
+    status: done
     assignee: mikieto
     description: |
       DEC-2025-08-06-003に基づき、CIワークフローの依存関係管理を改善する。
