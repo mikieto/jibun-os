@@ -68,3 +68,11 @@ project_charter:
       category: Operational
       description: 開発リソース不足による遅延
       mitigation: [MVPスコープを厳格に守り、追加機能を実装しない]
+  key_personas:
+    - Principal-01
+    - PCL-Lead-01
+    - PCL-Dev-01
+    - VC-01
+    - Angel-01
+    - B2C-User-01
+    - B2B-Lead-01
