@@ -133,8 +133,6 @@ jobs:
       # 10) Immune Gate – PaC lint
       - name: Immune Gate
         uses: ./.github/actions/immune-lint
-        with:
-          quality_gate_path: legislation/common/quality_gate.yaml
 
   # ---------------- Regression tests (depends on lint job) ----------------
   regression-test-ai-partner:
