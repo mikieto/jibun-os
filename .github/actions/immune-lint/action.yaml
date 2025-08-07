@@ -15,11 +15,10 @@ runs:
       with:
         repository: mikieto/jibun-os          # ⬅ スクリプト元リポ
         ref: main                             #   タグ固定なら v1 などに
-        path: .tmp-jibun-os                  #   ワークスペース直下に配置
-        sparse-checkout: |
-          scripts/                           #   scripts/ 配下だけ取得
+        path: .tmp-jibun-os                   #   ワークスペース直下に配置
+        sparse-checkout: scripts/*            #   scripts/ 配下だけ取得
         sparse-checkout-cone-mode: false
-        fetch-depth: 1                       #   最小履歴で高速化
+        fetch-depth: 1                        #   最小履歴で高速化
 
     # — 2) Python 環境セットアップ —
     - name: Set up Python
