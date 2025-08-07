@@ -4,31 +4,28 @@ name: immune-lint
 runs:
   using: composite
   steps:
-    # — 1) 必要なスクリプトだけを疎クローン —
     - name: Checkout immune-lint script
       uses: actions/checkout@v4
       with:
-        repository: mikieto/jibun-os          # ⬅ スクリプト元リポ
-        ref: main                             #   タグ固定なら v1 などに
-        path: .tmp-jibun-os                   #   ワークスペース直下に配置
+        repository: mikieto/jibun-os
+        ref: main
+        path: .tmp-jibun-os
         sparse-checkout: |
-          scripts/*
+          scripts/
           legislation/common/quality_gate.yaml
         sparse-checkout-cone-mode: false
-        fetch-depth: 1                        #   最小履歴で高速化
+        fetch-depth: 1
 
-    # — 2) Python 環境セットアップ —
     - name: Set up Python
       uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
+      with: { python-version: '3.11' }
 
-    # — 3) 依存インストール —
     - name: Install dependencies
       run: pip install pyyaml python-dateutil
       shell: bash
 
-    # — 4) Lint スクリプト実行 —
     - name: Run immune-lint
-      run: python .tmp-jibun-os/scripts/immune_lint.py --gate "${{ inputs.quality_gate_path }}"
+      run: |
+        python .tmp-jibun-os/scripts/immune_lint.py \
+          --gate ".tmp-jibun-os/legislation/common/quality_gate.yaml"
       shell: bash
