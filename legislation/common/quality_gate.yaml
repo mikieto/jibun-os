@@ -8,7 +8,6 @@ quality_gate:
     form_min: 3.8
   citation_required_rate: 0.60
   forbidden_violations: 0
-
   date_format: YYYY-MM-DD
   rules: [no_relative_time_expressions]
 id_pattern:
