@@ -78,4 +78,4 @@ repo-root/
 * **Next Milestone:** Complete all M0 tasks by 2025-08-15.
 * **License:** Apache-2.0
 ```
-最新のアップデートです
+最新のアップデートです。

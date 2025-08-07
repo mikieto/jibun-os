@@ -6,7 +6,6 @@ on:
       quality_gate_path:
         required: true
         type: string
-
 jobs:
   gate:
     runs-on: ubuntu-latest
