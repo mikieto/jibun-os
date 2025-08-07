@@ -1,0 +1,12 @@
+quality_gate:
+  metrics:
+    accuracy_min: 3.8
+    consistency_min: 3.8
+    reader_fit_min: 3.8
+    coverage_min: 3.8
+    form_min: 3.8
+  citation_required_rate: 0.60
+  forbidden_violations: 0
+  date_format: "YYYY-MM-DD"
+  rules:
+    - no_relative_time_expressions

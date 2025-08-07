@@ -1,0 +1,16 @@
+name: immune-gate
+on:
+  workflow_call:
+    inputs:
+      quality_gate_path:
+        required: true
+        type: string
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/immune-lint
+        with:
+          quality_gate_path: ${{ inputs.quality_gate_path }}
