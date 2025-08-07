@@ -20,3 +20,4 @@ rules:
     min-spaces-after: 1
   new-line-at-end-of-file: enable
   truthy: disable
+  empty-lines: {max: 1}

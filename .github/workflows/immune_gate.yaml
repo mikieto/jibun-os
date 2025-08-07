@@ -1,11 +1,11 @@
-name: immune-gate
+---
+name: Immune Gate
 on:
   workflow_call:
     inputs:
       quality_gate_path:
         required: true
         type: string
-
 jobs:
   gate:
     runs-on: ubuntu-latest

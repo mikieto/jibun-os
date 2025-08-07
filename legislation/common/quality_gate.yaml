@@ -1,3 +1,4 @@
+---
 quality_gate:
   metrics:
     accuracy_min: 3.8
@@ -7,6 +8,8 @@ quality_gate:
     form_min: 3.8
   citation_required_rate: 0.60
   forbidden_violations: 0
-  date_format: "YYYY-MM-DD"
-  rules:
-    - no_relative_time_expressions
+  date_format: YYYY-MM-DD
+  rules: [no_relative_time_expressions]
+id_pattern:
+  decision: ^DEC-(OS|PCL|DE)-\d{8}-\d{3}$
+  task: ^TASK-(OS|PCL|DE)-\d{8}-\d{3}$

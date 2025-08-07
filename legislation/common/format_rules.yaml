@@ -1,7 +1,8 @@
+---
 headings:
   max_depth: 3
   enforce_sequential: true
 tables:
   require_header: true
 dates:
-  format: "YYYY-MM-DD"
+  format: YYYY-MM-DD

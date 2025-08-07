@@ -1,3 +1,4 @@
+---
 name: immune-lint
 inputs:
   quality_gate_path:
