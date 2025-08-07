@@ -1,4 +1,5 @@
-name: immune-gate
+---
+name: Immune Gate
 on:
   workflow_call:
     inputs:
