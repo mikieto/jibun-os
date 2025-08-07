@@ -1,11 +1,6 @@
 ---
 name: immune-lint
 
-inputs:
-  quality_gate_path:
-    required: true
-    description: "Path to quality_gate.yaml in the caller repo"
-
 runs:
   using: composite
   steps:
@@ -16,7 +11,9 @@ runs:
         repository: mikieto/jibun-os          # ⬅ スクリプト元リポ
         ref: main                             #   タグ固定なら v1 などに
         path: .tmp-jibun-os                   #   ワークスペース直下に配置
-        sparse-checkout: scripts/*            #   scripts/ 配下だけ取得
+        sparse-checkout: |
+          scripts/*
+          legislation/common/quality_gate.yaml
         sparse-checkout-cone-mode: false
         fetch-depth: 1                        #   最小履歴で高速化
 

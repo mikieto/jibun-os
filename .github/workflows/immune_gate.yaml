@@ -12,5 +12,3 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: mikieto/jibun-os/.github/actions/immune-lint@main
-        with:
-          quality_gate_path: ${{ inputs.quality_gate_path }}
