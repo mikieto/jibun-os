@@ -8,6 +8,7 @@ import glob # globモジュールをインポート
 SKIP_IF_MISSING = {
     "records/decision_log.yaml",
     "records/task_log.yaml",
+    "records/guard_log.yaml"
 }
 
 def verify_system_map_paths(system_map_path="system_map.yaml"):
