@@ -6,4 +6,3 @@ tables:
   require_header: true
 dates:
   format: YYYY-MM-DD
-
