@@ -1,0 +1,5 @@
+preferred_terms:
+  - term: guard
+    forbidden: ["guard_function", "protection_feature"]
+  - term: audit_trail
+    forbidden: ["log_evidence", "evidence_log"]

@@ -1,0 +1,15 @@
+name: immune-lint
+inputs:
+  quality_gate_path:
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - run: pip install pyyaml python-dateutil
+      shell: bash
+    - run: python scripts/immune_lint.py --gate "${{ inputs.quality_gate_path }}"
+      shell: bash
