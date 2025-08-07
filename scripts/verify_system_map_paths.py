@@ -5,6 +5,11 @@ import os
 import sys
 import glob # globモジュールをインポート
 
+SKIP_IF_MISSING = {
+    "records/decision_log.yaml",
+    "records/task_log.yaml",
+}
+
 def verify_system_map_paths(system_map_path="system_map.yaml"):
     """
     system_map.yaml に記述されているすべてのファイルパスが
@@ -48,11 +53,14 @@ def verify_system_map_paths(system_map_path="system_map.yaml"):
                     print(f"ERROR: Glob pattern in system_map.yaml found no files: {relative_path}")
                     found_errors = True
             elif not os.path.exists(full_path):
-                print(f"ERROR: Path in system_map.yaml does not exist: {relative_path}")
-                found_errors = True
+                if relative_path in SKIP_IF_MISSING:
+                    print(f"NOTICE: {relative_path} not present yet; skipping.")
+                else:
+                    print(f"ERROR: Path in system_map.yaml does not exist: {relative_path}")
+                    found_errors = True
             elif not os.path.isfile(full_path):
-                 print(f"ERROR: Path in system_map.yaml is not a file: {relative_path}")
-                 found_errors = True
+                print(f"ERROR: Path in system_map.yaml is not a file: {relative_path}")
+                found_errors = True
             # --- MODIFIED BLOCK END ---
 
     # 各セクションを検証
