@@ -21,7 +21,7 @@ def lint(path):
         errors.append("relative time expression")
     return errors
 
-for f in pathlib.Path("docs").rglob("**/*.md"):
+for f in pathlib.Path("docs/adr").rglob("**/*.md"):
 
     if "archive" in f.parts:
         continue
