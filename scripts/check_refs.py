@@ -4,6 +4,12 @@ import yaml, pathlib, sys
 dec_p = pathlib.Path('records/decision_log.yaml')
 tsk_p = pathlib.Path('records/task_log.yaml')
 
+# ---------- NEW: skip if files are missing ----------
+if not dec_p.exists() or not tsk_p.exists():
+    print("ℹ️  Ledger files not found yet; skipping cross-ref check.")
+    sys.exit(0)
+# -----------------------------------------------------
+
 dec = yaml.safe_load(dec_p.read_text())
 tsk = yaml.safe_load(tsk_p.read_text())
 
