@@ -5,6 +5,8 @@ project: OS
 title: "Temporarily disable PR approval checks"
 status: accepted   # → 後で replaced / superseded に更新
 sources: []
+sources:
+  - https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule
 links:
   issues: []
   guard_events: []
