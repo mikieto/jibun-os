@@ -1,0 +1,16 @@
+decisions:
+- id: DEC-OS-20250807-001
+  date: 2025-08-07
+  project: OS
+  title: Temporarily disable PR approval checks
+  status: accepted
+  sources:
+  - https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule
+  links:
+    issues: []
+    guard_events: []
+  file: docs/adr/0010-temporary-review-rule-relaxation.md
+  digest: 8d5afaeb
+  collected_at: '2025-08-09T02:04:56'
+  related_tasks: []
+tasks: []
