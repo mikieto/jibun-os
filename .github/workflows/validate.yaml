@@ -14,8 +14,8 @@ on:
       - records/**
       - scripts/**
       - schema/**
-  schedule:
-    - cron: 0 0 * * 1  # Every Monday 00:00 UTC (Mon 09:00 JST)
+#  schedule:
+#    - cron: 0 0 * * 1  # Every Monday 00:00 UTC (Mon 09:00 JST)
   workflow_dispatch:
 permissions:
   contents: read
